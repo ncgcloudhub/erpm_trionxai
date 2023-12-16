@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/triotbdw/erp.trionxai.com/
+    - export DEPLOYPATH=/home/triotbdw/
     - /bin/cp -R * $DEPLOYPATH
