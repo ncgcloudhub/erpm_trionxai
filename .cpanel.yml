@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/smsboccm/erp.smsblastnet.com/
+    - /bin/cp -R * $DEPLOYPATH
