@@ -435,18 +435,16 @@
 						@php
 							$sl = 1;
 						@endphp
-						@foreach($topProducts as $user)
+						{{-- @foreach($topProducts as $user)
 					  <tr>
 			
 							<td class="align-middle text-center">
 								<p class="text-xs font-weight-bold mb-0">{{$sl}}</p>
 							</td>
 							@php
-								$sl++; // Increment $sl
+								$sl++; 
 							@endphp
-						{{-- <td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{ $users->where('id', $user->user_id)->first()->name }}</p>
-						</td> --}}
+						
 						<td class="align-middle text-center">
 							<p class="text-xs font-weight-bold mb-0">{{ $user->product_name }}</p>
 						</td>
@@ -454,7 +452,7 @@
 							<p class="text-xs font-weight-bold mb-0">{{ $user->sale_count }}</p>
 						</td>
 					  </tr>
-					  @endforeach
+					  @endforeach --}}
 
 
 {{-- TEST --}}
@@ -627,33 +625,7 @@
 					@php
 						$sl = 1;
 					@endphp
-				@foreach ($topProductsByCategoryGrouped as $categoryName => $categoryProducts)
-				  <tr>
-		
-						<td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{$sl}}</p>
-						</td>
-						@php
-							$sl++; // Increment $sl
-						@endphp
-					{{-- <td class="align-middle text-center">
-						<p class="text-xs font-weight-bold mb-0">{{ $users->where('id', $user->user_id)->first()->name }}</p>
-					</td> --}}
-					<td class="align-middle text-center">
-						<p class="text-xs font-weight-bold mb-0">{{ $categoryName }}</p>
-					</td>
-					<td class="align-middle text-center">
-						@foreach ($categoryProducts->take(4) as $product)
-						<p class="text-xs font-weight-bold mb-0">{{ $product->product_name }}</p>
-						@endforeach
-					</td>
-					<td class="align-middle text-center">
-						@foreach ($categoryProducts->take(4) as $product)
-						<p class="text-xs font-weight-bold mb-0">{{ $product->sale_count }}</p>
-						@endforeach
-					</td>
-				  </tr>
-				  @endforeach
+			
 
 
 				</tbody>

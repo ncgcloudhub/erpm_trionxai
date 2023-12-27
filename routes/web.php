@@ -154,34 +154,34 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
             $userIdArray = $topUsers->pluck('user_id')->toArray();
             $users = DB::table('admins')->whereIn('id', $userIdArray)->select('id', 'name')->get();
 
-            $topProducts = DB::table('sales_items')
-            ->select('products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
-            ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
-            ->join('products', 'sales_items.product_id', '=', 'products.id')
-            ->whereYear('sales.created_at', '=', now()->year)
-            ->whereMonth('sales.created_at', '=', now()->month)
-            ->groupBy('products.product_name')
-            ->orderBy('sale_count', 'desc')
-            ->take(4)
-            ->get();
+            // $topProducts = DB::table('sales_items')
+            // ->select('products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
+            // ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
+            // ->join('products', 'sales_items.product_id', '=', 'products.id')
+            // ->whereYear('sales.created_at', '=', now()->year)
+            // ->whereMonth('sales.created_at', '=', now()->month)
+            // ->groupBy('products.product_name')
+            // ->orderBy('sale_count', 'desc')
+            // ->take(4)
+            // ->get();
             // jhadsadskhasd
 
-            $topProductsByCategory = DB::table('products')
-    ->select('categories.category_name', 'products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
-    ->join('categories', 'products.category_id', '=', 'categories.id')
-    ->join('sales_items', 'products.id', '=', 'sales_items.product_id')
-    ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
-    ->whereYear('sales.created_at', '=', now()->year)
-    ->whereMonth('sales.created_at', '=', now()->month)
-    ->groupBy('categories.category_name', 'products.product_name')
-    ->orderBy('categories.category_name')
-    ->orderBy('sale_count', 'desc')
-    ->get();
+    //         $topProductsByCategory = DB::table('products')
+    // ->select('categories.category_name', 'products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
+    // ->join('categories', 'products.category_id', '=', 'categories.id')
+    // ->join('sales_items', 'products.id', '=', 'sales_items.product_id')
+    // ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
+    // ->whereYear('sales.created_at', '=', now()->year)
+    // ->whereMonth('sales.created_at', '=', now()->month)
+    // ->groupBy('categories.category_name', 'products.product_name')
+    // ->orderBy('categories.category_name')
+    // ->orderBy('sale_count', 'desc')
+    // ->get();
 
-    $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
+    // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','customer_due','topUsers','users','topProducts', 'servicetotal','topProductsByCategoryGrouped'));
+        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','customer_due','topUsers','users', 'servicetotal'));
     })->name('admin.dashboard');
 });
 
