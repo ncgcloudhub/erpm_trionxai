@@ -34,18 +34,18 @@ class productController extends Controller
       	
 		'short_description' => $request->short_description,
 		'long_description' => $request->long_description,
-		'assign_to' => $request->assign_to,
+		'category_id' => $request->category_id,
 
 		'assign_date' => $request->assign_date,
       	'time_period' => $request->time_period,
 		'product_img' => $save_url,
 
-		'cost_price' => $request->cost_price,
-      	'sale_price' => $request->sale_price,
+		// 'cost_price' => $request->cost_price,
+      	// 'sale_price' => $request->sale_price,
 
-		'qty' => 0,
+		// 'qty' => 0,
 	
-      	'status' => 1,
+      	// 'status' => 1,
       	'created_at' => Carbon::now(),   
 
       ]);
