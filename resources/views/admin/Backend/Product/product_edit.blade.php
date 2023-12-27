@@ -13,7 +13,7 @@
 					<form method="post" action="{{ route('product-update') }}" enctype="multipart/form-data" >
 						@csrf
 					<div class="form-group">
-						<h6>Assign To<span class="text-danger">*</span></h6>
+						<h6>Category<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="category_id" class="form-control" required="" >
 								<option value="{{$product->category_id}}" selected="">{{$product->category->category_name}}</option>
@@ -21,41 +21,51 @@
 					 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
 								@endforeach
 							</select>
-							
+							@error('category_id') 
+						 <span class="text-danger">{{ $message }}</span>
+						 @enderror 
 						 </div>
 							 </div>
 							 <input hidden type="text" name="id" id="id" value="{{$product->id}}">
 							 <input type="hidden" name="old_image" value="{{ $product->product_img }}">	
 							 <div class="form-group">
-								<h6>Short Description<span class="text-danger">*</span></h6>
+								<h6>Product Name<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input value="{{$product->short_description}}" type="text" name="short_description" class="form-control" required="">
-						
+									<input value="{{$product->product_name}}" type="text" name="product_name" class="form-control" required="">
+						 @error('product_name') 
+						 <span class="text-danger">{{ $message }}</span>
+						 @enderror
 							   </div>
 							</div>
 
 																
 			 <div class="form-group">
-				<h6>Long Description<span class="text-danger">*</span></h6>
+				<h6>Model<span class="text-danger">*</span></h6>
 				<div class="controls">
-					
-					<textarea name="long_description" id="" cols="60" rows="5">{{$product->long_description}}</textarea>
+					<input type="text" value="{{$product->product_code}}" name="product_code" class="form-control" required="">
+		 @error('product_code') 
+		 <span class="text-danger">{{ $message }}</span>
+		 @enderror
 			   </div>
 			</div>
 
 							<div class="form-group">
-								<h6>Assign Date<span class="text-danger">*</span></h6>
+								<h6>Sale Price<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input type="date" value="{{$product->assign_date}}" name="assign_date" class="form-control" required="">
-						
+									<input type="text" value="{{$product->sale_price}}" name="sale_price" class="form-control" required="">
+						 @error('sale_price') 
+						 <span class="text-danger">{{ $message }}</span>
+						 @enderror
 							   </div>
 							</div>
 
 							<div class="form-group">
-								<h6>Time Period<span class="text-danger">*</span></h6>
+								<h6>Cost Price<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input type="text" value="{{$product->time_period}}" name="time_period" class="form-control" >
-						
+									<input type="text" value="{{$product->cost_price}}" name="cost_price" class="form-control" >
+						 {{-- @error('cost_price') 
+						 <span class="text-danger">{{ $message }}</span>
+						 @enderror --}}
 							   </div>
 							</div>
 
@@ -84,15 +94,32 @@
 							<h6>Product Details<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="text" value="{{$product->product_details}}" name="product_details" class="form-control" >
-				
+					 {{-- @error('product_details') 
+					 <span class="text-danger">{{ $message }}</span>
+					 @enderror --}}
+						   </div>
 						</div>
 
 						@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 						<div class="form-group">
 							<h6>Quantity Inventory<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="number" value="{{$product->product_code}}" name="product_code" class="form-control">
-					
+								<input type="number" value="{{$product->qty}}" name="qty" class="form-control">
+					 {{-- @error('p_vat') 
+					 <span class="text-danger">{{ $message }}</span>
+					 @enderror --}}
+						   </div>
+						</div>
+						@endif
+
+						@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+						<div class="form-group">
+							<h6>Quantity Telephone Booth<span class="text-danger">*</span></h6>
+							<div class="controls">
+								<input type="number" value="{{$product->stock_b}}" name="stock_b" class="form-control">
+					 {{-- @error('p_vat') 
+					 <span class="text-danger">{{ $message }}</span>
+					 @enderror --}}
 						   </div>
 						</div>
 						@endif

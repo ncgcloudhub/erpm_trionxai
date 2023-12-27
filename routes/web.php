@@ -269,7 +269,7 @@ Route::prefix('category')->group(function(){
         Route::post('/download', [ReportController::class, 'DownloadPDF'])->name('download.pdf.filter');
 
 
-        // Route::post('/store', [SalesController::class, 'SalesStore'])->name('sales.store');
+        Route::post('/store', [SalesController::class, 'SalesStore'])->name('sales.store');
 
         Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
     
@@ -856,7 +856,7 @@ Route::prefix('product')->group(function(){
               });
         
             
-            // Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
+            Route::get('/details/{id}', [PurchaseController::class, 'PurchaseDetails'])->name('purchase.details');
             
             // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
             
@@ -1054,8 +1054,8 @@ Route::prefix('product')->group(function(){
             
             // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
             
-            // Route::get('/status/port/{id}', [PurchaseController::class, 'StatusChangePort'])->name('purchase.status.port');
-            // Route::get('/status/factory/{id}/{inventory}', [PurchaseController::class, 'StatusChangeFactory'])->name('purchase.status.factory');
+            Route::get('/status/port/{id}', [PurchaseController::class, 'StatusChangePort'])->name('purchase.status.port');
+            Route::get('/status/factory/{id}/{inventory}', [PurchaseController::class, 'StatusChangeFactory'])->name('purchase.status.factory');
             
             });
     
@@ -1134,6 +1134,8 @@ Route::prefix('product')->group(function(){
 
             Route::get('/employee-edit/{id}', [EmployeeController::class, 'EditEmployee'])->name('employee.edit');
 
+            Route::post('/employee/update', [EmployeeController::class, 'EmployeeUpdate'])->name('employee.update');
+
             // DESIGNATION
             Route::get('/designation-add', [DesignationController::class, 'AddDesignation'])->name('designation.add');
             
@@ -1171,7 +1173,3 @@ Route::prefix('product')->group(function(){
        
         
         });
-
-
-
-        

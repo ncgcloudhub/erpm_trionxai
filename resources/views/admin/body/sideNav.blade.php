@@ -104,7 +104,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   </g>
   </svg>
   </div>
-  <span class="nav-link-text ms-1">Prodction (DELETE)</span>
+  <span class="nav-link-text ms-1">Prodction</span>
   </a>
   <div class="collapse" id="pagesExamples" style="">
   <ul class="nav ms-4 ps-3">
@@ -214,7 +214,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </svg>
 </div>
 
-<span class="nav-link-text ms-1">Task Management</span>
+<span class="nav-link-text ms-1">Product</span>
 </a>
 <div class="collapse hide" id="product" style="">
 <ul class="nav ms-4 ps-3">
@@ -222,12 +222,12 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
 <a class="nav-link {{ ($route == 'product.add')? 'active':'' }}" href="{{ route('product.add') }}">
 <span class="sidenav-mini-icon"></span>
-<span class="sidenav-normal">Add Task</span>
+<span class="sidenav-normal">Add Product</span>
 </a>
 @endif
 <a class="nav-link {{ ($route == 'manage-product')? 'active':'' }}" href="{{ route('manage-product') }}">
 <span class="sidenav-mini-icon"></span>
-<span class="sidenav-normal">Manage Task</span>
+<span class="sidenav-normal">Manage Product</span>
 </a>
 </li>
 </ul>
@@ -405,7 +405,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
     </svg>
 </div>
 
-<span class="nav-link-text ms-1">Quotation (DELETE)</span>
+<span class="nav-link-text ms-1">Quotation</span>
 </a>
 <div class="collapse hide" id="quotation" style="">
 <ul class="nav ms-4 ps-3">
@@ -469,7 +469,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
     </svg>
 </div>
 
-<span class="nav-link-text ms-1">Chalan (DELETE)</span>
+<span class="nav-link-text ms-1">Chalan</span>
 </a>
 <div class="collapse hide" id="chalan" style="">
 <ul class="nav ms-4 ps-3">
