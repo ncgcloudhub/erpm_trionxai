@@ -31,13 +31,14 @@ class productController extends Controller
     	$save_url = 'upload/products/'.$name_gen;
 
       $product_id = Product::insertGetId([
-      	'category_id' => $request->category_id,
-      	'product_name' => $request->product_name,
-      	'product_code' => $request->product_code,
+      	
+		'short_description' => $request->short_description,
+		'long_description' => $request->long_description,
+		'assign_to' => $request->assign_to,
 
+		'assign_date' => $request->assign_date,
+      	'time_period' => $request->time_period,
 		'product_img' => $save_url,
-      	'p_vat' => $request->p_vat,
-      	'product_details' => $request->product_details,
 
 		'cost_price' => $request->cost_price,
       	'sale_price' => $request->sale_price,
