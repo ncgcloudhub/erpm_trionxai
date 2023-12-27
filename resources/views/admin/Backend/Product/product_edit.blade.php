@@ -29,8 +29,8 @@
 							 <div class="form-group">
 								<h6>Short Description<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input value="{{$product->short_description}}" type="text" name="short_description" class="form-control" required="">
-						
+									
+									<textarea value="{{$product->short_description}}" name="long_description" id="" cols="60" rows="5"></textarea>
 							   </div>
 							</div>
 
