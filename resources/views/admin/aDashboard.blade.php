@@ -293,5 +293,10 @@ Swal.fire({
 })
 </script>
 
+  <!-- tinymce | TEXT EDITOR -->
+  <script src="{{ asset('backend/js/tinymce/tinymce.min.js') }}"></script>
+  <script src="{{ asset('backend/js/tinymce.js') }}"></script>
+<!--END tinymce TEXT EDITOR-->
+
 </body>
 </html>

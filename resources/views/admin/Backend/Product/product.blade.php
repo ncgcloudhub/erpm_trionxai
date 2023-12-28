@@ -1,5 +1,6 @@
 @extends('admin.aDashboard')
 @section('admins')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
@@ -25,8 +26,8 @@
 			 <div class="form-group">
 				<h6>Description<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<textarea name="long_description" id="" cols="88" rows="5"></textarea>
-		
+					
+					<textarea name="long_description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 			   </div>
 			</div>
 
@@ -34,7 +35,8 @@
 			 <div class="form-group">
 				<h6>Comment<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<textarea name="long_description" id="" cols="88" rows="5"></textarea>
+					
+					<textarea name="long_description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 		
 			   </div>
 			</div>
