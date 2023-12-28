@@ -9,6 +9,8 @@ use App\Models\MultiImg;
 use App\Models\Product;
 use App\Models\RawMaterial;
 use App\Models\subCategory;
+use App\Models\Admin;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image as Image;
@@ -17,8 +19,10 @@ class productController extends Controller
 {
     public function AddProduct(){
 		$categories = Category::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
 		// $brands = Brand::latest()->get();
-		return view('admin.Backend.Product.product', compact('categories'));
+		return view('admin.Backend.Product.product', compact('categories','assignedby','assignto'));
 	}
 
 

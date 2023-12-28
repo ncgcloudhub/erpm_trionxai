@@ -14,7 +14,7 @@
 						@csrf
 					
 							 <div class="form-group">
-								<h6>Short Description<span class="text-danger">*</span></h6>
+								<h6>Title<span class="text-danger">*</span></h6>
 								<div class="controls">
 									<input type="text" name="short_description" class="form-control" required="">
 						 
@@ -23,26 +23,66 @@
 
 																
 			 <div class="form-group">
-				<h6>Long Description<span class="text-danger">*</span></h6>
+				<h6>Description<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<textarea name="long_description" id="" cols="60" rows="5"></textarea>
+					<textarea name="long_description" id="" cols="88" rows="5"></textarea>
+		
+			   </div>
+			</div>
+
+
+			 <div class="form-group">
+				<h6>Comment<span class="text-danger">*</span></h6>
+				<div class="controls">
+					<textarea name="long_description" id="" cols="88" rows="5"></textarea>
 		
 			   </div>
 			</div>
 
 
 			<div class="form-group">
-				<h6>Assign To<span class="text-danger">*</span></h6>
+				<h6>Assign Date<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<select name="category_id" class="form-control" required="" >
+					<input type="date" name="assign_date" class="form-control" required="">
+		
+			   </div>
+			</div>
+
+			<div class="form-group">
+				<h6>Date to be Completed<span class="text-danger">*</span></h6>
+				<div class="controls">
+					<input type="date" name="time_period" class="form-control" >
+	
+			   </div>
+			</div>
+
+
+			<div class="form-group">
+				<h6>Assigned By<span class="text-danger">*</span></h6>
+				<div class="controls">
+					<select name="category_id" class="js-example-basic-single select2 form-control" required="" >
 						<option value="" selected="" disabled="">Select Employee</option>
-						@foreach($categories as $category)
-			 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
+						@foreach($assignedby as $item)
+			 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 						@endforeach
 					</select>
 					
 				 </div>
-					 </div>
+			</div>
+
+
+			<div class="form-group">
+				<h6>Assign To<span class="text-danger">*</span></h6>
+				<div class="controls">
+					<select name="category_id" class="js-example-basic-single select2 form-control" required="" >
+						<option value="" selected="" disabled="">Select Employee</option>
+						@foreach($assignto as $item)
+			 <option value="{{ $item->id }}">{{ $item->f_name }} {{ $item->l_name }}</option>	
+						@endforeach
+					</select>
+					
+				 </div>
+			</div>
 
 
 
@@ -50,41 +90,39 @@
 
 				{{-- 2nd Col --}}
 				<div class="col">
-						{{-- <div class="form-group">
-					<h6>Supplier<span class="text-danger">*</span></h6>
+						<div class="form-group">
+					<h6>Project List<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<select name="supplier_id" class="form-control" required="" >
-							<option value="" selected="" disabled="">Select Supplier</option>
+						<select name="supplier_id" class="js-example-basic-single select2 form-control" required="" >
+							<option value="" selected="" disabled="">Project List</option>
 							@foreach($categories as $category)
 				 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
 							@endforeach
 						</select>
-						@error('supplier_id') 
-					 <span class="text-danger">{{ $message }}</span>
-					 @enderror 
+						
 					 </div>
-						 </div> --}}
+						 </div>
 						
 
-						 {{-- <div class="form-group">
-							<h6>Product Details<span class="text-danger">*</span></h6>
+						 <div class="form-group">
+							<h6>Sub Task<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="text" name="product_details" class="form-control" >
 				
 						   </div>
-						</div> --}}
+						</div>
 
-						{{-- <div class="form-group">
-							<h6>Product VAT<span class="text-danger">*</span></h6>
+						<div class="form-group">
+							<h6>Bug<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="number" name="p_vat" class="form-control">
 					
 						   </div>
-						</div> --}}
+						</div>
 
 						
 						<div class="form-group">
-							<h6>Assign Date<span class="text-danger">*</span></h6>
+							<h6>Issue<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="date" name="assign_date" class="form-control" required="">
 					
@@ -92,12 +130,28 @@
 						</div>
 
 						<div class="form-group">
-							<h6>Time Period<span class="text-danger">*</span></h6>
+							<h6>Hyperlinks<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="text" name="time_period" class="form-control" >
 				
 						   </div>
 						</div>
+
+
+						<div class="form-group">
+							<h6>Project List<span class="text-danger">*</span></h6>
+							<div class="controls">
+								<select name="supplier_id" class="form-control" required="" >
+									<option value="" selected="" disabled="">Select an Option</option>
+									<option value="normal">Normal</option>
+									<option value="critical" >Critical</option>
+									<option value="major">Major</option>
+									<option value="minor">Minor</option>
+								
+								</select>
+								
+							 </div>
+								 </div>
 
 
 						
@@ -128,6 +182,24 @@
 	  </div>
 
 	  @include('admin.body.footer')
+
+
+	 
+
+
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+		 <script>
+			$(document).ready(function() {
+			$('.select2').select2({
+				placeholder: 'Select an option',
+				allowClear: true
+			});
+		});
+		</script>
+
+
+	  
 
 	  {{-- TRIAL END --}}
 @endsection
