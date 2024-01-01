@@ -34,7 +34,7 @@
 				 <tr class="align-middle text-center text-sm">
 					
 					<td><p class="mb-0 text-sm">{{ $item->title }}</p></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->project_list }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->employee->f_name }}{{ $item->employee->l_name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
 					

@@ -11,5 +11,11 @@ class Category extends Model
 
     protected $guarded = [];
 
-   
+    public function employee(){
+    	return $this->belongsTo(Employee::class,'assign_to','id');
+    }
+
+    public function user(){
+    	return $this->belongsTo(Admin::class,'assigned_by','id');
+    }
 }

@@ -19,4 +19,12 @@ class Product extends Model
     public function brand(){
     	return $this->belongsTo(Brand::class,'brand_id','id');
     }
+
+    public function employee(){
+    	return $this->belongsTo(Employee::class,'assign_to','id');
+    }
+
+    public function user(){
+    	return $this->belongsTo(Admin::class,'assigned_by','id');
+    }
 }
