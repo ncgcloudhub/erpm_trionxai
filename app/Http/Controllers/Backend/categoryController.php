@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Admin;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image as Image;
@@ -12,8 +14,12 @@ class categoryController extends Controller
 {
     public function CategoryView(){
 
-    	$category = Category::latest()->get();
-    	return view('admin.Backend.Category.category',compact('category'));
+    	$categories = Category::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		// $brands = Brand::latest()->get();
+		return view('admin.Backend.Category.category', compact('categories','assignedby','assignto'));
+    	
     }
 
     public function CategoryStore(Request $request){

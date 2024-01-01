@@ -11,13 +11,13 @@
 			  <div class="row">
 			
 				<div class="col">
-					<form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" >
+					<form method="post" action="{{ route('project.store.task') }}" enctype="multipart/form-data" >
 						@csrf
 					
 							 <div class="form-group">
 								<h6>Title<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input type="text" name="short_description" class="form-control" required="">
+									<input type="text" name="title" class="form-control" required="">
 						 
 							   </div>
 							</div>
@@ -27,7 +27,7 @@
 				<h6>Description<span class="text-danger">*</span></h6>
 				<div class="controls">
 					
-					<textarea name="long_description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+					<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 			   </div>
 			</div>
 
@@ -36,7 +36,7 @@
 				<h6>Comment<span class="text-danger">*</span></h6>
 				<div class="controls">
 					
-					<textarea name="long_description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+					<textarea name="comment" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 		
 			   </div>
 			</div>
@@ -53,7 +53,7 @@
 			<div class="form-group">
 				<h6>Date to be Completed<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<input type="date" name="time_period" class="form-control" >
+					<input type="date" name="completion_date" class="form-control" >
 	
 			   </div>
 			</div>
@@ -62,7 +62,7 @@
 			<div class="form-group">
 				<h6>Assigned By<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<select name="category_id" class="js-example-basic-single select2 form-control" required="" >
+					<select name="assigned_by" class="js-example-basic-single select2 form-control" required="" >
 						<option value="" selected="" disabled="">Select Employee</option>
 						@foreach($assignedby as $item)
 			 <option value="{{ $item->id }}">{{ $item->name }}</option>	
@@ -76,7 +76,7 @@
 			<div class="form-group">
 				<h6>Assign To<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<select name="category_id" class="js-example-basic-single select2 form-control" required="" >
+					<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
 						<option value="" selected="" disabled="">Select Employee</option>
 						@foreach($assignto as $item)
 			 <option value="{{ $item->id }}">{{ $item->f_name }} {{ $item->l_name }}</option>	
@@ -95,7 +95,7 @@
 						<div class="form-group">
 					<h6>Project List<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<select name="supplier_id" class="js-example-basic-single select2 form-control" required="" >
+						<select name="project_list" class="js-example-basic-single select2 form-control" required="" >
 							<option value="" selected="" disabled="">Project List</option>
 							@foreach($categories as $category)
 				 <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
@@ -109,7 +109,7 @@
 						 <div class="form-group">
 							<h6>Sub Task<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="product_details" class="form-control" >
+								<input type="text" name="sub_task" class="form-control" >
 				
 						   </div>
 						</div>
@@ -117,7 +117,7 @@
 						<div class="form-group">
 							<h6>Bug<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="number" name="p_vat" class="form-control">
+								<input type="text" name="bug" class="form-control">
 					
 						   </div>
 						</div>
@@ -126,7 +126,7 @@
 						<div class="form-group">
 							<h6>Issue<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="date" name="assign_date" class="form-control" required="">
+								<input type="text" name="issue" class="form-control" required="">
 					
 						   </div>
 						</div>
@@ -134,22 +134,21 @@
 						<div class="form-group">
 							<h6>Hyperlinks<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="time_period" class="form-control" >
+								<input type="text" name="hyperlinks" class="form-control" >
 				
 						   </div>
 						</div>
 
 
 						<div class="form-group">
-							<h6>Project List<span class="text-danger">*</span></h6>
+							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<select name="supplier_id" class="form-control" required="" >
+								<select name="priority" class="form-control" required="" >
 									<option value="" selected="" disabled="">Select an Option</option>
 									<option value="normal">Normal</option>
 									<option value="critical" >Critical</option>
 									<option value="major">Major</option>
 									<option value="minor">Minor</option>
-								
 								</select>
 								
 							 </div>
@@ -161,20 +160,18 @@
 							<h6>Image<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="file" name="product_img" class="form-control" >
-					 {{-- @error('product_img') 
-					 <span class="text-danger">{{ $message }}</span>
-					 @enderror --}}
+					
 						   </div>
 						</div>
 						
 						</div>
 			
 			   </div> <!-- end row  -->
-			   @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+			   
 						<div class="text-xs-right">
 	  						 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
 						</div>
-				@endif
+				
 						   </form>
 			  </div>
 			</div>

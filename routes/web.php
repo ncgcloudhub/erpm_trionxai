@@ -24,6 +24,7 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\homePageController;
@@ -220,7 +221,7 @@ Route::prefix('brand')->group(function(){
     // Admin Category all Routes  
 Route::prefix('category')->group(function(){
 
-    Route::get('/view', [categoryController::class, 'CategoryView'])->name('category.view');
+    Route::get('/', [categoryController::class, 'CategoryView'])->name('category.view');
     
     Route::post('/store', [categoryController::class, 'CategoryStore'])->name('category.store');
    
@@ -356,17 +357,23 @@ Route::prefix('customer')->group(function(){
 
     // Admin Products All Routes 
 
-Route::prefix('product')->group(function(){
+Route::prefix('project')->group(function(){
 
-    Route::get('/add', [productController::class, 'AddProduct'])->name('product.add');
-    
-    Route::post('/store', [productController::class, 'StoreProduct'])->name('product-store');
+    Route::get('/', [ProjectController::class, 'AddProject'])->name('project.view');
+
+    Route::get('/manage', [ProjectController::class, 'ManageProject'])->name('project.manage');
+
+    Route::post('/store', [ProjectController::class, 'StoreProject'])->name('project.store');
+
+    Route::get('/task/add', [ProjectController::class, 'AddTask'])->name('project.add.task');
+
+    Route::get('/task/manage', [ProjectController::class, 'ManageTask'])->name('project.manage.task');
+   
+    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.task');
 
     Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
     
     Route::post('/store/raw/materials', [productController::class, 'StoreRawProduct'])->name('raw.product-store');
-    
-    Route::get('/manage', [ProductController::class, 'ManageProduct'])->name('manage-product');
 
     Route::get('/manage/raw/materials', [ProductController::class, 'ManageRawProduct'])->name('raw.manage-product');
     

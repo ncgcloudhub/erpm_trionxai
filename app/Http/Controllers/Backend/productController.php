@@ -36,20 +36,23 @@ class productController extends Controller
 
       $product_id = Product::insertGetId([
       	
-		'short_description' => $request->short_description,
-		'long_description' => $request->long_description,
-		'category_id' => $request->category_id,
-
+		'title' => $request->title,
+		'description' => $request->description,
+		'comment' => $request->comment,
 		'assign_date' => $request->assign_date,
-      	'time_period' => $request->time_period,
+		'completion_date' => $request->completion_date,
+		
+		'assigned_by' => $request->assigned_by,
+		'assign_to' => $request->assign_to,
+		'project_list' => $request->project_list,
+
+		'sub_task' => $request->sub_task,
+      	'bug' => $request->bug,
+      	'issue' => $request->issue,
+      	'hyperlinks' => $request->hyperlinks,
+      	'priority' => $request->priority,
 		'product_img' => $save_url,
 
-		// 'cost_price' => $request->cost_price,
-      	// 'sale_price' => $request->sale_price,
-
-		// 'qty' => 0,
-	
-      	// 'status' => 1,
       	'created_at' => Carbon::now(),   
 
       ]);
@@ -67,7 +70,6 @@ class productController extends Controller
 
 	public function ManageProduct(){
 
-		
 		$products = Product::latest()->get();
 		return view('admin.Backend.Product.product_view',compact('products'));
 	}

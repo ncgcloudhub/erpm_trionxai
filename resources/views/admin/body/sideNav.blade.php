@@ -55,7 +55,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       </li>
 
 
-  @if($category == true)
+  {{-- @if($category == true)
       <li class="nav-item">
 <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link  {{ ($prefix == '/category')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -74,19 +74,16 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal"> Category View </span>
 </a>
-{{-- <a class="nav-link {{ ($route == 'subCategory.view')? 'active':'' }}" href="{{ route('subCategory.view') }}">
-  <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">SubCategory View </span>
-  </a> --}}
+
 </li>
 </ul>
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 {{-- PRODUCTION --}}
-@if($product == true)
+{{-- @if($product == true)
 <li class="nav-item">
   <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link collapsed" aria-controls="pagesExamples" role="button" aria-expanded="false">
   <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -192,12 +189,12 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   </div>
   </li>
 @else
-@endif
+@endif --}}
 {{-- END PRODUCTION --}}
 
 @if($product == true)
 <li class="nav-item">
-<a data-bs-toggle="collapse" href="#product" class="nav-link  {{ ($prefix == '/product')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
+<a data-bs-toggle="collapse" href="#project" class="nav-link  {{ ($prefix == '/project')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
 <svg class="text-dark" width="12px" height="12px" viewBox="0 0 42 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>basket</title>
@@ -214,18 +211,26 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </svg>
 </div>
 
-<span class="nav-link-text ms-1">Task Management</span>
+<span class="nav-link-text ms-1">Project Management</span>
 </a>
-<div class="collapse hide" id="product" style="">
+<div class="collapse hide" id="project" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item ">
 @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
-<a class="nav-link {{ ($route == 'product.add')? 'active':'' }}" href="{{ route('product.add') }}">
+<a class="nav-link {{ ($route == 'project.view')? 'active':'' }}" href="{{ route('project.view') }}">
+  <span class="sidenav-mini-icon"></span>
+  <span class="sidenav-normal">Project Add</span>
+  </a>
+<a class="nav-link {{ ($route == 'project.manage')? 'active':'' }}" href="{{ route('project.manage') }}">
+  <span class="sidenav-mini-icon"></span>
+  <span class="sidenav-normal">Project Manage</span>
+  </a>
+<a class="nav-link {{ ($route == 'project.add.task')? 'active':'' }}" href="{{ route('project.add.task') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Task</span>
 </a>
 @endif
-<a class="nav-link {{ ($route == 'manage-product')? 'active':'' }}" href="{{ route('manage-product') }}">
+<a class="nav-link {{ ($route == 'project.manage.task')? 'active':'' }}" href="{{ route('project.manage.task') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Task</span>
 </a>
@@ -395,7 +400,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @endif
 
 {{-- Quotation --}}
-@if($sale  == true)
+{{-- @if($sale  == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#quotation" class="nav-link  {{ ($prefix == '/quotation')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -423,11 +428,11 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 {{-- END Quotation --}}
 
 {{-- Return --}}
-@if($sale  == true)
+{{-- @if($sale  == true)
 @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#return" class="nav-link  {{ ($prefix == '/return')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
@@ -456,10 +461,10 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @endif
-@endif
+@endif --}}
 {{-- END Return --}}
 
-@if($chalan  == true)
+{{-- @if($chalan  == true)
   <li class="nav-item">
   <a data-bs-toggle="collapse" href="#chalan" class="nav-link  {{ ($prefix == '/chalan')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
   <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -493,7 +498,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 @if($l_c == true)
@@ -581,14 +586,14 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Department</span>
 </a>
-<a class="nav-link {{ ($route == 'conveyance.view')? 'active':'' }}" href="{{ route('conveyance.view') }}">
+{{-- <a class="nav-link {{ ($route == 'conveyance.view')? 'active':'' }}" href="{{ route('conveyance.view') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal">Add Conveyance</span>
   </a>
   <a class="nav-link {{ ($route == 'conveyance.manage')? 'active':'' }}" href="{{ route('conveyance.manage') }}">
     <span class="sidenav-mini-icon"></span>
     <span class="sidenav-normal">Manage Conveyance</span>
-    </a>
+    </a> --}}
     <a class="nav-link {{ ($route == 'generate.salary')? 'active':'' }}" href="{{ route('generate.salary') }}">
       <span class="sidenav-mini-icon"></span>
       <span class="sidenav-normal">Generate Salary</span>
