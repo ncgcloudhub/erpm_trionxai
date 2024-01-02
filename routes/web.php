@@ -371,17 +371,20 @@ Route::prefix('project')->group(function(){
    
     Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.task');
 
+    Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');
+
+    Route::post('/update', [ProjectController::class, 'ProjectUpdate'])->name('project.update');
+
+
     Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
     
     Route::post('/store/raw/materials', [productController::class, 'StoreRawProduct'])->name('raw.product-store');
 
     Route::get('/manage/raw/materials', [ProductController::class, 'ManageRawProduct'])->name('raw.manage-product');
-    
-    Route::get('/edit/{id}', [ProductController::class, 'EditProduct'])->name('product.edit');
 
     Route::get('/raw/edit/{id}', [ProductController::class, 'EditRawProduct'])->name('raw.product.edit');
     
-    Route::post('/data/update', [ProductController::class, 'ProductDataUpdate'])->name('product-update');
+    
     
     Route::post('/image/update', [ProductController::class, 'MultiImageUpdate'])->name('update-product-image');
     

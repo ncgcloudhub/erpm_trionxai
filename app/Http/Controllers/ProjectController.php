@@ -59,6 +59,42 @@ class ProjectController extends Controller
 
 	} // end method
 
+	public function EditProject($id){		   
+
+		$categories = Category::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		$project = Category::findOrFail($id);
+
+        return view('admin.Backend.Project.project_edit',compact('categories','assignedby','assignto','project'));
+	}
+
+	public function ProjectUpdate(Request $request){
+
+		Category::findOrFail($request->id)->update([
+			'project_name' => $request->project_name,
+			'description' => $request->description,
+			'comment' => $request->comment,
+			'assign_date' => $request->assign_date,
+			'completion_date' => $request->completion_date,
+			
+			'assigned_by' => $request->assigned_by,
+			'assign_to' => $request->assign_to,
+	
+			  'hyperlinks' => $request->hyperlinks,
+			  'priority' => $request->priority,
+			  'bug' => $request->bug,
+			  'issue' => $request->issue,
+			]);
+
+			$notification = array(
+				'message' => 'Project Updated Successfully',
+				'alert-type' => 'success'
+			);
+			
+			return redirect()->back()->with($notification);
+	}
+
     public function ManageProject(){
 
 		$products = Category::latest()->get();
