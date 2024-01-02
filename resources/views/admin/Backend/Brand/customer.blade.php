@@ -27,7 +27,7 @@
             
  @foreach($customers as $item)
  <tr>
-  <td>{{ $item->customer_name }}</td>
+  <td>{{ $item->user_name }}</td>
   <td>{{ $item->address }}</td>
   <td>{{ $item->email }}</td>
   <td>{{ $item->phone }}</td>
@@ -55,18 +55,22 @@
     <div class="card-body p-3">
       <div class="row">
 
-<form method="post" action="{{ route('customer.store') }}">
+<form method="post" action="{{ route('customer.storee') }}">
 @csrf
-@error('phone') 
-<span class="text-danger">{{ $message }}</span>
-@enderror    
+   
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">Customer Name</label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Company Name</label>
 <div class="controls">
-<input type="text"  name="customer_name" class="form-control" > 
-{{-- @error('customer_name') 
-<span class="text-danger">{{ $message }}</span>
-@enderror  --}}
+<input type="text"  name="company_name" class="form-control" > 
+
+</div>
+</div>
+
+<div class="form-group">
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">User Name</label>
+<div class="controls">
+<input type="text"  name="user_name" class="form-control" required > 
+
 </div>
 </div>
 
@@ -80,14 +84,42 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Phone</label>
 <div class="controls">
-<input type="text"  name="phone" class="form-control" required> 
+<input type="text"  name="phone" class="form-control"> 
 </div>
 </div>
 
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address</label>
 <div class="controls">
-<input type="text" name="address" class="form-control" required>
+<input type="text" name="address" class="form-control" >
+
+</div>
+</div>
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City</label>
+<div class="controls">
+<input type="text" name="city" class="form-control" >
+
+</div>
+</div>
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State</label>
+<div class="controls">
+<input type="text" name="state" class="form-control" >
+
+</div>
+</div>
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Zip</label>
+<div class="controls">
+<input type="text" name="zip" class="form-control" >
+
+</div>
+</div>
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country</label>
+<div class="controls">
+<input type="text" name="country" class="form-control" >
 
 </div>
 </div>

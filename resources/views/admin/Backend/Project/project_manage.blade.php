@@ -25,10 +25,7 @@
 									</thead>
 									<tbody>
 
-				@php
-					$tCost = 0;
-					$tSale = 0;	
-				@endphp
+			
 
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
@@ -71,6 +68,7 @@
 		</div>
 	  </div>
 
+	</div>
 	</div>
 
 	@include('admin.body.footer')

@@ -27,7 +27,7 @@ class SalesController extends Controller
         // $id = Auth::user()->id;
 		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
-        $customers = Customer::orderBy('customer_name','ASC')->get();
+        $customers = Customer::orderBy('user_name','ASC')->get();
         // $inventory = TodaysProduction::sum('qty');
         $acidProducts = AcidProduct::find(1);
         // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();

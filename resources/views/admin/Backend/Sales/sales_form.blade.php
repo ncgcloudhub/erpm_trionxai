@@ -19,7 +19,7 @@
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
 							<option value="" selected="" disabled="">Select Customer</option>
 							@foreach($customers as $customer)
-									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
+									 <option value="{{ $customer->id }}">{{ $customer->user_name }}</option>	
 							@endforeach
 							<!-- More options -->
 							</select>
@@ -32,6 +32,7 @@
 						</div>
 							
 						</div>
+						
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
 							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone"></div>

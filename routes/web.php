@@ -137,7 +137,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         $inventory = AcidProduct::find(1);
         $capital_due = Bank::find(5);
         $total_balance = Bank::sum('balance');
-        $customer_due = Customer::sum('cusDue');
+        // $customer_due = Customer::sum('cusDue');
         $todays_production = TodaysProduction::orderBy('id','DESC')->first();
         $lastSale = Sales::orderBy('id','DESC')->first();
         $today = Carbon::today();
@@ -182,7 +182,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','customer_due','topUsers','users', 'servicetotal'));
+        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','topUsers','users', 'servicetotal'));
     })->name('admin.dashboard');
 });
 
@@ -303,7 +303,7 @@ Route::prefix('customer')->group(function(){
     
     Route::get('/view', [CustomerController::class, 'CustomerView'])->name('customer.view');
     
-    Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
+    Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.storee');
     
     Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
     

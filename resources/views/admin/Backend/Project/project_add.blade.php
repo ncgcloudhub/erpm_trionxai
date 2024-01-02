@@ -33,7 +33,7 @@
 
 
 			 <div class="form-group">
-				<h6>Comment<span class="text-danger">*</span></h6>
+				<h6>Comment</h6>
 				<div class="controls">
 					
 					<textarea name="comment" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
@@ -113,7 +113,7 @@
 						</div> --}}
 
 						<div class="form-group">
-							<h6>Hyperlinks<span class="text-danger">*</span></h6>
+							<h6>Hyperlinks</h6>
 							<div class="controls">
 								<input type="text" name="hyperlinks" class="form-control" >
 				
@@ -122,7 +122,7 @@
 
 
 						<div class="form-group">
-							<h6>Priority<span class="text-danger">*</span></h6>
+							<h6>Priority</h6>
 							<div class="controls">
 								<select name="priority" class="form-control" required="" >
 									<option value="" selected="" disabled="">Select an Option</option>

@@ -27,7 +27,7 @@
             
  @foreach($customers as $item)
  <tr>
-  <td>{{ $item->customer_name }}</td>
+  <td>{{ $item->user_name }}</td>
   <td>{{ $item->address }}</td>
   <td>{{ $item->email }}</td>
   <td>{{ $item->phone }}</td>
@@ -59,12 +59,16 @@
 @csrf
 <input type="hidden" name="id" value="{{$customer->id}}">   
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">Customer Name</label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Company Name</label>
 <div class="controls">
-<input type="text" value="{{$customer->customer_name}}"  name="customer_name" class="form-control" required> 
-@error('customer_name') 
-<span class="text-danger">{{ $message }}</span>
-@enderror 
+<input type="text" value="{{$customer->company_name}}"  name="company_name" class="form-control" > 
+</div>
+</div>
+
+<div class="form-group">
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">User Name</label>
+<div class="controls">
+<input type="text" value="{{$customer->user_name}}"  name="user_name" class="form-control" > 
 </div>
 </div>
 
@@ -76,16 +80,49 @@
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Phone</label>
-<div class="controls">
-<input type="text" value="{{$customer->phone}}" name="phone" class="form-control" required> 
+    <label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label>
+    <div class="controls">
+        <input type="text" value="{{$customer->phone}}" name="phone" class="form-control" pattern="\d*" title="Please enter only numeric values">
+    </div>
 </div>
-</div>
+
 
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address</label>
 <div class="controls">
-<input type="text" value="{{$customer->address}}" name="address" class="form-control" required>
+<input type="text" value="{{$customer->address}}" name="address" class="form-control" >
+
+</div>
+</div>
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City</label>
+<div class="controls">
+<input type="text" value="{{$customer->city}}" name="city" class="form-control" >
+
+</div>
+</div>
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State</label>
+<div class="controls">
+<input type="text" value="{{$customer->state}}" name="state" class="form-control" >
+
+</div>
+</div>
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Zip</label>
+<div class="controls">
+<input type="text" value="{{$customer->zip}}" name="zip" class="form-control" >
+
+</div>
+</div>
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country</label>
+<div class="controls">
+<input type="text" value="{{$customer->country}}" name="country" class="form-control" >
 
 </div>
 </div>

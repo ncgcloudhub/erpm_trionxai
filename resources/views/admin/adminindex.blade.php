@@ -237,7 +237,7 @@
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{$customer_due}}
+					123
 					<span class="text-success text-sm font-weight-bolder"
 					  >TK</span
 					>

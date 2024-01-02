@@ -14,30 +14,35 @@ use Illuminate\Support\Carbon;
 class CustomerController extends Controller
 {
     public function CustomerView(){
-		$customers = Customer::where('dea_cus',1)->orderBy('customer_name','ASC')->get();
+		$customers = Customer::orderBy('id','ASC')->get();
 		return view('admin.Backend.Brand.customer' ,compact('customers'));
 	}
 
 
      public function CustomerStore(Request $request){
-
-		$validator = Validator::make($request->all(), [
-			'customer_name' => 'required',
-			'phone' => 'nullable|unique:customers',
-		], [
-			'phone.unique' => 'The phone number already exists.',
-		]);
 	
-		if ($validator->fails()) {
-			return redirect()->back()->withErrors($validator)->withInput();
-		}
+		// $validator = Validator::make($request->all(), [
+		// 	'customer_name' => 'required',
+		// 	'phone' => 'nullable|unique:customers',
+		// ], [
+		// 	'phone.unique' => 'The phone number already exists.',
+		// ]);
+	
+		// if ($validator->fails()) {
+		// 	return redirect()->back()->withErrors($validator)->withInput();
+		// }
 
         Customer::insert([
-		'customer_name' => $request->customer_name,
+		'company_name' => $request->company_name,
+        'user_name' => $request->user_name,
         'email' => $request->email,
         'phone' => $request->phone,
         'address' => $request->address,
-		'dea_cus' => 1,
+        'city' => $request->city,
+        'state' => $request->state,
+        'zip' => $request->zip,
+        'country' => $request->country,
+		
     	]);
 
 	    $notification = array(
@@ -50,7 +55,7 @@ class CustomerController extends Controller
     } // end method
 
 	public function CustomerEdit($id){
-		$customers = Customer::where('dea_cus',1)->orderBy('customer_name','ASC')->get();
+		$customers = Customer::orderBy('id','ASC')->get();
 		$customer = Customer::findOrFail($id);
 			return view('admin.Backend.Brand.customer_edit',compact('customer','customers'));
 		}
@@ -61,10 +66,15 @@ class CustomerController extends Controller
 		$id = $request->id;
 	
 		Customer::findOrFail($id)->update([
-			'customer_name' => $request->customer_name,
-			'email' => $request->email,
-			'phone' => $request->phone,
-			'address' => $request->address,
+			'company_name' => $request->company_name,
+        	'user_name' => $request->user_name,
+        	'email' => $request->email,
+        	'phone' => $request->phone,
+        	'address' => $request->address,
+        	'city' => $request->city,
+        	'state' => $request->state,
+        	'zip' => $request->zip,
+        	'country' => $request->country,
 			'updated_at' => Carbon::now(), 
 	
 			]);
