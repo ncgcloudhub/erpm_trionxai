@@ -27,7 +27,7 @@ class PurchaseController extends Controller
 		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
         $suppliers = Supplier::orderBy('supplier_name','ASC')->get();
-        $products = Product::orderBy('short_description','ASC')->get();
+        $products = Product::orderBy('id','ASC')->get();
         $expenseTypes = ShipExpenseType::latest()->get();
 
         return view('admin.Backend.Purchase.purchase_form', compact('products','suppliers','banks','expenseTypes'));
