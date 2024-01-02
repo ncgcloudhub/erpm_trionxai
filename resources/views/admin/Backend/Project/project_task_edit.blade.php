@@ -11,13 +11,14 @@
 			  <div class="row">
 			
 				<div class="col">
-					<form method="post" action="{{ route('project.store.task') }}" enctype="multipart/form-data" >
+					<form method="post" action="{{ route('project.update.task') }}" enctype="multipart/form-data" >
 						@csrf
-					
+						
+						<input type="hidden" name="id" value="{{$task->id}}">
 							 <div class="form-group">
 								<h6>Title<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input type="text" name="title" class="form-control" required="">
+									<input type="text" value="{{$task->title}}" name="title" class="form-control" required="">
 						 
 							   </div>
 							</div>
@@ -27,7 +28,8 @@
 				<h6>Description<span class="text-danger">*</span></h6>
 				<div class="controls">
 					
-					<textarea name="description" class="form-control" id="tinymceExample" rows="10"></textarea>
+					<textarea class="form-control" id="tinymceExample" rows="10" name="description">{{$task->description}}</textarea>
+
 			   </div>
 			</div>
 
@@ -36,7 +38,7 @@
 				<h6>Comment<span class="text-danger">*</span></h6>
 				<div class="controls">
 					
-					<textarea name="comment" class="form-control" id="tinymceExample" rows="10"></textarea>
+					<textarea name="comment" class="form-control" id="tinymceExample" rows="10">{{$task->comment}}</textarea>
 		
 			   </div>
 			</div>
@@ -45,7 +47,7 @@
 			<div class="form-group">
 				<h6>Assign Date<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<input type="date" name="assign_date" class="form-control" required="">
+					<input type="date" value="{{$task->assign_date}}" name="assign_date" class="form-control" required="">
 		
 			   </div>
 			</div>
@@ -53,7 +55,7 @@
 			<div class="form-group">
 				<h6>Date to be Completed<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<input type="date" name="completion_date" class="form-control" >
+					<input type="date" value="{{$task->completion_date}}" name="completion_date" class="form-control" >
 	
 			   </div>
 			</div>
@@ -62,8 +64,8 @@
 			<div class="form-group">
 				<h6>Assigned By<span class="text-danger">*</span></h6>
 				<div class="controls">
-					<select name="assigned_by" class="js-example-basic-single select2 form-control" required="" >
-						<option value="" selected="" disabled="">Select Employee</option>
+					<select name="assigned_by" class="js-example-basic-single select2 form-control" required="">
+						<option value="{{$task->assigned_by}}" selected="">{{$task->user->name}}</option>
 						@foreach($assignedby as $item)
 			 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 						@endforeach
@@ -77,7 +79,7 @@
 				<h6>Assign To<span class="text-danger">*</span></h6>
 				<div class="controls">
 					<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
-						<option value="" selected="" disabled="">Select Employee</option>
+						<option value="{{$task->assign_to}}" selected="">{{$task->admin->name}}</option>
 						@foreach($assignedby as $item)
 			 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 						@endforeach
@@ -96,7 +98,7 @@
 					<h6>Project List<span class="text-danger">*</span></h6>
 					<div class="controls">
 						<select name="project_list" class="js-example-basic-single select2 form-control" required="" >
-							<option value="" selected="" disabled="">Project List</option>
+							<option value="{{$task->project_list}}" selected="">{{$task->project->project_name}}</option>
 							@foreach($categories as $category)
 				 <option value="{{ $category->id }}">{{ $category->project_name }}</option>	
 							@endforeach
@@ -109,7 +111,7 @@
 						 <div class="form-group">
 							<h6>Sub Task<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="sub_task" class="form-control" >
+								<input type="text" value="{{$task->sub_task}}" name="sub_task" class="form-control" >
 				
 						   </div>
 						</div>
@@ -117,7 +119,7 @@
 						<div class="form-group">
 							<h6>Bug<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="bug" class="form-control">
+								<input type="text" value="{{$task->bug}}" name="bug" class="form-control">
 					
 						   </div>
 						</div>
@@ -126,7 +128,7 @@
 						<div class="form-group">
 							<h6>Issue<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="issue" class="form-control">
+								<input type="text" value="{{$task->issue}}" name="issue" class="form-control">
 					
 						   </div>
 						</div>
@@ -134,7 +136,7 @@
 						<div class="form-group">
 							<h6>Hyperlinks<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="hyperlinks" class="form-control" >
+								<input type="text" value="{{$task->hyperlinks}}" name="hyperlinks" class="form-control" >
 				
 						   </div>
 						</div>
@@ -144,7 +146,7 @@
 							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<select name="priority" class="form-control" required="" >
-									<option value="" selected="" disabled="">Select an Option</option>
+									<option value="{{$task->priority}}" selected="">{{$task->priority}}</option>
 									<option value="normal">Normal</option>
 									<option value="critical" >Critical</option>
 									<option value="major">Major</option>
@@ -169,7 +171,7 @@
 			   </div> <!-- end row  -->
 			   
 						<div class="text-xs-right">
-	  						 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
+	  						 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Task">
 						</div>
 				
 						   </form>

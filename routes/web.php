@@ -373,7 +373,11 @@ Route::prefix('project')->group(function(){
 
     Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');
 
+    Route::get('/edit/task/{id}', [ProjectController::class, 'EditProjectTask'])->name('project.task.edit');
+
     Route::post('/update', [ProjectController::class, 'ProjectUpdate'])->name('project.update');
+
+    Route::post('/task/update', [ProjectController::class, 'ProjectUpdateTask'])->name('project.update.task');
 
 
     Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');

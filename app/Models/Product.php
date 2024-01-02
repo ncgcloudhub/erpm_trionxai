@@ -27,4 +27,8 @@ class Product extends Model
     public function user(){
     	return $this->belongsTo(Admin::class,'assigned_by','id');
     }
+
+    public function project(){
+    	return $this->belongsTo(Category::class,'project_list','id');
+    }
 }
