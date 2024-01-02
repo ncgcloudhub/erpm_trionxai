@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2024 at 12:33 PM
+-- Generation Time: Jan 02, 2024 at 08:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -165,19 +165,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `project_name`, `description`, `comment`, `assign_date`, `completion_date`, `assigned_by`, `assign_to`, `bug`, `issue`, `hyperlinks`, `priority`, `product_img`, `created_at`, `updated_at`) VALUES
-(1, 'Smart Switch & Socket', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Smart Lock', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Smart Security Sensor', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Smart Lighting & Decoration', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'Smart Health', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Smart PDLC Film', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'Smart Home Appliances', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'Smart Switch Assembly Parts', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'Touch Switch & Socket', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, 'SHIPPING', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'testC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, 'Traditional Switch & Sockets', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-11-28 10:20:06.000000', '2023-11-28 10:20:33.000000'),
-(13, 'Ecommerce', '<p>ffdsfssfsfd</p>', '<p>fsdsddsadsfasad</p>', '2024-01-01', '2024-01-27', '68', '34', NULL, NULL, 'Nihil eum officia co', 'critical', 'upload/products/1786886818723132.webp', '2024-01-01 05:21:05.000000', NULL);
+(13, 'Ecommerce', '<p>ffdsfssfsfd</p>', '<p>fsdsddsadsfasad</p>', '2024-01-01', '2024-01-27', '68', '68', NULL, NULL, 'Nihil eum officia co', 'critical', 'upload/products/1786886818723132.webp', '2024-01-01 05:21:05.000000', NULL),
+(14, 'ERPM', '<p>Create Project management in ERPM</p>', NULL, '2024-01-01', '2024-01-08', '62', '62', NULL, NULL, NULL, 'major', 'upload/products/1786904261730904.png', '2024-01-01 09:58:20.000000', NULL),
+(15, 'Ecommerce', '<p>gg</p>', '<p>dd</p>', '2024-01-02', '2024-01-18', '68', '67', NULL, NULL, NULL, 'critical', NULL, '2024-01-01 23:06:55.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -729,8 +719,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `project_list`, `title`, `description`, `comment`, `assign_date`, `completion_date`, `assigned_by`, `assign_to`, `sub_task`, `bug`, `issue`, `hyperlinks`, `priority`, `product_img`, `created_at`, `updated_at`) VALUES
-(373, '12', 'Hello', '<p>fffffffffff</p>', '<p>ffffffffffffffffff</p>', '2024-01-01', '2024-01-19', '68', '34', 'Corporis exercitatio', 'Irure illo commodi d', 'Ad at consequatur N', 'Nihil eum officia co', 'major', 'upload/products/1786884732989926.webp', '2024-01-01 04:47:56.000000', NULL),
-(372, '9', 'Nemo error quia dign', '<p>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>', '<p>rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrriiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</p>', '2016-01-09', '1998-10-30', '57', '34', 'Corporis exercitatio', 'Iste officiis minus', 'Ut iusto voluptatem', 'Sapiente ad beatae a', 'critical', 'upload/products/1786725643483027.png', '2023-12-30 10:39:16.000000', NULL);
+(373, '12', 'Hello', '<p>fffffffffff</p>', '<p>ffffffffffffffffff</p>', '2024-01-01', '2024-01-19', '68', '68', 'Corporis exercitatio', 'Irure illo commodi d', 'Ad at consequatur N', 'Nihil eum officia co', 'major', 'upload/products/1786884732989926.webp', '2024-01-01 04:47:56.000000', NULL),
+(374, '14', 'Add Button', '<p>Add a Button to ERPM</p>', NULL, '2024-01-01', '2024-01-05', '57', '57', 'Button', NULL, 'add', NULL, 'major', 'upload/products/1786904322431756.png', '2024-01-01 09:59:18.000000', NULL),
+(372, '9', 'Nemo error quia dign', '<p>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>', '<p>rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrriiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</p>', '2016-01-09', '1998-10-30', '57', '57', 'Corporis exercitatio', 'Iste officiis minus', 'Ut iusto voluptatem', 'Sapiente ad beatae a', 'critical', 'upload/products/1786725643483027.png', '2023-12-30 10:39:16.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -1182,7 +1173,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('UUVlj4CysZwNAeiNYDVGLpSrghx4ec5rLPmdTVhd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibW81NTZuU3lRZUpWZmN4eDFlMEhVVGxZVnh3VEZ6MWFFTHZQMllHSyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9qZWN0L21hbmFnZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE5OiJwYXNzd29yZF9oYXNoX2FkbWluIjtzOjYwOiIkMnkkMTAkUmRiVUU1clBmVzA1eGJTQS5XV1NuLlp4ZU1ZRjhnN3pmckRLNEtsVVdQLzN2N2RlRlZXTXkiO30=', 1704108612);
+('eXAztwrtNGR42x61A30qoo1V7jnMCtaCqFahELdn', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiS0UwMUhKdTBIV1dzSzJaWVNIaUFSS1dPV0FsVmRTUm5iam9nUDlwVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJFJkYlVFNXJQZlcwNXhiU0EuV1dTbi5aeGVNWUY4Zzd6ZnJESzRLbFVXUC8zdjdkZUZWV015Ijt9', 1704180527);
 
 -- --------------------------------------------------------
 
@@ -1673,7 +1664,7 @@ ALTER TABLE `banks`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `chalans`
@@ -1775,7 +1766,7 @@ ALTER TABLE `productions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=374;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
 
 --
 -- AUTO_INCREMENT for table `purchases`

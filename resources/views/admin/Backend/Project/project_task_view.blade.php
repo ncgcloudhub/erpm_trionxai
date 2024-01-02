@@ -16,7 +16,7 @@
 									<thead>
 										<tr class="align-middle text-center">
 											
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Short Description</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Task Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -33,7 +33,7 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
-					<td><p class="mb-0 text-sm">{{ $item->title }}</p></td>
+					<td><p class="mb-0 text-sm text-start">{{ $item->title }}</p></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
