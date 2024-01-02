@@ -379,8 +379,8 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -657,6 +657,7 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         'App\\Http\\Controllers\\Frontend\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/CartController.php',
         'App\\Http\\Controllers\\Frontend\\homePageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/homePageController.php',
         'App\\Http\\Controllers\\ProductionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductionController.php',
+        'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProjectController.php',
         'App\\Http\\Controllers\\PurchaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/PurchaseController.php',
         'App\\Http\\Controllers\\QuotationController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuotationController.php',
         'App\\Http\\Controllers\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReportController.php',
@@ -665,6 +666,7 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         'App\\Http\\Controllers\\SalesController' => __DIR__ . '/../..' . '/app/Http/Controllers/SalesController.php',
         'App\\Http\\Controllers\\ScheduleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScheduleController.php',
         'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
+        'App\\Http\\Controllers\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudentController.php',
         'App\\Http\\Controllers\\SupplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupplierController.php',
         'App\\Http\\Controllers\\User\\AllUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/AllUserController.php',
         'App\\Http\\Controllers\\User\\CartPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/CartPageController.php',
@@ -736,6 +738,7 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         'App\\Models\\ShipState' => __DIR__ . '/../..' . '/app/Models/ShipState.php',
         'App\\Models\\Shipping' => __DIR__ . '/../..' . '/app/Models/Shipping.php',
         'App\\Models\\SiteSetting' => __DIR__ . '/../..' . '/app/Models/SiteSetting.php',
+        'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
         'App\\Models\\Supplier' => __DIR__ . '/../..' . '/app/Models/Supplier.php',
         'App\\Models\\TodaysProduction' => __DIR__ . '/../..' . '/app/Models/TodaysProduction.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

@@ -28,7 +28,7 @@
 				<h6>Description<span class="text-danger">*</span></h6>
 				<div class="controls">
 					
-					<textarea class="form-control" id="tinymceExample" rows="10" name="description">{{$task->description}}</textarea>
+					<textarea name="description" value="{{$task->description}}" class="form-control" id="tinymceExample" rows="10">{{$task->description}}</textarea>
 
 			   </div>
 			</div>
@@ -38,7 +38,7 @@
 				<h6>Comment<span class="text-danger">*</span></h6>
 				<div class="controls">
 					
-					<textarea name="comment" class="form-control" id="tinymceExample" rows="10">{{$task->comment}}</textarea>
+					<textarea name="comment" class="form-control" value="{{$task->comment}}" id="tinymceExample" rows="10">{{$task->comment}}</textarea>
 		
 			   </div>
 			</div>

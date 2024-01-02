@@ -125,7 +125,7 @@
 						<div class="form-group">
 							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<select name="priority" class="form-control" required="" >
+								<select name="priority" class="form-control" >
 									<option value="{{$project->priority}}" selected="" >{{$project->priority}}</option>
 									<option value="normal">Normal</option>
 									<option value="critical" >Critical</option>

@@ -16,6 +16,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\ConveyanceController;
 use App\Http\Controllers\ScheduleController;
@@ -316,6 +317,17 @@ Route::prefix('customer')->group(function(){
     Route::post('/dealer/store', [DealerController::class, 'DealerStore'])->name('dealer.store');
     
     });
+
+
+    Route::prefix('student')->group(function(){
+    
+        Route::get('/view', [StudentController::class, 'StudentView'])->name('student.view');
+        
+        
+        
+      
+        
+        });
 
 
     Route::prefix('schedule')->group(function(){
