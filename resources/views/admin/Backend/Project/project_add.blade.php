@@ -87,8 +87,8 @@
 						<div class="controls">
 							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
 								<option value="" selected="" disabled="">Select Employee</option>
-								@foreach($assignto as $item)
-					 <option value="{{ $item->id }}">{{ $item->f_name }} {{ $item->l_name }}</option>	
+								@foreach($assignedby as $item)
+					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach
 							</select>
 							

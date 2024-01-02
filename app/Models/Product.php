@@ -20,8 +20,8 @@ class Product extends Model
     	return $this->belongsTo(Brand::class,'brand_id','id');
     }
 
-    public function employee(){
-    	return $this->belongsTo(Employee::class,'assign_to','id');
+    public function admin(){
+    	return $this->belongsTo(Admin::class,'assign_to','id');
     }
 
     public function user(){
