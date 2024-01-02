@@ -23,11 +23,11 @@ class ProjectController extends Controller
 
     public function StoreProject(Request $request){
 
-		$image = $request->file('product_img');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+		// $image = $request->file('product_img');
+    	// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-    	Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
-    	$save_url = 'upload/products/'.$name_gen;
+    	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+    	// $save_url = 'upload/products/'.$name_gen;
 
         Category::insertGetId([
       	
@@ -42,7 +42,7 @@ class ProjectController extends Controller
 
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
-		'product_img' => $save_url,
+		// 'product_img' => $save_url,
 
       	'created_at' => Carbon::now(),   
 
@@ -76,11 +76,11 @@ class ProjectController extends Controller
 
     public function StoreProjectTask(Request $request){
 
-		$image = $request->file('product_img');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+		// $image = $request->file('product_img');
+    	// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
 
-    	Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
-    	$save_url = 'upload/products/'.$name_gen;
+    	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+    	// $save_url = 'upload/products/'.$name_gen;
 
       $product_id = Product::insertGetId([
       	
@@ -99,7 +99,7 @@ class ProjectController extends Controller
       	'issue' => $request->issue,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
-		'product_img' => $save_url,
+		// 'product_img' => $save_url,
 
       	'created_at' => Carbon::now(),   
 

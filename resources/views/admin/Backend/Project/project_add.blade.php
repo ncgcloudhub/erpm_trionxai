@@ -137,13 +137,13 @@
 
 
 						
-						<div class="form-group">
+						{{-- <div class="form-group">
 							<h6>Image<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<input type="file" name="product_img" class="form-control" >
 					
 						   </div>
-						</div>
+						</div> --}}
 						
 						</div>
 			
