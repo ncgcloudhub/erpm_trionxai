@@ -126,7 +126,7 @@
 						<div class="form-group">
 							<h6>Issue<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="issue" class="form-control" required="">
+								<input type="text" name="issue" class="form-control">
 					
 						   </div>
 						</div>
