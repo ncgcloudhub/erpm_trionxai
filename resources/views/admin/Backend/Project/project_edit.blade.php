@@ -73,7 +73,7 @@
 						<h6>Assigned By<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="assigned_by" class="js-example-basic-single select2 form-control" required="" >
-								<option value="{{$project->assigned_by}}" selected="" disabled="">{{$project->user->name}}</option>
+								<option value="{{$project->assigned_by}}" selected="">{{$project->user->name}}</option>
 								@foreach($assignedby as $item)
 					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach
@@ -87,7 +87,7 @@
 						<h6>Assign To<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
-								<option value="{{$project->assign_to}}" selected="" disabled="">{{$project->user->name}}</option>
+								<option value="{{$project->assign_to}}" selected="">{{$project->user->name}}</option>
 								@foreach($assignedby as $item)
 					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach
@@ -126,7 +126,7 @@
 							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<select name="priority" class="form-control" required="" >
-									<option value="{{$project->priority}}" selected="" disabled="">{{$project->priority}}</option>
+									<option value="{{$project->priority}}" selected="" >{{$project->priority}}</option>
 									<option value="normal">Normal</option>
 									<option value="critical" >Critical</option>
 									<option value="major">Major</option>
