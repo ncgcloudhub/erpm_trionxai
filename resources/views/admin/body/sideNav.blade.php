@@ -25,8 +25,9 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href="{{ url('admin/dashboard') }}" target="_blank">
-      <img src="../assets/img/favicon1.jpg" class="navbar-brand-img h-100" alt="main_logo">
-      <span class="ms-1 font-weight-bold">STATA ERP</span>
+      <img src="{{ asset('assets/img/favicon1.png') }}" class="navbar-brand-img h-100" alt="main_logo">
+
+      <span class="ms-1 font-weight-bold">TrionxAI ERP</span>
     </a>
   </div>
   <hr class="horizontal dark mt-0">
@@ -345,6 +346,10 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   <div class="collapse hide" id="student" style="">
   <ul class="nav ms-4 ps-3">
   <li class="nav-item">
+    <a class="nav-link {{ ($route == 'student.add')? 'active':'' }}" href="{{ route('student.add') }}">
+      <span class="sidenav-mini-icon"></span>
+      <span class="sidenav-normal">Add Student</span>
+      </a>
   <a class="nav-link {{ ($route == 'student.view')? 'active':'' }}" href="{{ route('student.view') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal">Manage Student</span>

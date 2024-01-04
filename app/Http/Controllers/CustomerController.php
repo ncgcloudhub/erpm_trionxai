@@ -13,14 +13,15 @@ use Illuminate\Support\Carbon;
 
 class CustomerController extends Controller
 {
-    public function CustomerView(){
-		$customers = Customer::orderBy('id','ASC')->get();
-		return view('admin.Backend.Brand.customer_manage' ,compact('customers'));
-	}
-
+    
 	public function CustomerAdd(){
 		$customers = Customer::orderBy('id','ASC')->get();
 		return view('admin.Backend.Brand.customer' ,compact('customers'));
+	}
+	
+	public function CustomerView(){
+		$customers = Customer::orderBy('id','ASC')->get();
+		return view('admin.Backend.Brand.customer_manage' ,compact('customers'));
 	}
 
 

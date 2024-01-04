@@ -8,9 +8,9 @@
     <meta name="author" content="">
    
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('../assets/img/apple-icon.png') }}">
-    <link rel="icon"  href="{{ asset('../assets/img/favicon1.jpg') }}">
+    <link rel="icon"  href="{{ asset('../assets/img/favicon1.png') }}">
     <title>
-      STATA POS
+      TrionxAi ERP
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">

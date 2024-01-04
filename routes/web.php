@@ -322,12 +322,16 @@ Route::prefix('customer')->group(function(){
 
 
     Route::prefix('student')->group(function(){
+
+        Route::get('/add', [StudentController::class, 'StudentAdd'])->name('student.add');
     
         Route::get('/view', [StudentController::class, 'StudentView'])->name('student.view');
         
         Route::post('/store', [StudentController::class, 'StudentStore'])->name('student.store');
         
-      
+        Route::get('/edit/{id}', [StudentController::class, 'StudentEdit'])->name('student.edit');
+    
+        Route::post('/update', [StudentController::class, 'StudentUpdate'])->name('student.update');
         
         });
 
