@@ -15,9 +15,9 @@
 						@csrf
 					
 							 <div class="form-group">
-								<h6>Title<span class="text-danger">*</span></h6>
+								<h6>Task Name<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<input type="text" name="title" class="form-control" required="">
+									<input type="text" name="task_name" class="form-control" required="">
 						 
 							   </div>
 							</div>
@@ -33,7 +33,7 @@
 
 
 			 <div class="form-group">
-				<h6>Comment<span class="text-danger">*</span></h6>
+				<h6>Comment</h6>
 				<div class="controls">
 					
 					<textarea name="comment" class="form-control" id="tinymceExample" rows="10"></textarea>
@@ -42,56 +42,61 @@
 			</div>
 
 
-			<div class="form-group">
-				<h6>Assign Date<span class="text-danger">*</span></h6>
-				<div class="controls">
-					<input type="date" name="assign_date" class="form-control" required="">
-		
-			   </div>
-			</div>
-
-			<div class="form-group">
-				<h6>Date to be Completed<span class="text-danger">*</span></h6>
-				<div class="controls">
-					<input type="date" name="completion_date" class="form-control" >
-	
-			   </div>
-			</div>
-
-
-			<div class="form-group">
-				<h6>Assigned By<span class="text-danger">*</span></h6>
-				<div class="controls">
-					<select name="assigned_by" class="js-example-basic-single select2 form-control" required="" >
-						<option value="" selected="" disabled="">Select Employee</option>
-						@foreach($assignedby as $item)
-			 <option value="{{ $item->id }}">{{ $item->name }}</option>	
-						@endforeach
-					</select>
-					
-				 </div>
-			</div>
-
-
-			<div class="form-group">
-				<h6>Assign To<span class="text-danger">*</span></h6>
-				<div class="controls">
-					<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
-						<option value="" selected="" disabled="">Select Employee</option>
-						@foreach($assignedby as $item)
-			 <option value="{{ $item->id }}">{{ $item->name }}</option>	
-						@endforeach
-					</select>
-					
-				 </div>
-			</div>
-
+			
 
 
 				</div>
 
 				{{-- 2nd Col --}}
 				<div class="col">
+
+
+					<div class="form-group">
+						<h6>Assign Date<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<input type="date" name="assign_date" class="form-control" required="">
+				
+					   </div>
+					</div>
+		
+					<div class="form-group">
+						<h6>Date to be Completed<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<input type="date" name="completion_date" class="form-control" required >
+			
+					   </div>
+					</div>
+		
+		
+					<div class="form-group">
+						<h6>Assigned By<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="assigned_by" class="js-example-basic-single select2 form-control" required="" >
+								<option value="" selected="" disabled="">Select Employee</option>
+								@foreach($assignedby as $item)
+					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
+								@endforeach
+							</select>
+							
+						 </div>
+					</div>
+		
+		
+					<div class="form-group">
+						<h6>Assign To<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
+								<option value="" selected="" disabled="">Select Employee</option>
+								@foreach($assignedby as $item)
+					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
+								@endforeach
+							</select>
+							
+						 </div>
+					</div>
+		
+
+
 						<div class="form-group">
 					<h6>Project List<span class="text-danger">*</span></h6>
 					<div class="controls">
@@ -107,15 +112,15 @@
 						
 
 						 <div class="form-group">
-							<h6>Sub Task<span class="text-danger">*</span></h6>
+							<h6>Sub Task</h6>
 							<div class="controls">
 								<input type="text" name="sub_task" class="form-control" >
 				
 						   </div>
 						</div>
-
+{{-- 
 						<div class="form-group">
-							<h6>Bug<span class="text-danger">*</span></h6>
+							<h6>Bug</h6>
 							<div class="controls">
 								<input type="text" name="bug" class="form-control">
 					
@@ -124,15 +129,15 @@
 
 						
 						<div class="form-group">
-							<h6>Issue<span class="text-danger">*</span></h6>
+							<h6>Issue</h6>
 							<div class="controls">
 								<input type="text" name="issue" class="form-control">
 					
 						   </div>
-						</div>
+						</div> --}}
 
 						<div class="form-group">
-							<h6>Hyperlinks<span class="text-danger">*</span></h6>
+							<h6>Hyperlinks</h6>
 							<div class="controls">
 								<input type="text" name="hyperlinks" class="form-control" >
 				

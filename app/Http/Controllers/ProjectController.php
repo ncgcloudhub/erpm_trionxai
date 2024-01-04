@@ -138,7 +138,7 @@ class ProjectController extends Controller
 
       $product_id = Product::insertGetId([
       	
-		'title' => $request->title,
+		'task_name' => $request->task_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
 		'assign_date' => $request->assign_date,
@@ -191,7 +191,7 @@ class ProjectController extends Controller
 
 		Product::findOrFail($request->id)->update([
 			
-		'title' => $request->title,
+		'task_name' => $request->task_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
 		'assign_date' => $request->assign_date,

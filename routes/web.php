@@ -48,6 +48,7 @@ use App\Models\Brand;
 use App\Models\Schedule;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Notice;
 use App\Models\Product;
 use App\Models\slider;
 use App\Models\Bank;
@@ -134,6 +135,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         // $stock = Product::sum('qty');
         $tsale = Sales::count();
         $totalsale = Sales::sum('grand_total');
+        $notices = Notice::where('status','=', 1)->orderBy('id','DESC')->get();
         $totalpurchase = Purchase::sum('grand_total');
         $servicetotal = ServiceInvoice::sum('grand_total');
         $inventory = AcidProduct::find(1);
@@ -184,7 +186,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','topUsers','users', 'servicetotal'));
+        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','notices','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','topUsers','users', 'servicetotal'));
     })->name('admin.dashboard');
 });
 

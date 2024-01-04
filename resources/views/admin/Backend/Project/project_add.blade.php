@@ -26,7 +26,6 @@
 			 <div class="form-group">
 				<h6>Description<span class="text-danger">*</span></h6>
 				<div class="controls">
-					
 					<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 			   </div>
 			</div>
@@ -122,7 +121,7 @@
 
 
 						<div class="form-group">
-							<h6>Priority</h6>
+							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<select name="priority" class="form-control" required="" >
 									<option value="" selected="" disabled="">Select an Option</option>

@@ -30,7 +30,7 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
-					<td><p class="mb-0 text-sm text-start">{{ $item->title }}</p></td>
+					<td><p class="mb-0 text-sm text-start">{{ $item->task_name }}</p></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
