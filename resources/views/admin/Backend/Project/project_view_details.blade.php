@@ -167,7 +167,7 @@
 						<td>
 						  <div class="d-flex px-2 py-1">
 							<div class="d-flex flex-column justify-content-center">
-							  <h6 class="mb-0 text-sm">{{$task->title}}</h6>
+							  <h6 class="mb-0 text-sm">{{$task->task_name}}</h6>
 							  <p class="text-xs text-secondary mb-0">{!! strip_tags(substr($task->comment, 0, 50)) !!}
 							</div>
 						  </div>
