@@ -387,6 +387,8 @@ Route::prefix('project')->group(function(){
 
     Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');
 
+    Route::get('/view/details/{id}', [ProjectController::class, 'ProjectDetails'])->name('project.view.details');
+
     Route::get('/edit/task/{id}', [ProjectController::class, 'EditProjectTask'])->name('project.task.edit');
 
     Route::post('/update', [ProjectController::class, 'ProjectUpdate'])->name('project.update');

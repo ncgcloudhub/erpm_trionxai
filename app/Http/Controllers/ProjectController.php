@@ -95,6 +95,19 @@ class ProjectController extends Controller
 			return redirect()->back()->with($notification);
 	}
 
+	public function ProjectDetails($id){		   
+
+		$project = Category::findOrFail($id);
+		$tasks = Product::where('project_list',$id)->get();
+
+		$categories = Category::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		
+
+        return view('admin.Backend.Project.project_view_details',compact('categories','assignedby','assignto','project','tasks'));
+	}
+
     public function ManageProject(){
 
 		$products = Category::latest()->get();
