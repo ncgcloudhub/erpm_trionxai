@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\ConveyanceController;
 use App\Http\Controllers\ScheduleController;
@@ -334,6 +335,11 @@ Route::prefix('customer')->group(function(){
         Route::post('/update', [StudentController::class, 'StudentUpdate'])->name('student.update');
         
         });
+
+          //Notice
+    Route::get('/notice', [NoticeController::class, 'NoticeView'])->name('notice.view');
+    //Notice Add
+    Route::post('/notice/add', [NoticeController::class, 'NoticeAdd'])->name('notice.add');
 
 
     Route::prefix('schedule')->group(function(){
