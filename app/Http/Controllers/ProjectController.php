@@ -111,6 +111,11 @@ class ProjectController extends Controller
     public function ManageProject(){
 
 		$products = Category::latest()->get();
+		
+		foreach ($products as $product) {
+			$product->tasks = Product::where('project_list', $product->id)->get();
+		}
+
 		return view('admin.Backend.Project.project_manage',compact('products'));
 	}  // end method
 

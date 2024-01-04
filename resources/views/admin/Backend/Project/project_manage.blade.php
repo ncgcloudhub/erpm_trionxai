@@ -30,9 +30,16 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
-					<td><a href="{{ route('project.view.details',$item->id) }}">{{ $item->project_name }}</a>
+					<td><a href="{{ route('project.view.details',$item->id) }}">{{ $item->project_name }} <span class="badge badge-sm bg-gradient-success"> {{ $item->tasks->count() }}</span></a>
 						{{-- <p class="mb-0 text-sm"></p> --}}
+						{{-- <p>Number of tasks: {{ $item->tasks->count() }}</p> --}}
+						
+							@foreach ($item->tasks as $task)
+								{{ $task->name }}
+							@endforeach
+						
 					</td>
+					
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
