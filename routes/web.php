@@ -302,9 +302,11 @@ Route::prefix('category')->group(function(){
     
 Route::prefix('customer')->group(function(){
     
+    Route::get('/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
+
     Route::get('/view', [CustomerController::class, 'CustomerView'])->name('customer.view');
     
-    Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.storee');
+    Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
     
     Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
     
@@ -323,7 +325,7 @@ Route::prefix('customer')->group(function(){
     
         Route::get('/view', [StudentController::class, 'StudentView'])->name('student.view');
         
-        
+        Route::post('/store', [StudentController::class, 'StudentStore'])->name('student.store');
         
       
         

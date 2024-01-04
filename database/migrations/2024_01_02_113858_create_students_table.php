@@ -16,10 +16,19 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('student_name');
-            $table->string('student_idnumber');
-            $table->string('email')->nullable();
-            $table->string('phone');
-            $table->text('address')->nullable();
+            $table->string('student_id')->unique();
+            $table->enum('gender', ['male', 'female']);
+            $table->date('dob');
+            $table->string('email')->unique();
+            $table->date('enrolled_in');
+            $table->integer('phone');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->integer('zip');
+            $table->string('country');
+            // Add any additional fields as needed
+
             $table->timestamps();
         });
     }

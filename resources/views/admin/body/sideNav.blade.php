@@ -308,14 +308,14 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <div class="collapse hide" id="customerdealer" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item">
+<a class="nav-link {{ ($route == 'customer.add')? 'active':'' }}" href="{{ route('customer.add') }}">
+<span class="sidenav-mini-icon"></span>
+<span class="sidenav-normal">Add Customer</span>
+</a>
 <a class="nav-link {{ ($route == 'customer.view')? 'active':'' }}" href="{{ route('customer.view') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Customer</span>
 </a>
-{{-- <a class="nav-link {{ ($route == 'dealer.view')? 'active':'' }}" href="{{ route('dealer.view') }}">
-<span class="sidenav-mini-icon"></span>
-<span class="sidenav-normal">Manage Dealer</span>
-</a> --}}
 </li>
 </ul>
 </div>
