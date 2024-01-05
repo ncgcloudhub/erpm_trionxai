@@ -19,9 +19,15 @@ class CustomerController extends Controller
 		return view('admin.Backend.Brand.customer' ,compact('customers'));
 	}
 	
-	public function CustomerView(){
+	public function CustomerManage(){
 		$customers = Customer::orderBy('id','ASC')->get();
 		return view('admin.Backend.Brand.customer_manage' ,compact('customers'));
+	}
+
+	public function CustomerView($id){
+		$customers = Customer::orderBy('id','ASC')->get();
+		$customer = Customer::findOrFail($id);
+		return view('admin.Backend.Brand.customer_view' ,compact('customer','customers'));
 	}
 
 
@@ -92,7 +98,7 @@ class CustomerController extends Controller
 				'alert-type' => 'info'
 			);
 	
-			return redirect()->route('customer.view')->with($notification);
+			return redirect()->route('customer.manage')->with($notification);
 	
 			 // end else 
 			

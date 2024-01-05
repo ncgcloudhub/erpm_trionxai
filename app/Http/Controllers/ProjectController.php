@@ -173,7 +173,7 @@ class ProjectController extends Controller
     public function ManageTask(){
 
 		$products = Product::latest()->get();
-		return view('admin.Backend.Project.project_task_view',compact('products'));
+		return view('admin.Backend.Project.project_task_manage',compact('products'));
 	}  // end method
 
 	public function EditProjectTask($id){		   
@@ -185,6 +185,17 @@ class ProjectController extends Controller
 		// dd($task->description);
 
         return view('admin.Backend.Project.project_task_edit',compact('categories','assignedby','assignto','task'));
+	}
+
+	public function ViewProjectTask($id){		   
+
+		$categories = Category::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		$task = Product::findOrFail($id);
+		// dd($task->description);
+
+        return view('admin.Backend.Project.project_task_view',compact('categories','assignedby','assignto','task'));
 	}
 
 	public function ProjectUpdateTask(Request $request){

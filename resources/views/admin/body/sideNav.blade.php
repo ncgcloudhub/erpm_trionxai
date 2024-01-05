@@ -313,7 +313,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Customer</span>
 </a>
-<a class="nav-link {{ ($route == 'customer.view')? 'active':'' }}" href="{{ route('customer.view') }}">
+<a class="nav-link {{ ($route == 'customer.manage')? 'active':'' }}" href="{{ route('customer.manage') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Customer</span>
 </a>
@@ -350,7 +350,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       <span class="sidenav-mini-icon"></span>
       <span class="sidenav-normal">Add Student</span>
       </a>
-  <a class="nav-link {{ ($route == 'student.view')? 'active':'' }}" href="{{ route('student.view') }}">
+  <a class="nav-link {{ ($route == 'student.manage')? 'active':'' }}" href="{{ route('student.manage') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal">Manage Student</span>
   </a>

@@ -307,7 +307,9 @@ Route::prefix('customer')->group(function(){
     
     Route::get('/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
 
-    Route::get('/view', [CustomerController::class, 'CustomerView'])->name('customer.view');
+    Route::get('/manage', [CustomerController::class, 'CustomerManage'])->name('customer.manage');
+
+    Route::get('/view/{id}', [CustomerController::class, 'CustomerView'])->name('customer.view');
     
     Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
     
@@ -327,8 +329,10 @@ Route::prefix('customer')->group(function(){
     Route::prefix('student')->group(function(){
 
         Route::get('/add', [StudentController::class, 'StudentAdd'])->name('student.add');
+
+        Route::get('/manage', [StudentController::class, 'StudentManage'])->name('student.manage');
     
-        Route::get('/view', [StudentController::class, 'StudentView'])->name('student.view');
+        Route::get('/view/{id}', [StudentController::class, 'StudentView'])->name('student.view');
         
         Route::post('/store', [StudentController::class, 'StudentStore'])->name('student.store');
         
@@ -393,28 +397,30 @@ Route::prefix('project')->group(function(){
 
     Route::get('/task/add', [ProjectController::class, 'AddTask'])->name('project.add.task');
 
+    Route::get('/view/details/{id}', [ProjectController::class, 'ProjectDetails'])->name('project.view.details');
+
     Route::get('/task/manage', [ProjectController::class, 'ManageTask'])->name('project.manage.task');
    
     Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.task');
 
-    Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');
+    Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');    
 
-    Route::get('/view/details/{id}', [ProjectController::class, 'ProjectDetails'])->name('project.view.details');
+    Route::get('/task/edit/{id}', [ProjectController::class, 'EditProjectTask'])->name('project.task.edit');
 
-    Route::get('/edit/task/{id}', [ProjectController::class, 'EditProjectTask'])->name('project.task.edit');
+    Route::get('/task/view/{id}', [ProjectController::class, 'ViewProjectTask'])->name('project.task.view');
 
     Route::post('/update', [ProjectController::class, 'ProjectUpdate'])->name('project.update');
 
     Route::post('/task/update', [ProjectController::class, 'ProjectUpdateTask'])->name('project.update.task');
 
 
-    Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
+    // Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
     
-    Route::post('/store/raw/materials', [productController::class, 'StoreRawProduct'])->name('raw.product-store');
+    // Route::post('/store/raw/materials', [productController::class, 'StoreRawProduct'])->name('raw.product-store');
 
-    Route::get('/manage/raw/materials', [ProductController::class, 'ManageRawProduct'])->name('raw.manage-product');
+    // Route::get('/manage/raw/materials', [ProductController::class, 'ManageRawProduct'])->name('raw.manage-product');
 
-    Route::get('/raw/edit/{id}', [ProductController::class, 'EditRawProduct'])->name('raw.product.edit');
+    // Route::get('/raw/edit/{id}', [ProductController::class, 'EditRawProduct'])->name('raw.product.edit');
     
     
     

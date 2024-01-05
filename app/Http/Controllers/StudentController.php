@@ -16,9 +16,16 @@ class StudentController extends Controller
 		$students = Student::orderBy('id','ASC')->get();
 		return view('admin.Backend.Student.student' ,compact('students'));
 	}
-    public function StudentView(){
+
+    public function StudentManage(){
 		$students = Student::orderBy('id','ASC')->get();
 		return view('admin.Backend.Student.student_manage' ,compact('students'));
+	}
+
+	public function StudentView($id){
+		$students = Student::orderBy('id','ASC')->get();
+		$student = Student::findOrFail($id);
+			return view('admin.Backend.Student.student_view',compact('student','students'));
 	}
 
 
@@ -94,7 +101,7 @@ class StudentController extends Controller
 				'alert-type' => 'info'
 			);
 	
-			return redirect()->route('student.view')->with($notification);
+			return redirect()->route('student.manage')->with($notification);
 	
 			 // end else 
 			

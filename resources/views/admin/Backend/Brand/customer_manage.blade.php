@@ -28,12 +28,17 @@
             
  @foreach($customers as $item)
  <tr class="align-middle text-center text-sm">
-  <td>{{ $item->user_name }}</td>
+  <td><a href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
   <td>{{ $item->address }}</td>
   <td>{{ $item->email }}</td>
   <td>{{ $item->personal_phone }}</td>
   <td>
-<a href="{{ route('customer.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+
+
+<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>	
+			 
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+
 {{-- <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
  <i class="fa fa-trash"></i></a> --}}
   </td>
