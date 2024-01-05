@@ -18,15 +18,15 @@
 @csrf
    
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">Student Name</label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Student Name (FN MN LN) <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text"  name="student_name" class="form-control" > 
+<input type="text"  name="student_name" class="form-control" required > 
 
 </div>
 </div>
 
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">Student ID</label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Student ID <span class="text-danger">*</span></label>
 <div class="controls">
 <input type="text"  name="student_id" class="form-control" required > 
 
@@ -34,7 +34,7 @@
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Gender</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Gender <span class="text-danger">*</span></label>
 <div class="controls">
 	<select name="gender" class="form-control" required="" >
 		<option value="" selected="" disabled="">Select an Option</option>
@@ -46,25 +46,25 @@
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Date of Birth</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Date of Birth <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="date"  name="dob" class="form-control"> 
+<input type="date"  name="dob" class="form-control" required > 
 </div>
 </div>
 
 	
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Email</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Email <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="email" class="form-control" >
+<input type="email" name="email" class="form-control" required >
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Enrolled In</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Enrolled In <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="date"  name="enrolled_in" class="form-control"> 
+<input type="date"  name="enrolled_in" class="form-control" required > 
 </div>
 </div>
 
@@ -75,49 +75,49 @@
 
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Phone</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Phone <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="phone" class="form-control" >
+<input type="text" name="phone" class="form-control" required >
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="address" class="form-control" >
+<input type="text" name="address" class="form-control" required >
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="city" class="form-control" >
+<input type="text" name="city" class="form-control" required >
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="state" class="form-control" >
+<input type="text" name="state" class="form-control" required >
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Zip</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Zip <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="zip" class="form-control" >
+<input type="text" name="zip" class="form-control" pattern="\d{5}" title="Enter a valid 5-digit zip code" required >
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="country" class="form-control" >
+<input type="text" name="country" class="form-control" required >
 
 </div>
 </div>

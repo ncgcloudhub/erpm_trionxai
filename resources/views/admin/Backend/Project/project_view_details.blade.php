@@ -152,7 +152,7 @@
 				  <table class="table align-items-center mb-0">
 					<thead>
 					  <tr>
-						<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+						<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task Name</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign/Completion Date</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assigned To</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bug</th>
