@@ -319,9 +319,6 @@ Route::prefix('customer')->group(function(){
     
     Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
     
-    Route::get('/dealer/view', [DealerController::class, 'DealerView'])->name('dealer.view');
-    
-    Route::post('/dealer/store', [DealerController::class, 'DealerStore'])->name('dealer.store');
     
     });
 
@@ -339,6 +336,8 @@ Route::prefix('customer')->group(function(){
         Route::get('/edit/{id}', [StudentController::class, 'StudentEdit'])->name('student.edit');
     
         Route::post('/update', [StudentController::class, 'StudentUpdate'])->name('student.update');
+
+        Route::get('/delete/{id}', [StudentController::class, 'StudentDelete'])->name('student.delete');
         
         });
 
@@ -412,6 +411,8 @@ Route::prefix('project')->group(function(){
     Route::post('/update', [ProjectController::class, 'ProjectUpdate'])->name('project.update');
 
     Route::post('/task/update', [ProjectController::class, 'ProjectUpdateTask'])->name('project.update.task');
+
+    // Route::get('/delete/{id}', [ProjectController::class, 'ProjectDelete'])->name('project.delete');
 
 
     // Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');

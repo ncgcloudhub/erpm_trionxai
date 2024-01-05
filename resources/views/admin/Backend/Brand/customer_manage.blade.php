@@ -37,10 +37,9 @@
 
 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>	
 			 
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 
-{{-- <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
- <i class="fa fa-trash"></i></a> --}}
+<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('customer.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Customer')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
   </td>
              
  </tr>

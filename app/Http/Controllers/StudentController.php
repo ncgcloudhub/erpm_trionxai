@@ -101,4 +101,19 @@ class StudentController extends Controller
 			 // end else 
 			
 		} // end method 
+
+
+		public function StudentDelete($id){
+			$student = Student::findOrFail($id);
+			
+			Student::findOrFail($id)->delete();
+	
+			$notification = array(
+				'message' => 'Student Delectd Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->back()->with($notification);
+	
+		} // end method
 }

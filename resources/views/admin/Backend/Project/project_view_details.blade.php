@@ -165,12 +165,14 @@
 						@foreach ($tasks as $task)						
 					  <tr>
 						<td>
+							<a href="{{ route('project.task.view',$task->id) }}">
 						  <div class="d-flex px-2 py-1">
 							<div class="d-flex flex-column justify-content-center">
 							  <h6 class="mb-0 text-sm">{{$task->task_name}}</h6>
 							  <p class="text-xs text-secondary mb-0">{!! strip_tags(substr($task->comment, 0, 50)) !!}
 							</div>
 						  </div>
+						</a>
 						</td>
 						<td class="align-middle text-center">
 						  <p class="text-xs font-weight-bold mb-0">{{$task->assign_date}}</p>

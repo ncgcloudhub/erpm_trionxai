@@ -107,12 +107,11 @@ class CustomerController extends Controller
 	
 		public function CustomerDelete($id){
 			$customer = Customer::findOrFail($id);
-			$img = $customer->slider_img;
-			unlink($img);
+			
 			Customer::findOrFail($id)->delete();
 	
 			$notification = array(
-				'message' => 'Slider Delectd Successfully',
+				'message' => 'Customer Delectd Successfully',
 				'alert-type' => 'info'
 			);
 	

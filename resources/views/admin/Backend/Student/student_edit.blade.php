@@ -27,7 +27,7 @@
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Student ID <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$student->student_id}}"  name="student_id" class="form-control" required > 
+<input type="text" value="{{$student->student_id}}"  name="student_id" class="form-control" readonly > 
 </div>
 </div>
 
