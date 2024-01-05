@@ -31,20 +31,22 @@ class StudentController extends Controller
 
 	public function StudentStore(Request $request){
 	
-		// $validator = Validator::make($request->all(), [
-		// 	'customer_name' => 'required',
-		// 	'phone' => 'nullable|unique:customers',
-		// ], [
-		// 	'phone.unique' => 'The phone number already exists.',
-		// ]);
-	
-		// if ($validator->fails()) {
-		// 	return redirect()->back()->withErrors($validator)->withInput();
-		// }
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHi');
+
+		// dd($formattedDateTime);
+		// Extract the last two digits of the year
+		$lastTwoDigitsOfYear = $currentDateTime->format('y');
+
+		// Create a 10-digit student ID in the format 'YYMMDDHHMM'
+		$studentID = $lastTwoDigitsOfYear . $formattedDateTime;
 
         Student::insert([
 		'student_name' => $request->student_name,
-        'student_id' => $request->student_id,
+        'student_id' => $studentID,
         'gender' => $request->gender,
         'dob' => $request->dob,
         'email' => $request->email,

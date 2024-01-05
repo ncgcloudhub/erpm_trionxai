@@ -35,7 +35,8 @@
 				<h6>Comment</h6>
 				<div class="controls">
 					
-					<textarea name="comment" class="form-control" value="{{$task->comment}}" id="tinymceExample" rows="10">{{$task->comment}} @readonly(true)</textarea>
+					<textarea name="comment" class="form-control" id="tinymceExample" rows="10">{{ $task->comment }}</textarea>
+
 		
 			   </div>
 			</div>
@@ -196,6 +197,21 @@
 			});
 		});
 		</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        tinymce.init({
+            selector: '#tinymceExample',
+            readonly: true,
+            // height: 300, // Set the desired height
+            plugins: 'autoresize',
+            toolbar: 'undo redo',
+            menubar: true,
+            autoresize_bottom_margin: 16
+        });
+    });
+</script>
 
 
 	  

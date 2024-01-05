@@ -25,13 +25,13 @@
 </div>
 </div>
 
-<div class="form-group">
+{{-- <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Student ID <span class="text-danger">*</span></label>
 <div class="controls">
 <input type="text"  name="student_id" class="form-control" required > 
 
 </div>
-</div>
+</div> --}}
 
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Gender <span class="text-danger">*</span></label>
