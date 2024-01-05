@@ -35,18 +35,11 @@ class StudentController extends Controller
 		$currentDateTime = now();
 
 		// Format the date and time as 'ymdHi'
-		$formattedDateTime = $currentDateTime->format('ymdHi');
-
-		// dd($formattedDateTime);
-		// Extract the last two digits of the year
-		$lastTwoDigitsOfYear = $currentDateTime->format('y');
-
-		// Create a 10-digit student ID in the format 'YYMMDDHHMM'
-		$studentID = $lastTwoDigitsOfYear . $formattedDateTime;
+		$formattedDateTime = $currentDateTime->format('ymdHis');
 
         Student::insert([
 		'student_name' => $request->student_name,
-        'student_id' => $studentID,
+        'student_id' => $formattedDateTime,
         'gender' => $request->gender,
         'dob' => $request->dob,
         'email' => $request->email,
