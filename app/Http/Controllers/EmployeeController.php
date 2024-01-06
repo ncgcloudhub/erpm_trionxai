@@ -35,24 +35,22 @@ class EmployeeController extends Controller
 				'designation_id' => $request->designation,
 				'department_id' => $request->department,
 	  
-			  'phone' => $request->phone,
+			  	'phone' => $request->phone,
 				'r_type' => $request->rate_type,
-				
 
-				'basic' => $request->basic,
-				'rent' => $request->rent,
-				'medical' => $request->medical,
 				'salary' => $request->salary,
-				'conveyance' => $request->conveyance,
-	  
-	  
-			  'email' => $request->email,
-				'b_group' => $request->b_group,
-			  'address' =>  $request->address,
-			  'image' =>  $save_url,
-		  
+
+			  	'email' => $request->email,
+				'employee_type' => $request->employee_type,
+				'address' =>  $request->address,
 				'city' =>  $request->city,
+				'state' =>  $request->state,
+				'zip' =>  $request->zip,
 				'country' => $request->country,
+			  
+			  	'image' =>  $save_url,
+		  
+				
 				'created_at' => Carbon::now(),   
 	  
 			]);
@@ -63,21 +61,19 @@ class EmployeeController extends Controller
 				'designation_id' => $request->designation,
 				'department_id' => $request->department,
 	  
-			 	'phone' => $request->phone,
+			  	'phone' => $request->phone,
 				'r_type' => $request->rate_type,
-				
-				
-				'basic' => $request->basic,
-				'rent' => $request->rent,
-				'medical' => $request->medical,
+
 				'salary' => $request->salary,
-				'conveyance' => $request->conveyance,
-	  
-			 	'email' => $request->email,
-				'b_group' => $request->b_group,
-			 	'address' =>  $request->address,		  
+
+			  	'email' => $request->email,
+				'employee_type' => $request->employee_type,
+				'address' =>  $request->address,
 				'city' =>  $request->city,
+				'state' =>  $request->state,
+				'zip' =>  $request->zip,
 				'country' => $request->country,
+				
 				'created_at' => Carbon::now(),   
 	  
 			]);

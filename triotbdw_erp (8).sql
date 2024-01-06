@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2024 at 11:46 AM
+-- Generation Time: Jan 06, 2024 at 02:00 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -287,7 +287,7 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` (`id`, `company_name`, `user_name`, `email`, `office_phone`, `personal_phone`, `address`, `city`, `state`, `zip`, `country`, `created_at`, `updated_at`) VALUES
 (811, 'Trionxai', 'Sheikh Mohammed Sadik', 'sms6318@gmail.com', NULL, '167542312', 'Dhaka', 'Dhaka', 'Dhaka', 11111, 'BD', '2023-12-06 05:54:31', '2024-01-05 04:16:54.000000'),
 (812, 'TrionxAI', 'Saiful', 'ifaz.alam1@gmail.com', NULL, '1677341032', 'Ka-27/4, Shahid Abdul Aziz Road', 'Dhaka', 'Dubai', 12291, 'Bangladesh', '2024-01-02 09:11:23', '2024-01-05 04:16:36.000000'),
-(813, 'Ifaz', 'Ifaz', 'ifaz@gmail.com', NULL, '000000', 'ifaz', 'ifaz', 'ifaz', 12121, 'ifaz', '2024-01-02 09:12:24', '2024-01-05 04:16:21.000000');
+(813, 'Ifaz', 'Ifaz', 'ifaz@gmail.com', '1234', '000000', 'ifaz', 'ifaz', 'ifaz', 12121, 'ifaz', '2024-01-02 09:12:24', '2024-01-05 05:45:09.000000');
 
 -- --------------------------------------------------------
 
@@ -406,16 +406,14 @@ CREATE TABLE `employees` (
   `designation_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` int(11) NOT NULL,
   `r_type` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `basic` int(11) DEFAULT NULL,
-  `rent` int(11) DEFAULT NULL,
-  `medical` int(11) DEFAULT NULL,
-  `conveyance` int(11) DEFAULT NULL,
   `salary` int(11) DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `b_group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `department_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `zip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -426,8 +424,10 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `f_name`, `l_name`, `designation_id`, `phone`, `r_type`, `basic`, `rent`, `medical`, `conveyance`, `salary`, `email`, `b_group`, `department_id`, `address`, `city`, `country`, `image`, `created_at`, `updated_at`) VALUES
-(34, 'Solaiman Islam', 'Akash', '2', 9, 'Salary', NULL, NULL, NULL, NULL, 75, 'solaimanakash@stataglobal.com', 'A', '1', 'Dhaka', 'Dhaka', 'Bangladesh', NULL, '2023-09-18 05:43:21', NULL);
+INSERT INTO `employees` (`id`, `f_name`, `l_name`, `designation_id`, `phone`, `r_type`, `salary`, `email`, `employee_type`, `department_id`, `address`, `city`, `state`, `zip`, `country`, `image`, `created_at`, `updated_at`) VALUES
+(34, 'Solaiman Islam', 'Akash', '2', 9, 'Salary', 75, 'solaimanakash@stataglobal.com', 'A', '1', 'Dhaka', 'Dhaka', NULL, NULL, 'Bangladesh', NULL, '2023-09-18 05:43:21', NULL),
+(38, 'Ifaz', 'Alam', '6', 1234, 'Salary', 20000, 'ifaz@ifaz.com', 'Permanent', '3', 'Dhaka', 'Dhaka', 'Badda', '1223', 'Bangladesh', NULL, '2024-01-06 05:40:20', NULL),
+(39, 'Stephen', 'Barton', '3', 13, 'Salary', 14, 'gigufybit@mailinator.com', 'Part Time', '5', 'Et porro quidem moll', 'Unde nihil voluptas', 'Rerum reprehenderit', '59937', 'Bangladesh', 'upload/employee/1787341058450084.png', '2024-01-06 05:41:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -733,7 +733,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `project_list`, `task_name`, `description`, `comment`, `assign_date`, `completion_date`, `assigned_by`, `assign_to`, `sub_task`, `bug`, `issue`, `hyperlinks`, `priority`, `product_img`, `created_at`, `updated_at`) VALUES
 (373, '13', 'Hello', '<p>Nogggggggggggggg</p>', '<p>eeeeeeeeeeee</p>', '2024-01-01', '2024-01-19', '2', '3', 'Hi', 'No', 'No', 'https://trionxai.com/', 'major', 'upload/products/1786884732989926.webp', '2024-01-01 04:47:56.000000', '2024-01-02 05:18:02.000000'),
-(374, '14', 'Add Button', '<p>Add a Button to ERPM</p>', NULL, '2024-01-01', '2024-01-05', '1', '3', 'Button', 'Irure illo commodi d', 'add', NULL, 'major', 'upload/products/1786904322431756.png', '2024-01-01 09:59:18.000000', '2024-01-04 08:56:15.000000'),
+(374, '14', 'Add Button', '<p>Add a Button to ERPM</p>', '<p>test</p>', '2024-01-01', '2024-01-05', '1', '3', 'Button', 'Irure illo commodi d', 'add', NULL, 'major', 'upload/products/1786904322431756.png', '2024-01-01 09:59:18.000000', '2024-01-05 09:24:47.000000'),
 (372, '15', 'Nemo error quia dign', '<p>yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>', '<p>rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrriiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</p>', '2016-01-09', '1998-10-30', '3', '2', 'Corporis exercitatio', 'Iste officiis minus', 'Ut iusto voluptatem', 'Sapiente ad beatae a', 'critical', 'upload/products/1786725643483027.png', '2023-12-30 10:39:16.000000', NULL),
 (375, '14', 'Aliquam vel minus pr', '<p>fffffff</p>', '<p>fffffffff</p>', '2010-09-28', '2021-05-17', '4', '3', 'Qui quis ut quo inve', 'Voluptatum sint cons', 'Sequi voluptas maior', 'Et aspernatur et et', 'critical', NULL, '2024-01-04 05:22:19.000000', NULL),
 (376, '14', 'Exercitation vero qu', '<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>\r\n<p>ffdsfdsdsfds</p>', '<p>fdsdfsdfdsfsdfds</p>', '2019-10-20', '2001-12-16', '3', '4', 'Asperiores excepturi', 'Aperiam perspiciatis', 'Dolorem rem commodo', 'Mollit sit aperiam', 'minor', NULL, '2024-01-04 05:23:56.000000', NULL);
@@ -1215,7 +1215,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('viEsNNsnGfRG96KLZcCXYWYV0xwg2fPgTnAu4xMe', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo2OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zdHVkZW50L2VkaXQvc3dlZXRhbGVydDIuYWxsLm1pbi5qcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJ4M3JYbFRrb215VnlEY1hKZDFja1M1V2ZkZWdIbWloS3hXVzVNYWFuIjtzOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJFJkYlVFNXJQZlcwNXhiU0EuV1dTbi5aeGVNWUY4Zzd6ZnJESzRLbFVXUC8zdjdkZUZWV015Ijt9', 1704450505);
+('ClNGTSiEARl3ESez4iPHl2APPWj5LIiNmyjQbxW3', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicDhuNGw3V241ZHVqb0RmdFQ3Mng5eWpEbm15eVFhRFpRVVdGMjFBMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9oci9lbXBsb3llZS1tYW5hZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJFJkYlVFNXJQZlcwNXhiU0EuV1dTbi5aeGVNWUY4Zzd6ZnJESzRLbFVXUC8zdjdkZUZWV015Ijt9', 1704541398);
 
 -- --------------------------------------------------------
 
@@ -1316,8 +1316,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `student_name`, `student_id`, `gender`, `dob`, `email`, `enrolled_in`, `phone`, `address`, `city`, `state`, `zip`, `country`, `created_at`, `updated_at`) VALUES
-(1, 'Ifaz', '123456', 'male', '1989-06-20', 'ifaz@gmail.com', '2024-01-01', 4324324, 'Placeat consectetur', 'Adipisicing obcaecat', 'Qui adipisicing sed', 813214, 'Bangladesh', NULL, '2024-01-05 02:59:11'),
-(2, 'Ifaz', '123', 'male', '1997-03-09', 'ifaz.alam1@gmail.com', '2024-01-04', 1677341032, 'Ka-27/4, Shahid Abdul Aziz Road, Jagannathpur, Vatara, Khilkhet, Dhaka', 'Dhaka', 'Dhaka', 1229, 'Bangladesh', NULL, '2024-01-04 05:32:59');
+(1, 'Ifaz Alam', '123456', 'male', '1989-06-20', 'ifaz@gmail.com', '2024-01-01', 4324324, 'Placeat consectetur', 'Adipisicing obcaecat', 'Qui adipisicing sed', 13214, 'Bangladesh', NULL, '2024-01-05 05:45:00'),
+(2, 'Fahmid Hasan', '123', 'male', '1997-03-09', 'ifaz.alam1@gmail.com', '2024-01-04', 1677341032, 'Ka-27/4, Shahid Abdul Aziz Road, Jagannathpur, Vatara, Khilkhet, Dhaka', 'Dhaka', 'Dhaka', 12291, 'Bangladesh', NULL, '2024-01-05 05:44:50'),
+(3, 'Arafat', '240105144347', 'male', '1996-04-05', 'arafatrahman619@gmail.com', '2024-01-01', 1714675632, 'Badda', 'Dhaka', 'Dhaka', 12123, 'Bang', NULL, NULL),
+(5, 'Yeo Ban', '240105152225', 'male', '2020-06-26', 'parasidy@mailinator.com', '2010-01-05', 31232, 'Ullam amet temporib', 'Ipsam aperiam occaec', 'Fugiat quis volupta', 98830, 'Id odio adipisci mi', NULL, '2024-01-05 09:22:47');
 
 -- --------------------------------------------------------
 
@@ -1788,7 +1790,7 @@ ALTER TABLE `conveyance_items`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=822;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=825;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -1812,7 +1814,7 @@ ALTER TABLE `designations`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1998,7 +2000,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`

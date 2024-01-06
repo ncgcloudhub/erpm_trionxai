@@ -27,7 +27,7 @@
 </div>
 
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">User Name <span class="text-danger">*</span></label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Full Name (FN MI LN)<span class="text-danger">*</span></label>
 <div class="controls">
 <input type="text"  name="user_name" class="form-control" required > 
 
@@ -43,7 +43,7 @@
 
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Office Phone <span class="text-danger">*</span></label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Office Phone </label>
 <div class="controls">
 <input type="text"  name="office_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" > 
 </div>
