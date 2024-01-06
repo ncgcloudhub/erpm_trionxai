@@ -1183,6 +1183,8 @@ Route::prefix('project')->group(function(){
 
             Route::get('/employee-edit/{id}', [EmployeeController::class, 'EditEmployee'])->name('employee.edit');
 
+            Route::post('/employee/update', [EmployeeController::class, 'EmployeeUpdate'])->name('employee.update');
+
             // DESIGNATION
             Route::get('/designation-add', [DesignationController::class, 'AddDesignation'])->name('designation.add');
             

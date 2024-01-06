@@ -104,4 +104,52 @@ class EmployeeController extends Controller
 		
 	}
 
+	public function EmployeeUpdate (Request $request){
+		$id = $request->id;	
+			
+			if($request->file('image')){
+
+			$image = $request->file('image');
+			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+			Image::make($image)->resize(200,200)->save('upload/employee/'.$name_gen);
+			$save_url = 'upload/employee/'.$name_gen;
+
+				Employee::findOrFail($id)->update([
+					'image' =>  $save_url,
+				]);
+			}
+
+
+		Employee::findOrFail($id)->update([
+				'f_name' => $request->first_name,
+				'l_name' => $request->last_name,
+				'designation_id' => $request->designation,
+				'department_id' => $request->department,
+
+			  	'phone' => $request->phone,
+				'r_type' => $request->rate_type,
+				'salary' => $request->salary,
+
+			  	'email' => $request->email,
+				'employee_type' => $request->employee_type,
+				'address' =>  $request->address,
+				'city' =>  $request->city,
+
+				'state' =>  $request->state,
+				'zip' =>  $request->zip,
+				'country' => $request->country,
+				'updated_at' => Carbon::now(), 
+	
+			]);
+	
+			$notification = array(
+				'message' => 'Employee Updated Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->route('employee.manage')->with($notification);
+	
+			
+		} // end method 
+
 }
