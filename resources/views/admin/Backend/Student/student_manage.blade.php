@@ -14,7 +14,7 @@
                                 <div class="table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                       <thead>
-                                          <tr>
+                                          <tr class="align-middle text-center">
                                           
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID </th>
@@ -27,7 +27,7 @@
                                       <tbody>
               
    @foreach($students as $item)
-   <tr>
+   <tr class="align-middle text-center text-sm">
     <td><a href="{{ route('student.view',$item->id) }}">{{ $item->student_name }}</a></td>
     <td>{{ $item->student_id }}</td>
     <td>{{ $item->email }}</td>

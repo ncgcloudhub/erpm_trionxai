@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\ConveyanceController;
@@ -301,7 +302,7 @@ Route::prefix('category')->group(function(){
         });
 
 
-// Admin Slider All Routes 
+// Customer 
     
 Route::prefix('customer')->group(function(){
     
@@ -322,7 +323,7 @@ Route::prefix('customer')->group(function(){
     
     });
 
-
+// Student
     Route::prefix('student')->group(function(){
 
         Route::get('/add', [StudentController::class, 'StudentAdd'])->name('student.add');
@@ -340,6 +341,27 @@ Route::prefix('customer')->group(function(){
         Route::get('/delete/{id}', [StudentController::class, 'StudentDelete'])->name('student.delete');
         
         });
+
+
+        // Course
+    Route::prefix('course')->group(function(){
+
+        Route::get('/add', [CourseController::class, 'CourseAdd'])->name('course.add');
+
+        Route::get('/manage', [CourseController::class, 'CourseManage'])->name('course.manage');
+    
+        Route::get('/view/{id}', [CourseController::class, 'CourseView'])->name('course.view');
+        
+        Route::post('/store', [CourseController::class, 'CourseStore'])->name('course.store');
+        
+        Route::get('/edit/{id}', [CourseController::class, 'CourseEdit'])->name('course.edit');
+    
+        Route::post('/update', [CourseController::class, 'CourseUpdate'])->name('course.update');
+
+        Route::get('/delete/{id}', [CourseController::class, 'CourseDelete'])->name('course.delete');
+        
+        });
+
 
           //Notice
     Route::get('/notice', [NoticeController::class, 'NoticeView'])->name('notice.view');

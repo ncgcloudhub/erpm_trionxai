@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2024 at 02:00 PM
+-- Generation Time: Jan 07, 2024 at 01:40 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -261,6 +261,37 @@ INSERT INTO `conveyance_items` (`id`, `conveyance_id`, `from`, `to`, `purpose`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `course_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fees` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discounted_fees` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `difficulty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `duration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prerequisites` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `objectives` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `course_name`, `code`, `description`, `type`, `fees`, `discounted_fees`, `difficulty`, `duration`, `prerequisites`, `objectives`, `comments`, `created_at`, `updated_at`) VALUES
+(1, 'AI', 'STA17143437', '<p>test</p>', 'Self Paced', '*12.50', '$9.99', 'HArd', 'No', NULL, NULL, NULL, NULL, '2024-01-07 06:24:18'),
+(2, 'TrionxAI', 'T391', '<p>No Description</p>', 'Hard', '$25.00', '$9.99', 'Easy', '6 hours', 'no', 'none', 'no notes', NULL, '2024-01-07 06:08:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -426,7 +457,7 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`id`, `f_name`, `l_name`, `designation_id`, `phone`, `r_type`, `salary`, `email`, `employee_type`, `department_id`, `address`, `city`, `state`, `zip`, `country`, `image`, `created_at`, `updated_at`) VALUES
 (34, 'Solaiman Islam', 'Akash', '2', 9, 'Salary', 75, 'solaimanakash@stataglobal.com', 'A', '1', 'Dhaka', 'Dhaka', NULL, NULL, 'Bangladesh', NULL, '2023-09-18 05:43:21', NULL),
-(38, 'Ifaz', 'Alam', '6', 1234, 'Salary', 20000, 'ifaz@ifaz.com', 'Permanent', '3', 'Dhaka', 'Dhaka', 'Badda', '1223', 'Bangladesh', NULL, '2024-01-06 05:40:20', NULL),
+(38, 'Ifaz', 'Alam', '6', 1234, 'Hourly', 20000, 'ifaz@ifaz.com', 'Permanent', '5', 'Dhaka', 'Dhaka', 'Badda', '1223', 'Bangladesh', NULL, '2024-01-06 05:40:20', '2024-01-07 06:27:08'),
 (39, 'Stephen', 'Barton', '3', 13, 'Salary', 14, 'gigufybit@mailinator.com', 'Part Time', '5', 'Et porro quidem moll', 'Unde nihil voluptas', 'Rerum reprehenderit', '59937', 'Bangladesh', 'upload/employee/1787341058450084.png', '2024-01-06 05:41:02', NULL);
 
 -- --------------------------------------------------------
@@ -617,7 +648,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (85, '2023_11_28_104340_create_salaries_table', 54),
 (86, '2023_12_02_053936_create_raw_materials_table', 54),
 (87, '2024_01_02_113858_create_students_table', 55),
-(88, '2024_01_04_113707_create_notices_table', 56);
+(88, '2024_01_04_113707_create_notices_table', 56),
+(90, '2024_01_06_172959_create_courses_table', 57);
 
 -- --------------------------------------------------------
 
@@ -1215,7 +1247,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('ClNGTSiEARl3ESez4iPHl2APPWj5LIiNmyjQbxW3', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicDhuNGw3V241ZHVqb0RmdFQ3Mng5eWpEbm15eVFhRFpRVVdGMjFBMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9oci9lbXBsb3llZS1tYW5hZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJFJkYlVFNXJQZlcwNXhiU0EuV1dTbi5aeGVNWUY4Zzd6ZnJESzRLbFVXUC8zdjdkZUZWV015Ijt9', 1704541398);
+('aRPjyjfKTDsMRmbdCti4wjduvtkGX3c3FYkjxZLw', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoid2FyaW1lY3ZpZXp0VUh4dGEyRktBaDFMVkZFQjkzbmNaWFh2aWxvTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jb3Vyc2Uvdmlldy9zd2VldGFsZXJ0Mi5hbGwubWluLmpzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRSZGJVRTVyUGZXMDV4YlNBLldXU24uWnhlTVlGOGc3emZyREs0S2xVV1AvM3Y3ZGVGVldNeSI7fQ==', 1704630912);
 
 -- --------------------------------------------------------
 
@@ -1462,6 +1494,12 @@ ALTER TABLE `conveyances`
 ALTER TABLE `conveyance_items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `conveyance_items_conveyance_id_foreign` (`conveyance_id`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
@@ -1787,6 +1825,12 @@ ALTER TABLE `conveyance_items`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1152;
 
 --
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -1838,7 +1882,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `notices`
