@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Bank;
+use App\Models\Course;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Quotation;
 use App\Models\QuotationItem;
 use App\Models\QuotationPaymentItem;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -236,19 +238,19 @@ class QuotationController extends Controller
     public function getData(Request $request){
 
     $selectedOption = $request->input('option');
-    $data = Customer::findOrFail($selectedOption);
+    $data = Student::findOrFail($selectedOption);
 
     return $data;
 
     }
 
     
-    public function getDataProduct(Request $request){
+    public function getDatasProduct(Request $request){
 
         $selectedOption = $request->input('option');
-        $data = Product::findOrFail($selectedOption);
-    
-        return $data;
+        $data = Course::findOrFail($selectedOption);
+        
+        return response()->json(['fees' => $data->fees]);
     
     }
 

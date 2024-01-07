@@ -836,7 +836,7 @@ Route::prefix('project')->group(function(){
 
     Route::get('/get-data', [QuotationController::class, 'getData']);
     Route::get('/get-employee-data', [ConveyanceController::class, 'getData']);
-    Route::get('/get-data-product', [QuotationController::class, 'getDataProduct']);
+    Route::get('/geta-data-product', [QuotationController::class, 'getDatasProduct']);
     
     Route::get('/get-price', [QuotationController::class, 'getProductPrice']);
 

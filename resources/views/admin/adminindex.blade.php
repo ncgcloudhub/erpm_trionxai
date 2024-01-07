@@ -583,7 +583,7 @@
 					  </td>
 					  <td class="align-middle text-center text-sm">
 						<span class="text-lg font-weight-bold">
-						  {{$item->customer->customer_name}}
+						  {{$item->id}}
 						</span>
 					  </td>
 					  <td class="align-middle text-center text-sm">

@@ -15,6 +15,11 @@ class Sales extends Model
     	return $this->belongsTo(Customer::class,'customer_id','id');
     }
 
+    public function student(){
+    	return $this->belongsTo(Student::class,'student_id','id');
+    }
+
+
     public function user(){
     	return $this->belongsTo(Admin::class,'user_id','id');
     }
