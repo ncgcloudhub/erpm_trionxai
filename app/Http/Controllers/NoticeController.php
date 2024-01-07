@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Notice;
+use App\Models\SiteSetting;
 use Illuminate\Support\Carbon;
 
 class NoticeController extends Controller
@@ -46,4 +47,13 @@ class NoticeController extends Controller
 		return redirect()->back()->with($notification);
 
 	} // end method
+
+
+	// SITE SETTINGS
+	public function SiteView(){
+
+    	$site = SiteSetting::first();
+    	return view('admin.Backend.Site.siteSetting',compact('site'));
+
+    } // end method 
 }

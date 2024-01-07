@@ -115,7 +115,7 @@ class SalesController extends Controller
 
     public function DownloadSale ($id){
                     
-        $sale = Sales::with('customer','user')->where('id',$id)->first();
+        $sale = Sales::with('student','user')->where('id',$id)->first();
     	$saleItem = SalesItem::with('product','sales')->where('sales_id',$id)->orderBy('id','ASC')->get();
 
 		$pdf = PDF::loadView('admin.Backend.Sales.view_sales',compact('sale','saleItem'))->setPaper('a4')->setOptions([
@@ -131,8 +131,8 @@ class SalesController extends Controller
             $sale = Sales::findOrFail($id);
             $saleItem = SalesItem::where('sales_id',$id)->get();
             $paysaleItem = SalesPaymentItem::where('sale_id',$id)->get();
-            $customers = Customer::orderBy('customer_name','ASC')->get();
-            $products = Product::orderBy('product_name','ASC')->get();
+            $customers = Student::orderBy('student_name','ASC')->get();
+            $products = Course::orderBy('course_name','ASC')->get();
 
             // dd($paysaleItem);
 

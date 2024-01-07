@@ -15,13 +15,17 @@ class SalesItem extends Model
     	return $this->belongsTo(Product::class,'product_id','id');
     }
 
+    public function course(){
+    	return $this->belongsTo(Course::class,'product_id','id');
+    }
+
     public function sales(){
     	return $this->belongsTo(Sales::class,'sale_id','id');
     }
 
     public function sale()
     {
-        return $this->belongsTo(Sale::class);
+        return $this->belongsTo(Sales::class);
     }
 
     public function products()
