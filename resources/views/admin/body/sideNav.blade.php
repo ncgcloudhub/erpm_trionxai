@@ -783,7 +783,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Vendor</span>
 </a>
-<a class="nav-link {{ ($route == 'purchase.view')? 'active':'' }}" href="{{ route('purchase.view') }}">
+<a class="nav-link {{ ($route == 'purchase.add')? 'active':'' }}" href="{{ route('purchase.add') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal"> Vendor Purchase</span>
   </a>

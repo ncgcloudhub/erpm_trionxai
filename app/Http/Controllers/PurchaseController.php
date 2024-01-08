@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    public function PurchaseForm() 
+    public function PurchaseAdd() 
     { 
         $suppliers = Supplier::orderBy('vendor_name','ASC')->get();
        
@@ -53,6 +53,13 @@ class PurchaseController extends Controller
         return redirect()->back()->with($notification);
 
     }
+
+    public function PurchaseView($id){
+        $vendors = Supplier::latest()->get();
+		
+		$purchase = Purchase::findOrFail($id);
+		return view('admin.Backend.Purchase.purchase_view' ,compact('vendors','purchase'));
+	}
 
     public function PurchaseManage(){
 		$purchase = Purchase::orderBy('id','ASC')->get();
@@ -95,6 +102,24 @@ class PurchaseController extends Controller
 			 // end else 
 			
 		} // end method 
+
+
+        public function PurchaseDelete($id){
+		
+            Purchase::findOrFail($id)->delete();
+    
+            $notification = array(
+                'message' => 'Purchase Delectd Successfully',
+                'alert-type' => 'info'
+            );
+    
+            return redirect()->back()->with($notification);
+    
+        } // end method
+
+
+
+
 
 
 

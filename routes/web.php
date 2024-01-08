@@ -432,7 +432,7 @@ Route::prefix('project')->group(function(){
 
     Route::get('/task/manage', [ProjectController::class, 'ManageTask'])->name('project.manage.task');
    
-    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.task');
+    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.tasks');
 
     Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');    
 
@@ -920,7 +920,9 @@ Route::prefix('project')->group(function(){
 
         Route::prefix('purchase')->group(function(){
 
-            Route::get('/view', [PurchaseController::class, 'PurchaseForm'])->name('purchase.view');
+            Route::get('/add', [PurchaseController::class, 'PurchaseAdd'])->name('purchase.add');
+
+            Route::get('/view/{id}', [PurchaseController::class, 'PurchaseView'])->name('purchase.view');
             
             Route::post('/store', [PurchaseController::class, 'PurchaseStore'])->name('purchase.store');
     
@@ -929,6 +931,8 @@ Route::prefix('project')->group(function(){
             Route::get('/edit/{id}', [PurchaseController::class, 'PurchaseEdit'])->name('purchase.edit');
 
             Route::post('/update', [PurchaseController::class, 'PurchaseUpdate'])->name('purchase.update');
+
+            Route::get('/delete/{id}', [PurchaseController::class, 'PurchaseDelete'])->name('purchase.delete');
 
             Route::get('/port', [PurchaseController::class, 'PurchaseReachedPort'])->name('purchase.port');
 
