@@ -40,13 +40,13 @@
 
     .authority1 h5 {
         margin-top: -10px;
-        color: #037c09;
+        color:  #afe0ff; ;
         /*text-align: center;*/
         margin-left: 35px;
     }
     
     .thanks p {
-        color: #136108;;
+        color:  #afe0ff;
         font-size: 16px;
         font-weight: normal;
         font-family: serif;
@@ -63,19 +63,19 @@
 </head>
 <body>
 
-  <table width="100%" style="background: #f7f7f7; padding:0 0px 0 0px;">
+  <table width="100%" style="background: #afe0ff; padding:0 0px 0 0px;">
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
           {{-- <br><br> --}}
           <br>
-          <img width="200px" height="72px" src="frontend/assets/img/logo2.png" alt="">
+          <img width="200px" height="72px" src="assets/img/favicon1.png" alt="">
           {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
         </td>
         <td align="right">
           <pre class="font" style="margin: 2px; line-height: 1;">
-            STATA IT LIMITED 
-            Email: info@stataglobal.com
+           Trionxai
+            Email: info@trionxai.com
             {{-- <br> --}}
             Mob: 88 09678200509 
           </pre>
@@ -89,19 +89,15 @@
     <tr>
         <td>
           <p class="font" style="margin-left: 20px;">
-           <strong>Name:</strong> {{ $sale->customer->customer_name }}<br>
-           <strong>Email:</strong> {{ $sale->customer->email }} <br>
-           <strong>Phone:</strong> {{  $sale->customer->phone }} <br>
-           <strong>Address:</strong> {{  $sale->customer->address  }}
+           <strong>Name:</strong> {{ $sale->student->student_name }}<br>
+           <strong>Email:</strong> {{ $sale->student->email }} <br>
+           <strong>Phone:</strong> {{  $sale->student->phone }} <br>
+           <strong>Address:</strong> {{  $sale->student->address  }}
          </p>
         </td>
         <td align="right">
           <div class="font" style="margin-top: -12px;">
-            <h3><span style="color: #106908;">Invoice:</span> #{{ $sale->invoice}}</h3>
-            @if ( $sale->pInvoice == NULL)
-            @else
-            <h4><span style="color: #106908;">Prev Invoice:</span> #{{ $sale->pInvoice}}</h4>
-            @endif
+            <h3><span style="color: #afe0ff; ;">Invoice:</span> #{{ $sale->invoice}}</h3>
             <strong>Sale Date:</strong> {{ $sale->sale_date }} <br>
             {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
             <strong>Made By:</strong> {{ $sale->user->name }} 
@@ -117,7 +113,7 @@
     <thead style="background-color: #17810e; color:#FFFFFF;">
       <tr class="font">
         <th class="t">SL.</th>
-        <th class="t">Product Name</th>
+        <th class="t">Course Name</th>
         <th class="t">Code</th>
         <th class="t">Unit Price </th>
         <th class="t">Quantity</th>
@@ -133,9 +129,9 @@
         <td class="t" align="center">
                 {{$sl++}}
         </td>
-        <td class="t" align="center"> {{ $item->product->product_name }}</td>
+        <td class="t" align="center"> {{ $item->course->course_name }}</td>
         <td class="t" align="center">
-            {{ $item->product->product_code }}
+            {{ $item->course->code }}
         </td>
         <td class="t" align="center">
             {{-- @if ($item->product->discount_price == NULL) --}}
@@ -159,14 +155,14 @@
         <td align="right" >
          
           {{-- <hr>   --}}
-          <h3><span style="color: #11790d;">Sub Total </span><span style="font-size: 12px">{{ $sale->sub_total }}</span></h3>
+          <h3><span style="color: #afe0ff; ;">Sub Total </span><span style="font-size: 12px">{{ $sale->sub_total }}</span></h3>
             @if ($sale->discount_per == NULL && $sale->discount_flat == NULL)
             @elseif($sale->discount_per == NULL)
-            <h3><span style="color: #169211; font-size: 12px;">Discount </span>TK {{ $sale->discount_flat }}</h3>
+            <h3><span style="color:  #afe0ff; ; font-size: 12px;">Discount </span>TK {{ $sale->discount_flat }}</h3>
             @else
-            <h3><span style="color: #169211; font-size: 12px;">Discount </span>{{ $sale->discount_per }}%</h3>
+            <h3><span style="color:  #afe0ff; ; font-size: 12px;">Discount </span>{{ $sale->discount_per }}%</h3>
             @endif
-          <h3><span style="color: #11790d; font-size: 12px;">Grand Total </span><span style="font-size: 12px">TK {{ $sale->grand_total }}</span></h3>
+          <h3><span style="color:  #afe0ff; ; font-size: 12px;">Grand Total </span><span style="font-size: 12px">TK {{ $sale->grand_total }}</span></h3>
           
           {{-- <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> TK 0.00</span></h3> --}}
 
@@ -174,11 +170,11 @@
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             {{-- <hr> --}}
             @if ( $sale->p_paid_amount == null)
-              <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK 0</span></h3>
-              <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->grand_total }}</span></h3>
+              <h3><span style="color:  #afe0ff; ;">Paid Amount</span> <span style="font-size: 12px"> TK 0</span></h3>
+              <h3><span style="color:  #afe0ff; ;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->grand_total }}</span></h3>
             @else
-              <h3><span style="color: #26810f;">Paid Amount</span> <span style="font-size: 12px"> TK {{$sale->p_paid_amount}}</span></h3>
-              <h3><span style="color: #26810f;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->due_amount }}</span></h3>
+              <h3><span style="color:  #afe0ff; ;">Paid Amount</span> <span style="font-size: 12px"> TK {{$sale->p_paid_amount}}</span></h3>
+              <h3><span style="color:  #afe0ff; ;">Due Amount</span> <span style="font-size: 15px"> TK {{ $sale->due_amount }}</span></h3>
             @endif
           
         </td>
@@ -188,7 +184,7 @@
        <td><b> Sale Details : </b>{{$sale->details}}</td>
    
     </tr>
-    <tr><td><b style="color: red"> STATA Warranty : </b>This Warranty Does Not Cover From Physical, Burn, Water Damage & Non Following The Instructions. To Avail The Warranty Please Show The STATA Warranty Card.</td></tr>
+    <tr><td><b style="color: red"> Trionxai T&C : </b>Lorem ipsum dolor sit, amet laudantium facere. Voluptas minus doloremque, libero repudiandae itaque in officiis!</td></tr>
   </table>
   
   {{-- <div class="thanks mt-3">
@@ -199,8 +195,8 @@
   <h5>Customer Signature:</h5>
   <br>
 
-  <h5 style="color: black; text-decoration:underline">We Accept</h5>
-  <img src="frontend/assets/img/bank.png" alt="QR Code" style="width: 250px; height: 120px;"> 
+  {{-- <h5 style="color: black; text-decoration:underline">We Accept</h5>
+  <img src="frontend/assets/img/bank.png" alt="QR Code" style="width: 250px; height: 120px;">  --}}
   </div>
   <div class="authority float-right" style="margin-top:80px">
     

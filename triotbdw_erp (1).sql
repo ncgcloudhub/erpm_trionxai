@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2024 at 05:31 PM
+-- Generation Time: Jan 07, 2024 at 07:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -83,7 +83,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `category`, `product`, `customer`, `bank`, `supplier`, `production`, `l_c`, `sale`, `chalan`, `alluser`, `expense`, `hr`, `adminuserrole`, `schedule`, `report`, `type`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$RdbUE5rPfW05xbSA.WWSn.ZxeMYF8g7zfrDK4KlUWP/3v7deFVWMy', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, '1', 1, 'ec8Tb2gKJvXD1S9CMghS5zbj47zi21GIzlDI5RYJBdrNmHWWORsM1nDe9wVh', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2023-12-25 16:51:36'),
+(1, 'Admin', 'admin@gmail.com', '2022-06-05 03:57:32', '$2y$10$RdbUE5rPfW05xbSA.WWSn.ZxeMYF8g7zfrDK4KlUWP/3v7deFVWMy', '01964870827', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, '1', 1, '4aGYh1WMOnZXE6xXhn4xXoFg0pIAJO9V7wsZ0sdJO3uWn3zzKMO5pr0UWBRj', NULL, '202207230834attachment_127807231.jfif', '2022-06-05 03:57:32', '2023-12-25 16:51:36'),
 (2, 'Ifaz', 'ifaz.alam1@gmail.com', NULL, '$2y$10$Pu2tNQcnJ1oC6cgytFMBhOLcXjNrCqTggI0Xc.viV96se.VXvPT8.', '+8801677341032', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, '1', 1, NULL, NULL, 'upload/admin_images/1787236805260133.png', '2024-01-05 02:03:59', '2024-01-05 02:08:40'),
 (3, 'Fahmid', 'fahmidh26@gmail.com', NULL, '$2y$10$qJafDwDHxrRvIW6vmFLLYOKJEzHSo.VKHAlWwy/h2ikgSO07ae48e', '01908497296', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, '1', 1, NULL, NULL, 'upload/admin_images/1787236869763164.png', '2024-01-05 02:05:00', NULL),
 (4, 'Saiful', 'saiful@gmail.com', NULL, '$2y$10$idWXnXL5jJMnMy/FEz/IhOSuOtzVkmlmcx7uShvtpwYcFLuRR6BMu', '+16465085790', '1', '1', '1', '1', '1', '1', '1', '1', 1, '1', 1, 1, '1', 1, '1', 1, NULL, NULL, 'upload/admin_images/1787236934062537.png', '2024-01-05 02:06:01', NULL);
@@ -649,7 +649,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (86, '2023_12_02_053936_create_raw_materials_table', 54),
 (87, '2024_01_02_113858_create_students_table', 55),
 (88, '2024_01_04_113707_create_notices_table', 56),
-(90, '2024_01_06_172959_create_courses_table', 57);
+(90, '2024_01_06_172959_create_courses_table', 57),
+(91, '2024_01_07_180610_create_site_settings_table', 58);
 
 -- --------------------------------------------------------
 
@@ -1082,7 +1083,7 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `student_id`, `sale_date`, `details`, `invoice`, `sub_total`, `grand_total`, `discount_flat`, `discount_per`, `p_paid_amount`, `due_amount`, `user_id`, `active_inactive`, `created_at`, `updated_at`, `sale_due_amount`) VALUES
-(710, 811, '2023-12-06', NULL, 'STA202318521', 3300, 2805, NULL, '15', '2805', '0', 3, 1, '2023-12-06 06:08:15', NULL, 0),
+(710, 5, '2023-12-06', NULL, 'STA202318521', 3300, 2805, NULL, '15', '2805', '0', 3, 1, '2023-12-06 06:08:15', NULL, 0),
 (711, 5, '1974-02-14', 'Qui eum consequatur', 'TXAI202422996', 5756, 5659, '97', NULL, '97', '5562', 1, 1, '2024-01-07 10:20:20', NULL, 5562),
 (712, 5, '1974-02-14', 'Qui eum consequatur', 'TXAI202439440', 5756, 5659, '97', NULL, '97', '5562', 1, 1, '2024-01-07 10:21:53', NULL, 5562),
 (713, 2, '1993-04-28', 'Et et magna lorem al', 'TXAI202485425', 6389, 6349, '40', NULL, '3', '6346', 1, 1, '2024-01-07 10:22:31', NULL, 6346),
@@ -1265,11 +1266,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('07ZdtjMJodg41izCgnF4Q2pgK74Mx6cpkXB5T4Dt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidDlpdVRmdHRCWmw5ZnJZMTM4aVJTZGVPWDNkOGlCYnJBY001UUNDRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zYWxlcy92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRSZGJVRTVyUGZXMDV4YlNBLldXU24uWnhlTVlGOGc3emZyREs0S2xVV1AvM3Y3ZGVGVldNeSI7fQ==', 1704643897),
-('31TqYGnK5kdMvwvjgDdU3izSUnQIfLiICpGTN6pX', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRVhZeDQyR2F2VE1TRlFTNldqaEEyS29KQnVjU1dMekdHWEhCYTZ3WSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxOToicGFzc3dvcmRfaGFzaF9hZG1pbiI7czo2MDoiJDJ5JDEwJFJkYlVFNXJQZlcwNXhiU0EuV1dTbi5aeGVNWUY4Zzd6ZnJESzRLbFVXUC8zdjdkZUZWV015Ijt9', 1704642125),
-('cDrAW3n0sK3fznlhJbFurOnKLHRDjmd1yy1QFAlH', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQ3lQZGZZRFloZzdWcGZTWXJpVktMbWx2SDU4cFM2QWdSMXEzVVhPRiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zYWxlcy92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRSZGJVRTVyUGZXMDV4YlNBLldXU24uWnhlTVlGOGc3emZyREs0S2xVV1AvM3Y3ZGVGVldNeSI7fQ==', 1704642522),
-('eP0HcUzcD72jIC8YqborSeeGiaAKESauYtglVWpf', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieUlqdEx2eDRIN042UGxhcm43WUdaZ1I1dnBsN0t3aDlsNkZmTll0VyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zYWxlcy92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRSZGJVRTVyUGZXMDV4YlNBLldXU24uWnhlTVlGOGc3emZyREs0S2xVV1AvM3Y3ZGVGVldNeSI7fQ==', 1704645040),
-('XsgGODEJhXw0OvihBA60FVSQb5G1i93I5CbopfMP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoieUZFbXdWWnZFcWVIUjdqMldsSmxZWk5XVGdkekZrVE85UGNPV2REZyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zYWxlcy92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRSZGJVRTVyUGZXMDV4YlNBLldXU24uWnhlTVlGOGc3emZyREs0S2xVV1AvM3Y3ZGVGVldNeSI7fQ==', 1704643923);
+('Ex94QtS5PyzT7Z5UVdZ9Ks6m8j1CtXM5cZnSpI1q', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiZ0dLbllDT2drNTlobENYVU52ZDJDMVMxdWpZYVZOVUlhQ2NYdHEwVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zaXRlL3NldHRpbmdzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTk6InBhc3N3b3JkX2hhc2hfYWRtaW4iO3M6NjA6IiQyeSQxMCRSZGJVRTVyUGZXMDV4YlNBLldXU24uWnhlTVlGOGc3emZyREs0S2xVV1AvM3Y3ZGVGVldNeSI7fQ==', 1704653278);
 
 -- --------------------------------------------------------
 
@@ -1322,6 +1319,31 @@ INSERT INTO `ship_expense_types` (`id`, `expenseType`, `created_at`, `updated_at
 (1, 'C&F Charge', '2023-11-27 06:36:17', NULL),
 (2, 'Logistic Charge', '2023-11-27 06:36:32', NULL),
 (3, 'Shipping Charge', '2023-11-27 06:37:07', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `favicon` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `login_img` varchar(255) NOT NULL,
+  `footer` varchar(255) NOT NULL,
+  `link` varchar(555) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`id`, `title`, `favicon`, `logo`, `login_img`, `footer`, `link`, `created_at`, `updated_at`) VALUES
+(1, 'Trionxai', 'upload/products/1786904322431756.png', 'upload/products/1786904322431756.png', 'upload/products/1786904322431756.png', 'Copyright Trionxai', 'https://trionxai.com/', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1756,6 +1778,12 @@ ALTER TABLE `ship_expense_types`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -1904,7 +1932,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `notices`
@@ -2055,6 +2083,12 @@ ALTER TABLE `ship_expenses`
 --
 ALTER TABLE `ship_expense_types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sliders`

@@ -16,9 +16,8 @@
 										<tr class="align-middle text-center">
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Invoice No.</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Previous Invoice</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paid</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sold By</th>
@@ -34,9 +33,8 @@
 	 <tr class="align-middle text-center text-sm">
 		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>
-		<td class="text-sm font-weight-bold mb-0">{{ $item->customer->customer_name }}</td>
+		<td class="text-sm font-weight-bold mb-0">{{ $item->student->student_name }}</td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->invoice }}</td>
-		<td class="text-sm font-weight-bold mb-0">{{ $item->pInvoice }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->p_paid_amount }} </td>
 		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td>
@@ -45,18 +43,18 @@
 		
 			<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a>
 			
-				<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.chalan.make', $item->id) }}"><i class="fa fa-exchange text-dark me-2" aria-hidden="true"></i>Chalan</a>
-				@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
-				<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.edit.view', $item->id) }}"><i class="fa fa-pencil text-dark me-2" aria-hidden="true"></i>Edit</a>
+				{{-- <a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.chalan.make', $item->id) }}"><i class="fa fa-exchange text-dark me-2" aria-hidden="true"></i>Chalan</a> --}}
+				{{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
+				<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.edit.view', $item->id) }}"><i class="fa fa-pencil text-dark me-2" aria-hidden="true"></i>Edit</a> --}}
 
 				{{-- <a id="fullPaidLink{{ $item->id }}" class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.full.paid', $item->id) }}" onclick="return confirm('Are you sure you want to full pay for this sale?')">
 					<i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Full Paid
 				</a> --}}
-				@if (!($item->grand_total == $item->p_paid_amount))
+				{{-- @if (!($item->grand_total == $item->p_paid_amount))
 				<a id="fullPaidLink{{ $item->id }}" class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.full.paid', $item->id) }}" onclick="return confirm('Are you sure you want to full pay for this sale?')">
 					<i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Full Paid
 				</a>
-				@endif
+				@endif --}}
 		
 				@if ($item->active_inactive == 1)
 					<a class="btn btn-link text-danger text-gradient px-2 mb-0" href="{{ route('sale.inactive',$item->id) }}"><i class="fa fa-thumbs-o-down text-dark me-2"></i>In Active</a>
@@ -64,7 +62,7 @@
 					<a class="btn btn-link text-info text-gradient px-2 mb-0" href="{{ route('sale.active',$item->id) }}"><i class="fa fa-thumbs-o-up text-dark me-2"></i>Active</a>
 				@endif
 				
-			@endif
+			{{-- @endif --}}
 
 			@if ($item->grand_total == $item->p_paid_amount)
 			@if(Auth::guard('admin')->user()->type=="1")

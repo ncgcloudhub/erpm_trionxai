@@ -17,7 +17,7 @@
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
-							<option value="" selected="" disabled="">{{$sale->customer->customer_name}}</option>
+							<option value="" selected="" disabled="">{{$sale->student->student_name}}</option>
 							{{-- @foreach($customers as $customer)
 									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
 							@endforeach --}}
@@ -28,14 +28,14 @@
 	
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
-							<div class="col"><input class="form-control" value="{{$sale->customer->address
+							<div class="col"><input class="form-control" value="{{$sale->student->address
 							}}" type="text" id="address" name="address" required="">
 						</div>
 							
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
-							<div class="col"><input value="{{$sale->customer->phone
+							<div class="col"><input value="{{$sale->student->phone
 							}}" class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
 							
 						</div>
@@ -59,11 +59,7 @@
 						<div class="col"><textarea class="form-control" name="details" id="details" rows="1">{{$sale->details}}</textarea></div>
 					</div>
 
-					<div class="row mb-3">
-						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Previous Invoice</label></div>
-						<div class="col"><input value="{{$sale->pInvoice}}" class="form-control mb-3" type="text" id="pInvoice" name="pInvoice"></div>
-						
-					</div>
+				
 					{{-- <div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
 					</div>
@@ -74,8 +70,7 @@
 				<table id="table_field" class="table align-items-center mb-0">
 				<thead>
 					  <tr>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Item Information</th>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock/Unit</th> 
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Course Information</th>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
 					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate</th>
@@ -90,13 +85,12 @@
 				<tr>
 					<td>
 						<select id="item" name="item[]" class="form-control" required="" >
-							<option value="{{$item->product_id}}" selected="">{{$item->product->product_name}}</option>
+							<option value="{{$item->product_id}}" selected="">{{$item->course->course_name}}</option>
 							{{-- @foreach($products as $product)
 								 <option value="{{ $product->id }}">{{ $product->product_name }}</option>	
 							@endforeach --}}
 						</select>
 					</td>
-					  <td><input class="form-control stock" type="text" value="{{$item->product->qty}}" id="stock" name="stock[]" required="" readonly></td>
 					  <td><input class="form-control qnty" value="{{$item->qty}}" type="number" id="qnty" name="qnty[]" required=""></td>
 					  <td><input class="form-control rate" value="{{$item->rate}}" type="number" id="rate" name="rate[]" required=""></td>
 					  <td><input class="form-control total" value="{{$item->amount}}" type="number" id="amount" name="amount[]" value="0" readonly></td>
@@ -124,11 +118,7 @@
 							<div class="col"><input  value="{{$sale->discount_per}}" class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
-						<div class="row mb-2">
-							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">VAT (%)</label></div>
-							<div class="col"><input value="{{$sale->total_vat}}" class="vper form-control" type="number" id="vat-percentage" name="vper" readonly>
-							</div>
-						</div>
+					
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (TK)</label></div>
 							<div class="col"><input value="{{$sale->discount_flat}}" class="dflat form-control" name="dflat" type="number" id="discount-flat">
