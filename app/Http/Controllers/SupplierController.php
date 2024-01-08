@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 class SupplierController extends Controller
 {
-    public function SupplierView(){
+    public function SupplierAdd(){
 		$supplier = Supplier::latest()->get();
 		return view('admin.Backend.Supplier.supplier' ,compact('supplier'));
 	}
@@ -49,6 +49,11 @@ class SupplierController extends Controller
 			return view('admin.Backend.Supplier.supplier_edit',compact('supplier'));
 		}
 	
+	public function SupplierView($id){
+		$supplier = Supplier::findOrFail($id);
+			return view('admin.Backend.Supplier.supplier_view',compact('supplier'));
+		}
+	
 
 		public function SupplierUpdate(Request $request){
 			
@@ -64,7 +69,7 @@ class SupplierController extends Controller
         		'city' => $request->city,
         		'state' => $request->state,
         		'zip' => $request->zip,
-        		'country' => $request->counntry,
+        		'country' => $request->country,
 				'updated_at' => Carbon::now(), 
 		
 				]);
@@ -79,5 +84,19 @@ class SupplierController extends Controller
 				 // end else 
 				
 			} // end method 
+
+
+			public function SupplierDelete($id){
+				
+				Supplier::findOrFail($id)->delete();
+		
+				$notification = array(
+					'message' => 'Vendor Delectd Successfully',
+					'alert-type' => 'info'
+				);
+		
+				return redirect()->back()->with($notification);
+		
+			} // end method
 
 }

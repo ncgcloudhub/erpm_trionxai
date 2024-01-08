@@ -23,12 +23,13 @@
 							</div>
 
 																
-			 <div class="form-group">
-				<h6>Description<span class="text-danger">*</span></h6>
-				<div class="controls">
-					<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
-			   </div>
-			</div>
+							<div class="form-group">
+								<h6>Description<span class="text-danger">*</span></h6>
+								<div class="controls">
+									<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10" required></textarea>
+								</div>
+							</div>
+							
 
 
 			 <div class="form-group">
@@ -58,7 +59,7 @@
 					</div>
 		
 					<div class="form-group">
-						<h6>Date to be Completed<span class="text-danger">*</span></h6>
+						<h6>Date to be Completed</h6>
 						<div class="controls">
 							<input type="date" name="completion_date" class="form-control" >
 			
@@ -152,9 +153,7 @@
 						</div>
 			
 			   </div> <!-- end row  -->
-			   
-					
-				
+
 						   </form>
 			  </div>
 			</div>

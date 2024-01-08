@@ -287,7 +287,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
         @if($customer  == true)
 <li class="nav-item">
-<a data-bs-toggle="collapse" href="#customerdealer" class="nav-link  {{ ($prefix == '/customer')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
+<a data-bs-toggle="collapse" href="#customer" class="nav-link  {{ ($prefix == '/customer')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 
@@ -306,7 +306,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
 <span class="nav-link-text ms-1">Customer </span>
 </a>
-<div class="collapse hide" id="customerdealer" style="">
+<div class="collapse hide" id="customer" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item">
 <a class="nav-link {{ ($route == 'customer.add')? 'active':'' }}" href="{{ route('customer.add') }}">
@@ -326,13 +326,17 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <li class="nav-item">
   <a data-bs-toggle="collapse" href="#student" class="nav-link  {{ ($prefix == '/student')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
   <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="800px" width="800px" version="1.1" id="_x32_" viewBox="0 0 512 512" xml:space="preserve">
-      <style type="text/css">
-        .st0{fill:#000000;}
-      </style>
-      <g>
-        <path class="st0" d="M366.042,378.266c-26.458-9.72-49.309-18.113-51.793-42.026c-1.149-11.024-0.214-23.982,2.702-37.507   c9.144-9.798,16.72-23.936,24.484-45.691c15.458-5.955,25.31-19.192,30.109-40.442c2.461-10.885-1.058-22.073-9.655-30.807   c0.773-13.206,0.095-13.928-0.402-14.456l-0.542-0.536H151.497v14.914c-9.897,9.115-13.61,19.503-11.038,30.885   c4.794,21.242,14.648,34.48,30.12,40.442c7.762,21.754,15.332,35.885,24.464,45.675c2.06,9.518,4.158,23.61,2.71,37.523   c-2.484,23.913-25.336,32.306-51.795,42.026c-36.32,13.338-77.484,28.462-77.484,88.641C68.474,485.634,126.653,512,256,512   c129.347,0,187.526-26.366,187.526-45.093C443.526,406.729,402.362,391.605,366.042,378.266z M233.908,484.578L203.021,359.12   l37.47,15.598l-2.302,20.66l6.572-0.148L233.908,484.578z M277.101,395.378l-2.302-20.66l37.47-15.598l-30.887,125.458   l-10.854-89.348L277.101,395.378z"/>
-        <path class="st0" d="M91.083,82.779l54.864,24.13v36.397h222.66v-36.397l22.395-9.852v51.234c-4.75,0.753-8.389,4.728-8.389,9.495   c0,4.146,2.741,7.74,6.704,9.053l-6.378,40.217c-0.421,2.663,0.34,5.357,2.081,7.392c1.739,2.042,4.28,3.214,6.972,3.214h16.792   c2.692,0,5.233-1.172,6.968-3.214c1.745-2.034,2.506-4.728,2.085-7.392l-6.374-40.217c3.969-1.312,6.714-4.907,6.714-9.053   c0-4.767-3.643-8.742-8.397-9.495V88.804l13.686-6.017c2.696-1.172,4.439-3.789,4.439-6.654c0-2.85-1.739-5.458-4.433-6.646   L272.931,3.284C267.987,1.102,262.72,0,257.273,0c-5.446,0-10.712,1.102-15.652,3.284L91.081,69.487   c-2.692,1.188-4.431,3.796-4.431,6.646C86.649,79.006,88.392,81.614,91.083,82.779z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+      <defs>
+      </defs>
+      <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+        <path d="M 45 49.519 L 45 49.519 c -7.68 0 -13.964 -6.284 -13.964 -13.964 v -5.008 c 0 -7.68 6.284 -13.964 13.964 -13.964 h 0 c 7.68 0 13.964 6.284 13.964 13.964 v 5.008 C 58.964 43.236 52.68 49.519 45 49.519 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+        <path d="M 52.863 51.438 c -2.362 1.223 -5.032 1.927 -7.863 1.927 s -5.501 -0.704 -7.863 -1.927 C 26.58 53.014 18.414 62.175 18.414 73.152 v 14.444 c 0 1.322 1.082 2.403 2.403 2.403 h 48.364 c 1.322 0 2.403 -1.082 2.403 -2.403 V 73.152 C 71.586 62.175 63.42 53.014 52.863 51.438 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+        <path d="M 71.277 34.854 c -2.362 1.223 -5.032 1.927 -7.863 1.927 c -0.004 0 -0.007 0 -0.011 0 c -0.294 4.412 -2.134 8.401 -4.995 11.43 c 10.355 3.681 17.678 13.649 17.678 24.941 v 0.263 h 11.511 c 1.322 0 2.404 -1.082 2.404 -2.404 V 56.568 C 90 45.59 81.834 36.429 71.277 34.854 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+        <path d="M 63.414 0 c -7.242 0 -13.237 5.589 -13.898 12.667 c 8 2.023 13.947 9.261 13.947 17.881 v 2.385 c 7.657 -0.027 13.914 -6.298 13.914 -13.961 v -5.008 C 77.378 6.284 71.094 0 63.414 0 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+        <path d="M 13.915 73.152 c 0 -11.292 7.322 -21.261 17.677 -24.941 c -2.861 -3.029 -4.702 -7.019 -4.995 -11.43 c -0.004 0 -0.007 0 -0.011 0 c -2.831 0 -5.5 -0.704 -7.863 -1.927 C 8.166 36.429 0 45.59 0 56.568 v 14.444 c 0 1.322 1.082 2.404 2.404 2.404 h 11.511 V 73.152 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+        <path d="M 26.536 32.932 v -2.385 c 0 -8.62 5.946 -15.858 13.947 -17.881 C 39.823 5.589 33.828 0 26.586 0 c -7.68 0 -13.964 6.284 -13.964 13.964 v 5.008 C 12.622 26.635 18.879 32.905 26.536 32.932 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
       </g>
       </svg>
     
@@ -361,18 +365,17 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   <li class="nav-item">
     <a data-bs-toggle="collapse" href="#course" class="nav-link  {{ ($prefix == '/course')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="800px" width="800px" version="1.1" id="_x32_" viewBox="0 0 512 512" xml:space="preserve">
-        <style type="text/css">
-          .st0{fill:#000000;}
-        </style>
-        <g>
-          <path class="st0" d="M81.44,116.972c23.206,0,42.007-18.817,42.007-42.008c0-23.215-18.801-42.016-42.007-42.016   c-23.216,0-42.016,18.801-42.016,42.016C39.424,98.155,58.224,116.972,81.44,116.972z"/>
-          <path class="st0" d="M224.166,245.037c0-0.856-0.142-1.673-0.251-2.498l62.748-45.541c3.942-2.867,4.83-8.411,1.963-12.362   c-1.664-2.285-4.342-3.652-7.17-3.652c-1.877,0-3.667,0.589-5.191,1.689l-62.874,45.636c-2.341-1.068-4.909-1.704-7.65-1.704   h-34.178l-8.294-47.222c-4.555-23.811-14.112-42.51-34.468-42.51h-86.3C22.146,136.873,0,159.019,0,179.383v141.203   c0,10.178,8.246,18.432,18.424,18.432c5.011,0,0,0,12.864,0l7.005,120.424c0,10.83,8.788,19.61,19.618,19.61   c8.12,0,28.398,0,39.228,0c10.83,0,19.61-8.78,19.61-19.61l9.204-238.53h0.463l5.27,23.269c1.744,11.097,11.293,19.28,22.524,19.28   h51.534C215.92,263.461,224.166,255.215,224.166,245.037z M68.026,218.861v-67.123h24.126v67.123l-12.817,15.118L68.026,218.861z"/>
-          <polygon class="st0" points="190.326,47.47 190.326,200.869 214.452,200.869 214.452,71.595 487.874,71.595 487.874,302.131    214.452,302.131 214.452,273.113 190.326,273.113 190.326,326.256 512,326.256 512,47.47  "/>
-          <path class="st0" d="M311.81,388.597c0-18.801-15.235-34.029-34.028-34.029c-18.801,0-34.036,15.228-34.036,34.029   c0,18.785,15.235,34.028,34.036,34.028C296.574,422.625,311.81,407.381,311.81,388.597z"/>
-          <path class="st0" d="M277.781,440.853c-24.259,0-44.866,15.919-52.782,38.199h105.565   C322.648,456.771,302.04,440.853,277.781,440.853z"/>
-          <path class="st0" d="M458.573,388.597c0-18.801-15.235-34.029-34.028-34.029c-18.801,0-34.036,15.228-34.036,34.029   c0,18.785,15.235,34.028,34.036,34.028C443.338,422.625,458.573,407.381,458.573,388.597z"/>
-          <path class="st0" d="M424.545,440.853c-24.259,0-44.866,15.919-52.783,38.199h105.565   C469.411,456.771,448.804,440.853,424.545,440.853z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+
+        <defs>
+        </defs>
+        <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+          <path d="M 45 49.519 L 45 49.519 c -7.68 0 -13.964 -6.284 -13.964 -13.964 v -5.008 c 0 -7.68 6.284 -13.964 13.964 -13.964 h 0 c 7.68 0 13.964 6.284 13.964 13.964 v 5.008 C 58.964 43.236 52.68 49.519 45 49.519 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+          <path d="M 52.863 51.438 c -2.362 1.223 -5.032 1.927 -7.863 1.927 s -5.501 -0.704 -7.863 -1.927 C 26.58 53.014 18.414 62.175 18.414 73.152 v 14.444 c 0 1.322 1.082 2.403 2.403 2.403 h 48.364 c 1.322 0 2.403 -1.082 2.403 -2.403 V 73.152 C 71.586 62.175 63.42 53.014 52.863 51.438 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+          <path d="M 71.277 34.854 c -2.362 1.223 -5.032 1.927 -7.863 1.927 c -0.004 0 -0.007 0 -0.011 0 c -0.294 4.412 -2.134 8.401 -4.995 11.43 c 10.355 3.681 17.678 13.649 17.678 24.941 v 0.263 h 11.511 c 1.322 0 2.404 -1.082 2.404 -2.404 V 56.568 C 90 45.59 81.834 36.429 71.277 34.854 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+          <path d="M 63.414 0 c -7.242 0 -13.237 5.589 -13.898 12.667 c 8 2.023 13.947 9.261 13.947 17.881 v 2.385 c 7.657 -0.027 13.914 -6.298 13.914 -13.961 v -5.008 C 77.378 6.284 71.094 0 63.414 0 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+          <path d="M 13.915 73.152 c 0 -11.292 7.322 -21.261 17.677 -24.941 c -2.861 -3.029 -4.702 -7.019 -4.995 -11.43 c -0.004 0 -0.007 0 -0.011 0 c -2.831 0 -5.5 -0.704 -7.863 -1.927 C 8.166 36.429 0 45.59 0 56.568 v 14.444 c 0 1.322 1.082 2.404 2.404 2.404 h 11.511 V 73.152 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+          <path d="M 26.536 32.932 v -2.385 c 0 -8.62 5.946 -15.858 13.947 -17.881 C 39.823 5.589 33.828 0 26.586 0 c -7.68 0 -13.964 6.284 -13.964 13.964 v 5.008 C 12.622 26.635 18.879 32.905 26.536 32.932 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
         </g>
         </svg>
     </div>
@@ -405,11 +408,18 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <a data-bs-toggle="collapse" href="#report" class="nav-link  {{ ($prefix == '/reports')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
-    <rect x="40" y="40" width="176" height="176" stroke="#3a416f" stroke-width="16" fill="#ffffff" />
-    <line x1="40" y1="120" x2="216" y2="120" stroke="#3a416f" stroke-width="16" />
-    <line x1="40" y1="160" x2="216" y2="160" stroke="#3a416f" stroke-width="16" />
-    <line x1="40" y1="200" x2="216" y2="200" stroke="#3a416f" stroke-width="16" />
-  </svg>
+
+    <defs>
+    </defs>
+    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+      <path d="M 45 49.519 L 45 49.519 c -7.68 0 -13.964 -6.284 -13.964 -13.964 v -5.008 c 0 -7.68 6.284 -13.964 13.964 -13.964 h 0 c 7.68 0 13.964 6.284 13.964 13.964 v 5.008 C 58.964 43.236 52.68 49.519 45 49.519 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+      <path d="M 52.863 51.438 c -2.362 1.223 -5.032 1.927 -7.863 1.927 s -5.501 -0.704 -7.863 -1.927 C 26.58 53.014 18.414 62.175 18.414 73.152 v 14.444 c 0 1.322 1.082 2.403 2.403 2.403 h 48.364 c 1.322 0 2.403 -1.082 2.403 -2.403 V 73.152 C 71.586 62.175 63.42 53.014 52.863 51.438 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+      <path d="M 71.277 34.854 c -2.362 1.223 -5.032 1.927 -7.863 1.927 c -0.004 0 -0.007 0 -0.011 0 c -0.294 4.412 -2.134 8.401 -4.995 11.43 c 10.355 3.681 17.678 13.649 17.678 24.941 v 0.263 h 11.511 c 1.322 0 2.404 -1.082 2.404 -2.404 V 56.568 C 90 45.59 81.834 36.429 71.277 34.854 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+      <path d="M 63.414 0 c -7.242 0 -13.237 5.589 -13.898 12.667 c 8 2.023 13.947 9.261 13.947 17.881 v 2.385 c 7.657 -0.027 13.914 -6.298 13.914 -13.961 v -5.008 C 77.378 6.284 71.094 0 63.414 0 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+      <path d="M 13.915 73.152 c 0 -11.292 7.322 -21.261 17.677 -24.941 c -2.861 -3.029 -4.702 -7.019 -4.995 -11.43 c -0.004 0 -0.007 0 -0.011 0 c -2.831 0 -5.5 -0.704 -7.863 -1.927 C 8.166 36.429 0 45.59 0 56.568 v 14.444 c 0 1.322 1.082 2.404 2.404 2.404 h 11.511 V 73.152 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+      <path d="M 26.536 32.932 v -2.385 c 0 -8.62 5.946 -15.858 13.947 -17.881 C 39.823 5.589 33.828 0 26.586 0 c -7.68 0 -13.964 6.284 -13.964 13.964 v 5.008 C 12.622 26.635 18.879 32.905 26.536 32.932 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #3a416f; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round"/>
+    </g>
+    </svg>
   
 </div>
 
@@ -450,18 +460,12 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Sale</span>
 </a>
-<a class="nav-link {{ ($route == 'service.view')? 'active':'' }}" href="{{ route('service.view') }}">
-  <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">Add Service Invoice</span>
-  </a>
+
 <a class="nav-link {{ ($route == 'sales.manage')? 'active':'' }}" href="{{ route('sales.manage') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Sale</span>
 </a>
-<a class="nav-link {{ ($route == 'service.manage')? 'active':'' }}" href="{{ route('service.manage') }}">
-<span class="sidenav-mini-icon"></span>
-<span class="sidenav-normal">Manage Service</span>
-</a>
+
 </li>
 </ul>
 </div>
@@ -571,7 +575,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @endif --}}
 
 
-@if($l_c == true)
+{{-- @if($l_c == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#l_c" class="nav-link  {{ ($prefix == '/purchase')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -593,34 +597,13 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Purchase Opened</span>
 </a>
-<a class="nav-link {{ ($route == 'purchase.port')? 'active':'' }}" href="{{ route('purchase.port') }}">
-  <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">Reached Port</span>
-  </a>
-  <a class="nav-link {{ ($route == 'purchase.factory')? 'active':'' }}" href="{{ route('purchase.factory') }}">
-    <span class="sidenav-mini-icon"></span>
-    <span class="sidenav-normal">Reached Factory</span>
-    </a>
-  
-    {{-- SHIPPING --}}
-    <a class="nav-link {{ ($route == 'ship.expenseType.view')? 'active':'' }}" href="{{ route('ship.expenseType.view') }}">
-      <span class="sidenav-mini-icon"></span>
-      <span class="sidenav-normal">Add Ship Type</span>
-      </a>
-      <a class="nav-link {{ ($route == 'ship.expense.view')? 'active':'' }}" href="{{ route('ship.expense.view') }}">
-        <span class="sidenav-mini-icon"></span>
-        <span class="sidenav-normal">Add Ship Expense</span>
-        </a>
-      <a class="nav-link {{ ($route == 'ship.expense.manage')? 'active':'' }}" href="{{ route('ship.expense.manage') }}">
-      <span class="sidenav-mini-icon"></span>
-      <span class="sidenav-normal">Manage Ship Expense</span>
-      </a>
+
 </li>
 </ul>
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 
 @if($hr == true)
@@ -738,18 +721,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-normal">Manage Expense</span>
 </a>
 
-<a class="nav-link {{ ($route == 'requisitionType.view')? 'active':'' }}" href="{{ route('requisitionType.view') }}">
-  <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">Add Requisition Type</span>
-  </a>
-  <a class="nav-link {{ ($route == 'requisition.view')? 'active':'' }}" href="{{ route('requisition.view') }}">
-    <span class="sidenav-mini-icon"></span>
-    <span class="sidenav-normal">Add Requisition</span>
-    </a>
-<a class="nav-link {{ ($route == 'requisition.manage')? 'active':'' }}" href="{{ route('requisition.manage') }}">
-  <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">Manage Requisition</span>
-  </a>
+
 
 </li>
 </ul>
@@ -801,7 +773,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <div class="collapse hide" id="supplier" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item">
-<a class="nav-link {{ ($route == 'supplier.view')? 'active':'' }}" href="{{ route('supplier.view') }}">
+<a class="nav-link {{ ($route == 'supplier.add')? 'active':'' }}" href="{{ route('supplier.add') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Vendor</span>
 </a>
@@ -809,6 +781,14 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Vendor</span>
 </a>
+<a class="nav-link {{ ($route == 'purchase.view')? 'active':'' }}" href="{{ route('purchase.view') }}">
+  <span class="sidenav-mini-icon"></span>
+  <span class="sidenav-normal"> Vendor Purchase</span>
+  </a>
+  <a class="nav-link {{ ($route == 'purchase.manage')? 'active':'' }}" href="{{ route('purchase.manage') }}">
+  <span class="sidenav-mini-icon"></span>
+  <span class="sidenav-normal">Manage Vendor Purchase</span>
+  </a>
 </li>
 </ul>
 </div>

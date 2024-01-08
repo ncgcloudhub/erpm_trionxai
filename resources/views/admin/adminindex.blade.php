@@ -653,15 +653,15 @@
 			  <thead>
 				<tr>
 				  <th scope="col">Total Sale</th>
-				  <td scope="col">TK <b>{{$totalsale}}</b></td>
+				  <td scope="col">TK <b>Total Sale</b></td>
 				</tr>
 				<tr>
 				  <th scope="col">Total Purchase</th>
-				  <td scope="col">TK <b>{{$totalpurchase}}</b></td>
+				  <td scope="col">TK <b>Total Purchase</b></td>
 				</tr>
 				<tr>
 				  <th scope="col">Last Sale</th>
-				  <td scope="col">TK <b>{{$lastSale->grand_total}}</b></td>
+				  <td scope="col">TK <b>Grand Total</b></td>
 				</tr>
 			  </thead>
 		  

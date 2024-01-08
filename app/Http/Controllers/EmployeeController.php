@@ -104,6 +104,15 @@ class EmployeeController extends Controller
 		
 	}
 
+	public function ViewEmployee($id){
+
+		$employee = Employee::findOrFail($id);
+		$designations = Designation::latest()->get();
+		$departments = Department::latest()->get();
+		return view('admin.Backend.Employee.employee_view', compact('employee','designations','departments'));
+		
+	}
+
 	public function EmployeeUpdate (Request $request){
 		$id = $request->id;	
 			
@@ -151,5 +160,19 @@ class EmployeeController extends Controller
 	
 			
 		} // end method 
+
+
+		public function EmployeeDelete($id){
+			
+			Employee::findOrFail($id)->delete();
+	
+			$notification = array(
+				'message' => 'Employee Delectd Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->back()->with($notification);
+	
+		} // end method
 
 }

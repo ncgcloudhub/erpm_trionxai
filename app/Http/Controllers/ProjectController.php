@@ -23,12 +23,6 @@ class ProjectController extends Controller
 
     public function StoreProject(Request $request){
 
-		// $image = $request->file('product_img');
-    	// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-
-    	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
-    	// $save_url = 'upload/products/'.$name_gen;
-
         Category::insertGetId([
       	
 		'project_name' => $request->project_name,

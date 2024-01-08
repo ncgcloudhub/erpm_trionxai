@@ -14,20 +14,19 @@
 
 		<div class="col">
 
-<form method="post" action="{{ route('supplier.update') }}">
-@csrf
+
 <input type="hidden" name="id" value="{{$supplier->id}}">   
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Name<span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->vendor_name}}"  name="vendor_name" class="form-control" required > 
+<input type="text" value="{{$supplier->vendor_name}}"  name="vendor_name" class="form-control" readonly > 
 </div>
 </div>
 
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Service Name <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->vendor_s_name}}"  name="vendor_s_name" class="form-control"  > 
+<input type="text" value="{{$supplier->vendor_s_name}}"  name="vendor_s_name" class="form-control" readonly > 
 </div>
 </div>
 
@@ -35,7 +34,7 @@
 <div class="form-group">
     <label class="text-uppercase text-dark text-xs font-weight-bold">Price <span class="text-danger">*</span></label>
     <div class="controls">
-        <input type="text" value="{{$supplier->price}}" name="price" class="form-control" required>
+        <input type="text" value="{{$supplier->price}}" name="price" class="form-control" readonly>
     </div>
 </div>
 
@@ -43,7 +42,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Email <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="email" value="{{$supplier->email}}" name="email" class="form-control" required >
+<input type="email" value="{{$supplier->email}}" name="email" class="form-control" readonly >
 
 </div>
 </div>
@@ -51,7 +50,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Contact <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->contact}}" name="contact" class="form-control" required >
+<input type="text" value="{{$supplier->contact}}" name="contact" class="form-control" readonly >
 
 </div>
 </div>
@@ -66,7 +65,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->address}}" name="address" class="form-control" required >
+<input type="text" value="{{$supplier->address}}" name="address" class="form-control" readonly >
 
 </div>
 </div>
@@ -74,7 +73,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->city}}" name="city" class="form-control" required >
+<input type="text" value="{{$supplier->city}}" name="city" class="form-control" readonly >
 
 </div>
 </div>
@@ -82,7 +81,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->state}}" name="state" class="form-control" required >
+<input type="text" value="{{$supplier->state}}" name="state" class="form-control" readonly >
 
 </div>
 </div>
@@ -90,7 +89,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Zip <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->zip}}" name="zip" class="form-control" pattern="\d{5}" title="Enter a valid 5-digit zip code" required >
+<input type="text" value="{{$supplier->zip}}" name="zip" class="form-control" pattern="\d{5}" title="Enter a valid 5-digit zip code" readonly >
 
 </div>
 </div>
@@ -98,21 +97,17 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->country}}" name="country" class="form-control" required >
+<input type="text" value="{{$supplier->country}}" name="country" class="form-control" readonly >
 
 </div>
 </div>
 
-
-{{-- <div class="text-xs-right"> --}}
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Vendor">					 
-         {{-- </div> --}}
 
 		</div>
 		{{-- End Col --}}
 
        </div>
-</form>
+
 
 </div>
 

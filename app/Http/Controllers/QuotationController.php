@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Bank;
 use App\Models\Course;
 use App\Models\Customer;
+use App\Models\Supplier;
 use App\Models\Product;
 use App\Models\Quotation;
 use App\Models\QuotationItem;
@@ -243,6 +244,15 @@ class QuotationController extends Controller
     return $data;
 
     }
+
+    public function getVendor(Request $request){
+
+        $selectedOption = $request->input('option');
+        $data = Supplier::findOrFail($selectedOption);
+    
+        return $data;
+    
+        }
 
     
     public function getDatasProduct(Request $request){

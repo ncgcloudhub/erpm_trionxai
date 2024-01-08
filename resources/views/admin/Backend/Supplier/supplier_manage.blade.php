@@ -28,7 +28,7 @@
 				
 			@foreach($suppliers as $item)
 			<tr class="align-middle text-center text-sm">
-			<td class="text-start">{{ $item->vendor_name }}</td>
+			<td class="text-start"> <a href="{{ route('supplier.view',$item->id) }}">{{ $item->vendor_name }}</a></td>
 			<td>{{ $item->vendor_s_name }}</td>
 			<td>{{ $item->price }}</td>
 			<td>{{ $item->email }}</td>
@@ -37,6 +37,8 @@
 			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('supplier.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>	
 			   
 			   <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('supplier.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+
+			   <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('supplier.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Vendor')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
 			
 			</td>
 				 

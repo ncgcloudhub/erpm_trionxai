@@ -9,17 +9,19 @@
 		  <div class="card-body p-3">
 			<div class="row">
 				
-			<form class="insert-form" id="insert_form" method="post" action="{{ route('purchase.store') }}">
+			<form class="insert-form" id="insert_form" method="post" action="{{ route('purchase.update') }}">
 			@csrf
+
+			<input type="hidden" name="id" value="{{$purchase->id}}">
 			<div class="row">
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Vendor</label></div>
 						<div class="col">
 							<select id="mySelect" name="vendor_id" class="js-example-basic-single select2 form-control" required="">
-							<option value="" selected="" disabled="">Select Vendor</option>
-							@foreach($suppliers as $supplier)
-									 <option value="{{ $supplier->id }}">{{ $supplier->vendor_name }} ({{ $supplier->vendor_s_name }})</option>	
+							<option value="{{ $purchase->vendor_id }}" selected="">{{ $purchase->supplier->vendor_name }} ({{ $purchase->supplier->vendor_s_name }})</option>
+							@foreach($vendors as $item)
+									 <option value="{{ $item->id }}">{{ $item->vendor_name }} ({{ $item->vendor_s_name }})</option>	
 							@endforeach
 							<!-- More options -->
 							</select>
@@ -28,14 +30,14 @@
 	
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Price</label></div>
-							<div class="col"><input class="form-control " type="text" id="price" name="price">
+							<div class="col"><input class="form-control" value="{{ $purchase->supplier->price }}" type="text" id="price" name="price" readonly>
 						</div>
 							
 						</div>
 						
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
-							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone"></div>
+							<div class="col"><input class="form-control mb-3" value="{{ $purchase->supplier->contact }}" type="text" id="phone" name="phone" readonly></div>
 							
 						</div>
 	
@@ -44,17 +46,17 @@
 				<div class="col">
 					<div class="row mb-3">
 						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Purchase Date</label></div>
-						<div class="col"><input class="form-control" type="date" name="purchase_date" required=""></div>
+						<div class="col"><input class="form-control" value="{{ $purchase->purchase_date }}" type="date" name="purchase_date" required=""></div>
 					</div>
 
 					<div class="row mb-3">
 						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Expiration Date</label></div>
-						<div class="col"><input class="form-control" type="date" name="expiration_date" required=""></div>
+						<div class="col"><input class="form-control" value="{{ $purchase->expiration_date }}" type="date" name="expiration_date" required=""></div>
 					</div>
 					
 					<div class="row mb-3">
 						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold" for="details">Details</label></div>
-						<div class="col"><input class="form-control" type="text" name="details" required=""></div>
+						<div class="col"><input class="form-control" value="{{ $purchase->details }}" type="text" name="details" required=""></div>
 					</div>
 
 				
@@ -65,7 +67,7 @@
 				  <div class="col">
 				  </div>
 				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Sale">
+					<input type="submit" class="btn bg-gradient-primary w-100" value="Update Purchase">
 				  </div>
 				  <div class="col">
 				  </div>
