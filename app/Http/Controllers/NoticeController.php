@@ -103,7 +103,7 @@ class NoticeController extends Controller
 			$save_url = 'upload/products/'.$name_gen;
 
 			SiteSetting::findOrFail(1)->update([
-				'logo' => $save_url,
+				'login_img' => $save_url,
 				'updated_at' => Carbon::now(),   
 		  ]);
 
