@@ -72,7 +72,7 @@
 				<div class="form-group">
 					<h6>Department<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<select name="department" class="form-control"  >
+						<select name="department" class="form-control" required >
 							<option value="" selected="" disabled="">Select Department</option>
 							@foreach($departments as $department)
 							<option value="{{ $department->id }}">{{ $department->department }}</option>	
@@ -102,7 +102,7 @@
 		<div class="form-group">
 			<h6>Rate Type<span class="text-danger">*</span></h6>
 			<div class="controls">
-				<select name="rate_type" class="form-control"  >
+				<select name="rate_type" class="form-control" required >
 					<option value="" selected="" disabled="">Select Option</option>		
 					<option value="Hourly">Hourly</option>						
 					<option value="Salary">Salary</option>	
@@ -114,9 +114,9 @@
 
 	<div class="col-md-6">
 		<div class="form-group">
-			<h6>Total Salary</h6>
+			<h6>Total Salary<span class="text-danger">*</span></h6>
 			<div class="controls">
-				<input type="number" name="salary" id="totalSalary" class="form-control">
+				<input type="number" name="salary" id="totalSalary" class="form-control" required>
 
 		   </div>
 		</div>
@@ -131,9 +131,9 @@
 
 			<div class="col-md-6">
 				<div class="form-group">
-					<h6>Email</h6>
+					<h6>Email<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="email" class="form-control">
+						<input type="text" name="email" class="form-control" required>
 		
 				   </div>
 				</div>
@@ -144,7 +144,7 @@
 		<div class="form-group">
 			<h6>Employe Type<span class="text-danger">*</span></h6>
 			<div class="controls">
-				<select name="employee_type" class="form-control"  >
+				<select name="employee_type" class="form-control" required  >
 					<option value="" selected="" disabled="">Select Option</option>		
 					<option value="Permanent">Permanent</option>						
 					<option value="Part Time">Part Time</option>	
@@ -164,7 +164,7 @@
 				<div class="form-group">
 					<h6>Address<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="address" class="form-control">
+						<input type="text" name="address" class="form-control" required>
 			
 					</div>
 				</div>
@@ -175,7 +175,7 @@
 				<div class="form-group">
 					<h6>City<span class="text-danger">*</span></h6>
 					<div class="controls">
-						<input type="text" name="city" class="form-control">
+						<input type="text" name="city" class="form-control" required>
 			
 					</div>
 				</div>
@@ -191,7 +191,7 @@
 						<div class="form-group">
 							<h6>State<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="state" class="form-control">
+								<input type="text" name="state" class="form-control" required>
 					
 							</div>
 						</div>
@@ -202,7 +202,7 @@
 						<div class="form-group">
 							<h6>ZIP<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<input type="text" name="zip" class="form-control">
+								<input type="text" name="zip" class="form-control" required>
 					
 							</div>
 						</div>
@@ -220,9 +220,10 @@
 						<div class="form-group">
 							<h6>Country<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<select name="country" class="form-control"  >
+								<select name="country" class="form-control" required  >
 									<option value="" selected="" disabled="">Select Option</option>		
 									<option value="Bangladesh">Bangladesh</option>						
+									<option value="USA">United States</option>						
 								</select>
 							
 							 </div>
