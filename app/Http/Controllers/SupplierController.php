@@ -16,24 +16,13 @@ class SupplierController extends Controller
 
     public function SupplierStore(Request $request){
 
-    	$request->validate([
-    		'supplier_name' => 'required',
-    		// 'address' => 'required',
-            // 'mobile' => 'required',
-            // 'email_address' => 'required',
-    	],[
-    		'supplier_name.required' => 'Please Enter Supplier Name',
-            // 'address.required' => 'Please Enter Address',
-            // 'mobile.required' => 'Please Enter Mobile Number',
-            // 'email_address.required' => 'Please Email Address',
-    	]);
-
 	    Supplier::insert([
-		'supplier_name' => $request->supplier_name,
-		'address' => $request->address,
-        'mobile' => $request->mobile,
-        'email_address' => $request->email_address,
-        'phone' => $request->phone,
+		'vendor_name' => $request->vendor_name,
+		'vendor_s_name' => $request->vendor_s_name,
+        'price' => $request->price,
+        'email' => $request->email,
+        'contact' => $request->contact,
+        'address' => $request->address,
         'city' => $request->city,
         'state' => $request->state,
         'zip' => $request->zip,
@@ -43,7 +32,7 @@ class SupplierController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Supplier Inserted Successfully',
+			'message' => 'Vendor Inserted Successfully',
 			'alert-type' => 'success'
 		);
 
@@ -60,5 +49,35 @@ class SupplierController extends Controller
 			return view('admin.Backend.Supplier.supplier_edit',compact('supplier'));
 		}
 	
+
+		public function SupplierUpdate(Request $request){
+			
+			$id = $request->id;
+		
+			Supplier::findOrFail($id)->update([
+				'vendor_name' => $request->vendor_name,
+				'vendor_s_name' => $request->vendor_s_name,
+        		'price' => $request->price,
+        		'email' => $request->email,
+        		'contact' => $request->contact,
+        		'address' => $request->address,
+        		'city' => $request->city,
+        		'state' => $request->state,
+        		'zip' => $request->zip,
+        		'country' => $request->counntry,
+				'updated_at' => Carbon::now(), 
+		
+				]);
+		
+				$notification = array(
+					'message' => 'Vendor Updated Successfully',
+					'alert-type' => 'info'
+				);
+		
+				return redirect()->route('supplier.manage')->with($notification);
+		
+				 // end else 
+				
+			} // end method 
 
 }

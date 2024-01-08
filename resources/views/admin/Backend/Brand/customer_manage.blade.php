@@ -16,7 +16,7 @@
 									<thead>
 										<tr class="align-middle text-center">
 										
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address </th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Personal Phone</th>
@@ -28,7 +28,7 @@
             
  @foreach($customers as $item)
  <tr class="align-middle text-center text-sm">
-  <td><a href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
+  <td class="text-start"><a href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
   <td>{{ $item->address }}</td>
   <td>{{ $item->email }}</td>
   <td>{{ $item->personal_phone }}</td>

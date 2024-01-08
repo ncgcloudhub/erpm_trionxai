@@ -408,6 +408,8 @@ Route::prefix('customer')->group(function(){
 
     // Admin Products All Routes 
 
+    
+
 Route::prefix('project')->group(function(){
 
     Route::get('/', [ProjectController::class, 'AddProject'])->name('project.view');
@@ -435,6 +437,10 @@ Route::prefix('project')->group(function(){
     Route::post('/task/update', [ProjectController::class, 'ProjectUpdateTask'])->name('project.update.task');
 
     // Route::get('/delete/{id}', [ProjectController::class, 'ProjectDelete'])->name('project.delete');
+
+    Route::get('/deletes/{id}', [ProjectController::class, 'ProjectsDelete'])->name('projects.delete');
+
+    Route::get('/task/delete/{id}', [ProjectController::class, 'ProjectTaskDelete'])->name('projects.tasks.deletes');
 
 
     // Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
@@ -890,7 +896,7 @@ Route::prefix('project')->group(function(){
         
         Route::get('/edit/{id}', [SupplierController::class, 'SupplierEdit'])->name('supplier.edit');
         
-        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        Route::post('/update', [SupplierController::class, 'SupplierUpdate'])->name('supplier.update');
         
         // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
         

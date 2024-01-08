@@ -229,7 +229,31 @@ class ProjectController extends Controller
 			return redirect()->back()->with($notification);
 	}
 
+	public function ProjectsDelete($id){
+		
+		Category::findOrFail($id)->delete();
+
+		$notification = array(
+			'message' => 'Project Delectd Successfully',
+			'alert-type' => 'info'
+		);
+
+		return redirect()->back()->with($notification);
+
+	} // end method
 
 
+	public function ProjectTaskDelete($id){
+		
+		Product::findOrFail($id)->delete();
+
+		$notification = array(
+			'message' => 'Project Task Delectd Successfully',
+			'alert-type' => 'info'
+		);
+
+		return redirect()->back()->with($notification);
+
+	} // end method
 
 }

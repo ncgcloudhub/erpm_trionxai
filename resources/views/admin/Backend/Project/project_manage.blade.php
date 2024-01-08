@@ -52,7 +52,7 @@
 			 
 			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 
-			 {{-- <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('project.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Project')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a> --}}
+			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('projects.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Course')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
 
 					</td>
 					

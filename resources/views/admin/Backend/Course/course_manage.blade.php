@@ -16,7 +16,7 @@
                                       <thead>
                                           <tr class="align-middle text-center">
                                           
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code </th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fees</th>
@@ -30,7 +30,7 @@
               
    @foreach($courses as $item)
    <tr class="align-middle text-center text-sm">
-    <td>{{ $item->course_name }}</td>
+    <td class="text-start"><a href="{{ route('course.view',$item->id) }}">{{ $item->course_name }}</a></td>
     <td>{{ $item->code }}</td>
     <td>{{ $item->type }}</td>
     <td>{{ $item->fees }}</td>

@@ -93,4 +93,21 @@ class CourseController extends Controller
 			 // end else 
 			
 		} // end method 
+
+
+		public function CourseDelete($id){
+			$course = Course::findOrFail($id);
+			
+			Course::findOrFail($id)->delete();
+	
+			$notification = array(
+				'message' => 'Course Delectd Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->back()->with($notification);
+	
+		} // end method
+
+
 }

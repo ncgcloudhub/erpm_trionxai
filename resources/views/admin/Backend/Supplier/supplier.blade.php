@@ -20,50 +20,44 @@
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Name<span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text"  name="course_name" class="form-control" required > 
+<input type="text"  name="vendor_name" class="form-control" required > 
 
 </div>
 </div>
 
 
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Code<span class="text-danger">*</span></label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Service Name<span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text"  name="code" class="form-control" required > 
+<input type="text"  name="vendor_s_name" class="form-control" required > 
 
 </div>
 </div>
 
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Description</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Price<span class="text-danger">*</span></label>
 	<div class="controls">
-		<textarea name="description" class="form-control"  id="tinymceExample" rows="10"></textarea>	
+		<input type="text"  name="price" class="form-control" required > 
 	</div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Type<span class="text-danger">*</span></label>
+    <label class="text-uppercase text-dark text-xs font-weight-bold">Email <span class="text-danger">*</span></label>
+    <div class="controls">
+        <input type="email" name="email" class="form-control" required>
+    </div>
+</div>
+
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Contact<span class="text-danger">*</span> </label>
 <div class="controls">
-<input type="text"  name="type" class="form-control" required > 
+<input type="text"  name="contact" class="form-control" pattern="\d*" title="Please enter only numeric values" > 
 </div>
 </div>
 
-	
-<div class="form-group">
-	<label class="text-uppercase text-dark text-xs font-weight-bold">Course Fees <span class="text-danger">*</span></label>
-	<div class="controls">
-	  <input type="text" name="fees" class="form-control" required>
-	</div>
-  </div>
-  
 
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Discounted Fees </label>
-<div class="controls">
-	<input type="text"  name="discounted_fees" class="form-control" > 
-</div>
-</div>
 
 </div>
 {{-- end column --}}
@@ -71,50 +65,50 @@
 <div class="col">
 
 
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Difficulty <span class="text-danger">*</span></label>
-<div class="controls">
-<input type="text" name="difficulty" class="form-control" required >
-
-</div>
-</div>
-
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Duration<span class="text-danger">*</span></label>
-<div class="controls">
-<input type="text" name="duration" class="form-control" required >
-
-</div>
-</div>
-
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Prerequisites </label>
-<div class="controls">
-<input type="text" name="prerequisites" class="form-control"  >
-
-</div>
-</div>
-
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Learning Objectives/Outcomes </label>
-<div class="controls">
-<input type="text" name="objectives" class="form-control"  >
-
-</div>
-</div>
-
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Additional Notes/Comments </label>
-<div class="controls">
-<input type="text" name="comments" class="form-control"  >
-
-</div>
-</div>
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="address" class="form-control" required>
+	
+	</div>
+	</div>
+	
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">City <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="city" class="form-control" required>
+	
+	</div>
+	</div>
+	
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">State <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="state" class="form-control" required>
+	
+	</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="text-uppercase text-dark text-xs font-weight-bold">Zip <span class="text-danger">*</span></label>
+		<div class="controls">
+			<input type="text" name="zip" class="form-control" pattern="\d{5}" title="Enter a valid 5-digit zip code" required>
+		</div>
+	</div>
+	
+	
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="country" class="form-control" required>
+	
+	</div>
+	</div>
 
 
 
 {{-- <div class="text-xs-right"> --}}
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Course">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Vendor">					 
 	{{-- </div> --}}
 
 
