@@ -28,7 +28,7 @@
               
    @foreach($purchase as $item)
    <tr class="align-middle text-center text-sm">
-    <td class="text-start">{{ $item->supplier->vendor_name }}</td>
+    <td class="text-start"><a href="{{ route('purchase.view',$item->id) }}">{{ $item->supplier->vendor_name }}</a></td>
     <td>{{ $item->supplier->vendor_s_name }}</td>
     <td>{{ $item->purchase_date }}</td>
     <td>{{ $item->expiration_date }}</td>
