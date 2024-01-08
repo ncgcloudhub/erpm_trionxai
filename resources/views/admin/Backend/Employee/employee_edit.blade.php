@@ -116,7 +116,7 @@
 
 	<div class="col-md-6">
 		<div class="form-group">
-			<h6>Total Salary</h6>
+			<h6>Total Salary<span class="text-danger">*</span></h6>
 			<div class="controls">
 				<input type="number" value="{{$employee->salary}}" name="salary" id="totalSalary" class="form-control" required>
 
@@ -133,7 +133,7 @@
 
 			<div class="col-md-6">
 				<div class="form-group">
-					<h6>Email</h6>
+					<h6>Email<span class="text-danger">*</span></h6>
 					<div class="controls">
 						<input type="text" value="{{$employee->email}}" name="email" class="form-control" required>
 		
