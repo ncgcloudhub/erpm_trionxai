@@ -84,7 +84,7 @@
 						<h6>Assign To<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
-								<option value="{{$project->assign_to}}" selected="">{{$project->user->name}}</option>
+								<option value="{{$project->assign_to}}" selected="">{{$project->admin->name}}</option>
 								@foreach($assignedby as $item)
 					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach

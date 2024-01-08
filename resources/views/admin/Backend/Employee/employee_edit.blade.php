@@ -105,7 +105,7 @@
 			<h6>Rate Type<span class="text-danger">*</span></h6>
 			<div class="controls">
 				<select name="rate_type" class="form-control"  >
-					<option value="{{$employee->rate_type}}" selected="" >{{$employee->rate_type}}</option>		
+					<option value="{{$employee->r_type}}" selected="" >{{$employee->r_type}}</option>		
 					<option value="Hourly">Hourly</option>						
 					<option value="Salary">Salary</option>	
 				</select>
