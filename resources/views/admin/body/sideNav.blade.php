@@ -1,8 +1,10 @@
 @php
   $prefix = Request::route()->getPrefix();
   $route = Route::current()->getName();
+  $data = \App\Models\SiteSetting::first();
  
 @endphp
+
 
 @php
 $category = (auth()->guard('admin')->user()->category == 1);
@@ -25,9 +27,9 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href="{{ url('admin/dashboard') }}" target="_blank">
-      <img src="{{ asset('assets/img/favicon1.png') }}" class="navbar-brand-img h-100" alt="main_logo">
+      <img src="{{ asset($data->logo) }}" class="navbar-brand-img h-100" alt="main_logo">
 
-      <span class="ms-1 font-weight-bold">TrionxAI ERP</span>
+      <span class="ms-1 font-weight-bold">{{$data->title}}</span>
     </a>
   </div>
   <hr class="horizontal dark mt-0">

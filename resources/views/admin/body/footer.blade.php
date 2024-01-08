@@ -1,3 +1,6 @@
+@php
+    $data = \App\Models\SiteSetting::first();
+@endphp
 <footer class="footer pt-3  ">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-lg-between">
@@ -6,14 +9,13 @@
           © <script>
             document.write(new Date().getFullYear())
           </script>,
-         Powered <i class="fa fa-heart"></i> by
-          <a href="https://trionxai.com/" class="font-weight-bold" target="_blank">TrionxAI</a>
+          <a href="https://trionxai.com/" class="font-weight-bold" target="_blank">{{$data->footer}}</a>
         </div>
       </div>
       <div class="col-lg-6">
         <ul class="nav nav-footer justify-content-center justify-content-lg-end">
           <li class="nav-item">
-            <a href="https://trionxai.com/" class="nav-link text-muted" target="_blank">TrionxAI</a>
+            <a href="{{$data->link}}" class="nav-link text-muted" target="_blank">TrionxAI</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link text-muted" target="_blank">About Us</a>

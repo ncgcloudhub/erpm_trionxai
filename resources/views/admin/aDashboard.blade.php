@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
+@php
+    $data = \App\Models\SiteSetting::first();
+@endphp
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +12,9 @@
     <meta name="author" content="">
    
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('../assets/img/apple-icon.png') }}">
-    <link rel="icon"  href="{{ asset('../assets/img/favicon1.png') }}">
+    <link rel="icon"  href="{{ asset($data->favicon) }}">
     <title>
-      TrionxAi ERP
+      {{$data->title}}
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">

@@ -370,8 +370,11 @@ Route::prefix('customer')->group(function(){
     Route::post('/notice/add', [NoticeController::class, 'NoticeAdd'])->name('notice.add');
 
     Route::get('/site/settings', [NoticeController::class, 'SiteView'])->name('site.view');
-    //Notice Add
+    
+    //Site Settting
     Route::post('/site/add', [NoticeController::class, 'SiteAdd'])->name('site.add');
+
+    Route::post('/site/store', [NoticeController::class, 'SiteStore'])->name('site.store');
 
 
     Route::prefix('schedule')->group(function(){

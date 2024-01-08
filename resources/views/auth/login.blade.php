@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@php
+    $data = \App\Models\SiteSetting::first();
+@endphp
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon1.jpg">
+  <link rel="icon" type="image/png" href="{{$data->favicon}}">
   <title>
-   STATA POS
+   {{$data->title}}
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -30,7 +33,7 @@
         <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
           <div class="container-fluid pe-0">
             <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="#">
-              STATA POS DYAZ
+              {{$data->title}} POS
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon mt-2">
@@ -99,7 +102,7 @@
             </div>
             <div class="col-md-6">
               <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved14.jpg')"></div>
+                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('{{$data->login_img}}')"></div>
               </div>
             </div>
           </div>
@@ -154,7 +157,7 @@
           <p class="mb-0 text-secondary">
             Copyright © <script>
               document.write(new Date().getFullYear())
-            </script> AARSL || Proudly Powered By <a href="https://statait.com/">STATA IT LIMITED</a>
+            </script>{{$data->title}} || Proudly Powered By <a href="{{$data->link}}">{{$data->title}}</a>
           </p>
         </div>
       </div>

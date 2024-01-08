@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Notice;
 use App\Models\SiteSetting;
 use Illuminate\Support\Carbon;
+use Intervention\Image\Facades\Image as Image;
 
 class NoticeController extends Controller
 {
@@ -56,4 +57,64 @@ class NoticeController extends Controller
     	return view('admin.Backend.Site.siteSetting',compact('site'));
 
     } // end method 
+
+	public function SiteStore(Request $request){
+
+		SiteSetting::findOrFail(1)->update([
+			'title' => $request->title,	  
+			'footer' => $request->footer,
+			'link' => $request->link,
+			'updated_at' => Carbon::now(),   
+	  ]);
+		
+		if ($request->file('logo')) {
+
+			$image = $request->file('logo');
+			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+			Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+			$save_url = 'upload/products/'.$name_gen;
+
+			SiteSetting::findOrFail(1)->update([
+				'logo' => $save_url,
+				'updated_at' => Carbon::now(),   
+		  ]);
+
+		}
+
+		if ($request->file('favicon')) {
+
+			$image = $request->file('favicon');
+			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+			Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+			$save_url = 'upload/products/'.$name_gen;
+
+			SiteSetting::findOrFail(1)->update([
+				'favicon' => $save_url,
+				'updated_at' => Carbon::now(),   
+		  ]);
+
+		}
+
+		if ($request->file('login_img')) {
+
+			$image = $request->file('login_img');
+			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+			Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
+			$save_url = 'upload/products/'.$name_gen;
+
+			SiteSetting::findOrFail(1)->update([
+				'logo' => $save_url,
+				'updated_at' => Carbon::now(),   
+		  ]);
+
+		}
+	
+          $notification = array(
+			'message' => 'Site Settings Updated Successfully',
+			'alert-type' => 'success'
+		);
+
+		return redirect()->back()->with($notification);
+
+	} // end method 
 }

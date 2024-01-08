@@ -96,7 +96,7 @@ use Illuminate\Support\Facades\Auth;
 										<div class="table-responsive">
 					
 					
-					 <form method="post" action="{{ route('notice.add') }}">
+					 <form method="post" action="{{ route('site.store') }}" enctype="multipart/form-data">
 							@csrf
 					
 						 <div class="form-group">
@@ -122,7 +122,7 @@ use Illuminate\Support\Facades\Auth;
 						 <div class="form-group">
 							<h6>Title</h6>
 							<div class="controls">
-						 <input type="text"  name="title" class="form-control" >
+						 <input type="text"  name="title" value="{{$site->title}}" class="form-control" >
 						
 						</div>
 						</div>
@@ -130,7 +130,7 @@ use Illuminate\Support\Facades\Auth;
 						 <div class="form-group">
 							<h6>Link</h6>
 							<div class="controls">
-						 <input type="text"  name="link" class="form-control" >
+						 <input type="text"  value="{{$site->link}}" name="link" class="form-control" >
 						
 						</div>
 						</div>
@@ -139,7 +139,7 @@ use Illuminate\Support\Facades\Auth;
 						<div class="form-group">
 							<h6>Footer</h6>
 							<div class="controls">
-						 <input type="text"  name="footer" class="form-control" >
+						 <input type="text"  value="{{$site->footer}}" name="footer" class="form-control" >
 						
 						</div>
 						</div>
