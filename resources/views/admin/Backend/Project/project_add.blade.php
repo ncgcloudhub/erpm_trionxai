@@ -26,7 +26,7 @@
 							<div class="form-group">
 								<h6>Description<span class="text-danger">*</span></h6>
 								<div class="controls">
-									<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10" required></textarea>
+									<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 								</div>
 							</div>
 							
@@ -95,23 +95,7 @@
 						 </div>
 					</div>
 
-						{{-- <div class="form-group">
-							<h6>Bug<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="bug" class="form-control">
 					
-						   </div>
-						</div>
-
-						
-						<div class="form-group">
-							<h6>Issue<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="issue" class="form-control" required="">
-					
-						   </div>
-						</div> --}}
-
 						<div class="form-group">
 							<h6>Hyperlinks</h6>
 							<div class="controls">
@@ -136,15 +120,7 @@
 								 </div>
 
 
-						
-						{{-- <div class="form-group">
-							<h6>Image<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="file" name="product_img" class="form-control" >
 					
-						   </div>
-						</div> --}}
-						
 						<div class="text-xs-right">
 							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Project">
 					 </div>

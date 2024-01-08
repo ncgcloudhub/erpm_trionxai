@@ -429,7 +429,7 @@ Route::prefix('project')->group(function(){
 
     Route::get('/task/manage', [ProjectController::class, 'ManageTask'])->name('project.manage.task');
    
-    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.task');
+    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.tasks');
 
     Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');    
 
