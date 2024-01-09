@@ -21,7 +21,7 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Total Customer
+					Total Projects
 				  </p>
 				  @if ($customerssum)
 				  <h5
@@ -30,7 +30,7 @@
 				>
 				{{$customerssum}}
 				  <span class="text-success text-sm font-weight-bolder"
-					>Customers</span
+					>Projects</span
 				  >
 				</h5>
 				  @else
@@ -71,7 +71,7 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Total Product
+					Total Project Task
 				  </p>
 				  <h5
 					style="font-size: 36px"
@@ -79,7 +79,7 @@
 				  >
 					{{$productssum}}
 					<span class="text-success text-sm font-weight-bolder"
-					  >Products</span
+					  >Tasks</span
 					>
 				  </h5>
 				</div>
@@ -371,10 +371,11 @@
 		{{-- TEST --}}
 
 		<div class="row">
-			<div class="col-xl-6 col-sm-6 mb-xl-0 mb-6">
+
+		<div class="col-lg-6">
 			<div class="card">
 				<div class="card-body pt-2">
-					<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Top 4 Sellers of {{ now()->format('F Y') }}</span>
+					<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Project Tasks</span>
 				</div>
 				<div class="table-responsive">
 				  <table class="table align-items-center mb-0">
@@ -382,44 +383,51 @@
 					<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total BDT</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No of Sale</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 					  </tr>
 					</thead>
 					<tbody>
 						@php
 							$sl = 1;
 						@endphp
-						@foreach($topUsers as $user)
-					  <tr>
-			
-							<td class="align-middle text-center">
-								<p class="text-xs font-weight-bold mb-0">{{$sl}}</p>
-							</td>
-							@php
-								$sl++; // Increment $sl
-							@endphp
-						<td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{ $users->where('id', $user->user_id)->first()->name }}</p>
-						</td>
-						<td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{ number_format($user->total_sales, 2) }}</p>
-						</td>
-						<td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{ $user->sale_count }}</p>
-						</td>
-					  </tr>
-					  @endforeach
+				@foreach($projecttasks as $item)
+				<tr>
+	  
+					  <td class="align-middle text-center">
+						  <p class="text-xs font-weight-bold mb-0">{{$sl}}</p>
+					  </td>
+					  @php
+						  $sl++; 
+					  @endphp
+				  
+				  <td class="align-middle text-center">
+					  <p class="text-xs font-weight-bold mb-0">{{ $item->task_name }}</p>
+				  </td>
+				  <td class="align-middle text-center">
+					  <p class="text-xs font-weight-bold mb-0">{{ $item->category->project_name }}</p>
+				  </td>
+				  <td class="align-middle text-center">
+					  <p class="text-xs font-weight-bold mb-0">{{ $item->admin->name }}</p>
+				  </td>
+				</tr>
+				@endforeach
+	
+	
 					</tbody>
 					</table>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-6 col-sm-6 mb-xl-0 mb-6">
+	
+	
+		  </div>
+
+
+		  <div class="col-xl-6 col-sm-6 mb-xl-0 mb-6">
 			<div class="card">
 				<div class="card-body pt-2">
-					<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Trending Top 4 Products of {{ now()->format('F Y') }}</span>
+					<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Projects</span>
 				</div>
 				<div class="table-responsive">
 				  <table class="table align-items-center mb-0">
@@ -427,15 +435,16 @@
 					<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No of Product Sold</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 					  </tr>
 					</thead>
 					<tbody>
 						@php
 							$sl = 1;
 						@endphp
-						{{-- @foreach($topProducts as $user)
+						@foreach($topProducts as $item)
 					  <tr>
 			
 							<td class="align-middle text-center">
@@ -446,41 +455,25 @@
 							@endphp
 						
 						<td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{ $user->product_name }}</p>
+							<p class="text-xs font-weight-bold mb-0">{{ $item->project_name }}</p>
 						</td>
 						<td class="align-middle text-center">
-							<p class="text-xs font-weight-bold mb-0">{{ $user->sale_count }}</p>
+							<p class="text-xs font-weight-bold mb-0">{{ $item->priority }}</p>
+						</td>
+						<td class="align-middle text-center">
+							<p class="text-xs font-weight-bold mb-0">{{ $item->admin->name }}</p>
 						</td>
 					  </tr>
-					  @endforeach --}}
-
-
-{{-- TEST --}}
-{{-- @foreach ($topProductsByCategoryGrouped as $categoryName => $categoryProducts)
-    <h2>Category: {{ $categoryName }}</h2>
-    <ul>
-        @foreach ($categoryProducts->take(4) as $product)
-            <li>Product: {{ $product->product_name }}, Sales Count: {{ $product->sale_count }}</li>
-        @endforeach
-    </ul>
-@endforeach --}}
-
-{{-- TEST END --}}
-
-
-
+					  @endforeach
 
 					</tbody>
 					</table>
 				</div>
 			</div>
-		</div>
-	</div>
-	
-		{{-- END TEST --}}
-	<div class="row mt-4">
-	  <div class="col-lg-6 mb-lg-0 mb-4">
-		<div class="card">
+
+			<br>
+
+				<div class="card">
 		  <div class="card-body p-3">
 			<div class="row">
 			  <div class="col-lg-6">
@@ -495,16 +488,7 @@
 						  <hr>
 					  @endforeach
   
-					{{-- <a
-					  class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto"
-					  href="javascript:;"
-					>
-					  Read More
-					  <i
-						class="fas fa-arrow-right text-sm ms-1"
-						aria-hidden="true"
-					  ></i>
-					</a> --}}
+				
 				  </div>
 			  </div>
 			  <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
@@ -528,6 +512,48 @@
 			</div>
 		  </div>
 		</div>
+
+			<br>
+			@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+	
+			  <div class="card">
+				<div class="card-header pb-0">
+				  <h6>Today's Overview</h6>
+				  
+				</div>
+	  
+				<table style="width: 90%; margin-left:5%" class="table table-bordered">
+				  <thead>
+					<tr>
+					  <th scope="col">Total Sale</th>
+					  <td scope="col">TK <b>Total Sale</b></td>
+					</tr>
+					<tr>
+					  <th scope="col">Total Purchase</th>
+					  <td scope="col">TK <b>Total Purchase</b></td>
+					</tr>
+					<tr>
+					  <th scope="col">Last Sale</th>
+					  <td scope="col">TK <b>Grand Total</b></td>
+					</tr>
+				  </thead>
+			  
+				</table>
+	  
+				
+			</div>
+			@endif
+
+			
+
+		</div>
+
+	</div>
+	
+		{{-- END TEST --}}
+	<div class="row mt-4">
+	  <div class="col-lg-6 mb-lg-0 mb-4">
+	
 		<br>
 		<div class="card">
 			<div class="card-header pb-0">
@@ -612,93 +638,7 @@
 	  </div>
   </div>
 	  </div>
-	  <div class="col-lg-6">
-		<div class="card">
-			<div class="card-body pt-2">
-				<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Category Wise Sold Product {{ now()->format('F Y') }}</span>
-			</div>
-			<div class="table-responsive">
-			  <table class="table align-items-center mb-0">
-		
-				<thead>
-				  <tr>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Of Products Sold</th>
-				  </tr>
-				</thead>
-				<tbody>
-					@php
-						$sl = 1;
-					@endphp
-			
-
-
-				</tbody>
-				</table>
-			</div>
-		</div>
-
-		<br>
-		@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
-
-		  <div class="card">
-			<div class="card-header pb-0">
-			  <h6>Today's Overview</h6>
-			  
-			</div>
-  
-			<table style="width: 90%; margin-left:5%" class="table table-bordered">
-			  <thead>
-				<tr>
-				  <th scope="col">Total Sale</th>
-				  <td scope="col">TK <b>Total Sale</b></td>
-				</tr>
-				<tr>
-				  <th scope="col">Total Purchase</th>
-				  <td scope="col">TK <b>Total Purchase</b></td>
-				</tr>
-				<tr>
-				  <th scope="col">Last Sale</th>
-				  <td scope="col">TK <b>Grand Total</b></td>
-				</tr>
-			  </thead>
-		  
-			</table>
-  
-			{{-- <div class="card-body p-3">
-			  <div class="timeline timeline-one-side">
-		  
-			  @foreach ($schedules as $schedule)
-				<div class="timeline-block mb-3">
-				  <span class="timeline-step">
-					 <i class="ni ni-bell-55 text-success text-gradient"></i>
-				  </span>
-				  <div class="timeline-content">
-					<h6 class="text-dark text-sm font-weight-bold mb-0">
-					{{ $schedule->customer->customer_name }}
-					</h6>
-					<p
-					  class="text-secondary font-weight-bold text-xs mt-1 mb-0"
-					>
-					  {{ $schedule->time }}
-					</p>
-				  </div>
-				</div>
-			  @endforeach
-			  
-		  </div>
-			</div> --}}
-
-		</div>
-		@endif
-
-
-
-
-
-	  </div>
+	 
 	  
 	</div>
 

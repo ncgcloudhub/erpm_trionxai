@@ -129,7 +129,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
 
         // $dues = Customer::where('balance','>', 1)->get();
         // $customers = Customer::orderBy('customer_name','ASC')->get();
-        $customerssum = Customer::count();
+        $customerssum = Category::count();
         // $products = Product::orderBy('product_name','ASC')->get();
         $productssum = Product::count();
         $banks = Bank::where('balance','>', 1)->get();
@@ -160,17 +160,9 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
             $userIdArray = $topUsers->pluck('user_id')->toArray();
             $users = DB::table('admins')->whereIn('id', $userIdArray)->select('id', 'name')->get();
 
-            // $topProducts = DB::table('sales_items')
-            // ->select('products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
-            // ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
-            // ->join('products', 'sales_items.product_id', '=', 'products.id')
-            // ->whereYear('sales.created_at', '=', now()->year)
-            // ->whereMonth('sales.created_at', '=', now()->month)
-            // ->groupBy('products.product_name')
-            // ->orderBy('sale_count', 'desc')
-            // ->take(4)
-            // ->get();
-            // jhadsadskhasd
+            $topProducts = Category::orderBy('id','DESC')->get();
+            $projecttasks = Product::orderBy('id','DESC')->get();
+           
 
     //         $topProductsByCategory = DB::table('products')
     // ->select('categories.category_name', 'products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
@@ -187,7 +179,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','topUsers','users', 'servicetotal'));
+        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal'));
     })->name('admin.dashboard');
 });
 

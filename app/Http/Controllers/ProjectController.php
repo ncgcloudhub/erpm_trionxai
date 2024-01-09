@@ -211,6 +211,7 @@ class ProjectController extends Controller
       	'issue' => $request->issue,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
+		'status' => $request->status,
 		'updated_at' => Carbon::now(),   
 
 			]);

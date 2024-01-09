@@ -157,6 +157,19 @@
 							 </div>
 								 </div>
 
+						<div class="form-group">
+							<h6>Status<span class="text-danger">*</span></h6>
+								<div class="controls">
+										<select name="status" class="form-control" required="" >
+											<option value="{{$task->status}}" selected="">{{$task->status}}</option>
+											<option value="Not Started">Not Started</option>
+											<option value="On Progress" >On Progress</option>
+											<option value="Done">Done</option>
+										</select>
+										
+								</div>
+						</div>
+
 
 						
 						{{-- <div class="form-group">

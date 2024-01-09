@@ -41,10 +41,6 @@
 			   </div>
 			</div>
 
-
-			
-
-
 				</div>
 
 				{{-- 2nd Col --}}
@@ -118,23 +114,7 @@
 				
 						   </div>
 						</div>
-{{-- 
-						<div class="form-group">
-							<h6>Bug</h6>
-							<div class="controls">
-								<input type="text" name="bug" class="form-control">
-					
-						   </div>
-						</div>
 
-						
-						<div class="form-group">
-							<h6>Issue</h6>
-							<div class="controls">
-								<input type="text" name="issue" class="form-control">
-					
-						   </div>
-						</div> --}}
 
 						<div class="form-group">
 							<h6>Hyperlinks</h6>
@@ -158,26 +138,17 @@
 								
 							 </div>
 								 </div>
-
-
 						
-						{{-- <div class="form-group">
-							<h6>Image<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="file" name="product_img" class="form-control" >
-					
-						   </div>
-						</div> --}}
-						
+
+								 <div class="text-xs-right">
+									<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
+							 </div>
+
 						</div>
 			
 			   </div> <!-- end row  -->
-			   
-						<div class="text-xs-right">
-	  						 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">
-						</div>
-				
-						   </form>
+			   				
+					</form>
 			  </div>
 			</div>
 		  </div>
@@ -186,9 +157,6 @@
 	  </div>
 
 	  @include('admin.body.footer')
-
-
-	 
 
 
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

@@ -244,6 +244,19 @@
 						
 					</div> <!-- end col md 4 -->
 
+					@if ($employee->consent == 1)
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="1" checked id="fcustomCheck1" name="status">
+						<label class="custom-control-label" for="customCheck1">Consent to reveive SMS</label>
+					  </div>
+					@else
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="1" id="fcustomCheck1" name="status">
+						<label class="custom-control-label" for="customCheck1">Consent to reveive SMS</label>
+					  </div>
+						
+					@endif
+
 
 				</div> <!-- end last row  -->
 				 

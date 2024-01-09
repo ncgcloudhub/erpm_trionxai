@@ -241,7 +241,11 @@
 						</div>
 						
 					</div> <!-- end col md 4 -->
-
+					
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="1" id="fcustomCheck1" name="status">
+						<label class="custom-control-label" for="customCheck1">Consent to reveive SMS</label>
+					  </div>
 
 				</div> <!-- end last row  -->
 				 

@@ -158,6 +158,7 @@
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bug</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Issue</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 						<th class="text-secondary opacity-7"></th>
 					  </tr>
 					</thead>
@@ -190,6 +191,20 @@
 						<td class="align-middle text-center text-sm">
 							<span class="badge badge-sm bg-gradient-success">{{$task->priority}}</span>
 						  </td>
+						  @if ($task->status == 'Done')
+						  <td class="align-middle text-center text-sm">
+							<span class="badge badge-sm bg-gradient-success">{{$task->status}}</span>
+						  </td>
+						  @elseif($task->status == 'On Progress')
+						  <td class="align-middle text-center text-sm">
+							<span class="badge badge-sm bg-gradient-info">{{$task->status}}</span>
+						  </td>
+						  @else
+						  <td class="align-middle text-center text-sm">
+							<span class="badge badge-sm bg-gradient-danger">{{$task->status}}</span>
+						  </td>
+						  @endif
+						
 						{{-- <td class="align-middle">
 						  <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
 							Edit

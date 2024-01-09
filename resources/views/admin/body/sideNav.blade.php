@@ -219,7 +219,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <div class="collapse hide" id="project" style="">
 <ul class="nav ms-4 ps-3">
 <li class="nav-item ">
-@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
+
 <a class="nav-link {{ ($route == 'project.view')? 'active':'' }}" href="{{ route('project.view') }}">
   <span class="sidenav-mini-icon"></span>
   <span class="sidenav-normal">Project Add</span>
@@ -232,7 +232,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Add Task</span>
 </a>
-@endif
+
 <a class="nav-link {{ ($route == 'project.manage.task')? 'active':'' }}" href="{{ route('project.manage.task') }}">
 <span class="sidenav-mini-icon"></span>
 <span class="sidenav-normal">Manage Task</span>

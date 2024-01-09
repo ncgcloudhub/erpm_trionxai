@@ -9,7 +9,7 @@
 		<div class="card">
 		  <div class="card-body p-3">
 			<div class="row">
-	 <form method="post" action="{{ route('admin.user.store') }}" enctype="multipart/form-data" >
+	 <form method="post" action="{{ route('admin.user.store') }}" enctype="multipart/form-data" onsubmit="return validatePassword();" >
 	 	@csrf
 					  <div class="row">
 						<div class="col-12">
@@ -57,11 +57,12 @@
 
 				<div class="col-md-6">
 
-	  <div class="form-group">
-		<h5>Admin Password  <span class="text-danger">*</span></h5>
-		<div class="controls">
-	 <input type="password" name="password" class="form-control" > </div>
-	</div>
+					<div class="form-group">
+						<h5>Admin Password <span class="text-danger">*</span></h5>
+						<div class="controls">
+						  <input type="password" name="password" id="password" class="form-control">
+						</div>
+					  </div>
 
 				</div> <!-- end cold md 6 --> 
 
@@ -216,5 +217,24 @@
 	});
 </script>
 
+<script>
+    function validatePassword() {
+      var passwordInput = document.getElementById('password');
+      var password = passwordInput.value;
+
+      // Regular expressions to check for the presence of alphabetic, numeric, and special characters
+      var hasAlphabetic = /[a-zA-Z]/.test(password);
+      var hasNumeric = /\d/.test(password);
+      var hasSpecialChar = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password);
+
+      // Check if the password meets the criteria
+      if (password.length >= 12 && hasAlphabetic && hasNumeric && hasSpecialChar) {
+        return true; // Password is valid
+      } else {
+        alert("Password must be 12 characters long and contain at least one alphabetic, one numeric, and one special character.");
+        return false; // Password is invalid
+      }
+    }
+  </script>
 
 @endsection 

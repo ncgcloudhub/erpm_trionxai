@@ -22,6 +22,14 @@ class EmployeeController extends Controller
     
 	public function StoreEmployee(Request $request){
 
+
+		$status=0;
+		$checkstatus=$request->status;
+		if($checkstatus=='1')
+			{
+				$status=1;
+			}
+
 		if ($request->file('image')) {
 
 			$image = $request->file('image');
@@ -47,6 +55,7 @@ class EmployeeController extends Controller
 				'state' =>  $request->state,
 				'zip' =>  $request->zip,
 				'country' => $request->country,
+				'consent' => $status,
 			  
 			  	'image' =>  $save_url,
 		  
@@ -73,7 +82,8 @@ class EmployeeController extends Controller
 				'state' =>  $request->state,
 				'zip' =>  $request->zip,
 				'country' => $request->country,
-				
+				'consent' => $status,
+
 				'created_at' => Carbon::now(),   
 	  
 			]);
@@ -115,6 +125,13 @@ class EmployeeController extends Controller
 
 	public function EmployeeUpdate (Request $request){
 		$id = $request->id;	
+
+		$status=0;
+		$checkstatus=$request->status;
+		if($checkstatus=='1')
+			{
+				$status=1;
+			}
 			
 			if($request->file('image')){
 
@@ -147,6 +164,7 @@ class EmployeeController extends Controller
 				'state' =>  $request->state,
 				'zip' =>  $request->zip,
 				'country' => $request->country,
+				'consent' => $status,
 				'updated_at' => Carbon::now(), 
 	
 			]);
