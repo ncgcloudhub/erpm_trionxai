@@ -54,7 +54,7 @@
 <div class="form-group">
 	<label class="text-uppercase text-dark text-xs font-weight-bold">Course Fees <span class="text-danger">*</span></label>
 	<div class="controls">
-	  <input type="text" value="{{$course->fees}}" name="fees" class="form-control" required>
+	  <input type="text" value="{{ '$' . $course->fees }}" name="fees" class="form-control" required>
 	</div>
   </div>
   
@@ -62,7 +62,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Discounted Fees </label>
 <div class="controls">
-	<input type="text" value="{{$course->discounted_fees}}" name="discounted_fees" class="form-control" > 
+	<input type="text" value="{{ '$' . $course->discounted_fees}}" name="discounted_fees" class="form-control" > 
 </div>
 </div>
 
