@@ -36,12 +36,11 @@
 
 
 <div class="form-group">
-	<label class="text-uppercase text-dark text-xs font-weight-bold">Price<span class="text-danger">*</span></label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Price<span class="text-danger">*</span></label>
 	<div class="controls">
-	  <input type="text" name="price" class="form-control" pattern="^\$?\d+(\.\d{1,2})?$" required>
+		<input type="text"  name="price" class="form-control" id="feesInput" required > 
 	</div>
-  </div>
-  
+</div>
 
 <div class="form-group">
     <label class="text-uppercase text-dark text-xs font-weight-bold">Email <span class="text-danger">*</span></label>
@@ -132,7 +131,22 @@
     @include('admin.body.footer')
   </div>
 
-  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Attach an event listener to the input field
+    $('#feesInput').on('input', function() {
+      // Get the current value of the input field
+      let currentValue = $(this).val();
+
+      // Remove any existing dollar signs
+      currentValue = currentValue.replace(/\$/g, '');
+
+      // Add a dollar sign at the beginning of the input value
+      $(this).val('$' + currentValue);
+    });
+  });
+</script>
 
 
 @endsection
