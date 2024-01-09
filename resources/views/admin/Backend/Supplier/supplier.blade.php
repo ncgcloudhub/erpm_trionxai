@@ -36,11 +36,12 @@
 
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Price<span class="text-danger">*</span></label>
+	<label class="text-uppercase text-dark text-xs font-weight-bold">Price<span class="text-danger">*</span></label>
 	<div class="controls">
-		<input type="text"  name="price" class="form-control" required > 
+	  <input type="text" name="price" class="form-control" pattern="^\$?\d+(\.\d{1,2})?$" required>
 	</div>
-</div>
+  </div>
+  
 
 <div class="form-group">
     <label class="text-uppercase text-dark text-xs font-weight-bold">Email <span class="text-danger">*</span></label>
