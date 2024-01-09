@@ -384,6 +384,7 @@
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 					  </tr>
@@ -405,6 +406,20 @@
 				  <td class="align-middle text-center">
 					  <p class="text-xs font-weight-bold mb-0">{{ $item->task_name }}</p>
 				  </td>
+				
+				  @if ($item->status == 'Done')
+				  <td class="align-middle text-center text-sm">
+					<span class="badge badge-sm bg-gradient-success">{{$item->status}}</span>
+				  </td>
+				  @elseif($item->status == 'On Progress')
+				  <td class="align-middle text-center text-sm">
+					<span class="badge badge-sm bg-gradient-info">{{$item->status}}</span>
+				  </td>
+				  @else
+				  <td class="align-middle text-center text-sm">
+					<span class="badge badge-sm bg-gradient-danger">{{$item->status}}</span>
+				  </td>
+				  @endif
 				  <td class="align-middle text-center">
 					  <p class="text-xs font-weight-bold mb-0">{{ $item->category->project_name }}</p>
 				  </td>
@@ -419,7 +434,92 @@
 					</table>
 				</div>
 			</div>
-	
+
+			<br>
+
+			<div class="card">
+				<div class="card-header pb-0">
+				  <div class="row">
+	  
+				<div class="card-body px-0 pb-2">
+				  <div class="table-responsive">
+					<table class="table align-items-center mb-0">
+					  <thead>
+						<tr>
+						  <th
+							class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+						  >
+							Invoice
+						  </th>
+						  <th
+							class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+						  >
+							Customer
+						  </th>
+						  <th
+							class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+						  >
+						  Total
+						  </th>
+	  
+						  <th
+							class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+						  >
+							Sold By
+						  </th>
+						  <th
+						  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
+						>
+						  Action
+						</th>
+						  
+						</tr>
+					  </thead>
+					  <tbody>
+	  
+						  @foreach ($last5Sales as $item)
+						<tr>
+						  <td>
+							<div class="d-flex px-2 py-1">
+							  
+							  <div
+								class="align-middle text-center text-sm"
+							  >
+								<h6 class="mb-0 text-lg">{{$item->invoice}}</h6>
+							  </div>
+							</div>
+						  </td>
+						  <td class="align-middle text-center text-sm">
+							<span class="text-lg font-weight-bold">
+							  {{$item->id}}
+							</span>
+						  </td>
+						  <td class="align-middle text-center text-sm">
+							<span class="text-lg font-weight-bold">
+							  {{$item->grand_total}}
+							</span>
+						  </td>
+	  
+						  <td class="align-middle text-center text-sm">
+							<span class="badge badge-sm bg-gradient-primary">
+							  {{$item->user->name}}
+							</span>
+						  </td>
+						  <td class="align-middle text-center text-sm">
+							  <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+							  <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a>
+						  </td>
+						</tr>
+					  </a>
+						@endforeach
+					  </tbody>
+					</table>
+				  </div>
+				</div>
+			  </div>
+		  </div>
+	  </div>
+			
 	
 		  </div>
 
@@ -551,96 +651,7 @@
 	</div>
 	
 		{{-- END TEST --}}
-	<div class="row mt-4">
-	  <div class="col-lg-6 mb-lg-0 mb-4">
-	
-		<br>
-		<div class="card">
-			<div class="card-header pb-0">
-			  <div class="row">
-  
-			<div class="card-body px-0 pb-2">
-			  <div class="table-responsive">
-				<table class="table align-items-center mb-0">
-				  <thead>
-					<tr>
-					  <th
-						class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					  >
-						Invoice
-					  </th>
-					  <th
-						class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					  >
-						Customer
-					  </th>
-					  <th
-						class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					  >
-					  Total
-					  </th>
-  
-					  <th
-						class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					  >
-						Sold By
-					  </th>
-					  <th
-					  class="text-center text-uppercase text-primary text-lg font-weight-bolder opacity-7"
-					>
-					  Action
-					</th>
-					  
-					</tr>
-				  </thead>
-				  <tbody>
-  
-					  @foreach ($last5Sales as $item)
-					<tr>
-					  <td>
-						<div class="d-flex px-2 py-1">
-						  
-						  <div
-							class="align-middle text-center text-sm"
-						  >
-							<h6 class="mb-0 text-lg">{{$item->invoice}}</h6>
-						  </div>
-						</div>
-					  </td>
-					  <td class="align-middle text-center text-sm">
-						<span class="text-lg font-weight-bold">
-						  {{$item->id}}
-						</span>
-					  </td>
-					  <td class="align-middle text-center text-sm">
-						<span class="text-lg font-weight-bold">
-						  {{$item->grand_total}}
-						</span>
-					  </td>
-  
-					  <td class="align-middle text-center text-sm">
-						<span class="badge badge-sm bg-gradient-primary">
-						  {{$item->user->name}}
-						</span>
-					  </td>
-					  <td class="align-middle text-center text-sm">
-						  <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
-						  <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a>
-					  </td>
-					</tr>
-				  </a>
-					@endforeach
-				  </tbody>
-				</table>
-			  </div>
-			</div>
-		  </div>
-	  </div>
-  </div>
-	  </div>
-	 
-	  
-	</div>
+
 
 	@include('admin.body.footer')
   </div>

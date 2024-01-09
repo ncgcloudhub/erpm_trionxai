@@ -53,17 +53,18 @@
 <div class="form-group">
 	<label class="text-uppercase text-dark text-xs font-weight-bold">Course Fees <span class="text-danger">*</span></label>
 	<div class="controls">
-	  <input type="text" name="fees" class="form-control" required>
+	  <input type="text" name="fees" class="form-control" id="feesInput" required>
 	</div>
   </div>
   
 
-<div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Course Discounted Fees </label>
-<div class="controls">
-	<input type="text"  name="discounted_fees" class="form-control" > 
-</div>
-</div>
+  <div class="form-group">
+	<label class="text-uppercase text-dark text-xs font-weight-bold">Course Discounted Fees </label>
+	<div class="controls">
+	  <input type="text" name="discounted_fees" class="form-control" id="discountedFeesInput">
+	</div>
+  </div>
+  
 
 </div>
 {{-- end column --}}
@@ -137,7 +138,42 @@
     @include('admin.body.footer')
   </div>
 
-  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Attach an event listener to the input field
+    $('#feesInput').on('input', function() {
+      // Get the current value of the input field
+      let currentValue = $(this).val();
+
+      // Remove any existing dollar signs
+      currentValue = currentValue.replace(/\$/g, '');
+
+      // Add a dollar sign at the beginning of the input value
+      $(this).val('$' + currentValue);
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+    // Attach an event listener to the discounted fees input field
+    $('#discountedFeesInput').on('input', function() {
+      // Get the current value of the input field
+      let currentValue = $(this).val();
+
+      // Remove any existing dollar signs
+      currentValue = currentValue.replace(/\$/g, '');
+
+      // Add a dollar sign at the beginning of the input value if it is not empty
+      if (currentValue.trim() !== '') {
+        $(this).val('$' + currentValue);
+      } else {
+        $(this).val('');
+      }
+    });
+  });
+</script>
 
 
 @endsection

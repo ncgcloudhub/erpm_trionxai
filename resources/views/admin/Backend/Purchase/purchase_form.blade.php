@@ -38,6 +38,12 @@
 							<div class="col"><input class="form-control mb-3" type="text" id="phone" name="phone"></div>
 							
 						</div>
+
+						<div class="row mb-3">
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Service Name</label></div>
+							<div class="col"><input class="form-control mb-3" type="text" id="service" name="service"></div>
+							
+						</div>
 	
 					
 				</div>
@@ -133,6 +139,7 @@
         // update the field with the response data
         $("#price").val(data.price);
 		$("#phone").val(data.contact);
+		$("#service").val(data.vendor_s_name);
 		console.log(data);
 		$('.js-example-basic-single').select2();
 
