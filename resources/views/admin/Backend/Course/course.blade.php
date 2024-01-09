@@ -138,7 +138,7 @@
     @include('admin.body.footer')
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
   $(document).ready(function() {
     // Attach an event listener to the input field
@@ -153,7 +153,7 @@
       $(this).val('$' + currentValue);
     });
   });
-</script>
+</script> --}}
 
 <script>
   $(document).ready(function() {
