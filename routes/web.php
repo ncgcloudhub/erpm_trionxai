@@ -298,24 +298,24 @@ Route::prefix('category')->group(function(){
 // Customer 
 
     
-Route::prefix('incometax/customer')->group(function(){
+// Route::prefix('customer')->group(function(){
     
-    Route::get('/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
+//     Route::get('/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
 
-    Route::get('/manage', [CustomerController::class, 'CustomerManage'])->name('customer.manage');
+//     Route::get('/manage', [CustomerController::class, 'CustomerManage'])->name('customer.manage');
 
-    Route::get('/view/{id}', [CustomerController::class, 'CustomerView'])->name('customer.view');
+//     Route::get('/view/{id}', [CustomerController::class, 'CustomerView'])->name('customer.view');
     
-    Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
+//     Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
     
-    Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+//     Route::get('/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
     
-    Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+//     Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
     
-    Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+//     Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
     
     
-    });
+//     });
 
 // Student
     Route::prefix('student')->group(function(){
@@ -500,6 +500,21 @@ Route::prefix('project')->group(function(){
         Route::get('/project/deletes/{id}', [IncomeTaxController::class, 'ProjectsDelete'])->name('taxprojects.delete');
     
         Route::get('/task/delete/{id}', [IncomeTaxController::class, 'ProjectTaskDelete'])->name('taxprojects.tasks.deletes');
+
+         
+    Route::get('/customer/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
+
+    Route::get('/customer/manage', [CustomerController::class, 'CustomerManage'])->name('customer.manage');
+
+    Route::get('/customer/view/{id}', [CustomerController::class, 'CustomerView'])->name('customer.view');
+    
+    Route::post('/customer/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
+    
+    Route::get('/customer/edit/{id}', [CustomerController::class, 'CustomerEdit'])->name('customer.edit');
+    
+    Route::post('/customer/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+    
+    Route::get('/customer/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
          
         });
 
