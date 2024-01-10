@@ -84,7 +84,6 @@
 					<h6 class="mb-0">Comment</h6>
 					<div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
 						<p class="mb-0">{!! strip_tags($project->comment) !!}</p>
-					
 					</div>
 				  </div>
 				</div>
