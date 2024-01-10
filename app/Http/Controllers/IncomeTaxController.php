@@ -63,7 +63,7 @@ class IncomeTaxController extends Controller
 		$assignto = Employee::latest()->get();
 		$project = TaxProject::findOrFail($id);
 
-        return view('admin.Backend.Project.project_edit',compact('categories','assignedby','assignto','project'));
+        return view('admin.Backend.Tax.taxproject_edit',compact('categories','assignedby','assignto','project'));
 	}
 
 	public function ProjectUpdate(Request $request){
@@ -102,7 +102,7 @@ class IncomeTaxController extends Controller
 		$assignto = Employee::latest()->get();
 		
 
-        return view('admin.Backend.Project.project_view_details',compact('categories','assignedby','assignto','project','tasks'));
+        return view('admin.Backend.Tax.taxproject_view_details',compact('categories','assignedby','assignto','project','tasks'));
 	}
 
     public function ManageProject(){
@@ -165,6 +165,7 @@ class IncomeTaxController extends Controller
     public function ManageTask(){
 
 		$products = TaxTaskProject::latest()->get();
+		
 		return view('admin.Backend.Tax.taxproject_task_manage',compact('products'));
 	}  // end method
 
@@ -173,10 +174,11 @@ class IncomeTaxController extends Controller
 		$categories = TaxProject::latest()->get();
 		$assignedby = Admin::latest()->get();
 		$assignto = Employee::latest()->get();
+		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
 		// dd($task->description);
 
-        return view('admin.Backend.Project.project_task_edit',compact('categories','assignedby','assignto','task'));
+        return view('admin.Backend.Tax.taxproject_task_edit',compact('categories','customers','assignedby','assignto','task'));
 	}
 
 	public function ViewProjectTask($id){		   
@@ -184,10 +186,11 @@ class IncomeTaxController extends Controller
 		$categories = TaxProject::latest()->get();
 		$assignedby = Admin::latest()->get();
 		$assignto = Employee::latest()->get();
+		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
 		// dd($task->description);
 
-        return view('admin.Backend.Project.project_task_view',compact('categories','assignedby','assignto','task'));
+        return view('admin.Backend.Tax.taxproject_task_view',compact('categories','customers','assignedby','assignto','task'));
 	}
 
 	public function ProjectUpdateTask(Request $request){

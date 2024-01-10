@@ -19,10 +19,10 @@
 							<div class="col-5">
 								<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
 								<option value="" selected="" disabled="">Select Customer</option>
-								@foreach($customers as $student)
-										 <option value="{{ $student->id }}">{{ $student->user_name }}</option>	
+								@foreach($customers as $customer)
+										 <option value="{{ $customer->id }}">{{ $customer->user_name }}</option>	
 								@endforeach
-								<!-- More options -->
+								
 								</select>
 							</div>
 							</div>
@@ -158,10 +158,10 @@
 									<option value="On Progress" >On Progress</option>
 									<option value="Done">Done</option>
 									<option value="minor">Minor</option>
-								</select>
-								
+								</select>								
 							 </div>
 						</div>
+
 
 						<div class="form-group">
 							<h6>Tax Year<span class="text-danger">*</span></h6>
@@ -173,12 +173,11 @@
 									<option value="TAX YEAR 2021">TAX YEAR 2021</option>
 									<option value="TAX YEAR 2022">TAX YEAR 2022</option>
 									<option value="TAX YEAR 2023">TAX YEAR 2023</option>
-									<option value="TAX YEAR 2024">TAX YEAR 2024</option>
-								
-								</select>
-								
+									<option value="TAX YEAR 2024">TAX YEAR 2024</option>								
+								</select>								
 							 </div>
 						</div>
+
 
 						<div class="form-group">
 							<h6>eSignature<span class="text-danger">*</span></h6>
@@ -191,10 +190,10 @@
 									<option value="PENDING">PENDING</option>
 									<option value="INPERSON SIG">INPERSON SIG</option>
 									<option value="minor">Minor</option>
-								</select>
-								
+								</select>								
 							 </div>
 						</div>
+
 
 						<div class="form-group">
 							<h6>EF Status<span class="text-danger">*</span></h6>
@@ -208,11 +207,11 @@
 									<option value="ESTIMATES">ESTIMATES</option>
 									<option value="NOT STARTED">NOT STARTED</option>
 									<option value="REJECTED">REJECTED</option>
-								</select>
-								
+								</select>								
 							 </div>
 						</div>
 						
+
 
 								 <div class="text-xs-right">
 									<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Product">

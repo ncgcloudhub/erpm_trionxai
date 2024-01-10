@@ -152,7 +152,7 @@
 				  <table class="table align-items-center mb-0">
 					<thead>
 					  <tr>
-						<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task Name</th>
+						<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer Name</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign/Completion Date</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assigned To</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bug</th>
@@ -169,7 +169,7 @@
 							<a href="{{ route('project.task.view',$task->id) }}">
 						  <div class="d-flex px-2 py-1">
 							<div class="d-flex flex-column justify-content-center">
-							  <h6 class="mb-0 text-sm">{{$task->task_name}}</h6>
+							  <h6 class="mb-0 text-sm">{{$task->customer->user_name}}</h6>
 							  <p class="text-xs text-secondary mb-0">{!! strip_tags(substr($task->comment, 0, 50)) !!}
 							</div>
 						  </div>

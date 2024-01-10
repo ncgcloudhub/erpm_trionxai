@@ -13,11 +13,30 @@
 				<div class="col">
 					
 						<input type="hidden" name="id" value="{{$task->id}}">
-							 <div class="form-group">
-								<h6>Task Name<span class="text-danger">*</span></h6>
+						<div class="row mb-3">
+							<h6 class="col-5">Customer Name<span class="text-danger">*</span></h6>
+							<div class="col-5">
+								<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" @readonly(true)>
+								<option value="{{$task->customer->id}}" selected="" disabled>{{$task->customer->user_name}}</option>
+								@foreach($customers as $customer)
+										 <option value="{{ $customer->id }}">{{ $customer->user_name }}</option>	
+								@endforeach
+								
+								</select>
+							</div>
+							</div>
+
+							<div class="form-group">
+								<h6>Tax Return Type</h6>
 								<div class="controls">
-									<input type="text" value="{{$task->task_name}}" name="task_name" class="form-control" readonly>
-						 
+									<input type="text" value="{{$task->customer->customer_type}}" name="taxreturntype" id="taxreturntype" class="form-control" readonly >					
+							   </div>
+							</div>
+
+							<div class="form-group">
+								<h6>Business Type</h6>
+								<div class="controls">
+									<input type="text" value="{{$task->customer->business_type}}" name="businesstype" id="businesstype" class="form-control" readonly >					
 							   </div>
 							</div>
 
@@ -105,32 +124,6 @@
                         </div>
                     </div>
                     
-						
-
-						 <div class="form-group">
-							<h6>Sub Task</h6>
-							<div class="controls">
-								<input type="text" value="{{$task->sub_task}}" name="sub_task" class="form-control" readonly >
-				
-						   </div>
-						</div>
-
-						<div class="form-group">
-							<h6>Bug</h6>
-							<div class="controls">
-								<input type="text" value="{{$task->bug}}" name="bug" class="form-control" readonly>
-					
-						   </div>
-						</div>
-
-						
-						<div class="form-group">
-							<h6>Issue</h6>
-							<div class="controls">
-								<input type="text" value="{{$task->issue}}" name="issue" class="form-control" readonly>
-					
-						   </div>
-						</div>
 
 						<div class="form-group">
 							<h6>Hyperlinks</h6>
@@ -153,7 +146,69 @@
 								</select>
 								
 							 </div>
-								 </div>
+						</div>
+
+
+						<div class="form-group">
+							<h6>Status<span class="text-danger">*</span></h6>
+								<div class="controls">
+										<select name="status" class="form-control" @readonly(true) >
+											<option value="{{$task->status}}" selected="">{{$task->status}}</option>
+											<option value="Not Started">Not Started</option>
+											<option value="On Progress" >On Progress</option>
+											<option value="Done">Done</option>
+										</select>									
+								</div>
+						</div>
+
+
+						<div class="form-group">
+							<h6>Tax Year<span class="text-danger">*</span></h6>
+							<div class="controls">
+								<select name="tax_year" class="form-control" @readonly(true) >
+									<option value="{{$task->tax_year}}" selected="" disabled="">{{$task->tax_year}}</option>
+									<option value="TAX YEAR 2019">TAX YEAR 2019</option>
+									<option value="TAX YEAR 2020">TAX YEAR 2020</option>
+									<option value="TAX YEAR 2021">TAX YEAR 2021</option>
+									<option value="TAX YEAR 2022">TAX YEAR 2022</option>
+									<option value="TAX YEAR 2023">TAX YEAR 2023</option>
+									<option value="TAX YEAR 2024">TAX YEAR 2024</option>								
+								</select>								
+							 </div>
+						</div>
+
+
+						<div class="form-group">
+							<h6>eSignature<span class="text-danger">*</span></h6>
+							<div class="controls">
+								<select name="eSignature" class="form-control" @readonly(true) >
+									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>
+									<option value="SENT">SENT</option>
+									<option value="READY FOR eSIG">READY FOR eSIG</option>
+									<option value="SIGNED">SIGNED</option>
+									<option value="PENDING">PENDING</option>
+									<option value="INPERSON SIG">INPERSON SIG</option>
+									<option value="minor">Minor</option>
+								</select>								
+							 </div>
+						</div>
+
+
+						<div class="form-group">
+							<h6>EF Status<span class="text-danger">*</span></h6>
+							<div class="controls">
+								<select name="ef_status" class="form-control" @readonly(true) >
+									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>
+									<option value="DONE">DONE</option>
+									<option value="READY 2 EFILE">READY 2 EFILE</option>
+									<option value="IN PROGRESS">IN PROGRESS</option>
+									<option value="HOLD">HOLD</option>
+									<option value="ESTIMATES">ESTIMATES</option>
+									<option value="NOT STARTED">NOT STARTED</option>
+									<option value="REJECTED">REJECTED</option>
+								</select>								
+							 </div>
+						</div>
 
 
 						

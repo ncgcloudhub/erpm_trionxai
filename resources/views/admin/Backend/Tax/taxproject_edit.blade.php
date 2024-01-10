@@ -11,7 +11,7 @@
 			  <div class="row">
 			
 				<div class="col">
-					<form method="post" action="{{ route('project.update') }}" enctype="multipart/form-data" >
+					<form method="post" action="{{ route('taxproject.update') }}" enctype="multipart/form-data" >
 						@csrf
 					
 						<input type="hidden" name="id" value="{{$project->id}}">
@@ -93,22 +93,7 @@
 						 </div>
 					</div>
 
-						{{-- <div class="form-group">
-							<h6>Bug<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="bug" class="form-control">
 					
-						   </div>
-						</div>
-
-						
-						<div class="form-group">
-							<h6>Issue<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="issue" class="form-control" required="">
-					
-						   </div>
-						</div> --}}
 
 						<div class="form-group">
 							<h6>Hyperlinks</h6>

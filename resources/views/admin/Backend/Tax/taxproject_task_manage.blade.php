@@ -38,11 +38,11 @@
 					
 					
 					<td>
-						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
 						
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.task.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>		
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>		
 			
-			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('projects.tasks.deletes',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Student')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('taxprojects.tasks.deletes',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Student')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
 
 			
 					</td>
