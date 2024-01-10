@@ -419,6 +419,8 @@ Route::prefix('project')->group(function(){
 
     Route::post('/store', [ProjectController::class, 'StoreProject'])->name('project.store');
 
+    Route::post('/update/comment', [ProjectController::class, 'UpdateComment'])->name('update.comment');
+
     Route::get('/task/add', [ProjectController::class, 'AddTask'])->name('project.add.task');
 
     Route::get('/view/details/{id}', [ProjectController::class, 'ProjectDetails'])->name('project.view.details');

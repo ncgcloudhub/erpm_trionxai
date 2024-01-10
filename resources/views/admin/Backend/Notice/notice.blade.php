@@ -1,11 +1,24 @@
 @extends('admin.aDashboard')
+
 @php
 use Illuminate\Support\Facades\Auth;
 @endphp
 @section('admins')
 
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+		
+			<li class="breadcrumb-item text-sm">
+				<a class="opacity-5 text-dark" href="javascript:;">Notice</a>
+			</li>
+		
+		
+			<li class="breadcrumb-item text-sm text-dark">Manage</li>
 
+	</ol>
+	<h6 class="font-weight-bolder mb-0">Notice</h6>
 
+  </nav>
   <!-- Content Wrapper. Contains page content -->
   
 	  <div class="container-full">
@@ -23,9 +36,9 @@ use Illuminate\Support\Facades\Auth;
 			 <div class="card">
 				<div class="card-body p-3">
 					<div class="box">
-									<div class="box-header with-border">
-										<h3 class="box-title">Category List <span class="badge badge-pill badge-danger"> {{ count($notices) }} </span></h3>
-									</div>
+									{{-- <div class="box-header with-border">
+										<h3 class="box-title">Notice List <span class="badge badge-pill badge-danger"> {{ count($notices) }} </span></h3>
+									</div> --}}
 									<!-- /.box-header -->
 					
 										<div class="box-body">

@@ -9,7 +9,20 @@ use Illuminate\Support\Facades\Auth;
         display: none;
     }
 </style>
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+		
+			<li class="breadcrumb-item text-sm">
+				<a class="opacity-5 text-dark" href="javascript:;">Site Settings</a>
+			</li>
+		
+		
+			<li class="breadcrumb-item text-sm text-dark">Manage</li>
 
+	</ol>
+	<h6 class="font-weight-bolder mb-0">Site Settings</h6>
+
+  </nav>
 
 
   <!-- Content Wrapper. Contains page content -->

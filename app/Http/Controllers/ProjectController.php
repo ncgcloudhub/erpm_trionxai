@@ -89,6 +89,20 @@ class ProjectController extends Controller
 			return redirect()->back()->with($notification);
 	}
 
+	public function UpdateComment(Request $request){
+
+		Category::findOrFail($request->id)->update([
+			'comment' => $request->comment,
+			]);
+
+			$notification = array(
+				'message' => 'Comment Updated Successfully',
+				'alert-type' => 'success'
+			);
+
+			return redirect()->back()->with($notification);
+	}
+
 	public function ProjectDetails($id){		   
 
 		$project = Category::findOrFail($id);
