@@ -11,7 +11,7 @@
 			  <div class="row">
 			
 				<div class="col">
-					<form method="post" action="{{ route('project.store') }}" enctype="multipart/form-data" >
+					<form method="post" action="{{ route('taxproject.store') }}" enctype="multipart/form-data" >
 						@csrf
 					
 							 <div class="form-group">

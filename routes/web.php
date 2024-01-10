@@ -19,6 +19,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\IncomeTaxController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\ConveyanceController;
 use App\Http\Controllers\ScheduleController;
@@ -297,7 +298,7 @@ Route::prefix('category')->group(function(){
 // Customer 
 
     
-Route::prefix('customer')->group(function(){
+Route::prefix('incometax/customer')->group(function(){
     
     Route::get('/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
 
@@ -412,7 +413,7 @@ Route::prefix('customer')->group(function(){
 
 Route::prefix('project')->group(function(){
 
-    Route::get('/', [ProjectController::class, 'AddProject'])->name('project.view');
+    Route::get('/add', [ProjectController::class, 'AddProject'])->name('project.view');
 
     Route::get('/manage', [ProjectController::class, 'ManageProject'])->name('project.manage');
 
@@ -466,6 +467,40 @@ Route::prefix('project')->group(function(){
     Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
      
     });
+
+
+    Route::prefix('incometax')->group(function(){
+
+        Route::get('/project/add', [IncomeTaxController::class, 'AddProject'])->name('taxproject.view');
+    
+        Route::get('/project/manage', [IncomeTaxController::class, 'ManageProject'])->name('taxproject.manage');
+    
+        Route::post('/project/store', [IncomeTaxController::class, 'StoreProject'])->name('taxproject.store');
+    
+        Route::get('/task/add', [IncomeTaxController::class, 'AddTask'])->name('taxproject.add.task');
+    
+        Route::get('/project/view/details/{id}', [IncomeTaxController::class, 'ProjectDetails'])->name('taxproject.view.details');
+    
+        Route::get('/task/manage', [IncomeTaxController::class, 'ManageTask'])->name('taxproject.manage.task');
+       
+        Route::post('/task/store', [IncomeTaxController::class, 'StoreProjectTask'])->name('taxproject.store.tasks');
+    
+        Route::get('/project/edit/{id}', [IncomeTaxController::class, 'EditProject'])->name('taxproject.edit');    
+    
+        Route::get('/task/edit/{id}', [IncomeTaxController::class, 'EditProjectTask'])->name('taxproject.task.edit');
+    
+        Route::get('/task/view/{id}', [IncomeTaxController::class, 'ViewProjectTask'])->name('taxproject.task.view');
+    
+        Route::post('/project/update', [IncomeTaxController::class, 'ProjectUpdate'])->name('taxproject.update');
+    
+        Route::post('/task/update', [IncomeTaxController::class, 'ProjectUpdateTask'])->name('taxproject.update.task');
+    
+        Route::get('/project/deletes/{id}', [IncomeTaxController::class, 'ProjectsDelete'])->name('taxprojects.delete');
+    
+        Route::get('/task/delete/{id}', [IncomeTaxController::class, 'ProjectTaskDelete'])->name('taxprojects.tasks.deletes');
+         
+        });
+
 
     Route::get('/api/products/{categoryId}', [ProductionController::class, 'getProducts']);
 
@@ -841,6 +876,7 @@ Route::prefix('project')->group(function(){
     Route::get('/get-balance', [BankController::class, 'getBalance']);
 
     Route::get('/get-data', [QuotationController::class, 'getData']);
+    Route::get('/get-customer', [QuotationController::class, 'getCustomer']);
     Route::get('/get-vendor', [QuotationController::class, 'getVendor']);
     Route::get('/get-employee-data', [ConveyanceController::class, 'getData']);
     Route::get('/geta-data-product', [QuotationController::class, 'getDatasProduct']);

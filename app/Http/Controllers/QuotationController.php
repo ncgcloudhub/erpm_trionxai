@@ -245,6 +245,15 @@ class QuotationController extends Controller
 
     }
 
+    public function getCustomer(Request $request){
+
+        $selectedOption = $request->input('option');
+        $data = Customer::findOrFail($selectedOption);
+    
+        return $data;
+    
+        }
+
     public function getVendor(Request $request){
 
         $selectedOption = $request->input('option');

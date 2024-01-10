@@ -55,6 +55,15 @@ class CustomerController extends Controller
         'state' => $request->state,
         'zip' => $request->zip,
         'country' => $request->country,
+        'ein' => $request->ein,
+        'business_website' => $request->business_website,
+        'business_state' => $request->business_state,
+        'business_started' => $request->business_started,
+        'customer_enrolled' => $request->customer_enrolled,
+        'status' => $request->status,
+        'business_type' => $request->business_type,
+        'comment' => $request->comment,
+        'customer_type' => $request->customer_type,
 		
     	]);
 
@@ -89,6 +98,15 @@ class CustomerController extends Controller
         	'state' => $request->state,
         	'zip' => $request->zip,
         	'country' => $request->country,
+			'ein' => $request->ein,
+			'business_website' => $request->business_website,
+			'business_state' => $request->business_state,
+			'business_started' => $request->business_started,
+			'customer_enrolled' => $request->customer_enrolled,
+			'status' => $request->status,
+			'business_type' => $request->business_type,
+			'comment' => $request->comment,
+			'customer_type' => $request->customer_type,
 			'updated_at' => Carbon::now(), 
 	
 			]);
