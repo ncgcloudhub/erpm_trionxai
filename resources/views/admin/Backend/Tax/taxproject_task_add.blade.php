@@ -20,7 +20,7 @@
 								<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
 								<option value="" selected="" disabled="">Select Customer</option>
 								@foreach($customers as $customer)
-										 <option value="{{ $customer->id }}">{{ $customer->user_name }}({{ $customer->Company_name }})</option>	
+										 <option value="{{ $customer->id }}">{{ $customer->user_name }}({{ $customer->company_name }})</option>	
 								@endforeach
 								
 								</select>
