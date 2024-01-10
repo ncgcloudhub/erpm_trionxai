@@ -16,28 +16,30 @@ class StudentController extends Controller
 		$students = Student::orderBy('id','ASC')->get();
 		return view('admin.Backend.Student.student' ,compact('students'));
 	}
-    public function StudentView(){
+
+    public function StudentManage(){
 		$students = Student::orderBy('id','ASC')->get();
 		return view('admin.Backend.Student.student_manage' ,compact('students'));
+	}
+
+	public function StudentView($id){
+		$students = Student::orderBy('id','ASC')->get();
+		$student = Student::findOrFail($id);
+			return view('admin.Backend.Student.student_view',compact('student','students'));
 	}
 
 
 	public function StudentStore(Request $request){
 	
-		// $validator = Validator::make($request->all(), [
-		// 	'customer_name' => 'required',
-		// 	'phone' => 'nullable|unique:customers',
-		// ], [
-		// 	'phone.unique' => 'The phone number already exists.',
-		// ]);
-	
-		// if ($validator->fails()) {
-		// 	return redirect()->back()->withErrors($validator)->withInput();
-		// }
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHis');
 
         Student::insert([
 		'student_name' => $request->student_name,
-        'student_id' => $request->student_id,
+        'student_id' => $formattedDateTime,
         'gender' => $request->gender,
         'dob' => $request->dob,
         'email' => $request->email,
@@ -94,9 +96,24 @@ class StudentController extends Controller
 				'alert-type' => 'info'
 			);
 	
-			return redirect()->route('student.view')->with($notification);
+			return redirect()->route('student.manage')->with($notification);
 	
 			 // end else 
 			
 		} // end method 
+
+
+		public function StudentDelete($id){
+			$student = Student::findOrFail($id);
+			
+			Student::findOrFail($id)->delete();
+	
+			$notification = array(
+				'message' => 'Student Delectd Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->back()->with($notification);
+	
+		} // end method
 }

@@ -16,7 +16,7 @@
 									<thead>
 										<tr class="align-middle text-center">
 											
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Short Description</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Project Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -30,7 +30,7 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
-					<td><a href="{{ route('project.view.details',$item->id) }}">{{ $item->project_name }} <span class="badge badge-sm bg-gradient-success"> {{ $item->tasks->count() }}</span></a>
+					<td class="text-start"><a href="{{ route('project.view.details',$item->id) }}">{{ $item->project_name }} <span class="badge badge-sm bg-gradient-success"> {{ $item->tasks->count() }}</span></a>
 						{{-- <p class="mb-0 text-sm"></p> --}}
 						{{-- <p>Number of tasks: {{ $item->tasks->count() }}</p> --}}
 						
@@ -47,10 +47,13 @@
 					
 					
 					<td>
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>		
-			 {{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
-			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('product.delete',$item->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
-			 @endif --}}
+					
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.view.details',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>	
+			 
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+
+			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('projects.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Course')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+
 					</td>
 					
 										 

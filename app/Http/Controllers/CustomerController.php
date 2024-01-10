@@ -19,9 +19,15 @@ class CustomerController extends Controller
 		return view('admin.Backend.Brand.customer' ,compact('customers'));
 	}
 	
-	public function CustomerView(){
+	public function CustomerManage(){
 		$customers = Customer::orderBy('id','ASC')->get();
 		return view('admin.Backend.Brand.customer_manage' ,compact('customers'));
+	}
+
+	public function CustomerView($id){
+		$customers = Customer::orderBy('id','ASC')->get();
+		$customer = Customer::findOrFail($id);
+		return view('admin.Backend.Brand.customer_view' ,compact('customer','customers'));
 	}
 
 
@@ -42,7 +48,8 @@ class CustomerController extends Controller
 		'company_name' => $request->company_name,
         'user_name' => $request->user_name,
         'email' => $request->email,
-        'phone' => $request->phone,
+        'office_phone' => $request->office_phone,
+        'personal_phone' => $request->personal_phone,
         'address' => $request->address,
         'city' => $request->city,
         'state' => $request->state,
@@ -75,7 +82,8 @@ class CustomerController extends Controller
 			'company_name' => $request->company_name,
         	'user_name' => $request->user_name,
         	'email' => $request->email,
-        	'phone' => $request->phone,
+        	'office_phone' => $request->office_phone,
+        	'personal_phone' => $request->personal_phone,
         	'address' => $request->address,
         	'city' => $request->city,
         	'state' => $request->state,
@@ -90,7 +98,7 @@ class CustomerController extends Controller
 				'alert-type' => 'info'
 			);
 	
-			return redirect()->route('customer.view')->with($notification);
+			return redirect()->route('customer.manage')->with($notification);
 	
 			 // end else 
 			
@@ -99,12 +107,11 @@ class CustomerController extends Controller
 	
 		public function CustomerDelete($id){
 			$customer = Customer::findOrFail($id);
-			$img = $customer->slider_img;
-			unlink($img);
+			
 			Customer::findOrFail($id)->delete();
 	
 			$notification = array(
-				'message' => 'Slider Delectd Successfully',
+				'message' => 'Customer Delectd Successfully',
 				'alert-type' => 'info'
 			);
 	

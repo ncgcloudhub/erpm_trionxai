@@ -14,12 +14,12 @@
 			<div class="row">
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Student</label></div>
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
-							<option value="" selected="" disabled="">Select Customer</option>
-							@foreach($customers as $customer)
-									 <option value="{{ $customer->id }}">{{ $customer->user_name }}</option>	
+							<option value="" selected="" disabled="">Select Student</option>
+							@foreach($students as $student)
+									 <option value="{{ $student->id }}">{{ $student->student_name }}</option>	
 							@endforeach
 							<!-- More options -->
 							</select>
@@ -27,7 +27,7 @@
 						</div>
 	
 						<div class="row mb-3">
-							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Student Id</label></div>
 							<div class="col"><input class="form-control " type="text" id="address" name="address">
 						</div>
 							
@@ -58,15 +58,13 @@
 						<div class="col"><textarea class="form-control" name="details" id="details" rows="1"></textarea></div>
 					</div>
 
-					<div class="row mb-3">
+					{{-- <div class="row mb-3">
 						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Previous Invoice</label></div>
 						<div class="col"><input class="form-control mb-3" type="text" id="pInvoice" name="pInvoice">
-							{{-- @error('pInvoice') 
-							<span class="text-danger">{{ $message }}</span>
-							@enderror  --}}
+							
 			</div>
 						
-					</div>
+					</div> --}}
 					{{-- <div class="row mb-3">
 						<div class="col"><input class="form-control mb-3" type="hidden" id="auth_id" name="auth_id"  value="{{ Auth::id()}}">
 					</div>
@@ -78,7 +76,7 @@
 				<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Item Information</th>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock/Unit</th> 
+					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
 					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate</th>
@@ -98,13 +96,12 @@
 						</td> --}}
 						<td>
 							<select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" >
-								<option value="" selected="" disabled="">Select Product</option>
-								@foreach($products as $product)
-									 <option value="{{ $product->id }}">{{ $product->product_name }}({{ $product->product_code }})</option>	
+								<option value="" selected="" disabled="">Select Course</option>
+								@foreach($courses as $course)
+									 <option value="{{ $course->id }}">{{ $course->course_name }}({{ $course->code }})</option>	
 								@endforeach
 							</select>
 						</td>
-						  <td><input class="form-control stock" type="text" value="{{$acidProducts->stock}}" id="stock" name="stock[]" required="" readonly></td>
 						  <td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td>
 						  <td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td>
 						  <td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td>
@@ -130,11 +127,11 @@
 							<div class="col"><input class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
-						<div class="row mb-2">
+						{{-- <div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">VAT (%)</label></div>
 							<div class="col"><input class="vper form-control" type="number" id="vat-percentage" name="vper" readonly>
 							</div>
-						</div>
+						</div> --}}
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (TK)</label></div>
 							<div class="col"><input class="dflat form-control" name="dflat" type="number" id="discount-flat">
@@ -150,11 +147,11 @@
 							<div class="col"><input readonly class="form-control" type="number" name="paidamount" id="paidamount">
 							</div>
 						</div>
-						<div class="row mb-2">
+						{{-- <div class="row mb-2">
 							<div class="col-4"><label class="text-uppercase text-dark text-xs font-weight-bold ">Prev Due Amount</label></div>
 							<div class="col"><input class="form-control" type="text" name="pdueamount" id="pdueamount" readonly>
 							</div>
-						</div>
+						</div> --}}
 						<div class="row mb-2">
 							<div class="col-4"><label class="text-uppercase text-dark text-xs font-weight-bold ">Due Amount</label></div>
 							<div class="col"><input class="form-control" type="text" name="dueamount" id="dueamount" readonly>
@@ -238,7 +235,7 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td>	<select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Product</option>@foreach($products as $product)<option value="{{ $product->id }}">{{ $product->product_name }}({{ $product->product_code }})</option>@endforeach</select></td><td><input class="form-control stock" type="text" id="stock" name="stock[]" value="{{$acidProducts->stock}}" required="" readonly></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Course</option>@foreach($courses as $course)<option value="{{ $course->id }}">{{ $course->course_name }}({{ $course->code }})</option>@endforeach</select></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 	
 		// var x =1;
 	  $("#add").click(function(){
@@ -271,9 +268,8 @@
       // make an AJAX request to the server
       $.get('/get-data', { option: selectedOption }, function(data) {
         // update the field with the response data
-        $("#address").val(data.address);
+        $("#address").val(data.student_id);
 		$("#phone").val(data.phone);
-		$("#pdueamount").val(data.cusDue);
 		console.log(data);
 		$('.js-example-basic-single').select2();
 
@@ -318,7 +314,7 @@
 		  function duePrice(){
 
 			$("#paidamount").val($("#sumPayment").val());
-			$("#dueamount").val(parseFloat($("#grandtotal").val()) + parseFloat($("#pdueamount").val())  - ($("#sumPayment").val()));
+			$("#dueamount").val(parseFloat($("#grandtotal").val()) - ($("#sumPayment").val()));
 		  }
 
 	function totalPrice(){
@@ -378,46 +374,24 @@
       // make an AJAX request to the server
       $.get('/get-data', { option: selectedOption }, function(data) {
         // update the field with the response data
-        $("#address").val(data.address);
+        $("#address").val(data.student_id);
 		$("#phone").val(data.phone);
 		console.log(data);
       });
     });
 
-	$("#item").change(function() {
-      // get the selected option value
-      var selectedOption = $(this).val();
-		// console.log('hello');
-      // make an AJAX request to the server
-      $.get('/get-data-product', { option: selectedOption }, function(data) {
-        // update the field with the response data
+	// $("#item").change(function() {
+    //   // get the selected option value
+    //   var selectedOption = $(this).val();
+	// 	// console.log('hello');
+    //   // make an AJAX request to the server
+    //   $.get('/geta-data-product', { option: selectedOption }, function(data) {
+    //     // update the field with the response data
 
-		var sum = data.qty + data.stock_b;
-        $("#stock").val(sum);
-		$("#rate").val(data.sale_price);
-      });
-    });
+	// 	$("#rate").val(data.fees);
+    //   });
+    // });
 
-	$("#table_field tbody").on("change", "select[name='item[]']", function () {
-		var product_id = $(this).val();
-		var stock = $(this).closest("tr").find(".stock");
-		var rate = $(this).closest("tr").find(".rate");
-		$.get('/get-data-product', { option: product_id }, function(data) {
-        // update the field with the response data
-
-		if(data.qty == null){
-			stock.val(0);
-			rate.val(0);
-		}else{
-			var sum = data.qty + data.stock_b;
-			stock.val(sum);
-			rate.val(data.sale_price);
-		}
-			
-      });
-		// price.val(product_id);
-               
-    });
 
 	document.querySelector('#paidamount').addEventListener('input', function() {
 		$("#dueamount").val("");
@@ -446,5 +420,34 @@
     });
 });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+   $(document).ready(function () {
+    $("#item").change(function () {
+        var selectedOption = $(this).val();
+        $.get('/geta-data-product', { option: selectedOption }, function (data) {
+            $("#rate").val(data.fees);
+        })
+        .fail(function (error) {
+            console.error("Error in AJAX request:", error);
+        });
+    });
+
+	$("#table_field tbody").on("change", "select[name='item[]']", function () {
+		var product_id = $(this).val();
+		var rate = $(this).closest("tr").find(".rate");
+		$.get('/geta-data-product', { option: product_id }, function(data) {
+        // update the field with the response data
+		
+			rate.val(data.fees);
+			
+      });
+		// price.val(product_id);
+               
+    });
+});
+</script>
+
 
 @endsection

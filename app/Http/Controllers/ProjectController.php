@@ -23,12 +23,6 @@ class ProjectController extends Controller
 
     public function StoreProject(Request $request){
 
-		// $image = $request->file('product_img');
-    	// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-
-    	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
-    	// $save_url = 'upload/products/'.$name_gen;
-
         Category::insertGetId([
       	
 		'project_name' => $request->project_name,
@@ -138,7 +132,7 @@ class ProjectController extends Controller
 
       $product_id = Product::insertGetId([
       	
-		'title' => $request->title,
+		'task_name' => $request->task_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
 		'assign_date' => $request->assign_date,
@@ -173,7 +167,7 @@ class ProjectController extends Controller
     public function ManageTask(){
 
 		$products = Product::latest()->get();
-		return view('admin.Backend.Project.project_task_view',compact('products'));
+		return view('admin.Backend.Project.project_task_manage',compact('products'));
 	}  // end method
 
 	public function EditProjectTask($id){		   
@@ -187,11 +181,22 @@ class ProjectController extends Controller
         return view('admin.Backend.Project.project_task_edit',compact('categories','assignedby','assignto','task'));
 	}
 
+	public function ViewProjectTask($id){		   
+
+		$categories = Category::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		$task = Product::findOrFail($id);
+		// dd($task->description);
+
+        return view('admin.Backend.Project.project_task_view',compact('categories','assignedby','assignto','task'));
+	}
+
 	public function ProjectUpdateTask(Request $request){
 
 		Product::findOrFail($request->id)->update([
 			
-		'title' => $request->title,
+		'task_name' => $request->task_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
 		'assign_date' => $request->assign_date,
@@ -206,6 +211,7 @@ class ProjectController extends Controller
       	'issue' => $request->issue,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
+		'status' => $request->status,
 		'updated_at' => Carbon::now(),   
 
 			]);
@@ -218,5 +224,31 @@ class ProjectController extends Controller
 			return redirect()->back()->with($notification);
 	}
 
+	public function ProjectsDelete($id){
+		
+		Category::findOrFail($id)->delete();
+
+		$notification = array(
+			'message' => 'Project Delectd Successfully',
+			'alert-type' => 'info'
+		);
+
+		return redirect()->back()->with($notification);
+
+	} // end method
+
+
+	public function ProjectTaskDelete($id){
+		
+		Product::findOrFail($id)->delete();
+
+		$notification = array(
+			'message' => 'Project Task Delectd Successfully',
+			'alert-type' => 'info'
+		);
+
+		return redirect()->back()->with($notification);
+
+	} // end method
 
 }

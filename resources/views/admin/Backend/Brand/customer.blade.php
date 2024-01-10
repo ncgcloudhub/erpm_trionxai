@@ -27,7 +27,7 @@
 </div>
 
 <div class="form-group">
-<label  class="text-uppercase text-dark text-xs font-weight-bold ">User Name</label>
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Full Name (FN MI LN)<span class="text-danger">*</span></label>
 <div class="controls">
 <input type="text"  name="user_name" class="form-control" required > 
 
@@ -35,16 +35,24 @@
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Email</label>
+    <label class="text-uppercase text-dark text-xs font-weight-bold">Email <span class="text-danger">*</span></label>
+    <div class="controls">
+        <input type="email" name="email" class="form-control" required>
+    </div>
+</div>
+
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Office Phone </label>
 <div class="controls">
-<input type="text"  name="email" class="form-control" > 
+<input type="text"  name="office_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" > 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Phone</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Personal Phone <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text"  name="phone" class="form-control"> 
+<input type="text"  name="personal_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" required> 
 </div>
 </div>
 
@@ -55,41 +63,41 @@
 <div class="col">
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="address" class="form-control" >
+<input type="text" name="address" class="form-control" required>
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">City <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="city" class="form-control" >
+<input type="text" name="city" class="form-control" required>
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">State <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="state" class="form-control" >
+<input type="text" name="state" class="form-control" required>
 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Zip</label>
-<div class="controls">
-<input type="text" name="zip" class="form-control" >
+    <label class="text-uppercase text-dark text-xs font-weight-bold">Zip <span class="text-danger">*</span></label>
+    <div class="controls">
+        <input type="text" name="zip" class="form-control" pattern="\d{5}" title="Enter a valid 5-digit zip code" required>
+    </div>
+</div>
 
-</div>
-</div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country</label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" name="country" class="form-control" >
+<input type="text" name="country" class="form-control" required>
 
 </div>
 </div>

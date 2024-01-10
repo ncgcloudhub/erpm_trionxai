@@ -34,16 +34,13 @@
 
 
 			 <div class="form-group">
-				<h6>Comment<span class="text-danger">*</span></h6>
+				<h6>Comment</h6>
 				<div class="controls">
 					
 					<textarea name="comment" class="form-control" value="{{$project->comment}}" id="tinymceExample" rows="10">{{$project->comment}}</textarea>
 		
 			   </div>
 			</div>
-
-
-			
 
 				</div>
 
@@ -87,7 +84,7 @@
 						<h6>Assign To<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
-								<option value="{{$project->assign_to}}" selected="">{{$project->user->name}}</option>
+								<option value="{{$project->assign_to}}" selected="">{{$project->admin->name}}</option>
 								@foreach($assignedby as $item)
 					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach
@@ -114,7 +111,7 @@
 						</div> --}}
 
 						<div class="form-group">
-							<h6>Hyperlinks<span class="text-danger">*</span></h6>
+							<h6>Hyperlinks</h6>
 							<div class="controls">
 								<input type="text" value="{{$project->hyperlinks}}" name="hyperlinks" class="form-control" >
 				
@@ -137,14 +134,14 @@
 								 </div>
 
 								 <div class="form-group">
-									<h6>Bug<span class="text-danger">*</span></h6>
+									<h6>Bug</h6>
 									<div class="controls">
 										<input type="text" value="{{$project->bug}}" name="bug" class="form-control" >
 						
 								   </div>
 								</div>
 								<div class="form-group">
-									<h6>Issue<span class="text-danger">*</span></h6>
+									<h6>Issue</h6>
 									<div class="controls">
 										<input type="text" value="{{$project->issue}}" name="issue" class="form-control" >
 						

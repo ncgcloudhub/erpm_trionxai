@@ -14,9 +14,9 @@
                                 <div class="table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                       <thead>
-                                          <tr>
+                                          <tr class="align-middle text-center">
                                           
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID </th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                                               <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</th>
@@ -27,15 +27,19 @@
                                       <tbody>
               
    @foreach($students as $item)
-   <tr>
-    <td>{{ $item->student_name }}</td>
+   <tr class="align-middle text-center text-sm">
+    <td class="text-start"><a href="{{ route('student.view',$item->id) }}">{{ $item->student_name }}</a></td>
     <td>{{ $item->student_id }}</td>
     <td>{{ $item->email }}</td>
     <td>{{ $item->phone }}</td>
     <td>
-  <a href="{{ route('student.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-  {{-- <a href="{{ route('brand.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
-   <i class="fa fa-trash"></i></a> --}}
+
+  <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('student.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>	
+			 
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('student.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+
+       <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('student.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Student')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+
     </td>
                
    </tr>

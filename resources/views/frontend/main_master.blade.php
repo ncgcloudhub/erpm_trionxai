@@ -2,26 +2,24 @@
 <html lang="en">
 <head>
 
-@php
+{{-- @php
 $seo = App\Models\Seo::find(1);
-@endphp
+@endphp --}}
 
 <!-- Meta -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="description" content="{{ $seo->meta_description }}">
+<meta name="description" content="">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="author" content="{{ $seo->meta_author }}">
-<meta name="keywords" content="{{ $seo->meta_keyword }}">
+<meta name="author" content="">
+<meta name="keywords" content="">
 <meta name="robots" content="all">
 
 {{-- Favicon --}}
 <link rel="icon"  href="{{ asset('frontend/assets/img/fav1.png') }}">
 
 <!-- /// Google Analytics Code // -->
-<script>
-    {{ $seo->google_analytics }}
-</script>
+
 <!-- /// Google Analytics Code // -->
 
 

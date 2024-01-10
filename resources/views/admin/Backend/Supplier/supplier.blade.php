@@ -1,126 +1,152 @@
 @extends('admin.aDashboard')
 @section('admins')
 
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		  
+ {{-- TRIAL START --}}
+ <div class="container-fluid">
+	<div class="row mt-4">
+	 
 
-		<!-- Main content -->
-		<section class="content">
+{{-- ADD Student --}}
+<div class="col-lg-12 mb-lg-0 mb-4">
+  <div class="card">
+    <div class="card-body p-3">
+      <div class="row">
 
-		 <!-- Basic Forms -->
-		  <div class="box">
-			<div class="box-header with-border">
-			  <h4 class="box-title">Add Supplier </h4>
-			   
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-			  <div class="row">
-				<div class="col">
+		<div class="col">
 
-  <form method="post" action="{{ route('supplier.store') }}">
-		 	@csrf
+<form method="post" action="{{ route('supplier.store') }}">
+@csrf
+   
+<div class="form-group">
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Name<span class="text-danger">*</span></label>
+<div class="controls">
+<input type="text"  name="vendor_name" class="form-control" required > 
 
-			 <div class="form-group row">
-				<label for="supplier_name" class="col text-right col-form-label">Supplier Name <i class="text-danger"> * </i>:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input type="text" name="supplier_name" class="form-control" id="supplier_name"  value="">
-				@error('supplier_name') 
-				<span class="text-danger">{{ $message }}</span>
-				@enderror 
-				</div>
-				</div>
-				<label for="supplier_mobile" class="col text-right col-form-label">Mobile No <i class="text-danger"> </i>:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input type="number" name="mobile" class="form-control" id="supplier_mobile" value="">
-				{{-- @error('mobile') 
-				<span class="text-danger">{{ $message }}</span>
-				@enderror  --}}
-				</div>
-				</div>
-				</div>
-				<div class="form-group row">
-				<label for="email_address" class="col text-right col-form-label">Email:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input type="email" class="form-control" name="email_address" id="email_address" value="">
-				{{-- @error('email_address') 
-				<span class="text-danger">{{ $message }}</span>
-				@enderror  --}}
-				</div>
-				</div>
-				<label for="zip" class="col-sm-2 text-right col-form-label">Zip code:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input name="zip" type="text" class="form-control" id="zip"  value="">
-				</div>
-				</div>
-				</div>
-				<div class="form-group row">
-				<label for="phone" class="col-sm-2 text-right col-form-label">Phone:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input class="form-control input-mask-trigger text-left" id="phone" type="number" name="phone" value="">
-				</div>
-				</div>
+</div>
+</div>
 
-				</div>
-				<div class="form-group row">
-				<label for="address1" class="col-sm-2 text-right col-form-label">Address:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<textarea name="address" id="address" class="form-control" ></textarea>
-				{{-- @error('address') 
-				<span class="text-danger">{{ $message }}</span>
-				@enderror  --}}
-				</div>
-				</div>
 
-				</div>
-				<div class="form-group row">
-				<label for="city" class="col-sm-2 text-right col-form-label">City:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input type="text" name="city" class="form-control" id="city"  value="">
-				</div>
-				</div>
-				</div>
-				<div class="form-group row">
-				<label for="state" class="col-sm-2 text-right col-form-label">State:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input type="text" name="state" class="form-control" id="state"  value="">
-				</div>
-				</div>
+<div class="form-group">
+<label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Service Name<span class="text-danger">*</span></label>
+<div class="controls">
+<input type="text"  name="vendor_s_name" class="form-control" required > 
 
-				</div>
-				<div class="form-group row">
-				<label for="country" class="col-sm-2 text-right col-form-label">Country:</label>
-				<div class="col-sm-4">
-				<div class="">
-				<input name="country" type="text" class="form-control " value="" id="country">
-				</div>
-			</div>
-			</div>
-		
-				<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Supplier">
-						</div>
-					</form>
+</div>
+</div>
 
-				</div>
-				<!-- /.col -->
-			  </div>
-			  <!-- /.row -->
-			</div>
-			<!-- /.box-body -->
-		  </div>
-		  <!-- /.box -->
 
-		</section>
-		<!-- /.content -->
-	  </div>
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Price<span class="text-danger">*</span></label>
+	<div class="controls">
+		<input type="text"  name="price" class="form-control" id="feesInput" required > 
+	</div>
+</div>
+
+<div class="form-group">
+    <label class="text-uppercase text-dark text-xs font-weight-bold">Email <span class="text-danger">*</span></label>
+    <div class="controls">
+        <input type="email" name="email" class="form-control" required>
+    </div>
+</div>
+
+
+<div class="form-group">
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Contact<span class="text-danger">*</span> </label>
+<div class="controls">
+<input type="text"  name="contact" class="form-control" pattern="\d*" title="Please enter only numeric values" > 
+</div>
+</div>
+
+
+
+</div>
+{{-- end column --}}
+
+<div class="col">
+
+
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">Address <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="address" class="form-control" required>
+	
+	</div>
+	</div>
+	
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">City <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="city" class="form-control" required>
+	
+	</div>
+	</div>
+	
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">State <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="state" class="form-control" required>
+	
+	</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="text-uppercase text-dark text-xs font-weight-bold">Zip <span class="text-danger">*</span></label>
+		<div class="controls">
+			<input type="text" name="zip" class="form-control" pattern="\d{5}" title="Enter a valid 5-digit zip code" required>
+		</div>
+	</div>
+	
+	
+	<div class="form-group">
+		<label  class="text-uppercase text-dark text-xs font-weight-bold ">Country <span class="text-danger">*</span></label>
+	<div class="controls">
+	<input type="text" name="country" class="form-control" required>
+	
+	</div>
+	</div>
+
+
+
+{{-- <div class="text-xs-right"> --}}
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Vendor">					 
+	{{-- </div> --}}
+
+
+</div>{{-- end column --}}
+
+
+
+       </div>
+</form>
+
+</div>
+
+</div>
+
+
+
+{{-- TRIAL END --}}
+
+    </div>
+    @include('admin.body.footer')
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Attach an event listener to the input field
+    $('#feesInput').on('input', function() {
+      // Get the current value of the input field
+      let currentValue = $(this).val();
+
+      // Remove any existing dollar signs
+      currentValue = currentValue.replace(/\$/g, '');
+
+      // Add a dollar sign at the beginning of the input value
+      $(this).val('$' + currentValue);
+    });
+  });
+</script>
+
 
 @endsection

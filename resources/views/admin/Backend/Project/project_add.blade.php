@@ -23,13 +23,13 @@
 							</div>
 
 																
-			 <div class="form-group">
-				<h6>Description<span class="text-danger">*</span></h6>
-				<div class="controls">
-					
-					<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
-			   </div>
-			</div>
+							<div class="form-group">
+								<h6>Description<span class="text-danger">*</span></h6>
+								<div class="controls">
+									<textarea name="description" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+								</div>
+							</div>
+							
 
 
 			 <div class="form-group">
@@ -59,7 +59,7 @@
 					</div>
 		
 					<div class="form-group">
-						<h6>Date to be Completed<span class="text-danger">*</span></h6>
+						<h6>Date to be Completed</h6>
 						<div class="controls">
 							<input type="date" name="completion_date" class="form-control" >
 			
@@ -95,23 +95,7 @@
 						 </div>
 					</div>
 
-						{{-- <div class="form-group">
-							<h6>Bug<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="bug" class="form-control">
 					
-						   </div>
-						</div>
-
-						
-						<div class="form-group">
-							<h6>Issue<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="text" name="issue" class="form-control" required="">
-					
-						   </div>
-						</div> --}}
-
 						<div class="form-group">
 							<h6>Hyperlinks</h6>
 							<div class="controls">
@@ -122,7 +106,7 @@
 
 
 						<div class="form-group">
-							<h6>Priority</h6>
+							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
 								<select name="priority" class="form-control" required="" >
 									<option value="" selected="" disabled="">Select an Option</option>
@@ -136,23 +120,16 @@
 								 </div>
 
 
-						
-						{{-- <div class="form-group">
-							<h6>Image<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="file" name="product_img" class="form-control" >
 					
-						   </div>
-						</div> --}}
-						
+						<div class="text-xs-right">
+							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Project">
+					 </div>
+
+
 						</div>
 			
 			   </div> <!-- end row  -->
-			   
-						<div class="text-xs-right">
-	  						 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Project">
-						</div>
-				
+
 						   </form>
 			  </div>
 			</div>

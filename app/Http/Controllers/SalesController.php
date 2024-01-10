@@ -7,12 +7,14 @@ use App\Models\AcidProduct;
 use App\Models\Bank;
 use App\Models\Chalan;
 use App\Models\ChalanItem;
+use App\Models\Course;
 use App\Models\Customer;
 use App\Models\PaymentItem;
 use App\Models\Product;
 use App\Models\Sales;
 use App\Models\SalesItem;
 use App\Models\SalesPaymentItem;
+use App\Models\Student;
 use App\Models\TodaysProduction;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -27,30 +29,30 @@ class SalesController extends Controller
         // $id = Auth::user()->id;
 		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
-        $customers = Customer::orderBy('user_name','ASC')->get();
+        $students = Student::orderBy('id','ASC')->get();
         // $inventory = TodaysProduction::sum('qty');
         $acidProducts = AcidProduct::find(1);
         // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
-        $products = Product::orderBy('id','ASC')->get();
-        return view('admin.Backend.Sales.sales_form', compact('customers','banks','acidProducts','products'));
+        $courses = Course::orderBy('id','ASC')->get();
+        return view('admin.Backend.Sales.sales_form', compact('students','banks','acidProducts','courses'));
     }
 
     public function SalesStore(Request $request)
     {   
 
+        // dd($request);
+
         $admin = Auth::guard('admin')->user();
 
         $sale_id = Sales::insertGetId([
-            'customer_id' => $request->customer_id,
+            'student_id' => $request->customer_id,
             'sale_date' => $request->saleDate,
             'details' => $request->details,
             'sub_total' => $request->subtotal,
-            'invoice' => 'STA'.date('Y').mt_rand(10000, 99999),
+            'invoice' => 'TXAI'.date('Y').mt_rand(10000, 99999),
             'grand_total' => $request->grandtotal,
-            'pInvoice' => $request->pInvoice,
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
-            'total_vat' => $request->vper,
             'user_id' => $admin->id,
             'p_paid_amount' => $request->paidamount,
             'due_amount' => $request->dueamount,
@@ -59,111 +61,26 @@ class SalesController extends Controller
   
         ]);
 
-        // ADD DUE TO CUSTOMER
-        $customer = Customer::findOrFail($request->customer_id);
-        $customer->cusDue+=$request->dueamount;
-        // $customer->balance += $paidAmount;
-        // $customer->advance += $totalQty;
-        // $customer->due += $totalQty;
-        // $customer->rate = $rate;
-        // $customer->rateType = $rateType;
-        $customer->save();
-
         
         $item = $request->input('item');
-        $stock = $request->input('stock');
-        // $batch = $request->input('batch');
         $qty = $request->input('qnty');
         $rate = $request->input('rate');
-        // $rateType = $request->input('rateType');
         $amount = $request->input('amount');
-        $cost_price = 0;
 
         foreach ($item as $key => $value) {
 
-            $matchProduct = Product::where('id',$value)->get();
+            // $matchProduct = Product::where('id',$value)->get();
 
-            // $productIDs = $matchProduct->pluck('id')->toArray();
-            
-            // foreach($productIDs as $product) {
-            //     // dd($product);
-            //     // print($product.',');
-            //     $match1Product = Product::where('id',$product)->get();
-
-            //     if(isset($product->qty) && $product->qty == null){
-            //         Product::findOrFail($product)->update([
-            //             'qty' => $qty[$key],
-            //         ]);
-            //     }else{
-            //         Product::findOrFail($product)->update([
-            //             'qty' => $stock[$key] - $qty[$key] ,
-            //         ]);
-            //     }
-            // }
-
-            $product_id = Product::findOrFail($value);
-
-            $cost_price+=$product_id->cost_price * $qty[$key];
+            // $product_id = Product::findOrFail($value);
 
             SalesItem::create([
                 'product_id' => $value,
                 'sales_id' => $sale_id,
                 'qty' => $qty[$key],
                 'rate' => $rate[$key],
-                // 'rateType' => $rateType[$key],
                 'amount' => $amount[$key],
             ]);
         }
-        
-        $capital = $request->grandtotal - $cost_price;
-
-           $capital_bank = Bank::findOrFail(5);
-           $capital_bank->balance += $cost_price;
-           $capital_bank->save();
-        
-        $capital_banks = Bank::findOrFail(8);
-        $capital_banks->balance += $request->paidamount;
-        $capital_banks->save();
-        
-
-        //  // Advance
-        //  $totalQty = array_sum($qty);
-        //  $rate = array_shift($rate);
-        //  $rateType = array_shift($rateType);
-        
-       
-        // foreach ($item as $key => $value) {
-
-        //     SalesItem::create([
-        //         'product_id' => $value,
-        //         'sales_id' => $sale_id,
-        //         'qty' => $qty[$key],
-        //         'rate' => $rate[$key],
-        //         'rateType' => $rateType[$key],
-        //         'amount' => $amount[$key],
-        //     ]);
-        // }
-
-        // Deduct Product Stock
-        // $sales = Sales::find($sale_id);
-        // $product_id = $sales->customer->id;
-        // $customer = Customer::find($customer_id);
-       
-        // $customer->balance = $chalan->nbalance;
-        // $customer->delivery += $chalan->qty;
-        // $customer->due -= $chalan->qty;
-        // $customer->save();
-
-        // // Retrieve the customer ID from the sales record
-        // $customer_id = $sales->customer->id;
-        // $customer = Customer::find($customer_id);
-        // $customer->balance += $paidAmount;
-        // $customer->advance += $totalQty;
-        // $customer->due += $totalQty;
-        // $customer->rate = $rate;
-        // $customer->rateType = $rateType;
-        // $customer->save();
-
        
 
         $payitem = $request->input('payitem');
@@ -198,7 +115,7 @@ class SalesController extends Controller
 
     public function DownloadSale ($id){
                     
-        $sale = Sales::with('customer','user')->where('id',$id)->first();
+        $sale = Sales::with('student','user')->where('id',$id)->first();
     	$saleItem = SalesItem::with('product','sales')->where('sales_id',$id)->orderBy('id','ASC')->get();
 
 		$pdf = PDF::loadView('admin.Backend.Sales.view_sales',compact('sale','saleItem'))->setPaper('a4')->setOptions([
@@ -214,8 +131,8 @@ class SalesController extends Controller
             $sale = Sales::findOrFail($id);
             $saleItem = SalesItem::where('sales_id',$id)->get();
             $paysaleItem = SalesPaymentItem::where('sale_id',$id)->get();
-            $customers = Customer::orderBy('customer_name','ASC')->get();
-            $products = Product::orderBy('product_name','ASC')->get();
+            $customers = Student::orderBy('student_name','ASC')->get();
+            $products = Course::orderBy('course_name','ASC')->get();
 
             // dd($paysaleItem);
 

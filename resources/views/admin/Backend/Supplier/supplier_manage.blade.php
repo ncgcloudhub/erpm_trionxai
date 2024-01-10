@@ -1,93 +1,64 @@
 @extends('admin.aDashboard')
 @section('admins')
 
-  <!-- Content Wrapper. Contains page content -->
-  
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		 
+ {{-- TRIAL START --}}
+ <div class="container-fluid">
+	<div class="row mt-4">
+        <div class="col-lg-12 mb-lg-0 mb-4">
+		<div class="card">
 
-		<!-- Main content -->
-		<section class="content">
-		  <div class="row">
+		  <div class="card-body p-3">
+			<div class="row">
+							<!-- /.box-header -->
+							{{-- <div class="box-body"> --}}
+                                <div class="table-responsive">
+									<table id="example1" class="table table-bordered table-striped">
+										<thead>
+											<tr class="align-middle text-center">
+											
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Service Name </th>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+												<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+												 
+											</tr>
+										</thead>
+										<tbody>
+				
+			@foreach($suppliers as $item)
+			<tr class="align-middle text-center text-sm">
+			<td class="text-start"> <a href="{{ route('supplier.view',$item->id) }}">{{ $item->vendor_name }}</a></td>
+			<td>{{ $item->vendor_s_name }}</td>
+			<td>{{ $item->price }}</td>
+			<td>{{ $item->email }}</td>
+			<td>
+			
+			<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('supplier.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>	
 			   
-		 
+			   <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('supplier.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
 
-			<div class="col-12">
+			   <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('supplier.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Vendor')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+			
+			</td>
+				 
+			</tr>
+			@endforeach
+			</tbody>
+										 
+			</table>
+  </div>
+{{-- </div> --}}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-			 <div class="box">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Supplier List <span class="badge badge-pill badge-danger"> {{ count($suppliers) }} </span></h3>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<div class="table-responsive">
-					  <table id="example1" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-							
-								<th>Supplier Name</th>
-								<th>Address </th>
-								<th>Mobile No.</th>
-								<th>Email</th>
-								<th>City</th>
-								<th>State </th>
-								<th>Zip Code</th>
-								<th>Country</th>
-								<th>Action</th>
-								 
-							</tr>
-						</thead>
-						<tbody>
-	 @foreach($suppliers as $item)
-	 <tr>
-		<td>{{ $item->supplier_name }}</td>
-		<td>{{ $item->address }}</td>
-		 <td>{{ $item->mobile }} </td>
-		 <td>{{ $item->email_address }}</td>
-		 <td>{{ $item->city }}</td>
-		 <td>{{ $item->state }}</td>
-		 <td>{{ $item->zip }}</td>
-		 <td>{{ $item->country }}</td>
+@include('admin.body.footer')
 
-
-		<td width="20%">
- <a href="{{ route('supplier.edit',$item->id) }}" class="btn btn-primary" title="Supplier Details"><i class="fa fa-eye"></i> </a>
-
- {{-- <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a> --}}
-
- <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
- 	<i class="fa fa-trash"></i></a>
-
-		</td>
-							 
-	 </tr>
-	  @endforeach
-						</tbody>
-						 
-					  </table>
-					</div>
-				</div>
-				<!-- /.box-body -->
-			  </div>
-			  <!-- /.box -->
-
-			          
-			</div>
-			<!-- /.col -->
-
- 
- 
-
-
-		  </div>
-		  <!-- /.row -->
-		</section>
-		<!-- /.content -->
-	  
-	  </div>
-  
-
+{{-- TRIAL END --}}
 
 
 @endsection

@@ -22,6 +22,14 @@ class EmployeeController extends Controller
     
 	public function StoreEmployee(Request $request){
 
+
+		$status=0;
+		$checkstatus=$request->status;
+		if($checkstatus=='1')
+			{
+				$status=1;
+			}
+
 		if ($request->file('image')) {
 
 			$image = $request->file('image');
@@ -35,24 +43,23 @@ class EmployeeController extends Controller
 				'designation_id' => $request->designation,
 				'department_id' => $request->department,
 	  
-			  'phone' => $request->phone,
+			  	'phone' => $request->phone,
 				'r_type' => $request->rate_type,
-				
 
-				'basic' => $request->basic,
-				'rent' => $request->rent,
-				'medical' => $request->medical,
 				'salary' => $request->salary,
-				'conveyance' => $request->conveyance,
-	  
-	  
-			  'email' => $request->email,
-				'b_group' => $request->b_group,
-			  'address' =>  $request->address,
-			  'image' =>  $save_url,
-		  
+
+			  	'email' => $request->email,
+				'employee_type' => $request->employee_type,
+				'address' =>  $request->address,
 				'city' =>  $request->city,
+				'state' =>  $request->state,
+				'zip' =>  $request->zip,
 				'country' => $request->country,
+				'consent' => $status,
+			  
+			  	'image' =>  $save_url,
+		  
+				
 				'created_at' => Carbon::now(),   
 	  
 			]);
@@ -63,21 +70,20 @@ class EmployeeController extends Controller
 				'designation_id' => $request->designation,
 				'department_id' => $request->department,
 	  
-			 	'phone' => $request->phone,
+			  	'phone' => $request->phone,
 				'r_type' => $request->rate_type,
-				
-				
-				'basic' => $request->basic,
-				'rent' => $request->rent,
-				'medical' => $request->medical,
+
 				'salary' => $request->salary,
-				'conveyance' => $request->conveyance,
-	  
-			 	'email' => $request->email,
-				'b_group' => $request->b_group,
-			 	'address' =>  $request->address,		  
+
+			  	'email' => $request->email,
+				'employee_type' => $request->employee_type,
+				'address' =>  $request->address,
 				'city' =>  $request->city,
+				'state' =>  $request->state,
+				'zip' =>  $request->zip,
 				'country' => $request->country,
+				'consent' => $status,
+
 				'created_at' => Carbon::now(),   
 	  
 			]);
@@ -107,5 +113,84 @@ class EmployeeController extends Controller
 		return view('admin.Backend.Employee.employee_edit', compact('employee','designations','departments'));
 		
 	}
+
+	public function ViewEmployee($id){
+
+		$employee = Employee::findOrFail($id);
+		$designations = Designation::latest()->get();
+		$departments = Department::latest()->get();
+		return view('admin.Backend.Employee.employee_view', compact('employee','designations','departments'));
+		
+	}
+
+	public function EmployeeUpdate (Request $request){
+		$id = $request->id;	
+
+		$status=0;
+		$checkstatus=$request->status;
+		if($checkstatus=='1')
+			{
+				$status=1;
+			}
+			
+			if($request->file('image')){
+
+			$image = $request->file('image');
+			$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+			Image::make($image)->resize(200,200)->save('upload/employee/'.$name_gen);
+			$save_url = 'upload/employee/'.$name_gen;
+
+				Employee::findOrFail($id)->update([
+					'image' =>  $save_url,
+				]);
+			}
+
+
+		Employee::findOrFail($id)->update([
+				'f_name' => $request->first_name,
+				'l_name' => $request->last_name,
+				'designation_id' => $request->designation,
+				'department_id' => $request->department,
+
+			  	'phone' => $request->phone,
+				'r_type' => $request->rate_type,
+				'salary' => $request->salary,
+
+			  	'email' => $request->email,
+				'employee_type' => $request->employee_type,
+				'address' =>  $request->address,
+				'city' =>  $request->city,
+
+				'state' =>  $request->state,
+				'zip' =>  $request->zip,
+				'country' => $request->country,
+				'consent' => $status,
+				'updated_at' => Carbon::now(), 
+	
+			]);
+	
+			$notification = array(
+				'message' => 'Employee Updated Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->route('employee.manage')->with($notification);
+	
+			
+		} // end method 
+
+
+		public function EmployeeDelete($id){
+			
+			Employee::findOrFail($id)->delete();
+	
+			$notification = array(
+				'message' => 'Employee Delectd Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->back()->with($notification);
+	
+		} // end method
 
 }

@@ -17,6 +17,8 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\ConveyanceController;
 use App\Http\Controllers\ScheduleController;
@@ -47,6 +49,7 @@ use App\Models\Brand;
 use App\Models\Schedule;
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Notice;
 use App\Models\Product;
 use App\Models\slider;
 use App\Models\Bank;
@@ -126,14 +129,15 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
 
         // $dues = Customer::where('balance','>', 1)->get();
         // $customers = Customer::orderBy('customer_name','ASC')->get();
-        $customerssum = Customer::count();
+        $customerssum = Category::count();
         // $products = Product::orderBy('product_name','ASC')->get();
         $productssum = Product::count();
         $banks = Bank::where('balance','>', 1)->get();
         // $stock = Product::sum('qty');
         $tsale = Sales::count();
         $totalsale = Sales::sum('grand_total');
-        $totalpurchase = Purchase::sum('grand_total');
+        $notices = Notice::where('status','=', 1)->orderBy('id','DESC')->get();
+        // $totalpurchase = Purchase::sum('grand_total');
         $servicetotal = ServiceInvoice::sum('grand_total');
         $inventory = AcidProduct::find(1);
         $capital_due = Bank::find(5);
@@ -156,17 +160,9 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
             $userIdArray = $topUsers->pluck('user_id')->toArray();
             $users = DB::table('admins')->whereIn('id', $userIdArray)->select('id', 'name')->get();
 
-            // $topProducts = DB::table('sales_items')
-            // ->select('products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
-            // ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
-            // ->join('products', 'sales_items.product_id', '=', 'products.id')
-            // ->whereYear('sales.created_at', '=', now()->year)
-            // ->whereMonth('sales.created_at', '=', now()->month)
-            // ->groupBy('products.product_name')
-            // ->orderBy('sale_count', 'desc')
-            // ->take(4)
-            // ->get();
-            // jhadsadskhasd
+            $topProducts = Category::orderBy('id','DESC')->get();
+            $projecttasks = Product::orderBy('id','DESC')->get();
+           
 
     //         $topProductsByCategory = DB::table('products')
     // ->select('categories.category_name', 'products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
@@ -183,7 +179,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','banks','customerssum','productssum','totalsale','totalpurchase','lastSale','last5Sales','capital_due','total_balance','topUsers','users', 'servicetotal'));
+        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal'));
     })->name('admin.dashboard');
 });
 
@@ -298,13 +294,16 @@ Route::prefix('category')->group(function(){
         });
 
 
-// Admin Slider All Routes 
+// Customer 
+
     
 Route::prefix('customer')->group(function(){
     
     Route::get('/add', [CustomerController::class, 'CustomerAdd'])->name('customer.add');
 
-    Route::get('/view', [CustomerController::class, 'CustomerView'])->name('customer.view');
+    Route::get('/manage', [CustomerController::class, 'CustomerManage'])->name('customer.manage');
+
+    Route::get('/view/{id}', [CustomerController::class, 'CustomerView'])->name('customer.view');
     
     Route::post('/store', [CustomerController::class, 'CustomerStore'])->name('customer.store');
     
@@ -314,26 +313,60 @@ Route::prefix('customer')->group(function(){
     
     Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
     
-    Route::get('/dealer/view', [DealerController::class, 'DealerView'])->name('dealer.view');
-    
-    Route::post('/dealer/store', [DealerController::class, 'DealerStore'])->name('dealer.store');
     
     });
 
-
+// Student
     Route::prefix('student')->group(function(){
 
         Route::get('/add', [StudentController::class, 'StudentAdd'])->name('student.add');
+
+        Route::get('/manage', [StudentController::class, 'StudentManage'])->name('student.manage');
     
-        Route::get('/view', [StudentController::class, 'StudentView'])->name('student.view');
+        Route::get('/view/{id}', [StudentController::class, 'StudentView'])->name('student.view');
         
         Route::post('/store', [StudentController::class, 'StudentStore'])->name('student.store');
         
         Route::get('/edit/{id}', [StudentController::class, 'StudentEdit'])->name('student.edit');
     
         Route::post('/update', [StudentController::class, 'StudentUpdate'])->name('student.update');
+
+        Route::get('/delete/{id}', [StudentController::class, 'StudentDelete'])->name('student.delete');
         
         });
+
+
+        // Course
+    Route::prefix('course')->group(function(){
+
+        Route::get('/add', [CourseController::class, 'CourseAdd'])->name('course.add');
+
+        Route::get('/manage', [CourseController::class, 'CourseManage'])->name('course.manage');
+    
+        Route::get('/view/{id}', [CourseController::class, 'CourseView'])->name('course.view');
+        
+        Route::post('/store', [CourseController::class, 'CourseStore'])->name('course.store');
+        
+        Route::get('/edit/{id}', [CourseController::class, 'CourseEdit'])->name('course.edit');
+    
+        Route::post('/update', [CourseController::class, 'CourseUpdate'])->name('course.update');
+
+        Route::get('/delete/{id}', [CourseController::class, 'CourseDelete'])->name('course.delete');
+        
+        });
+
+
+          //Notice
+    Route::get('/notice', [NoticeController::class, 'NoticeView'])->name('notice.view');
+    //Notice Add
+    Route::post('/notice/add', [NoticeController::class, 'NoticeAdd'])->name('notice.add');
+
+    Route::get('/site/settings', [NoticeController::class, 'SiteView'])->name('site.view');
+    
+    //Site Settting
+    Route::post('/site/add', [NoticeController::class, 'SiteAdd'])->name('site.add');
+
+    Route::post('/site/store', [NoticeController::class, 'SiteStore'])->name('site.store');
 
 
     Route::prefix('schedule')->group(function(){
@@ -375,6 +408,8 @@ Route::prefix('customer')->group(function(){
 
     // Admin Products All Routes 
 
+    
+
 Route::prefix('project')->group(function(){
 
     Route::get('/', [ProjectController::class, 'AddProject'])->name('project.view');
@@ -385,28 +420,36 @@ Route::prefix('project')->group(function(){
 
     Route::get('/task/add', [ProjectController::class, 'AddTask'])->name('project.add.task');
 
-    Route::get('/task/manage', [ProjectController::class, 'ManageTask'])->name('project.manage.task');
-   
-    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.task');
-
-    Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');
-
     Route::get('/view/details/{id}', [ProjectController::class, 'ProjectDetails'])->name('project.view.details');
 
-    Route::get('/edit/task/{id}', [ProjectController::class, 'EditProjectTask'])->name('project.task.edit');
+    Route::get('/task/manage', [ProjectController::class, 'ManageTask'])->name('project.manage.task');
+   
+    Route::post('/task/store', [ProjectController::class, 'StoreProjectTask'])->name('project.store.tasks');
+
+    Route::get('/edit/{id}', [ProjectController::class, 'EditProject'])->name('project.edit');    
+
+    Route::get('/task/edit/{id}', [ProjectController::class, 'EditProjectTask'])->name('project.task.edit');
+
+    Route::get('/task/view/{id}', [ProjectController::class, 'ViewProjectTask'])->name('project.task.view');
 
     Route::post('/update', [ProjectController::class, 'ProjectUpdate'])->name('project.update');
 
     Route::post('/task/update', [ProjectController::class, 'ProjectUpdateTask'])->name('project.update.task');
 
+    // Route::get('/delete/{id}', [ProjectController::class, 'ProjectDelete'])->name('project.delete');
 
-    Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
+    Route::get('/deletes/{id}', [ProjectController::class, 'ProjectsDelete'])->name('projects.delete');
+
+    Route::get('/task/delete/{id}', [ProjectController::class, 'ProjectTaskDelete'])->name('projects.tasks.deletes');
+
+
+    // Route::get('/add/raw/materials', [productController::class, 'AddRawProduct'])->name('raw.product.add');
     
-    Route::post('/store/raw/materials', [productController::class, 'StoreRawProduct'])->name('raw.product-store');
+    // Route::post('/store/raw/materials', [productController::class, 'StoreRawProduct'])->name('raw.product-store');
 
-    Route::get('/manage/raw/materials', [ProductController::class, 'ManageRawProduct'])->name('raw.manage-product');
+    // Route::get('/manage/raw/materials', [ProductController::class, 'ManageRawProduct'])->name('raw.manage-product');
 
-    Route::get('/raw/edit/{id}', [ProductController::class, 'EditRawProduct'])->name('raw.product.edit');
+    // Route::get('/raw/edit/{id}', [ProductController::class, 'EditRawProduct'])->name('raw.product.edit');
     
     
     
@@ -798,8 +841,9 @@ Route::prefix('project')->group(function(){
     Route::get('/get-balance', [BankController::class, 'getBalance']);
 
     Route::get('/get-data', [QuotationController::class, 'getData']);
+    Route::get('/get-vendor', [QuotationController::class, 'getVendor']);
     Route::get('/get-employee-data', [ConveyanceController::class, 'getData']);
-    Route::get('/get-data-product', [QuotationController::class, 'getDataProduct']);
+    Route::get('/geta-data-product', [QuotationController::class, 'getDatasProduct']);
     
     Route::get('/get-price', [QuotationController::class, 'getProductPrice']);
 
@@ -845,7 +889,9 @@ Route::prefix('project')->group(function(){
 
     Route::prefix('supplier')->group(function(){
 
-        Route::get('/view', [SupplierController::class, 'SupplierView'])->name('supplier.view');
+        Route::get('/add', [SupplierController::class, 'SupplierAdd'])->name('supplier.add');
+
+        Route::get('/view/{id}', [SupplierController::class, 'SupplierView'])->name('supplier.view');
         
         Route::post('/store', [SupplierController::class, 'SupplierStore'])->name('supplier.store');
 
@@ -853,9 +899,9 @@ Route::prefix('project')->group(function(){
         
         Route::get('/edit/{id}', [SupplierController::class, 'SupplierEdit'])->name('supplier.edit');
         
-        // Route::post('/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
+        Route::post('/update', [SupplierController::class, 'SupplierUpdate'])->name('supplier.update');
         
-        // Route::get('/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+        Route::get('/delete/{id}', [SupplierController::class, 'SupplierDelete'])->name('supplier.delete');
         
         // Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
         
@@ -866,11 +912,19 @@ Route::prefix('project')->group(function(){
 
         Route::prefix('purchase')->group(function(){
 
-            Route::get('/view', [PurchaseController::class, 'PurchaseForm'])->name('purchase.view');
+            Route::get('/add', [PurchaseController::class, 'PurchaseAdd'])->name('purchase.add');
+
+            Route::get('/view/{id}', [PurchaseController::class, 'PurchaseView'])->name('purchase.view');
             
             Route::post('/store', [PurchaseController::class, 'PurchaseStore'])->name('purchase.store');
     
-            Route::get('/lcopened', [PurchaseController::class, 'PurchaseLCOpened'])->name('purchase.lcopened');
+            Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
+
+            Route::get('/edit/{id}', [PurchaseController::class, 'PurchaseEdit'])->name('purchase.edit');
+
+            Route::post('/update', [PurchaseController::class, 'PurchaseUpdate'])->name('purchase.update');
+
+            Route::get('/delete/{id}', [PurchaseController::class, 'PurchaseDelete'])->name('purchase.delete');
 
             Route::get('/port', [PurchaseController::class, 'PurchaseReachedPort'])->name('purchase.port');
 
@@ -1107,11 +1161,11 @@ Route::prefix('project')->group(function(){
         Route::get('/approve/{id}', [ExpenseController::class, 'ExpenseApprove'])->name('expense.approve');
         Route::get('/e-edit/{id}', [ExpenseController::class, 'ExpenseEdit'])->name('expense.edit');
 
-        Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
+        // Route::get('/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
 
         Route::get('/requisition-type', [RequisitionController::class, 'RequisitionTypeView'])->name('requisitionType.view');
         Route::post('/requisition-type/store', [RequisitionController::class, 'RequisitionTypeStore'])->name('requisitionType.store');
-        Route::get('/requisition/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
+        // Route::get('/requisition/manage', [PurchaseController::class, 'PurchaseManage'])->name('purchase.manage');
 
 
         Route::get('/requisition', [RequisitionController::class, 'RequisitionView'])->name('requisition.view');
@@ -1166,7 +1220,13 @@ Route::prefix('project')->group(function(){
 
             Route::get('/employee-manage', [EmployeeController::class, 'ManageEmployee'])->name('employee.manage');
 
+            Route::get('/employee-view/{id}', [EmployeeController::class, 'ViewEmployee'])->name('employee.view');
+
             Route::get('/employee-edit/{id}', [EmployeeController::class, 'EditEmployee'])->name('employee.edit');
+
+            Route::post('/employee/update', [EmployeeController::class, 'EmployeeUpdate'])->name('employee.update');
+
+            Route::get('/delete/{id}', [EmployeeController::class, 'EmployeeDelete'])->name('employees.deletes');
 
             // DESIGNATION
             Route::get('/designation-add', [DesignationController::class, 'AddDesignation'])->name('designation.add');

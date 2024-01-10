@@ -21,146 +21,111 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    public function PurchaseForm() 
-    {
-        // $id = Auth::user()->id;
-		// $adminData = Admin::find($id);
-        $banks = Bank::orderBy('bank_name','ASC')->get();
-        $suppliers = Supplier::orderBy('supplier_name','ASC')->get();
-        $products = Product::orderBy('id','ASC')->get();
-        $expenseTypes = ShipExpenseType::latest()->get();
-
-        return view('admin.Backend.Purchase.purchase_form', compact('products','suppliers','banks','expenseTypes'));
+    public function PurchaseAdd() 
+    { 
+        $suppliers = Supplier::orderBy('vendor_name','ASC')->get();
+       
+        return view('admin.Backend.Purchase.purchase_form', compact('suppliers'));
     }
 
     public function PurchaseStore(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-    	// 	'supplier_id' => 'required',
-    	// 	'chalan' => 'required',
-        //     'quoDate' => 'required',
-    	// ],[
-    	// 	'customer_id.required' => 'Please Select a Customer',
-        //     'quoDate.required' => 'Please Enter Quotation Date',
-        //     'expDate.required' => 'Please Enter Quotation Expiry Date',
-    	// ]);
-
+       
         $purchased_id = Purchase::insertGetId([
-            'supplier_id' => $request->supplier_id,
-            'chalan_no' => $request->chalan,
-            'purchase_date' => $request->quoDate,
-            'ldate' => $request->ldate,
-            'boed' => $request->boed,
-            'boen' => $request->boen,
-            'besb' => $request->besb,
+            'vendor_id' => $request->vendor_id,
+           
+            'purchase_date' => $request->purchase_date,
+            'expiration_date' => $request->expiration_date,
+            
             'details' => $request->details,
-            'track' => $request->track,
-            'sub_total' => $request->subtotal,
-            'grand_total' => $request->grandtotal,
-            'purchase_discount' => $request->dper,
-            'discount_flat' => $request->dflat,
-            // 'total_discount' => null,
-            'total_vat' => $request->vper,
-            'p_paid_amount' => $request->paidamount,
-            'due_amount' => $request->dueamount,
-            'status' => 'L/C Opened',
+           
             'created_at' => Carbon::now(),   
   
         ]);
 
-        $item = $request->input('item');
-        $stock = $request->input('stock');
-        $batch = $request->input('batch');
-        $qty = $request->input('qnty');
-        $rate = $request->input('rate');
-        $rateType = $request->input('rateType');
-        $amount = $request->input('amount');
-
-       
-        foreach ($item as $key => $value) {
-
-            // $matchProduct = Product::where('id',$value)->get();
-
-            // $productIDs = $matchProduct->pluck('id')->toArray();
-            
-            // foreach($productIDs as $product) {
-            //     // dd($product);
-            //     // print($product.',');
-            //     $match1Product = Product::where('id',$product)->get();
-
-            //     if(isset($product->qty) && $product->qty == null){
-            //         Product::findOrFail($product)->update([
-            //             'qty' => $qty[$key],
-            //         ]);
-            //     }else{
-            //         Product::findOrFail($product)->update([
-            //             'qty' => $qty[$key] + $stock[$key],
-            //         ]);
-            //     }
-            // }
-
-            PurchaseItem::create([
-                'product_id' => $value,
-                'purchase_id' => $purchased_id,
-                'batch_no' => $batch[$key],
-                'qty' => $qty[$key],
-                'rate' => $rate[$key],
-                'rateType' => $rateType[$key],
-                'amount' => $amount[$key],
-            ]);
-        }
-
-
-        // $payitem = $request->input('payitem');
-        // $pay_amount = $request->input('pay_amount');
-     
-        // foreach ($payitem as $key => $value) {
-
-        //     PaymentItem::create([
-        //         'bank_id' => $value,
-        //         'purchase_id' => $purchased_id,
-        //         'b_paid_amount' => $pay_amount[$key],
-        //     ]);
-        // }
-
-
-        $cbank = Bank::findOrFail($request->bank_item);
-			$pay_from_amount = $request->pay_from_amount;
-			
-			$cbank->balance-=$pay_from_amount;
-			$cbank->save();
-
-
-        $purchase_id_find = Purchase::findOrFail($purchased_id);
-        $purchase_id_find->from_bank_id = $request->bank_item;
-        $purchase_id_find->amount_from = $request->pay_from_amount;
-        $purchase_id_find->save();
-
-
-        // EXPENSE
-        $admin = Auth::guard('admin')->user();
-
-        ShipExpense::insert([
-            'expenseType_id' => $request->expenseType,
-            'date' => $request->ldate,
-            'amount' => $request->eamount,
-            'details' => $request->details,
-			'made_by_id' => $admin->id,
-            'created_at' => Carbon::now(),   
-    
-            ]);
-
     
 		// return redirect()->back();
         $notification = array(
-			'message' => 'L/C Opened Successfully',
+			'message' => 'Vendor Purchased Successfully',
 			'alert-type' => 'success'
 		);
 
         return redirect()->back()->with($notification);
 
     }
+
+    public function PurchaseView($id){
+        $vendors = Supplier::latest()->get();
+		
+		$purchase = Purchase::findOrFail($id);
+		return view('admin.Backend.Purchase.purchase_view' ,compact('vendors','purchase'));
+	}
+
+    public function PurchaseManage(){
+		$purchase = Purchase::orderBy('id','ASC')->get();
+		return view('admin.Backend.Purchase.purchase_manage' ,compact('purchase'));
+	}
+
+    public function PurchaseEdit($id) 
+    { 
+        $vendors = Supplier::latest()->get();
+		
+		$purchase = Purchase::findOrFail($id);
+       
+        return view('admin.Backend.Purchase.purchase_edit', compact('vendors','purchase'));
+    }
+
+
+
+    public function PurchaseUpdate(Request $request){
+			
+		$id = $request->id;
+	
+		Purchase::findOrFail($id)->update([
+            'vendor_id' => $request->vendor_id,
+           
+            'purchase_date' => $request->purchase_date,
+            'expiration_date' => $request->expiration_date,
+            
+            'details' => $request->details,
+			'updated_at' => Carbon::now(), 
+	
+			]);
+	
+			$notification = array(
+				'message' => 'Purchase Updated Successfully',
+				'alert-type' => 'info'
+			);
+	
+			return redirect()->route('purchase.manage')->with($notification);
+	
+			 // end else 
+			
+		} // end method 
+
+
+        public function PurchaseDelete($id){
+		
+            Purchase::findOrFail($id)->delete();
+    
+            $notification = array(
+                'message' => 'Purchase Delectd Successfully',
+                'alert-type' => 'info'
+            );
+    
+            return redirect()->back()->with($notification);
+    
+        } // end method
+
+
+
+
+
+
+
+
+
+
 
     public function PurchaseLCOpened (){
        

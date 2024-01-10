@@ -12,7 +12,7 @@ class Purchase extends Model
     protected $guarded = [];
  
     public function supplier(){
-    	return $this->belongsTo(Supplier::class,'supplier_id','id');
+    	return $this->belongsTo(Supplier::class,'vendor_id','id');
     }
 
     public function purchaseItem(){

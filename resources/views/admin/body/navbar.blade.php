@@ -14,14 +14,14 @@
 		  </div>
 		</div>
 		<ul class="navbar-nav  justify-content-end">
-		@if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
+		{{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 		  <li class="nav-item d-flex align-items-center">
 			<a href="{{ route('sample.chalan.manage') }}" class="nav-link text-body font-weight-bold px-0">
 			  <i class="fa fa-file-text me-sm-1"></i>
 			  <span class="d-sm-inline d-none">View Sample Chalan</span>
 			</a>
 		  </li>
-		  @endif
+		  @endif --}}
 		  <li class="nav-item d-xl ps-3 d-flex align-items-center">
 			<a href="{{ route('admin.logout') }}" class="nav-link text-body font-weight-bold px-0">
 			  <i class="fa fa-power-off me-sm-1"></i>
