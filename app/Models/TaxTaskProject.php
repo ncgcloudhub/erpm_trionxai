@@ -18,4 +18,12 @@ class TaxTaskProject extends Model
     public function user(){
     	return $this->belongsTo(Admin::class,'assigned_by','id');
     }
+
+    public function project(){
+    	return $this->belongsTo(TaxProject::class,'project_list','id');
+    }
+
+    public function customer(){
+    	return $this->belongsTo(Customer::class,'customer_id','id');
+    }
 }

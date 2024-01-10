@@ -165,7 +165,7 @@ class IncomeTaxController extends Controller
     public function ManageTask(){
 
 		$products = TaxTaskProject::latest()->get();
-		return view('admin.Backend.Project.project_task_manage',compact('products'));
+		return view('admin.Backend.Tax.taxproject_task_manage',compact('products'));
 	}  // end method
 
 	public function EditProjectTask($id){		   
