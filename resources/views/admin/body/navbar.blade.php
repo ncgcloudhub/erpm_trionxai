@@ -1,15 +1,34 @@
 @php
-        $fullUrl = request()->fullUrl();
-        $prefix = request()->route()->getPrefix();
+        // $fullUrl = request()->fullUrl();
+        // $prefix = request()->route()->getPrefix();
+        // $pathAfterPrefix = ucfirst(ltrim(Str::after($fullUrl, $prefix), '/'));
+
+		$fullUrl = request()->fullUrl();
+    $prefix = request()->route()->getPrefix();
+    $pathAfterPrefix = '';
+
+    // Check if $prefix is not empty before attempting to get pathAfterPrefix
+    if ($prefix) {
         $pathAfterPrefix = ucfirst(ltrim(Str::after($fullUrl, $prefix), '/'));
-    @endphp
+    }
+    
+    // Check if $pathAfterPrefix is not empty before exploding
+    $pathAfterPrefixArray = $pathAfterPrefix ? explode('/', $pathAfterPrefix) : [];
+
+@endphp
 
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
 	<div class="container-fluid py-1 px-3">
 	  <nav aria-label="breadcrumb">
 		<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-		  <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">{{ ucfirst($prefix) }}</a></li>
-		  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">{{ $pathAfterPrefix }}</li>
+			@if ($prefix)
+				<li class="breadcrumb-item text-sm">
+					<a class="opacity-5 text-dark" href="javascript:;">{{ ucfirst($prefix) }}</a>
+				</li>
+			@endif
+			@foreach ($pathAfterPrefixArray as $segment)
+				<li class="breadcrumb-item text-sm text-dark">{{ $segment }}</li>
+			@endforeach
 		</ol>
 		<h6 class="font-weight-bolder mb-0">{{ ucfirst($prefix) }}</h6>
 
