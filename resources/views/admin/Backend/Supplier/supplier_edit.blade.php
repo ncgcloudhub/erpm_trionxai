@@ -27,7 +27,7 @@
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Vendor Service Name <span class="text-danger">*</span></label>
 <div class="controls">
-<input type="text" value="{{$supplier->vendor_s_name}}"  name="vendor_s_name" class="form-control"  > 
+<input type="text" value="{{$supplier->vendor_s_name}}"  name="vendor_s_name" class="form-control" required > 
 </div>
 </div>
 

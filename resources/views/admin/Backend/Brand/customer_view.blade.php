@@ -53,21 +53,21 @@
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">EIN <span class="text-danger">*</span></label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">EIN </label>
 <div class="controls">
 <input type="text" value="{{$customer->ein}}" name="ein" class="form-control" readonly> 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Business Website <span class="text-danger">*</span></label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Business Website </label>
 <div class="controls">
 <input type="text" value="{{$customer->business_website}}" name="business_website" class="form-control" readonly> 
 </div>
 </div>
 
 <div class="form-group">
-  <h6>Business State<span class="text-danger">*</span></h6>
+  <h6>Business State</h6>
   <div class="controls">
     <select name="business_state" class="form-control select2" @readonly(true)>
       <option value="{{$customer->business_state}}" selected="">{{$customer->business_state}}</option>
@@ -140,7 +140,7 @@
 </div>
 
 <div class="form-group">
-  <h6>Status<span class="text-danger">*</span></h6>
+  <h6>Status</h6>
   <div class="controls">
     <select name="status" class="form-control" @readonly(true) >
       <option value="{{$customer->status}}" selected="">{{$customer->status}}</option>
@@ -150,7 +150,6 @@
     </select>
    </div>
 </div>
-
 <div class="form-group">
   <h6>Customer Type<span class="text-danger">*</span></h6>
   <div class="controls">
@@ -205,7 +204,7 @@
 </div>
 
 <div class="form-group">
-  <h6>Business Type<span class="text-danger">*</span></h6>
+  <h6>Business Type</h6>
   <div class="controls">
     <select name="business_type" class="form-control" @readonly(true) >
       <option value="{{$customer->business_type}}" selected="">{{$customer->business_type}}</option>

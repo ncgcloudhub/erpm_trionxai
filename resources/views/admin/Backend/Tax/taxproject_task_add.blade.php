@@ -180,9 +180,9 @@
 
 
 						<div class="form-group">
-							<h6>eSignature<span class="text-danger">*</span></h6>
+							<h6>eSignature</h6>
 							<div class="controls">
-								<select name="eSignature" class="form-control" required="" >
+								<select name="eSignature" class="form-control" >
 									<option value="" selected="" disabled="">Select an Option</option>
 									<option value="SENT">SENT</option>
 									<option value="READY FOR eSIG">READY FOR eSIG</option>
@@ -196,9 +196,9 @@
 
 
 						<div class="form-group">
-							<h6>EF Status<span class="text-danger">*</span></h6>
+							<h6>EF Status</h6>
 							<div class="controls">
-								<select name="ef_status" class="form-control" required="" >
+								<select name="ef_status" class="form-control" >
 									<option value="" selected="" disabled="">Select an Option</option>
 									<option value="DONE">DONE</option>
 									<option value="READY 2 EFILE">READY 2 EFILE</option>

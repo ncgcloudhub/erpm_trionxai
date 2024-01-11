@@ -53,7 +53,7 @@
 <div class="form-group">
 	<label class="text-uppercase text-dark text-xs font-weight-bold">Course Fees <span class="text-danger">*</span></label>
 	<div class="controls">
-	  <input type="text" name="fees" class="form-control" value="$" id="feesInput" required>
+	  <input type="text" name="fees" class="form-control" id="feesInput" required>
 	</div>
   </div>
   

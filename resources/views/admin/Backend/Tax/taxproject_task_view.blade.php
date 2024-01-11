@@ -179,7 +179,7 @@
 
 
 						<div class="form-group">
-							<h6>eSignature<span class="text-danger">*</span></h6>
+							<h6>eSignature</h6>
 							<div class="controls">
 								<select name="eSignature" class="form-control" @readonly(true) >
 									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>
@@ -195,7 +195,7 @@
 
 
 						<div class="form-group">
-							<h6>EF Status<span class="text-danger">*</span></h6>
+							<h6>EF Status</h6>
 							<div class="controls">
 								<select name="ef_status" class="form-control" @readonly(true) >
 									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>

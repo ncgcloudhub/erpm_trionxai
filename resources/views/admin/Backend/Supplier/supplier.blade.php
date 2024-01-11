@@ -53,7 +53,7 @@
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Contact<span class="text-danger">*</span> </label>
 <div class="controls">
-<input type="text"  name="contact" class="form-control" pattern="\d*" title="Please enter only numeric values" > 
+<input type="text"  name="contact" class="form-control" pattern="\d*" title="Please enter only numeric values" required > 
 </div>
 </div>
 

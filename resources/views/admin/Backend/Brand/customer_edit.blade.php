@@ -63,23 +63,23 @@
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">EIN <span class="text-danger">*</span></label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">EIN </label>
 <div class="controls">
-<input type="text" value="{{$customer->ein}}" name="ein" class="form-control" required> 
+<input type="text" value="{{$customer->ein}}" name="ein" class="form-control" > 
 </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Business Website <span class="text-danger">*</span></label>
+	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Business Website </label>
 <div class="controls">
 <input type="text" value="{{$customer->business_website}}" name="business_website" class="form-control"> 
 </div>
 </div>
 
 <div class="form-group">
-  <h6>Business State<span class="text-danger">*</span></h6>
+  <h6>Business State</h6>
   <div class="controls">
-    <select name="business_state" class="form-control select2" required="">
+    <select name="business_state" class="form-control select2">
       <option value="{{$customer->business_state}}" selected="">{{$customer->business_state}}</option>
       <option value="Alabama">Alabama</option>
       <option value="Alaska">Alaska</option>
@@ -150,9 +150,9 @@
 </div>
 
 <div class="form-group">
-  <h6>Status<span class="text-danger">*</span></h6>
+  <h6>Status</h6>
   <div class="controls">
-    <select name="status" class="form-control" required="" >
+    <select name="status" class="form-control" >
       <option value="{{$customer->status}}" selected="">{{$customer->status}}</option>
       <option value="Not Started">Not Started</option>
       <option value="On Progress" >On Progress</option>
@@ -165,14 +165,15 @@
 <div class="form-group">
   <h6>Customer Type<span class="text-danger">*</span></h6>
   <div class="controls">
-    <select name="customer_type" class="form-control" required="" >
+    <select name="customer_type" class="form-control" required >
       <option value="{{$customer->customer_type}}" selected="">{{$customer->customer_type}}</option>
       <option value="Individual" >Individual</option>
       <option value="Business" >Business</option>
-     
     </select>
    </div>
 </div>
+
+
 
 </div>
 {{-- end col --}}
@@ -219,9 +220,9 @@
 </div>
 
 <div class="form-group">
-  <h6>Business Type<span class="text-danger">*</span></h6>
+  <h6>Business Type</h6>
   <div class="controls">
-    <select name="business_type" class="form-control" required="" >
+    <select name="business_type" class="form-control" >
       <option value="{{$customer->business_type}}" selected="">{{$customer->business_type}}</option>
       <option value="LLC">LLC</option>
       <option value="PLLC" >PLLC</option>

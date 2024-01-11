@@ -100,7 +100,7 @@ use Illuminate\Support\Facades\Auth;
 						 <div class="form-group">
 							<h6>Notice Date <span class="text-danger">*</span></h6>
 							<div class="controls">
-						 <input type="date"  name="assign_date" class="form-control" >
+						 <input type="date"  name="assign_date" class="form-control" required >
 						
 						</div>
 						</div>
