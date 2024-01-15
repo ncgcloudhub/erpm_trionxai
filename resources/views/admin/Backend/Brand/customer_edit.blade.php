@@ -150,13 +150,14 @@
 </div>
 
 <div class="form-group">
-  <h6>Status</h6>
+  <h6>Customer Status</h6>
   <div class="controls">
     <select name="status" class="form-control" >
       <option value="{{$customer->status}}" selected="">{{$customer->status}}</option>
-      <option value="Not Started">Not Started</option>
-      <option value="On Progress" >On Progress</option>
-      <option value="Done" >Done</option>
+      <option value="ACTIVE">ACTIVE</option>
+      <option value="INACTIVE" >INACTIVE</option>
+      <option value="FINAL RETURN" >FINAL RETURN</option>
+      <option value="INITIAL RETURN" >INITIAL RETURN</option>
      
     </select>
    </div>

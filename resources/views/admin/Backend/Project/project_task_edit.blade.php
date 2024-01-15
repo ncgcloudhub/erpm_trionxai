@@ -59,7 +59,7 @@
 					</div>
 		
 					<div class="form-group">
-						<h6>Date to be Completed<span class="text-danger">*</span></h6>
+						<h6>Date to be Completed</h6>
 						<div class="controls">
 							<input type="date" value="{{$task->completion_date}}" name="completion_date" class="form-control" >
 			
