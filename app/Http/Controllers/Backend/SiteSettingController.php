@@ -7,6 +7,7 @@ use App\Models\Seo;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as Image;
+use OpenAI;
 
 class SiteSettingController extends Controller
 {
@@ -104,5 +105,38 @@ class SiteSettingController extends Controller
 		return redirect()->back()->with($notification);
 
     } // end mehtod 
+
+
+
+
+	// app/Http/Controllers/ArticleGenerator.php
+
+	public function openaigenerate(Request $input)
+	{
+		if ($input->title == null) {
+			return;
+		}
+	
+		$title = $input->title;
+	
+		$client = OpenAI::client(config('app.openai_api_key'));
+	
+	
+		$result = $client->completions()->create([
+			"model" => "gpt-3.5-turbo-instruct",
+			"temperature" => 0.7,
+			"top_p" => 1,
+			"frequency_penalty" => 0,
+			"presence_penalty" => 0,
+			'max_tokens' => 100,
+			'prompt' => sprintf('Write article about: %s', $title),
+		]);
+	
+		$content = trim($result['choices'][0]['text']);
+	
+	
+		return view('admin.Backend.Site.writer', compact('title', 'content'));
+	}
+	
 
 }

@@ -110,6 +110,10 @@ return [
 
     'faker_locale' => 'en_US',
 
+
+// Open ai API key
+    'openai_api_key' => env('OPENAI_API_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

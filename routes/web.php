@@ -81,6 +81,19 @@ use App\Models\Purchase;
 // });
 
 
+
+
+Route::get('/write', function () {
+    $title = '';
+    $content = '';
+    return view('admin.Backend.Site.writer', compact('title', 'content'));
+})->name('openai.view');
+
+
+Route::post('/write/generate', [SiteSettingController::class, 'openaigenerate']);
+
+
+
 Route::get('/a', function () {
     $products = Product::where('status',1)->inRandomOrder()->get();
     $sliders = Slider::where('status',1)->limit(4)->inRandomOrder()->get();

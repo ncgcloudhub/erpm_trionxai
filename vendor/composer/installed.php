@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '42381ad415d558d162f445cd7f190e8b1444d01a',
+        'reference' => 'f74cffd0b24350fc7d350acc0d178908846999a2',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -487,16 +487,16 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '42381ad415d558d162f445cd7f190e8b1444d01a',
+            'reference' => 'f74cffd0b24350fc7d350acc0d178908846999a2',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
-            'pretty_version' => 'v1.26.3',
-            'version' => '1.26.3.0',
+            'pretty_version' => 'v1.27.0',
+            'version' => '1.27.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/sail',
             'aliases' => array(),
-            'reference' => 'fa1ad5fbb03686dfc752bfd1861d86091cc1c32d',
+            'reference' => '65a7764af5daadbd122e3b0d67be371d158a9b9a',
             'dev_requirement' => true,
         ),
         'laravel/sanctum' => array(
@@ -518,12 +518,12 @@
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
-            'pretty_version' => 'v2.8.2',
-            'version' => '2.8.2.0',
+            'pretty_version' => 'v2.9.0',
+            'version' => '2.9.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/tinker',
             'aliases' => array(),
-            'reference' => 'b936d415b252b499e8c3b1f795cd4fc20f57e1f3',
+            'reference' => '502e0fe3f0415d06d5db1f83a472f0f3b754bafe',
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
@@ -650,12 +650,12 @@
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
-            'pretty_version' => 'v4.18.0',
-            'version' => '4.18.0.0',
+            'pretty_version' => 'v5.0.0',
+            'version' => '5.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
-            'reference' => '1bcbb2179f97633e98bbbc87044ee2611c7d7999',
+            'reference' => '4a21235f7e56e713259a6f76bf4b5ea08502b9dc',
             'dev_requirement' => false,
         ),
         'nunomaduro/collision' => array(
@@ -674,6 +674,15 @@
             'install_path' => __DIR__ . '/../nunomaduro/termwind',
             'aliases' => array(),
             'reference' => '8ab0b32c8caa4a2e09700ea32925441385e4a5dc',
+            'dev_requirement' => false,
+        ),
+        'openai-php/client' => array(
+            'pretty_version' => 'v0.8.1',
+            'version' => '0.8.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../openai-php/client',
+            'aliases' => array(),
+            'reference' => 'ce84f541fe8a2869de7f48030d5757be1fd604c9',
             'dev_requirement' => false,
         ),
         'paragonie/constant_time_encoding' => array(
@@ -719,6 +728,36 @@
             'install_path' => __DIR__ . '/../phenx/php-svg-lib',
             'aliases' => array(),
             'reference' => '4498b5df7b08e8469f0f8279651ea5de9626ed02',
+            'dev_requirement' => false,
+        ),
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/discovery' => array(
+            'pretty_version' => '1.19.2',
+            'version' => '1.19.2.0',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../php-http/discovery',
+            'aliases' => array(),
+            'reference' => '61e1a1eb69c92741f5896d9e05fb8e9d7e8bb0cb',
+            'dev_requirement' => false,
+        ),
+        'php-http/multipart-stream-builder' => array(
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-http/multipart-stream-builder',
+            'aliases' => array(),
+            'reference' => 'f5938fd135d9fa442cc297dc98481805acfe2b6a',
             'dev_requirement' => false,
         ),
         'phpoption/phpoption' => array(
@@ -851,6 +890,7 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
@@ -866,6 +906,7 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-message' => array(
@@ -881,6 +922,7 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/log' => array(
@@ -915,12 +957,12 @@
             ),
         ),
         'psy/psysh' => array(
-            'pretty_version' => 'v0.11.22',
-            'version' => '0.11.22.0',
+            'pretty_version' => 'v0.12.0',
+            'version' => '0.12.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
-            'reference' => '128fa1b608be651999ed9789c95e6e2a31b5802b',
+            'reference' => '750bf031a48fd07c673dbe3f11f72362ea306d0d',
             'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(

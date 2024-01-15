@@ -18,7 +18,8 @@
         "laravel/jetstream": "^2.8",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "openai-php/client": "^0.8.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -64,7 +65,10 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
-        "platform-check": false
+        "platform-check": false,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
