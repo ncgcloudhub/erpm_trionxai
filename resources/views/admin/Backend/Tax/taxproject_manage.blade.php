@@ -19,6 +19,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Project Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 																	 
 										</tr>
@@ -44,7 +45,11 @@
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
 					
-					
+					@if ($item->made_by == NULL)
+					<td><h6 class="mb-0 text-sm">--</h6></td>
+					@else
+					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
+					@endif
 					
 					<td>
 					

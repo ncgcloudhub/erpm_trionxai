@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\Admin;
 use App\Models\Employee;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
@@ -23,6 +24,8 @@ class ProjectController extends Controller
 
     public function StoreProject(Request $request){
 
+		$logged_in_user_id = Auth::guard('admin')->user();
+
         Category::insertGetId([
       	
 		'project_name' => $request->project_name,
@@ -36,12 +39,12 @@ class ProjectController extends Controller
 
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
+      	'logged_in_user' => $logged_in_user_id->id,
 		// 'product_img' => $save_url,
 
       	'created_at' => Carbon::now(),   
 
       ]);
-
 
        $notification = array(
 			'message' => 'Project Inserted Successfully',
@@ -143,6 +146,7 @@ class ProjectController extends Controller
 
     	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
     	// $save_url = 'upload/products/'.$name_gen;
+		$logged_in_user_id = Auth::guard('admin')->user();
 
       $product_id = Product::insertGetId([
       	
@@ -161,6 +165,7 @@ class ProjectController extends Controller
       	'issue' => $request->issue,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
+      	'logged_in_user' => $logged_in_user_id->id,
 		// 'product_img' => $save_url,
 
       	'created_at' => Carbon::now(),   

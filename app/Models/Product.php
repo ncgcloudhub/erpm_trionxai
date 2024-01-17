@@ -30,4 +30,8 @@ class Product extends Model
     public function project(){
     	return $this->belongsTo(Category::class,'project_list','id');
     }
+
+    public function made_by(){
+    	return $this->belongsTo(Admin::class,'logged_in_user','id');
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\TaxTaskProject;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -25,6 +26,7 @@ class IncomeTaxController extends Controller
     }  // end method
 
     public function StoreProject(Request $request){
+		$logged_in_user_id = Auth::guard('admin')->user();
 
         TaxProject::insertGetId([
       	
@@ -39,6 +41,7 @@ class IncomeTaxController extends Controller
 
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
+		'logged_in_user' => $logged_in_user_id->id,
 		// 'product_img' => $save_url,
 
       	'created_at' => Carbon::now(),   
@@ -128,6 +131,8 @@ class IncomeTaxController extends Controller
 
     public function StoreProjectTask(Request $request){
 
+		$logged_in_user_id = Auth::guard('admin')->user();
+
     $product_id = TaxTaskProject::insertGetId([
       	
 		'customer_id' => $request->customer_id,
@@ -146,6 +151,7 @@ class IncomeTaxController extends Controller
 		'tax_year' => $request->tax_year,
 		'eSignature' => $request->eSignature,
 		'ef_status' => $request->ef_status,
+		'logged_in_user' => $logged_in_user_id->id,
 
       	'created_at' => Carbon::now(),   
 

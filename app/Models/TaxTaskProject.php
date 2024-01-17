@@ -26,4 +26,8 @@ class TaxTaskProject extends Model
     public function customer(){
     	return $this->belongsTo(Customer::class,'customer_id','id');
     }
+
+    public function made_by(){
+    	return $this->belongsTo(Admin::class,'logged_in_user','id');
+    }
 }

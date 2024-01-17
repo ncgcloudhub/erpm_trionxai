@@ -1,6 +1,5 @@
 @extends('admin.aDashboard')
 @section('admins')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 	
 <div class="container-fluid py-4">
@@ -93,8 +92,8 @@
 			  <h6>{{$project->project_name}} Tasks</h6>
 			</div>
 			<div class="card-body px-0 pt-0 pb-2">
-			  <div class="table-responsive p-0">
-				<table class="table align-items-center mb-0">
+			  <div class="table-responsive">
+				<table class="table align-items-center mb-0" id="example1">
 				  <thead>
 					<tr>
 					  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task Name</th>
@@ -104,7 +103,7 @@
 					  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Issue</th>
 					  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
 					  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-					  <th class="text-secondary opacity-7"></th>
+					 
 					</tr>
 				  </thead>
 				  <tbody>
@@ -218,7 +217,7 @@
 					<form action="{{ route('update.comment')}}" method="post">
 						@csrf
 						<input type="hidden" name="id" value="{{$project->id}}">
-						<textarea name="comment" class="form-control" id="tinymceExample" rows="10">{!! strip_tags($project->comment) !!}</textarea>
+						<textarea name="comment" class="form-control" id="tinymceExample" rows="10">{{$project->comment}}</textarea>
 						<br>
 						<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Comment">
 					</form>
@@ -237,7 +236,6 @@
 
 
   </div>
-
 
 
 

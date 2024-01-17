@@ -378,7 +378,7 @@
 					<span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Project Tasks</span>
 				</div>
 				<div class="table-responsive">
-				  <table class="table align-items-center mb-0">
+				  <table class="table align-items-center mb-0" id="example1">
 			
 					<thead>
 					  <tr>
@@ -404,7 +404,9 @@
 					  @endphp
 				  
 				  <td class="align-middle text-center">
-					  <p class="text-xs font-weight-bold mb-0">{{ $item->task_name }}</p>
+					  
+						<p class="text-xs font-weight-bold mb-0"><a href="{{ route('project.task.view', ['id' => $item->id]) }}">{{ $item->task_name }} </a></p>
+					 
 				  </td>
 				
 				  @if ($item->status == 'Done')

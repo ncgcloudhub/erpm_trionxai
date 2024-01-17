@@ -18,4 +18,8 @@ class TaxProject extends Model
     public function user(){
     	return $this->belongsTo(Admin::class,'assigned_by','id');
     }
+
+    public function made_by(){
+    	return $this->belongsTo(Admin::class,'logged_in_user','id');
+    }
 }
