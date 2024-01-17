@@ -20,6 +20,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 																	 
 										</tr>
@@ -41,6 +42,20 @@
 					@else
 					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
 					@endif
+
+					@if ($item->status == 'Done')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-success">{{$item->status}}</span>
+					</td>
+					@elseif($item->status == 'On Progress')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-info">{{$item->status}}</span>
+					</td>
+					@else
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-danger">{{$item->status}}</span>
+					</td>
+				@endif
 					
 					
 					<td>
