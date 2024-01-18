@@ -1,9 +1,8 @@
 @extends('admin.aDashboard')
 @section('admins')
 
-{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
 
 {{-- @auth
     <p>Hello, {{ Auth::user()->name }}! Your id is {{ Auth::id() }}</p>
@@ -395,7 +394,15 @@
 								<option value="Not Started">Not Started</option>
 							</select>
 						</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name
+							<select id="projectFilter">
+							<option value="">All</option>
+							@foreach ($projecttasks as $item)
+								<option value="{{ $item->category->project_name }}">{{ $item->category->project_name }}</option>
+							@endforeach
+							
+							
+						</select></th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 					  </tr>
 					</thead>
@@ -671,9 +678,13 @@
   <script>
     $(document).ready(function () {
         var table = $('#example1').DataTable();
-		console.log('hELLO');
+
         $('#statusFilter').on('change', function () {
             table.column(2).search($(this).val()).draw();
+        });
+
+		$('#projectFilter').on('change', function () {
+            table.column(3).search($(this).val()).draw();
         });
     });
 </script>
