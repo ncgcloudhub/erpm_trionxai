@@ -1,6 +1,9 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 {{-- @auth
     <p>Hello, {{ Auth::user()->name }}! Your id is {{ Auth::id() }}</p>
@@ -384,7 +387,14 @@
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
+							<select id="statusFilter">
+								<option value="">All</option>
+								<option value="On Progress">On Progress</option>
+								<option value="Done">Done</option>
+								<option value="Not Started">Not Started</option>
+							</select>
+						</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 					  </tr>
@@ -657,5 +667,15 @@
 
 	@include('admin.body.footer')
   </div>
+
+  <script>
+    $(document).ready(function () {
+        var table = $('#example1').DataTable();
+		console.log('hELLO');
+        $('#statusFilter').on('change', function () {
+            table.column(2).search($(this).val()).draw();
+        });
+    });
+</script>
 
   @endsection
