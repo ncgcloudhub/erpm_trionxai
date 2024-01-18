@@ -155,6 +155,20 @@
 							 </div>
 								 </div>
 
+								 <div class="form-group">
+									<h6>Status<span class="text-danger">*</span></h6>
+									<div class="controls">
+										<select name="status" class="form-control" @readonly(true) >
+											<option value="{{$task->status}}" selected="">{{$task->status}}</option>
+											<option value="normal">Normal</option>
+											<option value="critical" >Critical</option>
+											<option value="major">Major</option>
+											<option value="minor">Minor</option>
+										</select>
+										
+									 </div>
+										 </div>
+
 
 						
 						{{-- <div class="form-group">

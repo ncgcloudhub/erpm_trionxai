@@ -53,7 +53,7 @@
 
   </main>
    
-  @include('admin.body.fixed_sidebar')
+  {{-- @include('admin.body.fixed_sidebar') --}}
 
     <!--   Core JS Files   -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

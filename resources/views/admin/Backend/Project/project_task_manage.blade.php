@@ -17,9 +17,11 @@
 										<tr class="align-middle text-center">
 											
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Task Name</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 																	 
 										</tr>
@@ -32,6 +34,7 @@
 				 <tr class="align-middle text-center text-sm">
 					
 					<td><a href="{{ route('project.task.view',$item->id) }}"><p class="mb-0 text-sm text-start">{{ $item->task_name }}</p></a></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
@@ -41,6 +44,22 @@
 					@else
 					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
 					@endif
+
+					@if ($item->status == 'Done')
+						<td class="align-middle text-center text-sm">
+						  <span class="badge badge-sm bg-gradient-success">{{$item->status}}</span>
+						</td>
+						@elseif($item->status == 'On Progress')
+						<td class="align-middle text-center text-sm">
+						  <span class="badge badge-sm bg-gradient-info">{{$item->status}}</span>
+						</td>
+						@else
+						<td class="align-middle text-center text-sm">
+						  <span class="badge badge-sm bg-gradient-danger">{{$item->status}}</span>
+						</td>
+					@endif
+
+					<td><h6 class="mb-0 text-sm">{{ $item->status }}</h6></td>
 					
 					<td>
 						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('project.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
