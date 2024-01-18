@@ -64,6 +64,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Models\AcidProduct;
 use App\Models\Purchase;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,8 +175,8 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
             $userIdArray = $topUsers->pluck('user_id')->toArray();
             $users = DB::table('admins')->whereIn('id', $userIdArray)->select('id', 'name')->get();
 
-            $topProducts = Category::orderBy('id','DESC')->get();
-            $projecttasks = Product::orderBy('id','DESC')->get();
+            $topProducts = Category::orderBy('id','DESC')->where('assign_to',Auth::guard('admin')->user()->id)->get();
+            $projecttasks = Product::orderBy('id','DESC')->where('assign_to',Auth::guard('admin')->user()->id)->get();
            
 
     //         $topProductsByCategory = DB::table('products')
