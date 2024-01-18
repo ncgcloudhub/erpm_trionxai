@@ -396,10 +396,18 @@
 						</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name
 							<select id="projectFilter">
-							<option value="">All</option>
-							@foreach ($projecttasks as $item)
-								<option value="{{ $item->category->project_name }}">{{ $item->category->project_name }}</option>
-							@endforeach
+								<option value="">All Projects</option>
+								@php
+									$uniqueProjects = [];
+								@endphp
+						@foreach($projecttasks as $item)
+						@if (!in_array($item->category->project_name, $uniqueProjects))
+							<option value="{{ $item->category->project_name }}">{{ $item->category->project_name }}</option>
+							@php
+								$uniqueProjects[] = $item->category->project_name;
+							@endphp
+						@endif
+					@endforeach
 							
 							
 						</select></th>
