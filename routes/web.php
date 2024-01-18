@@ -528,8 +528,14 @@ Route::prefix('project')->group(function(){
     Route::post('/customer/update', [CustomerController::class, 'CustomerUpdate'])->name('customer.update');
     
     Route::get('/customer/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
+
+    Route::get('/import/customers', [IncomeTaxController::class, 'ImportCustomers'])->name('import.tax.customers');
+
+    Route::get('/export', [IncomeTaxController::class, 'ExportCustomers'])->name('export.tax.customers');
+
+    Route::post('/import', [IncomeTaxController::class, 'ImportTaxCustomers'])->name('import.customers');
          
-        });
+    });
 
 
     Route::get('/api/products/{categoryId}', [ProductionController::class, 'getProducts']);

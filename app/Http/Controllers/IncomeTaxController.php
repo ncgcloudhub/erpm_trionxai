@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CustomerExport;
+use App\Imports\TaxCustomersImport;
 use App\Models\TaxProject;
 use App\Models\Admin;
 use App\Models\Employee;
@@ -9,6 +11,7 @@ use App\Models\Product;
 use App\Models\Customer;
 use App\Models\TaxTaskProject;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
 
@@ -257,4 +260,31 @@ class IncomeTaxController extends Controller
 		return redirect()->back()->with($notification);
 
 	} // end method
+
+	// IMPORT/Export Customer
+	public function ImportCustomers(){
+
+        return view('admin.Backend.Brand.Customer.import_customers');
+
+    }// End Method 
+
+	public function ExportCustomers(){
+
+        return Excel::download(new CustomerExport, 'TaxCustomers.xlsx');
+
+    }// End Method 
+
+
+	public function ImportTaxCustomers(Request $request){
+
+		Excel::import(new TaxCustomersImport, $request->file('import_file'));
+
+		 $notification = array(
+		   'message' => 'Tax Customers Imported Successfully',
+		   'alert-type' => 'success'
+	   );
+
+	   return redirect()->back()->with($notification);
+
+   }// End Method 
 }
