@@ -383,36 +383,36 @@
 				  <table class="table align-items-center mb-0" id="example1">
 			
 					<thead>
-					  <tr>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
-							<select id="statusFilter">
-								<option value="">All</option>
-								<option value="On Progress">On Progress</option>
-								<option value="Done">Done</option>
-								<option value="Not Started">Not Started</option>
-							</select>
-						</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name
-							<select id="projectFilter">
-								<option value="">All Projects</option>
-								@php
-									$uniqueProjects = [];
-								@endphp
-						@foreach($projecttasks as $item)
-						@if (!in_array($item->category->project_name, $uniqueProjects))
-							<option value="{{ $item->category->project_name }}">{{ $item->category->project_name }}</option>
-							@php
-								$uniqueProjects[] = $item->category->project_name;
-							@endphp
-						@endif
-					@endforeach
-							
-							
-						</select></th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
-					  </tr>
+						<tr>
+							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Sl.</th>
+							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Task</th>
+							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Status
+								<select id="statusFilter">
+									<option value="">All</option>
+									<option value="On Progress">On Progress</option>
+									<option value="Done">Done</option>
+									<option value="Not Started">Not Started</option>
+								</select>
+							</th>
+							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Project Name
+								<select id="projectFilter">
+									<option value="">All Projects</option>
+									@php
+										$uniqueProjects = [];
+									@endphp
+									@foreach($projecttasks as $item)
+										@if (!in_array($item->category->project_name, $uniqueProjects))
+											<option value="{{ $item->category->project_name }}">{{ $item->category->project_name }}</option>
+											@php
+												$uniqueProjects[] = $item->category->project_name;
+											@endphp
+										@endif
+									@endforeach
+								</select>
+							</th>
+							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Assign To</th>
+						</tr>
+						
 					</thead>
 					<tbody>
 						@php

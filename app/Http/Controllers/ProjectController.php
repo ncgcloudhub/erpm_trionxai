@@ -165,6 +165,7 @@ class ProjectController extends Controller
       	'issue' => $request->issue,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
+      	'status' => 'Not Started',
       	'logged_in_user' => $logged_in_user_id->id,
 		// 'product_img' => $save_url,
 
@@ -184,9 +185,9 @@ class ProjectController extends Controller
 	} // end method
 
     public function ManageTask(){
-
+		$projecttasks = Product::orderBy('id','DESC')->where('assign_to',Auth::guard('admin')->user()->id)->get();
 		$products = Product::latest()->get();
-		return view('admin.Backend.Project.project_task_manage',compact('products'));
+		return view('admin.Backend.Project.project_task_manage',compact('products','projecttasks'));
 	}  // end method
 
 	public function EditProjectTask($id){		   

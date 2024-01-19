@@ -110,7 +110,7 @@
 					  @foreach ($tasks as $task)						
 					<tr>
 					  <td>
-						  <a href="{{ route('project.task.view',$task->id) }}">
+						  <a href="{{ route('taxproject.task.view',$task->id) }}">
 						<div class="d-flex px-2 py-1">
 						  <div class="d-flex flex-column justify-content-center">
 							<h6 class="text-xs text-secondary mb-0">{{$task->customer->user_name}}</h6>

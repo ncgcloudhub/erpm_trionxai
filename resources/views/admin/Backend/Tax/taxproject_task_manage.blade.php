@@ -32,7 +32,7 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
-					<td>{{ $item->customer->user_name }}</p></td>
+					<td><a href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->customer->user_name }}</a></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
