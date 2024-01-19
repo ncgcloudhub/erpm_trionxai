@@ -1,6 +1,8 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
  {{-- TRIAL START --}}
  <div class="container-fluid">
 	<div class="row mt-4">
@@ -21,7 +23,14 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
+												<select id="statusFilter">
+													<option value="">All</option>
+													<option value="On Progress">On Progress</option>
+													<option value="Done">Done</option>
+													<option value="Not Started">Not Started</option>
+												</select>
+											</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 																	 
 										</tr>
@@ -102,5 +111,19 @@
 
 	{{-- TRIAL END --}}
 
+
+	<script>
+		$(document).ready(function () {
+			var table = $('#example1').DataTable();
+	
+			$('#statusFilter').on('change', function () {
+				table.column(5).search($(this).val()).draw();
+			});
+	
+			// $('#projectFilter').on('change', function () {
+			// 	table.column(3).search($(this).val()).draw();
+			// });
+		});
+	</script>
 
 @endsection
