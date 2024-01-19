@@ -185,9 +185,10 @@ class ProjectController extends Controller
 	} // end method
 
     public function ManageTask(){
-		$projecttasks = Product::orderBy('id','DESC')->where('assign_to',Auth::guard('admin')->user()->id)->get();
+		
 		$products = Product::latest()->get();
-		return view('admin.Backend.Project.project_task_manage',compact('products','projecttasks'));
+		$names = Admin::latest()->get();
+		return view('admin.Backend.Project.project_task_manage',compact('products','names'));
 	}  // end method
 
 	public function EditProjectTask($id){		   
