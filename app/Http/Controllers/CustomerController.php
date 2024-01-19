@@ -64,6 +64,7 @@ class CustomerController extends Controller
         'business_type' => $request->business_type,
         'comment' => $request->comment,
         'customer_type' => $request->customer_type,
+        'ssn' => $request->ssn,
 		
     	]);
 
@@ -107,6 +108,7 @@ class CustomerController extends Controller
 			'business_type' => $request->business_type,
 			'comment' => $request->comment,
 			'customer_type' => $request->customer_type,
+			'ssn' => $request->ssn,
 			'updated_at' => Carbon::now(), 
 	
 			]);
