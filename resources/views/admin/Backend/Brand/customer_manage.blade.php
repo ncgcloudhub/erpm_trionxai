@@ -19,9 +19,10 @@
 										<tr class="align-middle text-center">
 										
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address </th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company Name </th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Personal Phone</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SSN</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>
@@ -31,9 +32,10 @@
  @foreach($customers as $item)
  <tr class="align-middle text-center text-sm">
   <td class="text-start"><a href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
-  <td>{{ $item->address }}</td>
+  <td>{{ $item->company_name }}</td>
   <td>{{ $item->email }}</td>
   <td>{{ $item->personal_phone }}</td>
+  <td>{{ $item->ssn }}</td>
   <td>
 
 

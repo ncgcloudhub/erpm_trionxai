@@ -16,7 +16,7 @@
 						<div class="row mb-3">
 							<h6 class="col-5">Customer Name<span class="text-danger">*</span></h6>
 							<div class="col-5">
-								<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" @readonly(true)>
+								<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" disabled>
 								<option value="{{$task->customer->id}}" selected="" disabled>{{$task->customer->user_name}}</option>
 								@foreach($customers as $customer)
 										 <option value="{{ $customer->id }}">{{ $customer->user_name }}</option>	
