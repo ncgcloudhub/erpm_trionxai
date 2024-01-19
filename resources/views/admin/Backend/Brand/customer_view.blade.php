@@ -221,7 +221,7 @@
 <div class="form-group">
   <label class="text-uppercase text-dark text-xs font-weight-bold">LAST 4 DIGIT SSN</label>
   <div class="controls">
-      <input type="text" value="{{$customer->ssn}}" name="ssn" class="form-control" pattern="\d{4}" title="Enter a valid 4-digit SSN">
+      <input type="text" value="{{$customer->ssn}}" name="ssn" class="form-control" pattern="\d{4}" title="Enter a valid 4-digit SSN" readonly>
   </div>
 </div>
 
