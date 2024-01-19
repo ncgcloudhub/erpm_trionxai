@@ -22,7 +22,7 @@ class TaxCustomersImport implements ToModel
             'personal_phone' => $row[4],
             'address' => $row[5],
             'city' => $row[6],
-            'state' => $row[7],
+           
         ]);
     }
 

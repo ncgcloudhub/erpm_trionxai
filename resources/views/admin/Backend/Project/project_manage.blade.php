@@ -1,6 +1,8 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
  {{-- TRIAL START --}}
  <div class="container-fluid">
 	<div class="row mt-4">
@@ -17,7 +19,22 @@
 										<tr class="align-middle text-center">
 											
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Project Name</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To
+												<select id="projectNames">
+													<option value="">All Employees</option>
+													@php
+														$uniqueNames = [];
+													@endphp
+													@foreach($products as $item)
+														@if (!in_array($item->admin->name, $uniqueNames))
+															<option value="{{ $item->admin->name }}">{{ $item->admin->name }}</option>
+															@php
+																$uniqueNames[] = $item->admin->name;
+															@endphp
+														@endif
+													@endforeach
+												</select>
+											</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -67,16 +84,7 @@
 										 
 				 </tr>
 				  @endforeach
-				  <tr>
-					
-					<td></td>
-					<td></td>
-					
-					<td></td>
-					<td></td>
-					
-					
-				  </tr>
+				
 
 				</tbody>
 									 
@@ -95,5 +103,14 @@
 
 	{{-- TRIAL END --}}
 
+	<script>
+		$(document).ready(function () {
+			var table = $('#example1').DataTable();
+
+			$('#projectNames').on('change', function () {
+				table.column(1).search($(this).val()).draw();
+			});
+		});
+	</script>
 
 @endsection

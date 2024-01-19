@@ -3,8 +3,6 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
  <div class="container-fluid">
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
@@ -148,19 +146,5 @@
 		});
 	</script>
 
-
-	<script>
-		$(document).ready(function () {
-			var table = $('#example1').DataTable();
-	
-			$('#statusFilter').on('change', function () {
-				table.column(5).search($(this).val()).draw();
-			});
-	
-			// $('#projectFilter').on('change', function () {
-			// 	table.column(3).search($(this).val()).draw();
-			// });
-		});
-	</script>
 
 @endsection

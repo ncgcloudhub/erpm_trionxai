@@ -1,6 +1,8 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
  {{-- TRIAL START --}}
  <div class="container-fluid">
 	<div class="row mt-4">
@@ -17,10 +19,48 @@
 										<tr class="align-middle text-center">
 											
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Customer Name</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name
+												<select id="projectFilter">
+													<option value="">All Projects</option>
+													@php
+														$uniqueProjects = [];
+													@endphp
+													@foreach($products as $item)
+														@if (!in_array($item->project->project_name, $uniqueProjects))
+															<option value="{{ $item->project->project_name }}">{{ $item->project->project_name }}</option>
+															@php
+																$uniqueProjects[] = $item->project->project_name;
+															@endphp
+														@endif
+													@endforeach
+												</select>
+											</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To
+												<select id="projectNames">
+													<option value="">All Employees</option>
+													@php
+														$uniqueNames = [];
+													@endphp
+													@foreach($products as $item)
+														@if (!in_array($item->admin->name, $uniqueNames))
+															<option value="{{ $item->admin->name }}">{{ $item->admin->name }}</option>
+															@php
+																$uniqueNames[] = $item->admin->name;
+															@endphp
+														@endif
+													@endforeach
+												</select>
+											</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
+												<select id="statusFilter">
+													<option value="">All</option>
+													<option value="On Progress">On Progress</option>
+													<option value="Done">Done</option>
+													<option value="Not Started">Not Started</option>
+												</select>
+											</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 																	 
 										</tr>
@@ -33,6 +73,7 @@
 				 <tr class="align-middle text-center text-sm">
 					
 					<td><a href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->customer->user_name }}</a></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
@@ -71,16 +112,7 @@
 										 
 				 </tr>
 				  @endforeach
-				  <tr>
-					
-					<td></td>
-					<td></td>
-					
-					<td></td>
-					<td></td>
-					
-					
-				  </tr>
+				 
 
 				</tbody>
 									 
@@ -99,5 +131,22 @@
 
 	{{-- TRIAL END --}}
 
+	<script>
+		$(document).ready(function () {
+			var table = $('#example1').DataTable();
+	
+			$('#statusFilter').on('change', function () {
+				table.column(5).search($(this).val()).draw();
+			});
+	
+			$('#projectFilter').on('change', function () {
+				table.column(1).search($(this).val()).draw();
+			});
+
+			$('#projectNames').on('change', function () {
+				table.column(2).search($(this).val()).draw();
+			});
+		});
+	</script>
 
 @endsection
