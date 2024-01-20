@@ -33,19 +33,15 @@ class CustomerController extends Controller
 
      public function CustomerStore(Request $request){
 	
-		// $validator = Validator::make($request->all(), [
-		// 	'customer_name' => 'required',
-		// 	'phone' => 'nullable|unique:customers',
-		// ], [
-		// 	'phone.unique' => 'The phone number already exists.',
-		// ]);
-	
-		// if ($validator->fails()) {
-		// 	return redirect()->back()->withErrors($validator)->withInput();
-		// }
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHis');
 
         Customer::insert([
 		'company_name' => $request->company_name,
+		'customer_id' => 'C'.$formattedDateTime,
         'user_name' => $request->user_name,
         'email' => $request->email,
         'office_phone' => $request->office_phone,
