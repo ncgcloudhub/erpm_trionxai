@@ -9,52 +9,47 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class TaxCustomersImport implements ToModel, WithHeadingRow
 {
-    /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
-    // public function model(array $row)
-    // {
-    //     return new Customer([
-    //         'company_name'     => $row[0],
-    //         'user_name'    => $row[1], 
-    //         'email' => $row[2],
-    //         'office_phone' => $row[3],
-    //         'personal_phone' => $row[4],
-    //         'address' => $row[5],
-    //         'city' => $row[6],
-           
-    //     ]);
-    // }
+    // Keep track of processed SSNs
+    protected $processedSSNs = [];
 
-public function model(array $row)
+    public function model(array $row)
     {
-        // Use the delay function to wait for 1 seconds before processing each row
+
+         // Remove the 'id' key from the $row array
+         unset($row['id']);
+
+        // Log the row data before the database operation
+        \Log::info("Processing row: " . json_encode($row));
+
+        // If the customer doesn't have a customer_id, generate one
+        if (empty($row['customer_id'])) {
+            // Generate the customer_id with the desired format
+            $formattedDateTime = now()->format('ymdHis');
+            $row['customer_id'] = 'C' . $formattedDateTime;
+        }
+
+        // Check if the SSN has already been processed
+        if (in_array($row['ssn'], $this->processedSSNs)) {
+            \Log::info("Skipping row due to duplicate SSN: " . json_encode($row));
+            return null; // Skip processing this row
+        }
+
+        // Add the SSN to the processed list
+        $this->processedSSNs[] = $row['ssn'];
+
+        // Delay for 1 second
         sleep(1);
 
-        // Generate the customer_id with the desired format
-        $formattedDateTime = now()->format('ymdHis');
-        $row['customer_id'] = 'C' . $formattedDateTime;
+        // Check if a customer with the same SSN already exists
+        $existingCustomer = Customer::where('ssn', $row['ssn'])->first();
 
-        // Check if a customer with the same personal_phone already exists
-        $existingCustomer = Customer::where('personal_phone', $row['personal_phone'])->first();
-
-        // If the customer doesn't exist, create a new one
-        if (!$existingCustomer) {
-            return new Customer($row);
-        }
-
-        // Check if any fields have changed
-        $changes = array_diff_assoc($row, $existingCustomer->toArray());
-
-        // If there are changes, update the existing customer
-        if (!empty($changes)) {
+        // If the customer with the same SSN exists, update the record; otherwise, create a new one
+        if ($existingCustomer) {
             $existingCustomer->update($row);
+        } else {
+            Customer::create($row);
         }
 
-        // Return null to skip the import of this row
-        return null;
+        return null; // Returning null to skip the import of this row
     }
-
 }

@@ -16,14 +16,15 @@
 								<div class="table-responsive">
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
-										<tr class="align-middle text-center">
-										
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company Name </th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Personal Phone</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SSN</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center ">
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Customer ID </th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-start text-white">Name</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Company Name </th>
+											
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Email</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Personal Phone</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">SSN</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 											 
 										</tr>
 									</thead>
@@ -31,8 +32,10 @@
             
  @foreach($customers as $item)
  <tr class="align-middle text-center text-sm">
-  <td class="text-start"><a href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
+	<td><a href="{{ route('customer.view',$item->id) }}">{{ $item->customer_id }}</a></td>
+  <td class="text-start"><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
   <td>{{ $item->company_name }}</td>
+ 
   <td>{{ $item->email }}</td>
   <td>{{ $item->personal_phone }}</td>
   <td>{{ $item->ssn }}</td>

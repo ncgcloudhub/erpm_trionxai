@@ -32,6 +32,13 @@
 </div>
 
 <div class="form-group">
+  <label  class="text-uppercase text-dark text-xs font-weight-bold ">Customer ID <span class="text-danger">*</span></label>
+  <div class="controls">
+  <input type="text" value="{{$customer->customer_id}}"  name="customer_id" class="form-control" readonly> 
+  </div>
+  </div>
+
+<div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Email <span class="text-danger">*</span></label>
 <div class="controls">
 <input type="email" value="{{$customer->email}}" name="email" class="form-control" readonly> 

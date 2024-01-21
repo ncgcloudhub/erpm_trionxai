@@ -277,6 +277,9 @@ class IncomeTaxController extends Controller
 
 	public function ImportTaxCustomers(Request $request){
 
+		// Set maximum execution time to 700 seconds
+        ini_set('max_execution_time', 700);
+
 		Excel::import(new TaxCustomersImport, $request->file('import_file'));
 
 		 $notification = array(
