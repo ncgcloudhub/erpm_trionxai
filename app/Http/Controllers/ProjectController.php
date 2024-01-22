@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as Image;
+use App\Mail\ProjectTaskConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class ProjectController extends Controller
 {
@@ -172,6 +174,22 @@ class ProjectController extends Controller
       	'created_at' => Carbon::now(),   
 
       ]);
+
+	  $user_email = Admin::findOrFail($request->assign_to);
+	  $email = $user_email->email;
+
+	//   dd($email);
+
+	   // Get details for the confirmation email
+	   $taskDetails = [
+        'assign_to_name' => Admin::find($request->assign_to)->name,
+        'task_name' => $request->task_name,
+        'description' => $request->description,
+        // Add more details as needed
+    ];
+
+    // Send confirmation email
+    Mail::to($email)->send(new ProjectTaskConfirmation($taskDetails));
 
 
        $notification = array(
