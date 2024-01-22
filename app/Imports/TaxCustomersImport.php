@@ -28,6 +28,9 @@ class TaxCustomersImport implements ToModel, WithHeadingRow
             $row['customer_id'] = 'C' . $formattedDateTime;
         }
 
+         // Ensure that the SSN is treated as a string with leading zeros
+        $row['ssn'] = sprintf('%04d', $row['ssn']);
+
         // Check if the SSN has already been processed
         if (in_array($row['ssn'], $this->processedSSNs)) {
             \Log::info("Skipping row due to duplicate SSN: " . json_encode($row));
