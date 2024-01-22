@@ -16,10 +16,10 @@
 								<div class="table-responsive">
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
-										<tr class="align-middle text-center">
+										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
 											
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Project Name</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Project Name</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
 												<select id="projectNames">
 													<option value="">All Employees</option>
 													@php
@@ -35,9 +35,9 @@
 													@endforeach
 												</select>
 											</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Made By</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign Date</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Made By</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 																	 
 										</tr>
 									</thead>
@@ -48,7 +48,7 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
-					<td class="text-start"><a href="{{ route('taxproject.view.details',$item->id) }}">{{ $item->project_name }} <span class="badge badge-sm bg-gradient-success"> {{ $item->tasks->count() }}</span></a>
+					<td class="text-start"><a style="color: rgb(16, 71, 189)" href="{{ route('taxproject.view.details',$item->id) }}">{{ $item->project_name }} <span class="badge badge-sm bg-gradient-success"> {{ $item->tasks->count() }}</span></a>
 						{{-- <p class="mb-0 text-sm"></p> --}}
 						{{-- <p>Number of tasks: {{ $item->tasks->count() }}</p> --}}
 						

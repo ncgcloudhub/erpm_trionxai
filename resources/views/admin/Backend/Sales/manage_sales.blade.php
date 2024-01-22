@@ -13,15 +13,15 @@
 								<div class="table-responsive">
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
-										<tr class="align-middle text-center">
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Invoice No.</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grand Total</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paid</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sold By</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Sl.</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Date</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Student</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Invoice No.</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Grand Total</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Paid</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Sold By</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 											 
 										</tr>
 									</thead>
@@ -33,7 +33,7 @@
 	 <tr class="align-middle text-center text-sm">
 		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>
-		<td class="text-sm font-weight-bold mb-0">{{ $item->student->student_name }}</td>
+		<td class="text-sm font-weight-bold mb-0"><a style="color: rgb(16, 71, 189)" href="{{ route('sales.details.view', $item->id) }}">{{ $item->student->student_name }}</a></td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->invoice }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->p_paid_amount }} </td>

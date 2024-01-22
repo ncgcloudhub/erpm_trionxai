@@ -14,15 +14,15 @@
                                 <div class="table-responsive">
                                     <table id="example1" class="table table-bordered table-striped">
                                       <thead>
-                                          <tr class="align-middle text-center">
+                                          <tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
                                           
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-start">Name</th>
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code </th>
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fees</th>
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fees</th>
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Difficulty</th>
-                                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Name</th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Code </th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Type</th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Fees</th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Difficulty</th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Duration</th>
+                                              <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
                                                
                                           </tr>
                                       </thead>
@@ -30,7 +30,7 @@
               
    @foreach($courses as $item)
    <tr class="align-middle text-center text-sm">
-    <td class="text-start"><a href="{{ route('course.view',$item->id) }}">{{ $item->course_name }}</a></td>
+    <td class="text-start"><a style="color: rgb(16, 71, 189)" href="{{ route('course.view',$item->id) }}">{{ $item->course_name }}</a></td>
     <td>{{ $item->code }}</td>
     <td>{{ $item->type }}</td>
     <td>{{ $item->fees }}</td>

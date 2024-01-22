@@ -32,7 +32,7 @@
             
  @foreach($customers as $item)
  <tr class="align-middle text-center text-sm">
-	<td><a href="{{ route('customer.view',$item->id) }}">{{ $item->customer_id }}</a></td>
+	<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->id) }}">{{ $item->customer_id }}</a></td>
   <td class="text-start"><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->id) }}">{{ $item->user_name }}</a></td>
   <td>{{ $item->company_name }}</td>
  
