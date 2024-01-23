@@ -147,6 +147,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
         $customerssum = Category::count();
         // $products = Product::orderBy('product_name','ASC')->get();
         $productssum = Product::count();
+        $tcustomer = Customer::count();
         $banks = Bank::where('balance','>', 1)->get();
         // $stock = Product::sum('qty');
         $tsale = Sales::count();
@@ -194,7 +195,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal'));
+        return view('admin.adminindex', compact('tsale','todays_production','tcustomer','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal'));
     })->name('admin.dashboard');
 });
 

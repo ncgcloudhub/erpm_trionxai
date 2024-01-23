@@ -110,15 +110,15 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Total Sale
+					Total Customers
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{ $tsale}}
-					<span class="text-danger text-sm font-weight-bolder"
-					  >Sales</span
+					{{ $tcustomer}}
+					<span class="text-success text-sm font-weight-bolder"
+					  >Customers</span
 					>
 				  </h5>
 				</div>
