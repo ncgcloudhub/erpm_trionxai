@@ -132,25 +132,24 @@ class AdminUserController extends Controller
 		'email' => $request->email,
 
 		'phone' => $request->phone,
-		'brand' => $request->brand,
+		
 		'category' => $request->category,
 		'product' => $request->product,
-		'slider' => $request->slider,
-		'coupons' => $request->coupons,
-
-		'shipping' => $request->shipping,
-		'quotation' => $request->quotation,
-		'setting' => $request->setting,
-		'returnorder' => $request->returnorder,
-		'review' => $request->review,
-		'locations' => $request->locations,
-
-		'orders' => $request->orders,
-		'stock' => $request->stock,
-		'reports' => $request->reports,
-		'alluser' => $request->alluser,
+		'customer' => $request->customer,
+		'bank' => $request->bank,
+	
+		'supplier' => $request->supplier,
+		'sale' => $request->sale,
+		'l_c' => $request->l_c,
+		'production' => $request->production,
+	
+		'hr' => $request->hr,
+		'chalan' => $request->chalan,
+		'expense' => $request->expense,
+		'schedule' => $request->schedule,
+		'report' => $request->report,
 		'adminuserrole' => $request->adminuserrole,
-		'type' => 2,
+		'type' => $request->type,
 		'profile_photo_path' => $save_url,
 		'created_at' => Carbon::now(),
 
@@ -170,25 +169,23 @@ class AdminUserController extends Controller
 		'email' => $request->email,
 
 		'phone' => $request->phone,
-		'brand' => $request->brand,
 		'category' => $request->category,
 		'product' => $request->product,
-		'slider' => $request->slider,
-		'coupons' => $request->coupons,
-
-		'shipping' => $request->shipping,
-		'quotation' => $request->quotation,
-		'setting' => $request->setting,
-		'returnorder' => $request->returnorder,
-		'review' => $request->review,
-		'locations' => $request->locations,
-
-		'orders' => $request->orders,
-		'stock' => $request->stock,
-		'reports' => $request->reports,
-		'alluser' => $request->alluser,
+		'customer' => $request->customer,
+		'bank' => $request->bank,
+	
+		'supplier' => $request->supplier,
+		'sale' => $request->sale,
+		'l_c' => $request->l_c,
+		'production' => $request->production,
+	
+		'hr' => $request->hr,
+		'chalan' => $request->chalan,
+		'expense' => $request->expense,
+		'schedule' => $request->schedule,
+		'report' => $request->report,
 		'adminuserrole' => $request->adminuserrole,
-		'type' => 2,
+		'type' => $request->type,
 
 		'created_at' => Carbon::now(),
 

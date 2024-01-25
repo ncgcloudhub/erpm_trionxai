@@ -67,7 +67,21 @@
 				</div> <!-- end cold md 6 -->
 
 
-
+				<div class="col-md-3 ">
+					<div class="form-group">
+						<h5>Type</h5>	
+							<select id="type" value="{{ $adminuser->type }}" name="type" class="form-control" >
+								<option value="1" selected="">Super Admin</option>
+								<option value="2" >Admin</option>
+								<option value="3" >HR</option>
+								<option value="4" >B2B</option>
+								<option value="5" >Dealership</option>
+								<option value="6" >B2C</option>
+								<option value="7" >Digital Marketing</option>
+								<option value="8" >Support Team</option>
+							</select>					
+						</div>
+					</div>
 
 
 			</div>	<!-- end row 	 -->	
@@ -92,6 +106,7 @@
 	<img id="showImage" src="{{ url('upload/no_image.jpg') }}" style="width: 100px; height: 100px;">				
 
 				</div><!-- end cold md 6 -->  
+
 			</div><!-- end row 	 -->	
 
 
@@ -106,10 +121,7 @@
 			<div class="form-group">
 
 		<div class="controls">
-			<fieldset>
-				<input type="checkbox" id="checkbox_2" name="brand" value="1" {{ $adminuser->brand == 1 ? 'checked' : '' }}>
-				<label for="checkbox_2">Brand</label>
-			</fieldset>
+			
 			<fieldset>
 				<input type="checkbox" id="checkbox_3" name="category" value="1" {{ $adminuser->category == 1 ? 'checked' : '' }}>
 				<label for="checkbox_3">Category</label>
@@ -121,13 +133,13 @@
 			</fieldset>
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_5" name="slider" value="1" {{ $adminuser->slider == 1 ? 'checked' : '' }}>
-				<label for="checkbox_5">Slider</label>
+				<input type="checkbox" id="checkbox_5" name="customer" value="1" {{ $adminuser->customer == 1 ? 'checked' : '' }}>
+				<label for="checkbox_5">Customer</label>
 			</fieldset>
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_6" name="coupons" value="1" {{ $adminuser->coupons == 1 ? 'checked' : '' }}>
-				<label for="checkbox_6">Coupons</label>
+				<input type="checkbox" id="checkbox_6" name="report" value="1" {{ $adminuser->report == 1 ? 'checked' : '' }}>
+				<label for="checkbox_6">Report</label>
 			</fieldset>
 		</div>
 	</div>
@@ -140,28 +152,28 @@
 
 		<div class="controls">
 			<fieldset>
-				<input type="checkbox" id="checkbox_7" name="shipping" value="1" {{ $adminuser->shipping == 1 ? 'checked' : '' }}>
-				<label for="checkbox_7">Shipping</label>
+				<input type="checkbox" id="checkbox_7" name="sale" value="1" {{ $adminuser->sale == 1 ? 'checked' : '' }}>
+				<label for="checkbox_7">Sale</label>
 			</fieldset>
 			<fieldset>
-				<input type="checkbox" id="checkbox_8" name="quotation" value="1" {{ $adminuser->quotation == 1 ? 'checked' : '' }}>
-				<label for="checkbox_8">quotation</label>
-			</fieldset>
-
-			<fieldset>
-				<input type="checkbox" id="checkbox_9" name="setting" value="1" {{ $adminuser->setting == 1 ? 'checked' : '' }}>
-				<label for="checkbox_9">Setting</label>
-			</fieldset>
-
-
-			<fieldset>
-				<input type="checkbox" id="checkbox_10" name="returnorder" value="1" {{ $adminuser->returnorder == 1 ? 'checked' : '' }}>
-				<label for="checkbox_10">Return Order</label>
+				<input type="checkbox" id="checkbox_8" name="chalan" value="1" {{ $adminuser->chalan == 1 ? 'checked' : '' }}>
+				<label for="checkbox_8">Chalan</label>
 			</fieldset>
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_11" name="review" value="1" {{ $adminuser->review == 1 ? 'checked' : '' }}>
-				<label for="checkbox_11">	Review</label>
+				<input type="checkbox" id="checkbox_9" name="l_c" value="1" {{ $adminuser->l_c == 1 ? 'checked' : '' }}>
+				<label for="checkbox_9">Purchase</label>
+			</fieldset>
+
+
+			<fieldset>
+				<input type="checkbox" id="checkbox_10" name="hr" value="1" {{ $adminuser->hr == 1 ? 'checked' : '' }}>
+				<label for="checkbox_10">HR</label>
+			</fieldset>
+
+			<fieldset>
+				<input type="checkbox" id="checkbox_11" name="expense" value="1" {{ $adminuser->expense == 1 ? 'checked' : '' }}>
+				<label for="checkbox_11">Expense</label>
 			</fieldset>
 		</div>
 	</div>
@@ -175,22 +187,8 @@
 
 		<div class="controls">
 			<fieldset>
-				<input type="checkbox" id="checkbox_12" name="orders" value="1" {{ $adminuser->orders == 1 ? 'checked' : '' }}>
-				<label for="checkbox_12">Orders</label>
-			</fieldset>
-			<fieldset>
-				<input type="checkbox" id="checkbox_13" name="stock" value="1" {{ $adminuser->stock == 1 ? 'checked' : '' }}>
-				<label for="checkbox_13">Stock</label>
-			</fieldset>
-
-			<fieldset>
-				<input type="checkbox" id="checkbox_14" name="reports" value="1" {{ $adminuser->reports == 1 ? 'checked' : '' }}>
-				<label for="checkbox_14">Reports</label>
-			</fieldset>
-
-			<fieldset>
-				<input type="checkbox" id="checkbox_15" name="alluser" value="1" {{ $adminuser->alluser == 1 ? 'checked' : '' }}>
-				<label for="checkbox_15">Alluser</label>
+				<input type="checkbox" id="checkbox_12" name="supplier" value="1" {{ $adminuser->supplier == 1 ? 'checked' : '' }}>
+				<label for="checkbox_12">Supplier</label>
 			</fieldset>
 
 			<fieldset>
@@ -199,8 +197,8 @@
 			</fieldset>
 
 			<fieldset>
-				<input type="checkbox" id="checkbox_17" name="locations" value="1" {{ $adminuser->locations == 1 ? 'checked' : '' }}>
-				<label for="checkbox_17">Location</label>
+				<input type="checkbox" id="checkbox_17" name="bank" value="1" {{ $adminuser->bank == 1 ? 'checked' : '' }}>
+				<label for="checkbox_17">Bank</label>
 			</fieldset>
 		</div>
 			</div>
