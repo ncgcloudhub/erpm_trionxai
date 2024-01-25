@@ -188,8 +188,10 @@ class ProjectController extends Controller
         // Add more details as needed
     ];
 
-    // Send confirmation email
-    Mail::to($email)->send(new ProjectTaskConfirmation($taskDetails));
+	if($request->mailCheck == 1){
+		// Send confirmation email
+		Mail::to($email)->send(new ProjectTaskConfirmation($taskDetails));
+	}
 
 
        $notification = array(
