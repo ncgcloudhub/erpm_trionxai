@@ -91,8 +91,8 @@
 						 </div>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="1" id="fcustomCheck1" checked="" name="status">
-						<label class="custom-control-label" for="customCheck1">Add to Dashboard</label>
+						<input class="form-check-input" type="checkbox" value="1"  checked="" name="checkMail">
+						<label class="custom-control-label">Send Email</label>
 					  </div>
 		
 
