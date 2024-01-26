@@ -145,10 +145,10 @@
 							<div class="controls">
 								<select name="priority" class="form-control" required="" >
 									<option value="" selected="" disabled="">Select an Option</option>
-									<option value="normal">Normal</option>
-									<option value="critical" >Critical</option>
-									<option value="major">Major</option>
-									<option value="minor">Minor</option>
+									<option value="Normal">Normal</option>
+									<option value="Critical" >Critical</option>
+									<option value="Major">Major</option>
+									<option value="Minor">Minor</option>
 								</select>
 								
 							 </div>
@@ -162,7 +162,7 @@
 									<option value="Not started">Not started</option>
 									<option value="On Progress" >On Progress</option>
 									<option value="Done">Done</option>
-									<option value="minor">Minor</option>
+									<option value="Data Entry Completed">Data Entry Completed</option>
 								</select>								
 							 </div>
 						</div>
@@ -193,8 +193,8 @@
 									<option value="READY FOR eSIG">READY FOR eSIG</option>
 									<option value="SIGNED">SIGNED</option>
 									<option value="PENDING">PENDING</option>
-									<option value="INPERSON SIG">INPERSON SIG</option>
-									<option value="minor">Minor</option>
+									<option value="In Person Sign">In Person Sign</option>
+								
 								</select>								
 							 </div>
 						</div>

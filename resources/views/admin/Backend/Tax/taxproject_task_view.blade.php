@@ -139,10 +139,10 @@
 							<div class="controls">
 								<select name="priority" class="form-control" @readonly(true) >
 									<option value="{{$task->priority}}" selected="">{{$task->priority}}</option>
-									<option value="normal">Normal</option>
-									<option value="critical" >Critical</option>
-									<option value="major">Major</option>
-									<option value="minor">Minor</option>
+									<option value="Normal">Normal</option>
+									<option value="Critical" >Critical</option>
+									<option value="Major">Major</option>
+									<option value="Minor">Minor</option>
 								</select>
 								
 							 </div>
@@ -157,6 +157,7 @@
 											<option value="Not Started">Not Started</option>
 											<option value="On Progress" >On Progress</option>
 											<option value="Done">Done</option>
+											<option value="Data Entry Completed">Data Entry Completed</option>
 										</select>									
 								</div>
 						</div>
@@ -187,8 +188,8 @@
 									<option value="READY FOR eSIG">READY FOR eSIG</option>
 									<option value="SIGNED">SIGNED</option>
 									<option value="PENDING">PENDING</option>
-									<option value="INPERSON SIG">INPERSON SIG</option>
-									<option value="minor">Minor</option>
+									<option value="In Person Sign">In Person Sign</option>
+									
 								</select>								
 							 </div>
 						</div>
@@ -198,7 +199,7 @@
 							<h6>EF Status</h6>
 							<div class="controls">
 								<select name="ef_status" class="form-control" @readonly(true) >
-									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>
+									<option value="{{$task->ef_status}}" selected="" disabled="">{{$task->ef_status}}</option>
 									<option value="DONE">DONE</option>
 									<option value="READY 2 EFILE">READY 2 EFILE</option>
 									<option value="IN PROGRESS">IN PROGRESS</option>

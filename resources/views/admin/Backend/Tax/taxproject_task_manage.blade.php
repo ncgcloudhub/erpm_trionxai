@@ -92,6 +92,10 @@
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-info">{{$item->status}}</span>
 					</td>
+					@elseif($item->status == 'Data Entry Completed')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-primary">{{$item->status}}</span>
+					</td>
 					@else
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-danger">{{$item->status}}</span>

@@ -140,76 +140,75 @@
 						<div class="form-group">
 							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<select name="priority" class="form-control" required="" >
-									<option value="{{$task->priority}}" selected="">{{$task->priority}}</option>
-									<option value="normal">Normal</option>
-									<option value="critical" >Critical</option>
-									<option value="major">Major</option>
-									<option value="minor">Minor</option>
+								<select name="priority" class="form-control" required="">
+									<option value="Normal" @if($task->priority == "Normal") selected @endif>Normal</option>
+									<option value="Critical" @if($task->priority == "Critical") selected @endif>Critical</option>
+									<option value="Major" @if($task->priority == "Major") selected @endif>Major</option>
+									<option value="Minor" @if($task->priority == "Minor") selected @endif>Minor</option>
 								</select>
-								
-							 </div>
-								 </div>
+							</div>
+						</div>
+						
 
-						<div class="form-group">
-							<h6>Status<span class="text-danger">*</span></h6>
-								<div class="controls">
-										<select name="status" class="form-control" required="" >
-											<option value="{{$task->status}}" selected="">{{$task->status}}</option>
-											<option value="Not Started">Not Started</option>
-											<option value="On Progress" >On Progress</option>
-											<option value="Done">Done</option>
-										</select>									
+								 <div class="form-group">
+									<h6>Status<span class="text-danger">*</span></h6>
+									<div class="controls">
+										<select name="status" class="form-control" required="">
+											<option value="Not Started" @if($task->status == "Not Started") selected @endif>Not Started</option>
+											<option value="On Progress" @if($task->status == "On Progress") selected @endif>On Progress</option>
+											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
+											<option value="Data Entry Completed" @if($task->status == "Data Entry Completed") selected @endif>Data Entry Completed</option>
+										</select>
+									</div>
 								</div>
-						</div>
+								
 
-						<div class="form-group">
-							<h6>Tax Year<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<select name="tax_year" class="form-control" required="" >
-									<option value="{{$task->tax_year}}" selected="" disabled="">{{$task->tax_year}}</option>
-									<option value="TAX YEAR 2019">TAX YEAR 2019</option>
-									<option value="TAX YEAR 2020">TAX YEAR 2020</option>
-									<option value="TAX YEAR 2021">TAX YEAR 2021</option>
-									<option value="TAX YEAR 2022">TAX YEAR 2022</option>
-									<option value="TAX YEAR 2023">TAX YEAR 2023</option>
-									<option value="TAX YEAR 2024">TAX YEAR 2024</option>								
-								</select>								
-							 </div>
-						</div>
-
-
-						<div class="form-group">
-							<h6>eSignature</h6>
-							<div class="controls">
-								<select name="eSignature" class="form-control" >
-									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>
-									<option value="SENT">SENT</option>
-									<option value="READY FOR eSIG">READY FOR eSIG</option>
-									<option value="SIGNED">SIGNED</option>
-									<option value="PENDING">PENDING</option>
-									<option value="INPERSON SIG">INPERSON SIG</option>
-									<option value="minor">Minor</option>
-								</select>								
-							 </div>
-						</div>
+								<div class="form-group">
+									<h6>Tax Year<span class="text-danger">*</span></h6>
+									<div class="controls">
+										<select name="tax_year" class="form-control" required="">
+											<option value="TAX YEAR 2019" @if($task->tax_year == "TAX YEAR 2019") selected @endif>TAX YEAR 2019</option>
+											<option value="TAX YEAR 2020" @if($task->tax_year == "TAX YEAR 2020") selected @endif>TAX YEAR 2020</option>
+											<option value="TAX YEAR 2021" @if($task->tax_year == "TAX YEAR 2021") selected @endif>TAX YEAR 2021</option>
+											<option value="TAX YEAR 2022" @if($task->tax_year == "TAX YEAR 2022") selected @endif>TAX YEAR 2022</option>
+											<option value="TAX YEAR 2023" @if($task->tax_year == "TAX YEAR 2023") selected @endif>TAX YEAR 2023</option>
+											<option value="TAX YEAR 2024" @if($task->tax_year == "TAX YEAR 2024") selected @endif>TAX YEAR 2024</option>
+										</select>
+									</div>
+								</div>
+								
 
 
-						<div class="form-group">
-							<h6>EF Status</h6>
-							<div class="controls">
-								<select name="ef_status" class="form-control" >
-									<option value="{{$task->eSignature}}" selected="" disabled="">{{$task->eSignature}}</option>
-									<option value="DONE">DONE</option>
-									<option value="READY 2 EFILE">READY 2 EFILE</option>
-									<option value="IN PROGRESS">IN PROGRESS</option>
-									<option value="HOLD">HOLD</option>
-									<option value="ESTIMATES">ESTIMATES</option>
-									<option value="NOT STARTED">NOT STARTED</option>
-									<option value="REJECTED">REJECTED</option>
-								</select>								
-							 </div>
-						</div>
+								<div class="form-group">
+									<h6>eSignature</h6>
+									<div class="controls">
+										<select name="eSignature" class="form-control">
+											<option value="SENT" @if($task->eSignature == "SENT") selected @endif>SENT</option>
+											<option value="READY FOR eSIG" @if($task->eSignature == "READY FOR eSIG") selected @endif>READY FOR eSIG</option>
+											<option value="SIGNED" @if($task->eSignature == "SIGNED") selected @endif>SIGNED</option>
+											<option value="PENDING" @if($task->eSignature == "PENDING") selected @endif>PENDING</option>
+											<option value="In Person Sign" @if($task->eSignature == "In Person Sign") selected @endif>In Person Sign</option>
+										</select>
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									<h6>EF Status</h6>
+									<div class="controls">
+										<select name="ef_status" class="form-control">
+											<option value="DONE" @if($task->ef_status == "DONE") selected @endif>DONE</option>
+											<option value="READY 2 EFILE" @if($task->ef_status == "READY 2 EFILE") selected @endif>READY 2 EFILE</option>
+											<option value="IN PROGRESS" @if($task->ef_status == "IN PROGRESS") selected @endif>IN PROGRESS</option>
+											<option value="HOLD" @if($task->ef_status == "HOLD") selected @endif>HOLD</option>
+											<option value="ESTIMATES" @if($task->ef_status == "ESTIMATES") selected @endif>ESTIMATES</option>
+											<option value="NOT STARTED" @if($task->ef_status == "NOT STARTED") selected @endif>NOT STARTED</option>
+											<option value="REJECTED" @if($task->ef_status == "REJECTED") selected @endif>REJECTED</option>
+										</select>
+									</div>
+								</div>
+								
 						
 						{{-- <div class="form-group">
 							<h6>Image<span class="text-danger">*</span></h6>
