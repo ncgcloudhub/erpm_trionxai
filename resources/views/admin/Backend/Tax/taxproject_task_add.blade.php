@@ -132,7 +132,7 @@
 				
 
 						<div class="form-group">
-							<h6>Hyperlinks</h6>
+							<h6>Folder Location</h6>
 							<div class="controls">
 								<input type="text" name="hyperlinks" class="form-control" >
 				
