@@ -531,9 +531,13 @@ Route::prefix('project')->group(function(){
     
     Route::get('/customer/delete/{id}', [CustomerController::class, 'CustomerDelete'])->name('customer.delete');
 
-    Route::get('/import/customers', [IncomeTaxController::class, 'ImportCustomers'])->name('import.tax.customers');
-
     Route::get('/export', [IncomeTaxController::class, 'ExportCustomers'])->name('export.tax.customers');
+
+    Route::get('/export/task', [IncomeTaxController::class, 'ExportTaskCustomers'])->name('export.tasks.customers');
+
+    Route::get('/import/customers', [IncomeTaxController::class, 'ImportCustomers'])->name('import.tax.customers');
+   
+    Route::get('/import/tasks/customers', [IncomeTaxController::class, 'ImportTaskCustomers'])->name('import.tasks.customers');
 
     Route::post('/import', [IncomeTaxController::class, 'ImportTaxCustomers'])->name('import.customers');
          
