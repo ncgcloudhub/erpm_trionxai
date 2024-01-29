@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CustomerExport;
+use App\Exports\ExportTasksCustomers;
 use App\Imports\TaxCustomersImport;
 use App\Models\TaxProject;
 use App\Models\Admin;
@@ -267,10 +268,22 @@ class IncomeTaxController extends Controller
         return view('admin.Backend.Brand.Customer.import_customers');
 
     }// End Method 
+	
+	public function ImportTaskCustomers(){
+
+        return view('admin.Backend.Tax.import_tasks_customers');
+
+    }// End Method 
 
 	public function ExportCustomers(){
 
         return Excel::download(new CustomerExport, 'TaxCustomers.xlsx');
+
+    }// End Method 
+
+	public function ExportTaskCustomers(){
+
+        return Excel::download(new ExportTasksCustomers, 'TaskCustomers.xlsx');
 
     }// End Method 
 
