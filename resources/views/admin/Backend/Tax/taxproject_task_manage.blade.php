@@ -53,12 +53,14 @@
 											</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign Date</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Made By</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">SSN</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 												<select id="statusFilter">
 													<option value="">All</option>
 													<option value="On Progress">On Progress</option>
 													<option value="Done">Done</option>
 													<option value="Not Started">Not Started</option>
+													<option value="Data Entry Completed">Data Entry Completed</option>
 												</select>
 											</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
@@ -83,6 +85,8 @@
 					@else
 					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
 					@endif
+
+					<td><h6 class="mb-0 text-sm">{{ $item->customer->ssn }}</h6></td>
 
 					@if ($item->status == 'Done')
 					<td class="align-middle text-center text-sm">
@@ -140,7 +144,7 @@
 			var table = $('#example1').DataTable();
 	
 			$('#statusFilter').on('change', function () {
-				table.column(5).search($(this).val()).draw();
+				table.column(6).search($(this).val()).draw();
 			});
 	
 			$('#projectFilter').on('change', function () {

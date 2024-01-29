@@ -46,6 +46,20 @@
 							   </div>
 							</div>
 
+							<div class="form-group">
+								<h6>Phone Number</h6>
+								<div class="controls">
+									<input type="text" name="phonenumber" id="phonenumber" class="form-control" readonly>					
+							   </div>
+							</div>
+
+							<div class="form-group">
+								<h6>SSN</h6>
+								<div class="controls">
+									<input type="text" name="ssn" id="ssn" class="form-control" readonly>					
+							   </div>
+							</div>
+
 																
 			 <div class="form-group">
 				<h6>Description<span class="text-danger">*</span></h6>
@@ -255,6 +269,8 @@
         // update the field with the response data
         $("#taxreturntype").val(data.customer_type);
 		$("#businesstype").val(data.business_type);
+		$("#phonenumber").val(data.personal_phone);
+		$("#ssn").val(data.ssn);
 		console.log(data);
 		$('.js-example-basic-single').select2();
 

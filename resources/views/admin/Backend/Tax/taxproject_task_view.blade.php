@@ -40,6 +40,21 @@
 							   </div>
 							</div>
 
+							<div class="form-group">
+								<h6>Phone Number</h6>
+								<div class="controls">
+									<input type="text" value="{{$task->customer->personal_phone}}" name="phonenumber" id="phonenumber" class="form-control" readonly >					
+							   </div>
+							</div>
+
+
+							<div class="form-group">
+								<h6>SSN</h6>
+								<div class="controls">
+									<input type="text" value="{{$task->customer->ssn}}" name="ssn" id="ssn" class="form-control" readonly >					
+							   </div>
+							</div>
+
 																
                             <div class="form-group">
                                 <h6>Description<span class="text-danger">*</span></h6>
