@@ -148,15 +148,15 @@
 			var table = $('#example1').DataTable();
 	
 			$('#statusFilter').on('change', function () {
-				table.column(6).search($(this).val()).draw();
+				table.column(7).search($(this).val()).draw();
 			});
 	
 			$('#projectFilter').on('change', function () {
-				table.column(1).search($(this).val()).draw();
+				table.column(2).search($(this).val()).draw();
 			});
 
 			$('#projectNames').on('change', function () {
-				table.column(2).search($(this).val()).draw();
+				table.column(3).search($(this).val()).draw();
 			});
 		});
 	</script>
