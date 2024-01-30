@@ -20,6 +20,7 @@
 									<thead>
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
 											
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Task ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Customer Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Name
 												<select id="projectFilter">
@@ -76,6 +77,7 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
+					<td><a style="color: rgb(16, 71, 189)" href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->task_id }}</a></td>
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->user_name }}</a></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>

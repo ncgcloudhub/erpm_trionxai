@@ -137,9 +137,16 @@ class IncomeTaxController extends Controller
 
 		$logged_in_user_id = Auth::guard('admin')->user();
 
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHis');
+
     $product_id = TaxTaskProject::insertGetId([
       	
 		'customer_id' => $request->customer_id,
+		'task_id' => 'T'.$formattedDateTime,
 		'description' => $request->description,
 		'comment' => $request->comment,
 		'assign_date' => $request->assign_date,

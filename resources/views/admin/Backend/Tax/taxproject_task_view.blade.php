@@ -81,6 +81,14 @@
 				{{-- 2nd Col --}}
 				<div class="col">
 
+					<div class="form-group">
+						<h6>Task ID</h6>
+						<div class="controls">
+							<input type="text" value="{{$task->task_id}}" name="task_id" class="form-control" readonly >
+			
+					   </div>
+					</div>
+
 
 					<div class="form-group">
 						<h6>Assign Date<span class="text-danger">*</span></h6>
