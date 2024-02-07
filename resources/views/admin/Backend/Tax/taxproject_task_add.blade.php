@@ -174,9 +174,12 @@
 								<select name="status" class="form-control" required="" >
 									<option value="" selected="" disabled="">Select an Option</option>
 									<option value="Not started">Not started</option>
-									<option value="On Progress" >On Progress</option>
-									<option value="Done">Done</option>
+									<option value="In Progress" >In Progress</option>
+									<option value="In-Progress - Missing Docs" >In-Progress - Missing Docs</option>
+									<option value="Not-In-Drake">Not-In-Drake</option>
+									<option value="Folder Created Only">Folder Created Only</option>
 									<option value="Data Entry Completed">Data Entry Completed</option>
+									<option value="Done">Done</option>
 								</select>								
 							 </div>
 						</div>

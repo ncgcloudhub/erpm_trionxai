@@ -38,7 +38,7 @@
 													@endforeach
 												</select>
 											</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
+											{{-- <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
 												<select id="projectNames">
 													<option value="">All Employees</option>
 													@php
@@ -53,20 +53,45 @@
 														@endif
 													@endforeach
 												</select>
-											</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign Date</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Made By</th>
+											</th> --}}
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">SSN</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 												<select id="statusFilter">
 													<option value="">All</option>
-													<option value="On Progress">On Progress</option>
-													<option value="Done">Done</option>
-													<option value="Not Started">Not Started</option>
+													<option value="Not started">Not started</option>
+													<option value="In Progress" >In Progress</option>
+													<option value="In-Progress - Missing Docs" >In-Progress - Missing Docs</option>
+													<option value="Not-In-Drake">Not-In-Drake</option>
+													<option value="Folder Created Only">Folder Created Only</option>
 													<option value="Data Entry Completed">Data Entry Completed</option>
+													<option value="Done">Done</option>
 												</select>
 											</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">eSignature
+												<select id="eSignatureFilter">
+													<option value="">All</option>
+													<option value="SENT">SENT</option>
+													<option value="READY FOR eSIG">READY FOR eSIG</option>
+													<option value="SIGNED">SIGNED</option>
+													<option value="PENDING">PENDING</option>
+													<option value="In Person Sign">In Person Sign</option>
+												</select>
+											</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">EF STATUS
+												<select id="efstatusFilter">
+													<option value="">All</option>
+													<option value="DONE">DONE</option>
+													<option value="READY 2 EFILE">READY 2 EFILE</option>
+													<option value="IN PROGRESS">IN PROGRESS</option>
+													<option value="HOLD">HOLD</option>
+													<option value="ESTIMATES">ESTIMATES</option>
+													<option value="NOT STARTED">NOT STARTED</option>
+													<option value="REJECTED">REJECTED</option>
+												</select>
+											</th>
+										
+											
+											<th width=15% class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 																	 
 										</tr>
 									</thead>
@@ -79,26 +104,28 @@
 					
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->task_id }}</a></td>
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->user_name }}</a></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
-					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
-					
-					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
-					
-					@if ($item->made_by == NULL)
-					<td><h6 class="mb-0 text-sm">--</h6></td>
-					@else
-					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
-					@endif
-
+					<td ><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->customer->ssn }}</h6></td>
 
 					@if ($item->status == 'Done')
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-success">{{$item->status}}</span>
 					</td>
-					@elseif($item->status == 'On Progress')
+					@elseif($item->status == 'In Progress')
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-info">{{$item->status}}</span>
+					</td>
+					@elseif($item->status == 'In-Progress - Missing Docs')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-secondary">{{$item->status}}</span>
+					</td>
+					@elseif($item->status == 'Not-In-Drake')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-warning">{{$item->status}}</span>
+					</td>
+					@elseif($item->status == 'Folder Created Only')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-dark">{{$item->status}}</span>
 					</td>
 					@elseif($item->status == 'Data Entry Completed')
 					<td class="align-middle text-center text-sm">
@@ -108,15 +135,30 @@
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-danger">{{$item->status}}</span>
 					</td>
-				@endif
+					@endif
+
+					<td><h6 class="mb-0 text-sm">{{ $item->eSignature }}</h6></td>
+					
+					<td><h6 class="mb-0 text-sm">{{ $item->ef_status }}</h6></td>
+					
+					{{-- @if ($item->made_by == NULL)
+					<td><h6 class="mb-0 text-sm">--</h6></td>
+					@else
+					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
+					@endif --}}
+
+					
+
+				
+				
 					
 					
 					<td>
-						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
+						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>
 						
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>		
+			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>		
 			
-			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('taxprojects.tasks.deletes',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Student')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
+			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('taxprojects.tasks.deletes',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Student')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
 
 			
 					</td>
@@ -148,15 +190,19 @@
 			var table = $('#example1').DataTable();
 	
 			$('#statusFilter').on('change', function () {
-				table.column(7).search($(this).val()).draw();
+				table.column(4).search($(this).val()).draw();
 			});
 	
-			$('#projectFilter').on('change', function () {
-				table.column(2).search($(this).val()).draw();
+			$('#eSignatureFilter').on('change', function () {
+				table.column(5).search($(this).val()).draw();
+			});
+
+			$('#efstatusFilter').on('change', function () {
+				table.column(6).search($(this).val()).draw();
 			});
 
 			$('#projectNames').on('change', function () {
-				table.column(3).search($(this).val()).draw();
+				table.column(2).search($(this).val()).draw();
 			});
 		});
 	</script>

@@ -177,7 +177,10 @@
 									<div class="controls">
 										<select name="status" class="form-control" required="">
 											<option value="Not Started" @if($task->status == "Not Started") selected @endif>Not Started</option>
-											<option value="On Progress" @if($task->status == "On Progress") selected @endif>On Progress</option>
+											<option value="In Progress" @if($task->status == "In Progress") selected @endif>In Progress</option>
+											<option value="In-Progress - Missing Docs" @if($task->status == "In-Progress - Missing Docs") selected @endif>In-Progress - Missing Docs</option>
+											<option value="Not-In-Drake" @if($task->status == "Not-In-Drake") selected @endif>Not-In-Drake</option>
+											<option value="Folder Created Only" @if($task->status == "Folder Created Only") selected @endif>Folder Created Only</option>
 											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
 											<option value="Data Entry Completed" @if($task->status == "Data Entry Completed") selected @endif>Data Entry Completed</option>
 										</select>
