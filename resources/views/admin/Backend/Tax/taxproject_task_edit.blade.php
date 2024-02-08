@@ -208,6 +208,8 @@
 									<h6>eSignature</h6>
 									<div class="controls">
 										<select name="eSignature" class="form-control">
+											<option value="" @if($task->eSignature == "") selected @endif>Select an Option</option>
+											<option value="Not Started" @if($task->eSignature == "Not Started") selected @endif>Not Started</option>
 											<option value="SENT" @if($task->eSignature == "SENT") selected @endif>SENT</option>
 											<option value="READY FOR eSIG" @if($task->eSignature == "READY FOR eSIG") selected @endif>READY FOR eSIG</option>
 											<option value="SIGNED" @if($task->eSignature == "SIGNED") selected @endif>SIGNED</option>
@@ -223,6 +225,7 @@
 									<h6>EF Status</h6>
 									<div class="controls">
 										<select name="ef_status" class="form-control">
+											<option value="" @if($task->ef_status == "") selected @endif>Select an Option</option>
 											<option value="DONE" @if($task->ef_status == "DONE") selected @endif>DONE</option>
 											<option value="READY 2 EFILE" @if($task->ef_status == "READY 2 EFILE") selected @endif>READY 2 EFILE</option>
 											<option value="IN PROGRESS" @if($task->ef_status == "IN PROGRESS") selected @endif>IN PROGRESS</option>

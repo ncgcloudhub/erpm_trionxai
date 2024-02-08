@@ -38,22 +38,7 @@
 													@endforeach
 												</select>
 											</th>
-											{{-- <th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
-												<select id="projectNames">
-													<option value="">All Employees</option>
-													@php
-														$uniqueNames = [];
-													@endphp
-													@foreach($products as $item)
-														@if (!in_array($item->admin->name, $uniqueNames))
-															<option value="{{ $item->admin->name }}">{{ $item->admin->name }}</option>
-															@php
-																$uniqueNames[] = $item->admin->name;
-															@endphp
-														@endif
-													@endforeach
-												</select>
-											</th> --}}
+											
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">SSN</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 												<select id="statusFilter">
@@ -70,6 +55,7 @@
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">eSignature
 												<select id="eSignatureFilter">
 													<option value="">All</option>
+													<option value="Not Started">Not Started</option>
 													<option value="SENT">SENT</option>
 													<option value="READY FOR eSIG">READY FOR eSIG</option>
 													<option value="SIGNED">SIGNED</option>

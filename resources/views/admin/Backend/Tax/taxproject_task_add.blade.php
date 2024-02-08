@@ -206,6 +206,7 @@
 							<div class="controls">
 								<select name="eSignature" class="form-control" >
 									<option value="" selected="" disabled="">Select an Option</option>
+									<option value="Not Started">Not Started</option>
 									<option value="SENT">SENT</option>
 									<option value="READY FOR eSIG">READY FOR eSIG</option>
 									<option value="SIGNED">SIGNED</option>
