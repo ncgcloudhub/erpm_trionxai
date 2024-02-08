@@ -105,7 +105,9 @@
 
 	<script>
 		$(document).ready(function () {
-			var table = $('#example1').DataTable();
+			var table = $('#example1').DataTable({
+				"lengthMenu": [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+			});
 
 			$('#projectNames').on('change', function () {
 				table.column(1).search($(this).val()).draw();

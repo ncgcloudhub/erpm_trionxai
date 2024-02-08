@@ -1,6 +1,10 @@
 @extends('admin.aDashboard')
 @section('admins')
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
  {{-- TRIAL START --}}
  <div class="container-fluid">
 	<a href="{{route('import.tax.customers')}}" class="btn bg-gradient-warning">Import</a>
@@ -67,5 +71,13 @@
 
 {{-- TRIAL END --}}
 
+<script>
+    $(document).ready(function () {
+        var table = $('#example1').DataTable({
+            "lengthMenu": [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+          
+        });
+    });
+</script>
 
 @endsection
