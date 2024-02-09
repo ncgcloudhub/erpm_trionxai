@@ -9,6 +9,7 @@
  <div class="container-fluid">
 	<a href="{{route('import.tax.customers')}}" class="btn bg-gradient-warning">Import</a>
 	<a href="{{ route('export.tax.customers') }}" class="btn bg-gradient-info">Export</a>
+	<a style="float: right" href="{{ route('taxproject.manage.task') }}" class="btn bg-gradient-primary">Customer Task Manage</a>
 	<div class="row mt-4">
         <div class="col-lg-12 mb-lg-0 mb-4">
 		<div class="card">

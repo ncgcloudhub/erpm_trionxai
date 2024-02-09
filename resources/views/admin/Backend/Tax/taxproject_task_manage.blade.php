@@ -7,6 +7,8 @@
  <div class="container-fluid">
 	{{-- <a href="{{route('import.tasks.customers')}}" class="btn bg-gradient-warning">Import</a> --}}
 	<a href="{{ route('export.tasks.customers') }}" class="btn bg-gradient-info">Export</a>
+
+	<a style="float: right" href="{{ route('customer.manage') }}" class="btn bg-gradient-primary">Customer Manage</a>
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
 		<div class="card">
@@ -22,6 +24,7 @@
 											
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Task ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Customer Name</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Company Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Name
 												<select id="projectFilter">
 													<option value="">All Projects</option>
@@ -77,7 +80,7 @@
 											</th>
 										
 											
-											<th width=15% class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 																	 
 										</tr>
 									</thead>
@@ -90,6 +93,7 @@
 					
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->task_id }}</a></td>
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->user_name }}</a></td>
+					<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->company_name }}</a></td>
 					<td ><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->customer->ssn }}</h6></td>
 
@@ -126,25 +130,14 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->eSignature }}</h6></td>
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->ef_status }}</h6></td>
-					
-					{{-- @if ($item->made_by == NULL)
-					<td><h6 class="mb-0 text-sm">--</h6></td>
-					@else
-					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
-					@endif --}}
-
-					
-
-				
-				
-					
+	
 					
 					<td>
-						<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>
+						<a class="btn btn-link text-dark px-0 mb-0" href="{{ route('taxproject.task.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>
 						
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.task.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>		
+			 <a class="btn btn-link text-dark px-0 mb-0" href="{{ route('taxproject.task.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>		
 			
-			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('taxprojects.tasks.deletes',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Student')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
+			 <a class="btn btn-link text-danger text-gradient px-0 mb-0" href="{{ route('taxprojects.tasks.deletes',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Task')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
 
 			
 					</td>
@@ -173,22 +166,24 @@
 
 	<script>
 		$(document).ready(function () {
-			var table = $('#example1').DataTable();
+			var table = $('#example1').DataTable({
+				"lengthMenu": [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+			});
 	
 			$('#statusFilter').on('change', function () {
-				table.column(4).search($(this).val()).draw();
+				table.column(5).search($(this).val()).draw();
 			});
 	
 			$('#eSignatureFilter').on('change', function () {
-				table.column(5).search($(this).val()).draw();
-			});
-
-			$('#efstatusFilter').on('change', function () {
 				table.column(6).search($(this).val()).draw();
 			});
 
+			$('#efstatusFilter').on('change', function () {
+				table.column(7).search($(this).val()).draw();
+			});
+
 			$('#projectNames').on('change', function () {
-				table.column(2).search($(this).val()).draw();
+				table.column(3).search($(this).val()).draw();
 			});
 		});
 	</script>

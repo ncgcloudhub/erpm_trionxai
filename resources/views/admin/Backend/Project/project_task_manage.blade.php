@@ -130,7 +130,9 @@
 
 	<script>
 		$(document).ready(function () {
-			var table = $('#example1').DataTable();
+			var table = $('#example1').DataTable({
+				"lengthMenu": [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+			});
 	
 			$('#statusFilter').on('change', function () {
 				table.column(5).search($(this).val()).draw();
