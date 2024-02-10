@@ -15,8 +15,20 @@
       <div class="row">
 
 		<div class="col">
+  
+      @php
+      $previousCustomerId = App\Models\Customer::where('id', '<', $customer->id)->max('id');
+      $nextCustomerId = App\Models\Customer::where('id', '>', $customer->id)->min('id');
+      @endphp
 
-<input type="hidden" name="id" value="{{$customer->id}}">   
+<input type="hidden" name="id" value="{{$customer->id}}">  
+@if($previousCustomerId)
+    <a href="{{ route('customer.view', ['id' => $previousCustomerId]) }}"> <span class="badge bg-gradient-primary">Previous</span></a>
+@endif
+
+@if($nextCustomerId)
+    <a href="{{ route('customer.view', ['id' => $nextCustomerId]) }}"> <span class="badge bg-gradient-secondary">Next</span></a>
+@endif
 <div class="form-group">
 <label  class="text-uppercase text-dark text-xs font-weight-bold ">Company Name</label>
 <div class="controls">

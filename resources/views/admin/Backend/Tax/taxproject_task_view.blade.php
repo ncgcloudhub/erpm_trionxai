@@ -20,7 +20,20 @@
 			  <div class="row">
 			
 				<div class="col">
-					
+					@php
+						$previousTaskId = App\Models\TaxTaskProject::where('id', '<', $task->id)->max('id');
+						$nextTaskId = App\Models\TaxTaskProject::where('id', '>', $task->id)->min('id');
+					@endphp
+
+@if($previousTaskId)
+    <a href="{{ route('taxproject.task.view', ['id' => $previousTaskId]) }}"> <span class="badge bg-gradient-primary">Previous</span></a>
+@endif
+
+@if($nextTaskId)
+    <a href="{{ route('taxproject.task.view', ['id' => $nextTaskId]) }}"> <span class="badge bg-gradient-secondary">Next</span></a>
+@endif
+
+
 						<input type="hidden" name="id" value="{{$task->id}}">
 						<div class="row mb-3">
 							<h6 class="col-5">Customer Name<span class="text-danger">*</span></h6>
