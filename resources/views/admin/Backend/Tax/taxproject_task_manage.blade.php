@@ -9,7 +9,7 @@
 	<a href="{{ route('export.tasks.customers') }}" class="btn bg-gradient-info">Export</a>
 
 	<a href="{{ route('customer.manage') }}" class="btn bg-gradient-primary">Customer Manage</a>
-	<a href="{{ route('taxproject.add.task') }}" class="btn bg-gradient-success">Add Task</a>
+	<a href="{{ route('taxproject.add.task') }}" class="btn bg-gradient-success">Add Ticket</a>
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
 		<div class="card">

@@ -6,7 +6,7 @@
  {{-- TRIAL START --}}
  <div class="container-fluid">
 
-	<a href="{{ route('taxproject.view') }}" class="btn bg-gradient-success">Add Ticket</a>
+	<a href="{{ route('taxproject.view') }}" class="btn bg-gradient-success">Add Project</a>
 
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
