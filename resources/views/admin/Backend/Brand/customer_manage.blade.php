@@ -48,11 +48,11 @@
   <td>
 
 
-<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>	
+<a class="btn btn-link text-dark px-0 mb-0" href="{{ route('customer.view',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>	
 			 
-<a class="btn btn-link text-dark px-3 mb-0" href="{{ route('customer.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>
+<a class="btn btn-link text-dark px-0 mb-0" href="{{ route('customer.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>
 
-<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('customer.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Customer')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
+<a class="btn btn-link text-danger text-gradient px-0 mb-0" href="{{ route('customer.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Customer')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
   </td>
              
  </tr>
@@ -76,7 +76,7 @@
 <script>
     $(document).ready(function () {
         var table = $('#example1').DataTable({
-            "lengthMenu": [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+            "lengthMenu": [[50, 100, 500], [50, 100, 500]],
           
         });
     });

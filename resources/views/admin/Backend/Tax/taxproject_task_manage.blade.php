@@ -23,7 +23,7 @@
 									<thead>
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
 											
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Task ID</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Ticket ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Customer Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Company Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Name
@@ -168,7 +168,7 @@
 	<script>
 		$(document).ready(function () {
 			var table = $('#example1').DataTable({
-				"lengthMenu": [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+				"lengthMenu": [[50, 100, 500], [50, 100, 500]],
 			});
 	
 			$('#statusFilter').on('change', function () {

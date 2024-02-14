@@ -5,6 +5,9 @@
 
  {{-- TRIAL START --}}
  <div class="container-fluid">
+
+	<a href="{{ route('taxproject.view') }}" class="btn bg-gradient-success">Add Ticket</a>
+
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
 		<div class="card">
@@ -70,11 +73,11 @@
 					
 					<td>
 					
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.view.details',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>	
+			 <a class="btn btn-link text-dark px-0 mb-0" href="{{ route('taxproject.view.details',$item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i></a>	
 			 
-			 <a class="btn btn-link text-dark px-3 mb-0" href="{{ route('taxproject.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>
+			 <a class="btn btn-link text-dark px-0 mb-0" href="{{ route('taxproject.edit',$item->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>
 
-			 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('taxprojects.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Project')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
+			 <a class="btn btn-link text-danger text-gradient px-0 mb-0" href="{{ route('taxprojects.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Project')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
 
 					</td>
 					

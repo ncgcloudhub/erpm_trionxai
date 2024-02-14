@@ -290,12 +290,12 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
   <a class="nav-link {{ ($route == 'taxproject.add.task')? 'active':'' }}" href="{{ route('taxproject.add.task') }}">
   <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">Add Customer Task</span>
+  <span class="sidenav-normal">Add Customer Ticket</span>
   </a>
   
   <a class="nav-link {{ ($route == 'taxproject.manage.task')? 'active':'' }}" href="{{ route('taxproject.manage.task') }}">
   <span class="sidenav-mini-icon"></span>
-  <span class="sidenav-normal">Manage Customer Task</span>
+  <span class="sidenav-normal">Manage Customer Ticket</span>
   </a>
 
 
