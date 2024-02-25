@@ -91,7 +91,7 @@ class ProjectController extends Controller
 				'alert-type' => 'success'
 			);
 
-			return redirect()->back()->with($notification);
+			return redirect(route('project.manage'))->with($notification);
 	}
 
 	public function UpdateComment(Request $request){
@@ -262,7 +262,7 @@ class ProjectController extends Controller
 				'alert-type' => 'success'
 			);
 
-			return redirect()->back()->with($notification);
+			return redirect(route('project.manage.task'))->with($notification);
 	}
 
 	public function ProjectsDelete($id){

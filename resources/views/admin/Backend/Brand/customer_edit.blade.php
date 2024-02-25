@@ -51,14 +51,14 @@
 <div class="form-group">
     <label class="text-uppercase text-dark text-xs font-weight-bold">Office Phone</label>
     <div class="controls">
-        <input type="text" value="{{$customer->office_phone}}" name="office_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" >
+        <input type="text" value="{{$customer->office_phone}}" name="office_phone" class="form-control" >
     </div>
 </div>
 
 <div class="form-group">
     <label class="text-uppercase text-dark text-xs font-weight-bold">personal Phone <span class="text-danger">*</span></label>
     <div class="controls">
-        <input type="text" value="{{$customer->personal_phone}}" name="personal_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" required>
+        <input type="text" value="{{$customer->personal_phone}}" name="personal_phone" class="form-control" required>
     </div>
 </div>
 

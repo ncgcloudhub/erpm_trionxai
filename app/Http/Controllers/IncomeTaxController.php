@@ -96,7 +96,7 @@ class IncomeTaxController extends Controller
 				'alert-type' => 'success'
 			);
 
-			return redirect()->back()->with($notification);
+			return redirect(route('taxproject.manage'))->with($notification);
 	}
 
 	public function ProjectDetails($id){		   
@@ -239,7 +239,7 @@ class IncomeTaxController extends Controller
 				'alert-type' => 'success'
 			);
 
-			return redirect()->back()->with($notification);
+			return redirect(route('taxproject.manage.task'))->with($notification);
 	}
 
 	public function ProjectsDelete($id){
