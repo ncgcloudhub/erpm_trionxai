@@ -25,13 +25,13 @@
 						$nextTaskId = App\Models\TaxTaskProject::where('id', '>', $task->id)->min('id');
 					@endphp
 
-@if($previousTaskId)
-    <a href="{{ route('taxproject.task.view', ['id' => $previousTaskId]) }}"> <span class="badge bg-gradient-primary">Previous</span></a>
-@endif
+				@if($previousTaskId)
+					<a href="{{ route('taxproject.task.view', ['id' => $previousTaskId]) }}"> <span class="badge bg-gradient-primary">Previous</span></a>
+				@endif
 
-@if($nextTaskId)
-    <a href="{{ route('taxproject.task.view', ['id' => $nextTaskId]) }}"> <span class="badge bg-gradient-secondary">Next</span></a>
-@endif
+				@if($nextTaskId)
+					<a href="{{ route('taxproject.task.view', ['id' => $nextTaskId]) }}"> <span class="badge bg-gradient-secondary">Next</span></a>
+				@endif
 
 
 						<input type="hidden" name="id" value="{{$task->id}}">

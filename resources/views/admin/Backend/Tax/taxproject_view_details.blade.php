@@ -136,18 +136,34 @@
 						  <span class="badge badge-sm bg-gradient-success">{{$task->priority}}</span>
 						</td>
 						@if ($task->status == 'Done')
-						<td class="align-middle text-center text-sm">
-						  <span class="badge badge-sm bg-gradient-success">{{$task->status}}</span>
-						</td>
-						@elseif($task->status == 'On Progress')
-						<td class="align-middle text-center text-sm">
-						  <span class="badge badge-sm bg-gradient-info">{{$task->status}}</span>
-						</td>
-						@else
-						<td class="align-middle text-center text-sm">
-						  <span class="badge badge-sm bg-gradient-danger">{{$task->status}}</span>
-						</td>
-						@endif
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-success">{{$task->status}}</span>
+					</td>
+					@elseif($task->status == 'In Progress')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-info">{{$task->status}}</span>
+					</td>
+					@elseif($task->status == 'In-Progress - Missing Docs')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-secondary">{{$task->status}}</span>
+					</td>
+					@elseif($task->status == 'Not-In-Drake')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-warning">{{$task->status}}</span>
+					</td>
+					@elseif($task->status == 'Folder Created Only')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-dark">{{$task->status}}</span>
+					</td>
+					@elseif($task->status == 'Data Entry Completed')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-primary">{{$task->status}}</span>
+					</td>
+					@else
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-danger">{{$task->status}}</span>
+					</td>
+					@endif
 					  
 					  {{-- <td class="align-middle">
 						<a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

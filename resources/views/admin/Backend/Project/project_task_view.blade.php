@@ -4,6 +4,13 @@
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
+
+		<div style="float: right">
+			<a class="btn btn-link text-dark px-0 mb-0" href="{{ route('project.task.edit',$task->id) }}"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>		
+				
+			<a class="btn btn-link text-danger text-gradient px-0 mb-0" href="{{ route('projects.tasks.deletes',$task->id) }}" onclick="return confirm('Are you sure you want to delete this Task')"><i class="fa-solid fa-trash text-dark me-2"></i></a>
+		</div>
+
 	  <div class="row">
 		<div class="col-lg-12 mb-lg-0 mb-4">
 		  <div class="card">
@@ -11,6 +18,19 @@
 			  <div class="row">
 			
 				<div class="col">
+
+					@php
+						$previousTaskId = App\Models\Product::where('id', '<', $task->id)->max('id');
+						$nextTaskId = App\Models\Product::where('id', '>', $task->id)->min('id');
+					@endphp
+
+				@if($previousTaskId)
+					<a href="{{ route('project.task.view', ['id' => $previousTaskId]) }}"> <span class="badge bg-gradient-primary">Previous</span></a>
+				@endif
+
+				@if($nextTaskId)
+					<a href="{{ route('project.task.view', ['id' => $nextTaskId]) }}"> <span class="badge bg-gradient-secondary">Next</span></a>
+				@endif
 					
 						<input type="hidden" name="id" value="{{$task->id}}">
 							 <div class="form-group">
