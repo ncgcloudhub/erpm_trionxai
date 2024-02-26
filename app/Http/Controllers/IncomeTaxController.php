@@ -54,7 +54,7 @@ class IncomeTaxController extends Controller
 
 
        $notification = array(
-			'message' => 'Projects Inserted Successfully',
+			'message' => 'Project Inserted Successfully',
 			'alert-type' => 'success'
 		);
 
