@@ -4,6 +4,7 @@
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
+		<a href="{{ route('project.manage') }}" class="btn bg-gradient-success">Manage Project</a>
 	  <div class="row">
 		<div class="col-lg-12 mb-lg-0 mb-4">
 		  <div class="card">
@@ -60,6 +61,8 @@
 			
 					   </div>
 					</div>
+
+					
 		
 
 						
@@ -99,6 +102,13 @@
 						   </div>
 						</div>
 
+						<div class="form-group">
+							<h6>Phases</h6>
+							<div class="controls">
+								<input type="text" name="phases" class="form-control" placeholder="Enter phases separated by commas">
+							</div>
+						</div>
+						
 
 						<div class="form-group">
 							<h6>Priority<span class="text-danger">*</span></h6>

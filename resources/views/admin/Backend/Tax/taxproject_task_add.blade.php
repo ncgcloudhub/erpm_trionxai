@@ -4,6 +4,7 @@
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
+		<a href="{{ route('taxproject.manage.task') }}" class="btn bg-gradient-success">Manage Ticket</a>
 	  <div class="row">
 		<div class="col-lg-12 mb-lg-0 mb-4">
 		  <div class="card">

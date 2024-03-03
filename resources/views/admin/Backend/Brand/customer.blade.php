@@ -12,6 +12,7 @@
 
  {{-- TRIAL START --}}
  <div class="container-fluid">
+  <a href="{{ route('customer.manage') }}" class="btn bg-gradient-success">Manage Customer</a>
 	<div class="row mt-4">
 
 {{-- ADD CUSTOMER --}}

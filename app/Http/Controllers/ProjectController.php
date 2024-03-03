@@ -40,6 +40,7 @@ class ProjectController extends Controller
 		'assign_to' => $request->assign_to,
 
       	'hyperlinks' => $request->hyperlinks,
+      	'phases' => $request->phases,
       	'priority' => $request->priority,
       	'logged_in_user' => $logged_in_user_id->id,
 		// 'product_img' => $save_url,
