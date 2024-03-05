@@ -107,7 +107,7 @@
 			var table = $('#example1').DataTable();
 
 			$('#projectNames').on('change', function () {
-				table.column(1).search($(this).val()).draw();
+				table.column(2).search($(this).val()).draw();
 			});
 		});
 	</script>
