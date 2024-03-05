@@ -20,7 +20,7 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">IncomeTax Project ID</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">IncomeTax Project ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Project Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
 												<select id="projectNames">
