@@ -20,7 +20,7 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
-											
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Project Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
 												<select id="projectNames">
@@ -51,6 +51,8 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
+					<td><a style="color: rgb(16, 71, 189)" href="{{ route('project.view.details',$item->id) }}">{{ $item->project_id }}</a></td>
+
 					<td class="text-start"><a style="color: rgb(16, 71, 189)" href="{{ route('project.view.details',$item->id) }}">{{ $item->project_name }} <span class="badge badge-sm bg-gradient-success"> {{ $item->tasks->count() }}</span></a>
 						{{-- <p class="mb-0 text-sm"></p> --}}
 						{{-- <p>Number of tasks: {{ $item->tasks->count() }}</p> --}}

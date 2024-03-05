@@ -28,8 +28,15 @@ class ProjectController extends Controller
 
 		$logged_in_user_id = Auth::guard('admin')->user();
 
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHis');
+
         Category::insertGetId([
       	
+		'project_id' => 'P'.$formattedDateTime,
 		'project_name' => $request->project_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
@@ -144,15 +151,18 @@ class ProjectController extends Controller
 
     public function StoreProjectTask(Request $request){
 
-		// $image = $request->file('product_img');
-    	// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+		
+	$logged_in_user_id = Auth::guard('admin')->user();
 
-    	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
-    	// $save_url = 'upload/products/'.$name_gen;
-		$logged_in_user_id = Auth::guard('admin')->user();
+	// Get the current date and time
+	$currentDateTime = now();
+
+	// Format the date and time as 'ymdHi'
+	$formattedDateTime = $currentDateTime->format('ymdHis');
 
       $product_id = Product::insertGetId([
       	
+		'project_task_id' => 'PT'.$formattedDateTime,
 		'task_name' => $request->task_name,
 		'description' => $request->description,
 		'comment' => $request->comment,

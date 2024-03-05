@@ -19,7 +19,7 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
-											
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Ticket ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Task Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Name
 												<select id="projectFilter">
@@ -74,6 +74,8 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
+					<td><a style="color: rgb(16, 71, 189)" href="{{ route('project.task.view',$item->id) }}">{{ $item->project_task_id }}</a></td>
+
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('project.task.view',$item->id) }}"><p class="mb-0 text-sm text-start">{{ $item->task_name }}</p></a></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>

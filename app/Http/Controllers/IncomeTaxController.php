@@ -30,10 +30,18 @@ class IncomeTaxController extends Controller
     }  // end method
 
     public function StoreProject(Request $request){
+		
 		$logged_in_user_id = Auth::guard('admin')->user();
+
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHis');
 
         TaxProject::insertGetId([
       	
+		'income_project_id' => 'IP'.$formattedDateTime,
 		'project_name' => $request->project_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
