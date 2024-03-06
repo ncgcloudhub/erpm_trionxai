@@ -28,8 +28,15 @@ class ProjectController extends Controller
 
 		$logged_in_user_id = Auth::guard('admin')->user();
 
+		// Get the current date and time
+		$currentDateTime = now();
+
+		// Format the date and time as 'ymdHi'
+		$formattedDateTime = $currentDateTime->format('ymdHis');
+
         Category::insertGetId([
       	
+		'project_id' => 'P'.$formattedDateTime,
 		'project_name' => $request->project_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
@@ -40,7 +47,6 @@ class ProjectController extends Controller
 		'assign_to' => $request->assign_to,
 
       	'hyperlinks' => $request->hyperlinks,
-      	'phases' => $request->phases,
       	'priority' => $request->priority,
       	'logged_in_user' => $logged_in_user_id->id,
 		// 'product_img' => $save_url,
@@ -81,10 +87,10 @@ class ProjectController extends Controller
 			'assigned_by' => $request->assigned_by,
 			'assign_to' => $request->assign_to,
 	
-			  'hyperlinks' => $request->hyperlinks,
-			  'priority' => $request->priority,
-			  'bug' => $request->bug,
-			  'issue' => $request->issue,
+			'hyperlinks' => $request->hyperlinks,
+			'priority' => $request->priority,
+			'bug' => $request->bug,
+			'issue' => $request->issue,
 			]);
 
 			$notification = array(
@@ -144,15 +150,18 @@ class ProjectController extends Controller
 
     public function StoreProjectTask(Request $request){
 
-		// $image = $request->file('product_img');
-    	// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+		
+	$logged_in_user_id = Auth::guard('admin')->user();
 
-    	// Image::make($image)->resize(200,200)->save('upload/products/'.$name_gen);
-    	// $save_url = 'upload/products/'.$name_gen;
-		$logged_in_user_id = Auth::guard('admin')->user();
+	// Get the current date and time
+	$currentDateTime = now();
+
+	// Format the date and time as 'ymdHi'
+	$formattedDateTime = $currentDateTime->format('ymdHis');
 
       $product_id = Product::insertGetId([
       	
+		'project_task_id' => 'PT'.$formattedDateTime,
 		'task_name' => $request->task_name,
 		'description' => $request->description,
 		'comment' => $request->comment,
@@ -162,6 +171,7 @@ class ProjectController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
+		'phases' => $request->phases,
 
 		'sub_task' => $request->sub_task,
       	'bug' => $request->bug,
@@ -247,6 +257,7 @@ class ProjectController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
+		'phases' => $request->phases,
 
 		'sub_task' => $request->sub_task,
       	'bug' => $request->bug,

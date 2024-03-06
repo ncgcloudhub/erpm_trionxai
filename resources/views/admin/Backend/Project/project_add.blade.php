@@ -102,14 +102,7 @@
 						   </div>
 						</div>
 
-						<div class="form-group">
-							<h6>Phases</h6>
-							<div class="controls">
-								<input type="text" name="phases" class="form-control" placeholder="Enter phases separated by commas">
-							</div>
-						</div>
 						
-
 						<div class="form-group">
 							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">

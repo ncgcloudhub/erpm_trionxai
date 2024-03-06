@@ -19,7 +19,7 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
-											
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Ticket ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Task Name</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Name
 												<select id="projectFilter">
@@ -53,8 +53,17 @@
 													@endforeach
 												</select>
 											</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign Date</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Made By</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Due Date</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Phases
+												<select id="phasesFilter">
+													<option value="">All</option>
+													<option value="Phase 1 (Authentication)">Phase 1 (Authentication)</option>
+													<option value="Phase 2 (Front-End)" >Phase 2 (Front-End)</option>
+													<option value="Phase 3 (Back-End)">Phase 3 (Back-End)</option>
+													<option value="Documentation">Documentation</option>
+													<option value="Others">Others</option>
+												</select>
+											</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 												<select id="statusFilter">
 													<option value="">All</option>
@@ -63,7 +72,7 @@
 													<option value="Not Started">Not Started</option>
 												</select>
 											</th>
-											<th width=15% class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 																	 
 										</tr>
 									</thead>
@@ -74,16 +83,18 @@
 				 @foreach($products as $item)
 				 <tr class="align-middle text-center text-sm">
 					
+					<td><a style="color: rgb(16, 71, 189)" href="{{ route('project.task.view',$item->id) }}">{{ $item->project_task_id }}</a></td>
+
 					<td><a style="color: rgb(16, 71, 189)" href="{{ route('project.task.view',$item->id) }}"><p class="mb-0 text-sm text-start">{{ $item->task_name }}</p></a></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
-					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->completion_date }}</h6></td>
 					
 					@if ($item->made_by == NULL)
 					<td><h6 class="mb-0 text-sm">--</h6></td>
 					@else
-					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->phases }}</h6></td>
 					@endif
 
 					@if ($item->status == 'Done')
@@ -138,6 +149,10 @@
 			});
 	
 			$('#statusFilter').on('change', function () {
+				table.column(6).search($(this).val()).draw();
+			});
+
+			$('#phasesFilter').on('change', function () {
 				table.column(5).search($(this).val()).draw();
 			});
 	
@@ -147,7 +162,7 @@
 });
 
 			$('#projectNames').on('change', function () {
-				table.column(2).search($(this).val()).draw();
+				table.column(3).search($(this).val()).draw();
 			});
 		});
 	</script>
