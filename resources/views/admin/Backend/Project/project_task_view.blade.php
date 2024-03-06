@@ -125,6 +125,18 @@
                         </div>
                     </div>
                     
+					<div class="form-group">
+						<h6>Phases<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="phases" class="form-control" @readonly(true) >
+								<option value="{{$task->priority}}" selected="">{{$task->phases}}</option>
+								<option value="Phase 1 (Authentication)">Phase 1 (Authentication)</option>
+									<option value="Phase 2 (Front-End)" >Phase 2 (Front-End)</option>
+									<option value="Phase 3 (Back-End)">Phase 3 (Back-End)</option>
+							</select>
+							
+						 </div>
+							 </div>
 						
 
 						 <div class="form-group">

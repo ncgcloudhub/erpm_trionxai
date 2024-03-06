@@ -53,8 +53,8 @@
 													@endforeach
 												</select>
 											</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign Date</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Made By</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Due Date</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Phases</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 												<select id="statusFilter">
 													<option value="">All</option>
@@ -80,12 +80,12 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
-					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->completion_date }}</h6></td>
 					
 					@if ($item->made_by == NULL)
 					<td><h6 class="mb-0 text-sm">--</h6></td>
 					@else
-					<td><h6 class="mb-0 text-sm">{{ $item->made_by->name }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ $item->phases }}</h6></td>
 					@endif
 
 					@if ($item->status == 'Done')
