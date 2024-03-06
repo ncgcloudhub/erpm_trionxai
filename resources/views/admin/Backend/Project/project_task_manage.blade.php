@@ -144,6 +144,7 @@
 			});
 	
 			$('#projectFilter').on('change', function () {
+				console.log('Selected Project: ' + $(this).val());
 				table.column(2).search($(this).val()).draw();
 			});
 

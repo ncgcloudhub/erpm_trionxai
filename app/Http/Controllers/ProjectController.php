@@ -172,6 +172,7 @@ class ProjectController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
+		'phases' => $request->phases,
 
 		'sub_task' => $request->sub_task,
       	'bug' => $request->bug,
@@ -257,6 +258,7 @@ class ProjectController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
+		'phases' => $request->phases,
 
 		'sub_task' => $request->sub_task,
       	'bug' => $request->bug,
