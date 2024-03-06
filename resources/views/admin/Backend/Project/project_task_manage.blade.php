@@ -54,7 +54,14 @@
 												</select>
 											</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Due Date</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Phases</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Phases
+												<select id="phasesFilter">
+													<option value="">All</option>
+													<option value="Phase 1 (Authentication)">Phase 1 (Authentication)</option>
+													<option value="Phase 2 (Front-End)" >Phase 2 (Front-End)</option>
+													<option value="Phase 3 (Back-End)">Phase 3 (Back-End)</option>
+												</select>
+											</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 												<select id="statusFilter">
 													<option value="">All</option>
@@ -141,6 +148,10 @@
 	
 			$('#statusFilter').on('change', function () {
 				table.column(6).search($(this).val()).draw();
+			});
+
+			$('#phasesFilter').on('change', function () {
+				table.column(5).search($(this).val()).draw();
 			});
 	
 			$('#projectFilter').on('change', function () {
