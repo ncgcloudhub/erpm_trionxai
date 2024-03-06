@@ -142,8 +142,9 @@
 			});
 	
 			$('#projectFilter').on('change', function () {
-				table.column(1).search($(this).val()).draw();
-			});
+    var selectedProject = $(this).val().toLowerCase(); // Convert to lowercase for case-insensitive comparison
+    table.column(1).search(selectedProject, true, false).draw(); // Use regex search, case insensitive
+});
 
 			$('#projectNames').on('change', function () {
 				table.column(2).search($(this).val()).draw();
