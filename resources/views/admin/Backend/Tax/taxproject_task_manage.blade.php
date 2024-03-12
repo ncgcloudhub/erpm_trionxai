@@ -53,6 +53,7 @@
 													<option value="Not-In-Drake">Not-In-Drake</option>
 													<option value="Folder Created Only">Folder Created Only</option>
 													<option value="Data Entry Completed">Data Entry Completed</option>
+													<option value="Get Extension">Get Extension</option>
 													<option value="Done">Done</option>
 												</select>
 											</th>
@@ -121,6 +122,10 @@
 					@elseif($item->status == 'Data Entry Completed')
 					<td class="align-middle text-center text-sm">
 					  <span class="badge badge-sm bg-gradient-primary">{{$item->status}}</span>
+					</td>
+					@elseif($item->status == 'Get Extension')
+					<td class="align-middle text-center text-sm">
+					  <span class="badge badge-sm bg-gradient-light">{{$item->status}}</span>
 					</td>
 					@else
 					<td class="align-middle text-center text-sm">
