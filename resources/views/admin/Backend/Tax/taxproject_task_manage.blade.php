@@ -54,6 +54,7 @@
 													<option value="Folder Created Only">Folder Created Only</option>
 													<option value="Data Entry Completed">Data Entry Completed</option>
 													<option value="Get Extension">Get Extension</option>
+													<option value="Estimates">Estimates</option>
 													<option value="Done">Done</option>
 												</select>
 											</th>

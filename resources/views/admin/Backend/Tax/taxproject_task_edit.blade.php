@@ -183,6 +183,7 @@
 											<option value="Folder Created Only" @if($task->status == "Folder Created Only") selected @endif>Folder Created Only</option>
 											<option value="Data Entry Completed" @if($task->status == "Data Entry Completed") selected @endif>Data Entry Completed</option>
 											<option value="Get Extension" @if($task->status == "Get Extension") selected @endif>Get Extension</option>
+											<option value="Estimates" @if($task->status == "Estimates") selected @endif>Estimates</option>
 											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
 										</select>
 									</div>
