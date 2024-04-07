@@ -226,7 +226,7 @@ class ProjectController extends Controller
 	public function ManageTask()
 	{
 
-		$products = Product::orderBy('project_task_id', 'DESC')->get();
+		$products = Product::orderBy('project_task_id', 'ASC')->get();
 		$names = Admin::latest()->get();
 		return view('admin.Backend.Project.project_task_manage', compact('products', 'names'));
 	}  // end method
