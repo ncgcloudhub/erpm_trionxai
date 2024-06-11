@@ -109,9 +109,14 @@
 							<label for="receipt">Receipt</label>
 						</div>
 						<div class="col">
-							<a href="{{ asset($expense->receipt) }}" download>Download Receipt</a>
+							@if(!empty($expense->receipt))
+								<a href="{{ asset($expense->receipt) }}" download>Download Receipt</a>
+							@else
+								<p>No receipt</p>
+							@endif
 						</div>
 					</div>
+					
 				
 					<div class="row mb-5">
 						<div class="col-3"> <label for="details">Details</label></div>
@@ -161,9 +166,14 @@
 							<label for="attachment">Attachment</label>
 						</div>
 						<div class="col">
-							<a href="{{ asset($expense->attachment) }}" download>Download Attachment</a>
+							@if(!empty($expense->attachment))
+								<a href="{{ asset($expense->attachment) }}" download>Download Attachment</a>
+							@else
+								<p>No attachments</p>
+							@endif
 						</div>
 					</div>
+					
 					
 					
 					
