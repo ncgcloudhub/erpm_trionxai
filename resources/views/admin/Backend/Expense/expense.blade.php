@@ -9,7 +9,7 @@
 		  <div class="card-body p-3">
 			<div class="row">
 				
-			<form class="insert-form" id="insert_form" method="post" action="{{ route('expense.store') }}">
+			<form class="insert-form" id="insert_form" method="post" action="{{ route('expense.store') }}" enctype="multipart/form-data">
 			@csrf
 			<div class="row">
 				<div class="col">
@@ -30,7 +30,7 @@
 						</div>
 						</div>
 					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect1">Description</label></div>
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect1">Expense Type</label></div>
 						<div class="col">
 							<select id="mySelect1" name="expenseType" class="js-example-basic-single select2 form-control" required="">
 							<option value="" selected="" disabled="">Select Expense Type</option>
@@ -51,17 +51,20 @@
 				</div>
 				<div class="col">
 				
-				
-					<div class="row mb-2">
+					<div class="row mb-3">
+						<div class="col-3"><label for="receipt">Attach Receipt</label></div>
+						<div class="col"><input type="file" class="form-control" name="receipt" id="receipt"></div>
+					</div>
+					<div class="row mb-3">
 						<div class="col-3"> <label for="details">Details</label></div>
-						<div class="col"><textarea class="form-control" name="details" id="details" rows="4"></textarea></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="3"></textarea></div>
 					</div>
 					<div class="row mb-3">
 						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Location</label></div>
-						<div class="col"><select id="location" name="location" class="js-example-basic-single form-control">
-							<option value="Factory">Factory</option>
-							<option value="Head Office" selected>Head Office</option>
-							<option value="STATA Lifestyle Mohakhali" selected>STATA Lifestyle Mohakhali</option>
+						<div class="col">
+							<select id="location" name="location" class="js-example-basic-single form-control">
+								<option value="Bangladesh Office" >Bangladesh Office</option>
+								<option value="USA Office" >USA Office</option>
 							<!-- More options -->
 							</select></div>
 					</div>
