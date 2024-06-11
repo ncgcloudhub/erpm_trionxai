@@ -15,7 +15,7 @@
 									<thead>
 										<tr class="align-middle text-center">
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expense ID</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 											<th hidden class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>

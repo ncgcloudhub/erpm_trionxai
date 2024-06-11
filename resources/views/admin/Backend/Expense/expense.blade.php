@@ -145,7 +145,7 @@
 					</div>
 
 					<div class="row mb-5">
-						<div class="col-3"><label for="receipt">Attachment</label></div>
+						<div class="col-3"><label for="attachment">Attachment</label></div>
 						<div class="col"><input type="file" class="form-control" name="attachment" id="attachment"></div>
 					</div>
 					

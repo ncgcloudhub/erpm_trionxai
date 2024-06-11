@@ -102,12 +102,20 @@ class ExpenseController extends Controller
 		$expense_id = $request->id;
 
 		Expense::findOrFail($expense_id)->update([
-			'expenseType_id' => $request->expenseType,
+
 			'date' => $request->date,
-			'amount' => $request->amount,
-			'location' => $request->location,
-			'details' => $request->details,
 			'user_id' => $request->employee_id,
+			'expenseType_id' => $request->expenseType,
+			'amount' => $request->amount,
+			'recurring_expense' => $request->recurring_expense,
+			'merchant_vendor' => $request->merchant_vendor,
+			'payment_method' => $request->payment_method,
+
+			'details' => $request->details,
+			'location' => $request->location,
+			'tax_information' => $request->tax_information,
+			'refundable' => $request->refundable,
+			'notes' => $request->notes,
 			'updated_at' => Carbon::now(),
 		]);
 
