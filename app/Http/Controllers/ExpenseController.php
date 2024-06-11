@@ -114,16 +114,6 @@ class ExpenseController extends Controller
 
 	public function ExpenseStore(Request $request)
 	{
-		// Validate the request including the file
-		$request->validate([
-			'expenseType' => 'required',
-			'date' => 'required|date',
-			'amount' => 'required|numeric',
-			'location' => 'required|string',
-			'details' => 'nullable|string',
-			'employee_id' => 'required|integer',
-			'receipt' => 'nullable|file|mimes:jpeg,png,pdf,doc,docx|max:2048', // Add validation for the file
-		]);
 
 		$admin = Auth::guard('admin')->user();
 
@@ -137,16 +127,36 @@ class ExpenseController extends Controller
 			$receiptPath = $destinationPath . '/' . $fileName;
 		}
 
+		// Handle file upload
+		$attachmentPath = null;
+		if ($request->hasFile('attachment')) {
+			$file = $request->file('attachment');
+			$destinationPath = 'upload/expense/expense_attachment';
+			$fileName = time() . '_' . $file->getClientOriginalName();
+			$file->move(public_path($destinationPath), $fileName);
+			$attachmentPath = $destinationPath . '/' . $fileName;
+		}
+
 		// Insert the expense record
 		Expense::insert([
-			'expenseType_id' => $request->expenseType,
 			'date' => $request->date,
-			'amount' => $request->amount,
-			'location' => $request->location,
-			'details' => $request->details,
 			'user_id' => $request->employee_id,
-			'made_by_id' => $admin->id,
+			'expenseType_id' => $request->expenseType,
+			'amount' => $request->amount,
+			'recurring_expense' => $request->recurring_expense,
+			'merchant_vendor' => $request->merchant_vendor,
+			'payment_method' => $request->payment_method,
+
 			'receipt' => $receiptPath, // Store the file path in the database
+			'details' => $request->details,
+			'location' => $request->location,
+			'tax_information' => $request->tax_information,
+			'refundable' => $request->refundable,
+			'notes' => $request->notes,
+			'attachment' => $attachmentPath, // Store the file path in the database
+
+			'made_by_id' => $admin->id,
+
 			'created_at' => Carbon::now(),
 		]);
 
