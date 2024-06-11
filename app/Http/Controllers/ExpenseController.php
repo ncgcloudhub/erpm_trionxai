@@ -13,39 +13,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ExpenseController extends Controller
 {
-	public function EnpenseTypeView()
+	public function ExpenseTypeView()
 	{
 
 		$expenseTypes = ExpenseType::latest()->get();
 		return view('admin.Backend.Expense.expenseType', compact('expenseTypes'));
 	}
 
-	public function EnpenseTypeStore(Request $request)
+	public function ExpenseTypeStore(Request $request)
 	{
-
-		//    $request->validate([
-		// 		'expense' => 'required',
-		// 'category_image' => 'required',
-		// 'category_icon' => 'required',
-		// ],[
-		// 	'category_name.required' => 'Input Category Name',
-		// 'category_image.required' => 'Input Category Image',
-		// ]);
-
-		// $image = $request->file('category_image');
-		// $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-
-		// Image::make($image)->save('upload/category/'.$name_gen);
-		// $save_url = 'upload/category/'.$name_gen;
-
-
 		ExpenseType::insert([
 			'expenseType' => $request->expenseType,
-			// 'category_image' => $save_url,
-			// 'feature' => $request->featured,
 
-
-			// 'category_icon' => $request->category_icon,
 			'created_at' => Carbon::now(),
 
 		]);
@@ -57,6 +36,48 @@ class ExpenseController extends Controller
 
 		return redirect()->back()->with($notification);
 	} // end method 
+
+	public function ExpenseTypeEdit($id)
+	{
+
+		$expenseTypes = ExpenseType::latest()->get();
+		$expenseType = ExpenseType::findOrFail($id);
+
+		return view('admin.Backend.Expense.expenseType_edit', compact('expenseTypes', 'expenseType'));
+	}
+
+	public function ExpenseTypeUpdate(Request $request)
+	{
+
+		ExpenseType::findOrFail($request->id)->update([
+			'expenseType' => $request->expenseType,
+			'updated_at' => Carbon::now(),
+		]);
+
+		$notification = array(
+			'message' => 'Expense Type Updated Successfully',
+			'alert-type' => 'success'
+		);
+
+		return redirect(route('expenseType.view'))->with($notification);
+	}
+	public function ExpenseTypeDelete($id)
+	{
+
+		ExpenseType::findOrFail($id)->delete();
+
+		$notification = array(
+			'message' => 'Expense Type Delectd Successfully',
+			'alert-type' => 'info'
+		);
+
+		return redirect(route('expenseType.view'))->with($notification);
+	} // end method
+
+
+
+
+
 
 	public function ExpenseView()
 	{

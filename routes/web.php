@@ -1199,8 +1199,16 @@ Route::prefix('chalan')->group(function () {
 
 Route::prefix('expense')->group(function () {
 
-    Route::get('/expense-type', [ExpenseController::class, 'EnpenseTypeView'])->name('expenseType.view');
-    Route::post('/expense-type/store', [ExpenseController::class, 'EnpenseTypeStore'])->name('enpenseType.store');
+    Route::get('/expense-type', [ExpenseController::class, 'ExpenseTypeView'])->name('expenseType.view');
+
+    Route::post('/expense-type/store', [ExpenseController::class, 'ExpenseTypeStore'])->name('expenseType.store');
+
+    Route::get('/expense-type/edit/{id}', [ExpenseController::class, 'ExpenseTypeEdit'])->name('expenseType.edit');
+
+    Route::post('/expense-type/update', [ExpenseController::class, 'ExpenseTypeUpdate'])->name('expenseType.update');
+
+    Route::get('/expense-type/delete/{id}', [ExpenseController::class, 'ExpenseTypeDelete'])->name('expenseType.delete');
+
     Route::get('/expense', [ExpenseController::class, 'ExpenseView'])->name('expense.view');
     Route::post('/expense/store', [ExpenseController::class, 'ExpenseStore'])->name('expense.store');
     Route::post('/expense/update', [ExpenseController::class, 'ExpenseUpdate'])->name('expense.update');
