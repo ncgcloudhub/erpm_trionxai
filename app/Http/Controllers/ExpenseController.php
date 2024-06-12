@@ -119,16 +119,7 @@ class ExpenseController extends Controller
 			'updated_at' => Carbon::now(),
 		]);
 
-		$cbank = Bank::findOrFail($request->bank_item);
-		$pay_from_amount = $request->pay_from_amount;
 
-		$cbank->balance -= $pay_from_amount;
-		$cbank->save();
-
-		$purchase_id_find = Expense::findOrFail($expense_id);
-		$purchase_id_find->from_bank_id = $request->bank_item;
-		$purchase_id_find->amount_from = $request->pay_from_amount;
-		$purchase_id_find->save();
 
 		$admin = Auth::guard('admin')->user()->id;
 		Expense::findOrFail($expense_id)->update(['status' => "Approved", 'approved_by' => $admin]);

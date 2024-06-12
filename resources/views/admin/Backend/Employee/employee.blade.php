@@ -53,7 +53,7 @@
 			<div class="col-md-3">
 
 				<div class="form-group">
-					<h6>Employee Title<span class="text-danger">*</span></h6>
+					<h6>Employee Designation<span class="text-danger">*</span></h6>
 					<div class="controls">
 						<select name="designation" class="form-control" required >
 							<option value="" selected="" disabled="">Select Employee Title</option>
@@ -84,15 +84,19 @@
 				
 			</div> <!-- end col md 4 -->
 
-			<div class="col-md-6">	
+			<div class="col-md-6">    
 				<div class="form-group">
 					<h6>Phone<span class="text-danger">*</span></h6>
-					<div class="controls">
-						<input type="number" name="phone" class="form-control" required="">
-		
-				   </div>
-				</div>		
-			</div> <!-- end col md 4 -->			
+					<div class="input-group">
+						<select class="form-select" id="country-code">
+							<option value="+1">USA (+1)</option>
+							<option value="+88">Bangladesh (+88)</option>
+						</select>
+						<input type="text" name="phone" class="form-control" placeholder="Phone number" aria-label="Phone number" aria-describedby="country-code">
+					</div>
+				</div>        
+			</div> <!-- end col md 4 -->
+					
 		</div> <!-- end 2nd row  -->
 		 
 <div class="row"> <!-- start 3rd row  -->
@@ -142,7 +146,7 @@
 		
 			<div class="col-md-6">		
 		<div class="form-group">
-			<h6>Employe Type<span class="text-danger">*</span></h6>
+			<h6>Employee Type<span class="text-danger">*</span></h6>
 			<div class="controls">
 				<select name="employee_type" class="form-control" required  >
 					<option value="" selected="" disabled="">Select Option</option>		
@@ -200,7 +204,7 @@
 				
 					<div class="col-md-6">
 						<div class="form-group">
-							<h6>ZIP<span class="text-danger">*</span></h6>
+							<h6>ZIP</h6>
 							<div class="controls">
 								<input type="text" name="zip" class="form-control" required>
 					
