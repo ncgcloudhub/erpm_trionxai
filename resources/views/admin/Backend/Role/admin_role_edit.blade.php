@@ -50,6 +50,21 @@
 
 				</div> <!-- end cold md 6 --> 
 
+
+				
+				<div class="col-md-6">
+
+					<div class="form-group">
+						<h5>Admin Password <span class="text-danger">*</span></h5>
+						<div class="controls">
+						  <input type="password" name="password" id="password" value="{{ $adminuser->password }}" class="form-control">
+						</div>
+					  </div>
+
+				</div> <!-- end cold md 6 --> 
+
+
+
 			</div>	<!-- end row 	 -->	
 
 
