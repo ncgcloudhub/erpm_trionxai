@@ -31,7 +31,7 @@
 								
 								</select>
 							</div>
-							</div>
+						</div>
 
 							<div class="form-group">
 								<h6>Tax Return Type</h6>
@@ -62,29 +62,28 @@
 							</div>
 
 																
-			 <div class="form-group">
-				<h6>Description<span class="text-danger">*</span></h6>
-				<div class="controls">
-					
-					<textarea name="description" class="form-control" id="tinymceExample" rows="10"></textarea>
-			   </div>
-			</div>
+							<div class="form-group">
+								<h6>Description<span class="text-danger">*</span></h6>
+								<div class="controls">
+									
+									<textarea name="description" class="form-control" id="tinymceExample" rows="10"></textarea>
+							</div>
+							</div>
 
 
-			 <div class="form-group">
-				<h6>Comment</h6>
-				<div class="controls">
-					
-					<textarea name="comment" class="form-control" id="tinymceExample" rows="10"></textarea>
-		
-			   </div>
-			</div>
+							<div class="form-group">
+								<h6>Comment</h6>
+								<div class="controls">
+									
+									<textarea name="comment" class="form-control" id="tinymceExample" rows="10"></textarea>
+						
+								</div>
+							</div>
 
 				</div>
 
 				{{-- 2nd Col --}}
 				<div class="col">
-
 
 					<div class="form-group">
 						<h6>Assign Date<span class="text-danger">*</span></h6>
@@ -109,7 +108,7 @@
 							<select name="assigned_by" class="js-example-basic-single select2 form-control" required="" >
 								<option value="" selected="" disabled="">Select Employee</option>
 								@foreach($assignedby as $item)
-					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
+					 				<option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach
 							</select>
 							
@@ -123,7 +122,7 @@
 							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
 								<option value="" selected="" disabled="">Select Employee</option>
 								@foreach($assignedby as $item)
-					 <option value="{{ $item->id }}">{{ $item->name }}</option>	
+					 				<option value="{{ $item->id }}">{{ $item->name }}</option>	
 								@endforeach
 							</select>
 							
@@ -143,136 +142,195 @@
 							</select>
 						</div>
 					</div>
-				
 
-						<div class="form-group">
-							<h6>Folder Location</h6>
-							<div class="controls">
-								<input type="text" name="hyperlinks" class="form-control" >
-				
-						   </div>
-						</div>
-
-
-						<div class="form-group">
-							<h6>Priority<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<select name="priority" class="form-control" required="" >
-									<option value="" selected="" disabled="">Select an Option</option>
-									<option value="Normal">Normal</option>
-									<option value="Critical" >Critical</option>
-									<option value="Major">Major</option>
-									<option value="Minor">Minor</option>
-								</select>
+					<!-- Category dropdown for Immigration -->
+					<div class="form-group toggle-category" style="display: none;">
+						<h6>Category <span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="category" class="form-control">
+								<option value="" selected disabled>Select a Category</option>
 								
-							 </div>
+								<!-- Family-Based Forms -->
+								<optgroup label="Family-Based Forms">
+									<option value="I-130">I-130: Petition for Alien Relative</option>
+									<option value="I-130A">I-130A: Supplemental Information for Spouse Beneficiary</option>
+									<option value="I-129F">I-129F: Petition for Alien Fiancé(e)</option>
+									<option value="I-751">I-751: Petition to Remove Conditions on Residence</option>
+									<option value="I-864">I-864: Affidavit of Support Under Section 213A</option>
+									<option value="I-864A">I-864A: Contract Between Sponsor and Household Member</option>
+									<option value="I-600">I-600 / I-600A: Petition to Classify Orphan as an Immediate Relative</option>
+								</optgroup>
+								
+								<!-- Employment-Based Forms -->
+								<optgroup label="Employment-Based Forms">
+									<option value="I-129">I-129: Petition for a Nonimmigrant Worker</option>
+									<option value="I-140">I-140: Immigrant Petition for Alien Workers</option>
+									<option value="I-526">I-526: Immigrant Petition by Standalone Investor</option>
+									<option value="I-829">I-829: Petition by Entrepreneur to Remove Conditions</option>
+								</optgroup>
+								
+								<!-- Humanitarian Forms -->
+								<optgroup label="Humanitarian Forms">
+									<option value="I-589">I-589: Application for Asylum and for Withholding of Removal</option>
+									<option value="I-730">I-730: Refugee/Asylee Relative Petition</option>
+									<option value="I-821">I-821: Application for Temporary Protected Status</option>
+									<option value="I-134A">I-134A: Declaration of Financial Support</option>
+								</optgroup>
+								
+								<!-- Travel and Status Forms -->
+								<optgroup label="Travel and Status Forms">
+									<option value="I-94">I-94: Arrival/Departure Record</option>
+									<option value="I-131">I-131: Application for Travel Document</option>
+									<option value="I-539">I-539: Application to Extend/Change Nonimmigrant Status</option>
+								</optgroup>
+								
+								<!-- Adjustment of Status / Green Card Forms -->
+								<optgroup label="Adjustment of Status / Green Card Forms">
+									<option value="I-485">I-485: Application to Register Permanent Residence or Adjust Status</option>
+									<option value="I-90">I-90: Application to Replace Permanent Resident Card</option>
+									<option value="I-485 Supplements">I-485 Supplements (A, C, E): Additional eligibility adjustments</option>
+								</optgroup>
+								
+								<!-- Citizenship and Naturalization Projects -->
+								<optgroup label="Citizenship and Naturalization Projects">
+									<option value="N-400">N-400: Application for Naturalization</option>
+									<option value="N-600">N-600 / N-600K: Certificate of Citizenship Applications</option>
+									<option value="N-565">N-565: Application for Replacement Naturalization Document</option>
+								</optgroup>
+							</select>
 						</div>
+					</div>
+				
 
-						<div class="form-group">
-							<h6>Status<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<select name="status" class="form-control" required="" >
-									<option value="" selected="" disabled="">Select an Option</option>
-									<option value="Not started">Not started</option>
-									<option value="In Progress" >In Progress</option>
-									<option value="In-Progress - Missing Docs" >In-Progress - Missing Docs</option>
-									<option value="Not-In-Drake">Not-In-Drake</option>
-									<option value="Folder Created Only">Folder Created Only</option>
-									<option value="Data Entry Completed">Data Entry Completed</option>
-									<option value="Get Extension">Get Extension</option>
-									<option value="Estimates">Estimates</option>
-									<option value="Done">Done</option>
-								</select>								
-							 </div>
+					<div class="form-group">
+						<h6>Folder Location</h6>
+						<div class="controls">
+							<input type="text" name="hyperlinks" class="form-control" >
+			
 						</div>
+					</div>
+
+
+					<div class="form-group">
+						<h6>Priority<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="priority" class="form-control" required="" >
+								<option value="" selected="" disabled="">Select an Option</option>
+								<option value="Normal">Normal</option>
+								<option value="Critical" >Critical</option>
+								<option value="Major">Major</option>
+								<option value="Minor">Minor</option>
+							</select>
+							
+							</div>
+					</div>
+
+					<div class="form-group">
+						<h6>Status<span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="status" class="form-control" required="" >
+								<option value="" selected="" disabled="">Select an Option</option>
+								<option value="Not started">Not started</option>
+								<option value="In Progress" >In Progress</option>
+								<option value="In-Progress - Missing Docs" >In-Progress - Missing Docs</option>
+								<option value="Not-In-Drake">Not-In-Drake</option>
+								<option value="Folder Created Only">Folder Created Only</option>
+								<option value="Data Entry Completed">Data Entry Completed</option>
+								<option value="Get Extension">Get Extension</option>
+								<option value="Estimates">Estimates</option>
+								<option value="Done">Done</option>
+							</select>								
+							</div>
+					</div>
 
 
 					 <!-- Tax Year (To be toggled) -->
-    <div class="form-group toggle-field">
-        <h6>Tax Year <span class="text-danger">*</span></h6>
-        <div class="controls">
-            <select name="tax_year" class="form-control" required>
-                <option value="" selected disabled>Select an Option</option>
-                <option value="TAX YEAR 2019">TAX YEAR 2019</option>
-                <option value="TAX YEAR 2020">TAX YEAR 2020</option>
-                <option value="TAX YEAR 2021">TAX YEAR 2021</option>
-                <option value="TAX YEAR 2022">TAX YEAR 2022</option>
-                <option value="TAX YEAR 2023">TAX YEAR 2023</option>
-                <option value="TAX YEAR 2024">TAX YEAR 2024</option>
-                <option value="Tax Amendment 2020">Tax Amendment 2020</option>
-                <option value="Tax Amendment 2021">Tax Amendment 2021</option>
-                <option value="Tax Amendment 2022">Tax Amendment 2022</option>
-                <option value="Tax Amendment 2023">Tax Amendment 2023</option>
-                <option value="Tax Amendment 2024">Tax Amendment 2024</option>
-            </select>
-        </div>
-    </div>
+					<div class="form-group toggle-field">
+						<h6>Tax Year <span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="tax_year" class="form-control">
+								<option value="" selected disabled>Select an Option</option>
+								<option value="TAX YEAR 2019">TAX YEAR 2019</option>
+								<option value="TAX YEAR 2020">TAX YEAR 2020</option>
+								<option value="TAX YEAR 2021">TAX YEAR 2021</option>
+								<option value="TAX YEAR 2022">TAX YEAR 2022</option>
+								<option value="TAX YEAR 2023">TAX YEAR 2023</option>
+								<option value="TAX YEAR 2024">TAX YEAR 2024</option>
+								<option value="Tax Amendment 2020">Tax Amendment 2020</option>
+								<option value="Tax Amendment 2021">Tax Amendment 2021</option>
+								<option value="Tax Amendment 2022">Tax Amendment 2022</option>
+								<option value="Tax Amendment 2023">Tax Amendment 2023</option>
+								<option value="Tax Amendment 2024">Tax Amendment 2024</option>
+							</select>
+						</div>
+					</div>
 
-    <!-- eSignature (To be toggled) -->
-    <div class="form-group toggle-field">
-        <h6>eSignature</h6>
-        <div class="controls">
-            <select name="eSignature" class="form-control">
-                <option value="" selected disabled>Select an Option</option>
-                <option value="Not Started">Not Started</option>
-                <option value="SENT">SENT</option>
-                <option value="READY FOR eSIG">READY FOR eSIG</option>
-                <option value="SIGNED">SIGNED</option>
-                <option value="PENDING">PENDING</option>
-                <option value="In Person Sign">In Person Sign</option>
-            </select>
-        </div>
-    </div>
+					<!-- eSignature (To be toggled) -->
+					<div class="form-group toggle-field">
+						<h6>eSignature</h6>
+						<div class="controls">
+							<select name="eSignature" class="form-control">
+								<option value="" selected disabled>Select an Option</option>
+								<option value="Not Started">Not Started</option>
+								<option value="SENT">SENT</option>
+								<option value="READY FOR eSIG">READY FOR eSIG</option>
+								<option value="SIGNED">SIGNED</option>
+								<option value="PENDING">PENDING</option>
+								<option value="In Person Sign">In Person Sign</option>
+							</select>
+						</div>
+					</div>
 
-    <!-- EF Status (To be toggled) -->
-    <div class="form-group toggle-field">
-        <h6>EF Status</h6>
-        <div class="controls">
-            <select name="ef_status" class="form-control">
-                <option value="" selected disabled>Select an Option</option>
-                <option value="DONE">DONE</option>
-                <option value="READY 2 EFILE">READY 2 EFILE</option>
-                <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="HOLD">HOLD</option>
-                <option value="ESTIMATES">ESTIMATES</option>
-                <option value="NOT STARTED">NOT STARTED</option>
-                <option value="REJECTED">REJECTED</option>
-            </select>
-        </div>
-    </div>
-</div>
+					<!-- EF Status (To be toggled) -->
+					<div class="form-group toggle-field">
+						<h6>EF Status</h6>
+						<div class="controls">
+							<select name="ef_status" class="form-control">
+								<option value="" selected disabled>Select an Option</option>
+								<option value="DONE">DONE</option>
+								<option value="READY 2 EFILE">READY 2 EFILE</option>
+								<option value="IN PROGRESS">IN PROGRESS</option>
+								<option value="HOLD">HOLD</option>
+								<option value="ESTIMATES">ESTIMATES</option>
+								<option value="NOT STARTED">NOT STARTED</option>
+								<option value="REJECTED">REJECTED</option>
+							</select>
+						</div>
+					</div>
 
-
-						 <!-- Total Pay Field -->
- <div class="form-group">
-	<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay <span class="text-danger">*</span></label>
-	<div class="controls">
-		<input type="number" name="total_pay" id="total-pay" class="form-control" required oninput="calculateDueAmount()">
-	</div>
-  </div>
-  
-  <!-- Paid Amount Field -->
-  <div class="form-group">
-	<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount <span class="text-danger">*</span></label>
-	<div class="controls">
-		<input type="number" name="paid_amount" id="paid-amount" class="form-control" required oninput="calculateDueAmount()">
-	</div>
-  </div>
-  
-  <!-- Due Amount Field (Read-Only) -->
-  <div class="form-group">
-	<label class="text-uppercase text-dark text-xs font-weight-bold">Due Amount</label>
-	<div class="controls">
-		<input type="number" name="due_amount" id="due-amount" class="form-control" readonly>
-	</div>
-  </div>
-  
-						
+					<!-- Total Pay Field -->
+					<div class="form-group">
+						<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay <span class="text-danger">*</span></label>
+						<div class="controls">
+							<input type="number" name="total_pay" id="total-pay" class="form-control" required oninput="calculateDueAmount()">
+						</div>
+					</div>
+					
+					<!-- Paid Amount Field -->
+					<div class="form-group">
+						<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount <span class="text-danger">*</span></label>
+						<div class="controls">
+							<input type="number" name="paid_amount" id="paid-amount" class="form-control" required oninput="calculateDueAmount()">
+						</div>
+					</div>
+					
+					<!-- Due Amount Field (Read-Only) -->
+					<div class="form-group">
+						<label class="text-uppercase text-dark text-xs font-weight-bold">Due Amount</label>
+						<div class="controls">
+							<input type="number" name="due_amount" id="due-amount" class="form-control" readonly>
+						</div>
+					</div>
 
 
-								 <div class="text-xs-right">
-									<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Task">
-							 </div>
+					<div class="text-xs-right">
+						<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Task">
+					</div>
+
+				</div>
+
+
+			
 
 						</div>
 			
@@ -341,16 +399,24 @@
 
         // Check if "Tax" is in the selected project name
         const isTaxProject = selectedText.toLowerCase().includes('tax');
+        // Check if the project is "Immigration"
+        const isImmigrationProject = selectedText.toLowerCase() === 'immigration';
 
-        // Get all elements with the class "toggle-field"
+        // Get all elements with the class "toggle-field" (for Tax-related fields)
         const fieldsToToggle = document.querySelectorAll('.toggle-field');
+        // Get the element with the class "toggle-category" (for Immigration categories)
+        const categoryDropdown = document.querySelector('.toggle-category');
 
-        // Show or hide fields based on the project name
+        // Show or hide Tax-related fields based on the project name
         fieldsToToggle.forEach(field => {
             field.style.display = isTaxProject ? 'block' : 'none';
         });
+
+        // Show or hide the Category dropdown based on the Immigration project selection
+        categoryDropdown.style.display = isImmigrationProject ? 'block' : 'none';
     }
 </script>
+
 	  
 
 @endsection

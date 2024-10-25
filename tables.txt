@@ -12,3 +12,4 @@ Add In TaxTaskProject table
 1 - 'total_pay' float null
 2 - 'paid_amount' Float
 3 - 'due_amount' Float
+3 - 'category' Varchar
