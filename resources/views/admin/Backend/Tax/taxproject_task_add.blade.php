@@ -132,18 +132,17 @@
 		
 
 
-						<div class="form-group">
-					<h6>Tax Project List<span class="text-danger">*</span></h6>
-					<div class="controls">
-						<select name="project_list" class="js-example-basic-single select2 form-control" required="" >
-							<option value="" selected="" disabled="">Tax Project List</option>
-							@foreach($categories as $category)
-				 <option value="{{ $category->id }}">{{ $category->project_name }}</option>	
-							@endforeach
-						</select>
-						
-					 </div>
-						 </div>
+					<div class="form-group">
+						<h6>Tax Project List <span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="project_list" id="project-list" class="js-example-basic-single select2 form-control" required="" onchange="toggleTaxFields()">
+								<option value="" selected="" disabled="">Tax Project List</option>
+								@foreach($categories as $category)
+									<option value="{{ $category->id }}">{{ $category->project_name }}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
 				
 
 						<div class="form-group">
@@ -188,59 +187,60 @@
 						</div>
 
 
-						<div class="form-group">
-							<h6>Tax Year<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<select name="tax_year" class="form-control" required="" >
-									<option value="" selected="" disabled="">Select an Option</option>
-									<option value="TAX YEAR 2019">TAX YEAR 2019</option>
-									<option value="TAX YEAR 2020">TAX YEAR 2020</option>
-									<option value="TAX YEAR 2021">TAX YEAR 2021</option>
-									<option value="TAX YEAR 2022">TAX YEAR 2022</option>
-									<option value="TAX YEAR 2023">TAX YEAR 2023</option>
-									<option value="TAX YEAR 2024">TAX YEAR 2024</option>								
-									<option value="Tax Amendment 2020">Tax Amendment 2020</option>								
-									<option value="Tax Amendment 2021">Tax Amendment 2021</option>								
-									<option value="Tax Amendment 2022">Tax Amendment 2022</option>								
-									<option value="Tax Amendment 2023">Tax Amendment 2023</option>								
-									<option value="Tax Amendment 2024">Tax Amendment 2024</option>								
-								</select>								
-							 </div>
-						</div>
+					 <!-- Tax Year (To be toggled) -->
+    <div class="form-group toggle-field">
+        <h6>Tax Year <span class="text-danger">*</span></h6>
+        <div class="controls">
+            <select name="tax_year" class="form-control" required>
+                <option value="" selected disabled>Select an Option</option>
+                <option value="TAX YEAR 2019">TAX YEAR 2019</option>
+                <option value="TAX YEAR 2020">TAX YEAR 2020</option>
+                <option value="TAX YEAR 2021">TAX YEAR 2021</option>
+                <option value="TAX YEAR 2022">TAX YEAR 2022</option>
+                <option value="TAX YEAR 2023">TAX YEAR 2023</option>
+                <option value="TAX YEAR 2024">TAX YEAR 2024</option>
+                <option value="Tax Amendment 2020">Tax Amendment 2020</option>
+                <option value="Tax Amendment 2021">Tax Amendment 2021</option>
+                <option value="Tax Amendment 2022">Tax Amendment 2022</option>
+                <option value="Tax Amendment 2023">Tax Amendment 2023</option>
+                <option value="Tax Amendment 2024">Tax Amendment 2024</option>
+            </select>
+        </div>
+    </div>
 
+    <!-- eSignature (To be toggled) -->
+    <div class="form-group toggle-field">
+        <h6>eSignature</h6>
+        <div class="controls">
+            <select name="eSignature" class="form-control">
+                <option value="" selected disabled>Select an Option</option>
+                <option value="Not Started">Not Started</option>
+                <option value="SENT">SENT</option>
+                <option value="READY FOR eSIG">READY FOR eSIG</option>
+                <option value="SIGNED">SIGNED</option>
+                <option value="PENDING">PENDING</option>
+                <option value="In Person Sign">In Person Sign</option>
+            </select>
+        </div>
+    </div>
 
-						<div class="form-group">
-							<h6>eSignature</h6>
-							<div class="controls">
-								<select name="eSignature" class="form-control" >
-									<option value="" selected="" disabled="">Select an Option</option>
-									<option value="Not Started">Not Started</option>
-									<option value="SENT">SENT</option>
-									<option value="READY FOR eSIG">READY FOR eSIG</option>
-									<option value="SIGNED">SIGNED</option>
-									<option value="PENDING">PENDING</option>
-									<option value="In Person Sign">In Person Sign</option>
-								
-								</select>								
-							 </div>
-						</div>
-
-
-						<div class="form-group">
-							<h6>EF Status</h6>
-							<div class="controls">
-								<select name="ef_status" class="form-control" >
-									<option value="" selected="" disabled="">Select an Option</option>
-									<option value="DONE">DONE</option>
-									<option value="READY 2 EFILE">READY 2 EFILE</option>
-									<option value="IN PROGRESS">IN PROGRESS</option>
-									<option value="HOLD">HOLD</option>
-									<option value="ESTIMATES">ESTIMATES</option>
-									<option value="NOT STARTED">NOT STARTED</option>
-									<option value="REJECTED">REJECTED</option>
-								</select>								
-							 </div>
-						</div>
+    <!-- EF Status (To be toggled) -->
+    <div class="form-group toggle-field">
+        <h6>EF Status</h6>
+        <div class="controls">
+            <select name="ef_status" class="form-control">
+                <option value="" selected disabled>Select an Option</option>
+                <option value="DONE">DONE</option>
+                <option value="READY 2 EFILE">READY 2 EFILE</option>
+                <option value="IN PROGRESS">IN PROGRESS</option>
+                <option value="HOLD">HOLD</option>
+                <option value="ESTIMATES">ESTIMATES</option>
+                <option value="NOT STARTED">NOT STARTED</option>
+                <option value="REJECTED">REJECTED</option>
+            </select>
+        </div>
+    </div>
+</div>
 
 
 						 <!-- Total Pay Field -->
@@ -333,7 +333,24 @@
   </script>
 
 
+<!-- JavaScript for toggling fields based on selection -->
+<script>
+    function toggleTaxFields() {
+        // Get the selected text from the dropdown
+        const selectedText = document.getElementById('project-list').selectedOptions[0]?.text || '';
+
+        // Check if "Tax" is in the selected project name
+        const isTaxProject = selectedText.toLowerCase().includes('Tax');
+
+        // Get all elements with the class "toggle-field"
+        const fieldsToToggle = document.querySelectorAll('.toggle-field');
+
+        // Show or hide fields based on the project name
+        fieldsToToggle.forEach(field => {
+            field.style.display = isTaxProject ? 'none' : 'block';
+        });
+    }
+</script>
 	  
 
-	  {{-- TRIAL END --}}
 @endsection
