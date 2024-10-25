@@ -35,15 +35,63 @@
 
 	  </nav>
 	  <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-		<div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-			  <input type="text" class="form-control" id="search-input" placeholder="Type here..." onkeyup="performSearch()">
-            </div>
-          </div>
-		  <div id="search-results" class="search-results-container" style="position: absolute; z-index: 1000; width: 100%; background: white;">
-			<!-- Results will appear here -->
-		</div>
+		<div class="ms-md-auto pe-md-3 d-flex align-items-center" style="position: relative;  width: 400px;">
+    <div class="input-group">
+        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" id="search-input" placeholder="Type here..." onkeyup="performSearch()" autocomplete="off">
+    </div>
+    <!-- Dropdown-style Results Container -->
+    <div id="search-results" class="search-results-container">
+        <!-- Results will appear here -->
+    </div>
+</div>
+
+<!-- CSS for Styling the Search Bar and Dropdown -->
+<style>
+    .input-group {
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .search-results-container {
+        display: none; /* Hidden by default, shows when results are available */
+        position: absolute;
+        top: 100%; /* Positioned right below the search bar */
+        left: 0;
+        width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .search-item {
+        padding: 10px 15px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .search-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    .search-item a {
+        font-weight: 600;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .search-item p {
+        margin: 5px 0 0;
+        font-size: 0.9em;
+        color: #555;
+    }
+</style>
+
 		<ul class="navbar-nav  justify-content-end">
 		{{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
 		  <li class="nav-item d-flex align-items-center">
@@ -102,33 +150,43 @@
   </nav>
 
   <script>
-function performSearch() {
-    let query = document.getElementById('search-input').value;
-    if (query.length > 2) {
-        fetch(`/search?query=${query}`)
-            .then(response => response.json())  // Adjust the controller to return JSON
-            .then(data => {
-                let resultsContainer = document.getElementById('search-results');
-                resultsContainer.innerHTML = ''; // Clear previous results
+    function performSearch() {
+        let query = document.getElementById('search-input').value;
+        let resultsContainer = document.getElementById('search-results');
 
-                if (data.results && data.results.length > 0) {
-                    data.results.forEach(result => {
-                        let resultItem = document.createElement('div');
-                        resultItem.classList.add('search-item');
-                        resultItem.innerHTML = `
-                            <a href="${result.url}">${result.title}</a>
-                            <p>${result.excerpt}</p>
-                        `;
-                        resultsContainer.appendChild(resultItem);
-                    });
-                } else {
-                    resultsContainer.innerHTML = '<p>No results found</p>';
-                }
-            });
-    } else {
-        document.getElementById('search-results').innerHTML = '';
+        if (query.length > 2) {
+            fetch(`/search?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    resultsContainer.innerHTML = ''; // Clear previous results
+                    if (data.results && data.results.length > 0) {
+                        resultsContainer.style.display = 'block'; // Show results container
+                        data.results.forEach(result => {
+                            let resultItem = document.createElement('div');
+                            resultItem.classList.add('search-item');
+                            resultItem.innerHTML = `
+                                <a href="${result.url}">${result.title}</a>
+                                <p>${result.excerpt}</p>
+                            `;
+                            resultsContainer.appendChild(resultItem);
+                        });
+                    } else {
+                        resultsContainer.style.display = 'none'; // Hide if no results
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            resultsContainer.style.display = 'none'; // Hide results container if query is short
+        }
     }
-}
 
-
-  </script>
+    // Optional: Hide the dropdown when clicking outside of it
+    document.addEventListener('click', function(event) {
+        let searchInput = document.getElementById('search-input');
+        let resultsContainer = document.getElementById('search-results');
+        
+        if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
+            resultsContainer.style.display = 'none';
+        }
+    });
+</script>
