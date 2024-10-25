@@ -64,6 +64,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Models\AcidProduct;
 use App\Models\Purchase;
+use App\Models\TaxProject;
+use App\Models\TaxTaskProject;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -178,24 +180,13 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
 
             $topProducts = Category::orderBy('id','DESC')->where('assign_to',Auth::guard('admin')->user()->id)->get();
             $projecttasks = Product::orderBy('id','DESC')->where('assign_to',Auth::guard('admin')->user()->id)->get();
-           
-
-    //         $topProductsByCategory = DB::table('products')
-    // ->select('categories.category_name', 'products.product_name', DB::raw('SUM(sales_items.qty) as sale_count'))
-    // ->join('categories', 'products.category_id', '=', 'categories.id')
-    // ->join('sales_items', 'products.id', '=', 'sales_items.product_id')
-    // ->join('sales', 'sales_items.sales_id', '=', 'sales.id')
-    // ->whereYear('sales.created_at', '=', now()->year)
-    // ->whereMonth('sales.created_at', '=', now()->month)
-    // ->groupBy('categories.category_name', 'products.product_name')
-    // ->orderBy('categories.category_name')
-    // ->orderBy('sale_count', 'desc')
-    // ->get();
-
-    // $topProductsByCategoryGrouped  = $topProductsByCategory->groupBy('category_name');
+        
+        $incomeTaxProject_count = TaxProject::count();  
+        $incomeTaxProjectTask_count = TaxTaskProject::count();  
 
 
-        return view('admin.adminindex', compact('tsale','todays_production','tcustomer','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal'));
+    
+        return view('admin.adminindex', compact('tsale','todays_production','tcustomer','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal','incomeTaxProject_count','incomeTaxProjectTask_count'));
     })->name('admin.dashboard');
 });
 

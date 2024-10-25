@@ -21,9 +21,7 @@ class SiteSettingController extends Controller
 
     	$setting_id = $request->id;
 
-
     	if ($request->file('logo')) {
-
 
     	$image = $request->file('logo');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();

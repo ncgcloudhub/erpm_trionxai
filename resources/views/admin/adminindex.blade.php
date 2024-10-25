@@ -183,17 +183,15 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Capital Due
+					Income Tax
 				  </p>
-				  @if ($capital_due->balance)
+				  @if ($incomeTaxProject_count)
 				  <h5
 				  style="font-size: 36px"
 				  class="font-weight-bolder mb-0"
 				>
-				{{$capital_due->balance}}
-				  <span class="text-success text-sm font-weight-bolder"
-					>TK</span
-				  >
+				{{$incomeTaxProject_count}}
+				 
 				</h5>
 				  @else
 				  <h5
@@ -201,8 +199,7 @@
 				  class="font-weight-bolder mb-0"
 				>
 				0 
-				  <span class="text-success text-sm font-weight-bolder"
-					>TK</span
+				 
 				  >
 				</h5>
 				  @endif
@@ -233,16 +230,14 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Customer Due
+					Income Tax Task
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					123
-					<span class="text-success text-sm font-weight-bolder"
-					  >TK</span
-					>
+					{{$incomeTaxProjectTask_count}}
+					
 				  </h5>
 				</div>
 			  </div>
