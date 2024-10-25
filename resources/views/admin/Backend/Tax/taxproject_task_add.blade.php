@@ -340,14 +340,14 @@
         const selectedText = document.getElementById('project-list').selectedOptions[0]?.text || '';
 
         // Check if "Tax" is in the selected project name
-        const isTaxProject = selectedText.toLowerCase().includes('Tax');
+        const isTaxProject = selectedText.toLowerCase().includes('tax');
 
         // Get all elements with the class "toggle-field"
         const fieldsToToggle = document.querySelectorAll('.toggle-field');
 
         // Show or hide fields based on the project name
         fieldsToToggle.forEach(field => {
-            field.style.display = isTaxProject ? 'none' : 'block';
+            field.style.display = isTaxProject ? 'block' : 'none';
         });
     }
 </script>
