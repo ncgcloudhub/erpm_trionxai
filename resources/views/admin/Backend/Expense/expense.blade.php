@@ -9,16 +9,18 @@
 		  <div class="card-body p-3">
 			<div class="row">
 				
-			<form class="insert-form" id="insert_form" method="post" action="{{ route('expense.store') }}">
+			<form class="insert-form" id="insert_form" method="post" action="{{ route('expense.store') }}" enctype="multipart/form-data">
 			@csrf
 			<div class="row">
 				<div class="col">
-					<div class="row mb-3">
-						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Date</label></div>
+
+					<div class="row mb-5">
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Date</label><span class="text-danger">*</span></div>
 						<div class="col"><input class="form-control" type="date" id="date" name="date" required=""></div>
 					</div>
-					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Employee</label></div>
+
+					<div class="row mb-5">
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Employee</label><span class="text-danger">*</span></div>
 						<div class="col">
 						<select id="mySelect" name="employee_id" class="js-example-basic-single select2 form-control" required="">
 							<option value="" selected="" disabled="">Select Customer</option>
@@ -28,9 +30,10 @@
 							<!-- More options -->
 							</select>
 						</div>
-						</div>
-					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect1">Description</label></div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect1">Expense Type</label><span class="text-danger">*</span></div>
 						<div class="col">
 							<select id="mySelect1" name="expenseType" class="js-example-basic-single select2 form-control" required="">
 							<option value="" selected="" disabled="">Select Expense Type</option>
@@ -40,52 +43,132 @@
 							<!-- More options -->
 							</select>
 						</div>
-						</div>
+					</div>
 	
-						<div class="row mb-3">
-							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Amount</label></div>
+					<div class="row mb-5">
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Amount</label><span class="text-danger">*</span></div>
 							<div class="col"><input class="form-control" type="number" id="amount" name="amount" required="">
-						</div>	
-						</div>
+							</div>	
+					</div>
 
+					<div class="row mb-5">
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Recurring Expense</label></div>
+							<div class="col form-check mb-3">
+								<input class="form-check-input" type="radio" value="Daily" name="recurring_expense" id="customRadio1">
+								<label class="custom-control-label" for="customRadio1">Daily</label>
+							</div>
+							<div class="col form-check">
+								<input class="form-check-input" type="radio" value="Weekly" name="recurring_expense" id="customRadio2">
+								<label class="custom-control-label" for="customRadio2">Weekly</label>
+							</div>
+							<div class="col form-check">
+								<input class="form-check-input" type="radio" value="Monthly" name="recurring_expense" id="customRadio3">
+								<label class="custom-control-label" for="customRadio2">Monthly</label>
+							</div>
+							<div class="col">
+								<button type="button" class="btn btn-secondary" onclick="clearRadio()">Clear</button>
+							</div>
+					</div>
+
+					<div class="row mb-5">
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Merchant/Vendor</label></div>
+							<div class="col"><input class="form-control" type="text" id="merchant_vendor" name="merchant_vendor">
+							</div>	
+					</div>
+						
+
+					<div class="row mb-5">
+							<div class="col-3">
+								<label class="text-uppercase text-dark text-xs font-weight-bold">Payment Method</label>
+							</div>
+							<div class="col">
+								<select id="payment_method" name="payment_method" class="js-example-basic-single select2 form-control">
+									<option value="credit-card">Credit Card</option>
+									<option value="debit-card">Debit Card</option>
+									<option value="paypal">PayPal</option>
+									<option value="bank-transfer">Bank Transfer</option>
+									<option value="cash">Cash</option>
+									<option value="check">Check</option>
+									<option value="mobile-payment">Mobile Payment</option>
+									<option value="crypto">Cryptocurrency</option>
+									<option value="apple-pay">Apple Pay</option>
+									<option value="google-pay">Google Pay</option>
+								</select>
+							</div>
+					</div>
 				</div>
+
 				<div class="col">
 				
-				
-					<div class="row mb-2">
-						<div class="col-3"> <label for="details">Details</label></div>
-						<div class="col"><textarea class="form-control" name="details" id="details" rows="4"></textarea></div>
+					<div class="row mb-5">
+						<div class="col-3"><label for="receipt">Attach Receipt</label></div>
+						<div class="col"><input type="file" class="form-control" name="receipt" id="receipt"></div>
 					</div>
-					<div class="row mb-3">
-						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold">Location</label></div>
-						<div class="col"><select id="location" name="location" class="js-example-basic-single form-control">
-							<option value="Factory">Factory</option>
-							<option value="Head Office" selected>Head Office</option>
-							<option value="STATA Lifestyle Mohakhali" selected>STATA Lifestyle Mohakhali</option>
-							<!-- More options -->
-							</select></div>
+
+					<div class="row mb-5">
+						<div class="col-3"> <label for="details">Details</label></div>
+						<div class="col"><textarea class="form-control" name="details" id="details" rows="3"></textarea></div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-3">
+							<label class="text-uppercase text-dark text-xs font-weight-bold">Location</label><span class="text-danger">*</span>
+						</div>
+						<div class="col">
+							<select id="location" name="location" class="js-example-basic-single select2 form-control" required>
+								<option value="" selected="" disabled="">Select Location</option>
+								<option value="Bangladesh Office">Bangladesh Office</option>
+								<option value="USA Office">USA Office</option>
+								<!-- More options -->
+							</select>
+						</div>
 					</div>
 					
-			</div>
 
-			<div class="container">
-				<div class="row">
-				  <div class="col">
-				  </div>
-				  <div class="col">
-					<input type="submit" class="btn bg-gradient-primary w-100" value="Add Expense">
-				  </div>
-				  <div class="col">
-				  </div>
+					<div class="row mb-5">
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Tax Information</label></div>
+						<div class="col"><input class="form-control" type="text" id="tax_information" name="tax_information">
+						</div>	
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Refundable</label></div>
+						<div class="col form-check">
+							<input class="form-check-input" type="checkbox" name="refundable" value="Yes" id="fcustomCheck1" checked="">
+							<label class="custom-control-label" for="customCheck1">Yes</label>
+						  </div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-3"> <label for="details">Notes</label></div>
+						<div class="col"><textarea class="form-control" name="notes" id="notes" rows="2"></textarea></div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-3"><label for="attachment">Attachment</label></div>
+						<div class="col"><input type="file" class="form-control" name="attachment" id="attachment"></div>
+					</div>
+					
 				</div>
-			  </div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col"></div>
+							<div class="col">
+								<input type="submit" class="btn bg-gradient-primary w-100" value="Add Expense">
+							</div>
+						<div class="col"></div>
+					</div>
+				</div>
+			</div>
 			
-	  </form>
+	  		</form>
 	</div>
 </div>
 </div>
 </div>
 
+</div>
 </div>
 
 @include('admin.body.footer')
@@ -94,6 +177,15 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
  
+  <script>
+	function clearRadio() {
+		const radios = document.getElementsByName('recurring_expense');
+		radios.forEach(radio => {
+			radio.checked = false;
+		});
+	}
+	</script>
+
   <script>
 	$(document).ready(function(){
 	

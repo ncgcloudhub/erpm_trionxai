@@ -14,8 +14,8 @@
 								  <table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr class="align-middle text-center">
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expense ID</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
 											<th hidden class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
@@ -24,18 +24,18 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Approved By</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Receipt</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
 										</tr>
 									</thead>
 									<tbody>
 			@php
-				$sl = 1;
 				$amount = 0;
 			@endphp
 	 @foreach($expenses as $item)
 	 <tr class="align-middle text-center text-sm">
-		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
+		<td width="5%"><h6 class="mb-0 text-sm "> EXP{{ $item->id }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->expenseType->expenseType }}</p></td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->date }}</td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->amount }}</td>
@@ -55,7 +55,13 @@
 	   <td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->status }}</h6></td>
 	   <td><h6 class="badge badge-sm bg-gradient-primary"> {{ $item->approve->name }}</h6></td>
 	   @endif
-
+	   <td class="text-sm font-weight-bold mb-0">
+		@if ($item->receipt)
+		<a href="{{ asset($item->receipt) }}" download class="btn btn-link text-dark"><i class="fa fa-download me-2"></i>Download</a>
+		@else
+		No Receipt
+		@endif
+	</td>
 
 		<td>
 		
@@ -82,6 +88,7 @@
 		<td class="text-sm font-weight-bolder mb-0">{{ $amount }}</td>
 		<td style="display: none"> </td>
 		<td class="text-sm font-weight-bold mb-0"> </td>
+		<td class="text-sm font-weight-bold mb-0"></td>
 		<td class="text-sm font-weight-bold mb-0"></td>
 		<td class="text-sm font-weight-bold mb-0"></td>
 		<td class="text-sm font-weight-bold mb-0"></td>

@@ -180,6 +180,8 @@
 									<option value="Not-In-Drake">Not-In-Drake</option>
 									<option value="Folder Created Only">Folder Created Only</option>
 									<option value="Data Entry Completed">Data Entry Completed</option>
+									<option value="Get Extension">Get Extension</option>
+									<option value="Estimates">Estimates</option>
 									<option value="Done">Done</option>
 								</select>								
 							 </div>
@@ -197,6 +199,11 @@
 									<option value="TAX YEAR 2022">TAX YEAR 2022</option>
 									<option value="TAX YEAR 2023">TAX YEAR 2023</option>
 									<option value="TAX YEAR 2024">TAX YEAR 2024</option>								
+									<option value="Tax Amendment 2020">Tax Amendment 2020</option>								
+									<option value="Tax Amendment 2021">Tax Amendment 2021</option>								
+									<option value="Tax Amendment 2022">Tax Amendment 2022</option>								
+									<option value="Tax Amendment 2023">Tax Amendment 2023</option>								
+									<option value="Tax Amendment 2024">Tax Amendment 2024</option>								
 								</select>								
 							 </div>
 						</div>

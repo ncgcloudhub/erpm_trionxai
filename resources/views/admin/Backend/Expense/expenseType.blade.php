@@ -41,8 +41,8 @@
 							{{-- <td> <span><i class="{{ $item->category_icon }}"></i></span>  </td> --}}
 							<td>{{ $item->expenseType }}</td>
 							<td>
-					 <a href="{{ route('category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-					 <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+					 <a href="{{ route('expenseType.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+					 <a href="{{ route('expenseType.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this Expense Type')" class="btn btn-danger" title="Delete Data" id="delete">
 						<i class="fa fa-trash"></i></a>
 							</td>
 					
@@ -78,7 +78,7 @@
 					<div class="box-body">
 						<div class="table-responsive">
 					
-										<form method="post" action="{{ route('enpenseType.store') }}">
+										<form method="post" action="{{ route('expenseType.store') }}">
 								@csrf
 									<div class="form-group">
 										<h6>Expense Type<span class="text-danger">*</span></h6>

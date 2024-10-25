@@ -181,8 +181,10 @@
 											<option value="In-Progress - Missing Docs" @if($task->status == "In-Progress - Missing Docs") selected @endif>In-Progress - Missing Docs</option>
 											<option value="Not-In-Drake" @if($task->status == "Not-In-Drake") selected @endif>Not-In-Drake</option>
 											<option value="Folder Created Only" @if($task->status == "Folder Created Only") selected @endif>Folder Created Only</option>
-											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
 											<option value="Data Entry Completed" @if($task->status == "Data Entry Completed") selected @endif>Data Entry Completed</option>
+											<option value="Get Extension" @if($task->status == "Get Extension") selected @endif>Get Extension</option>
+											<option value="Estimates" @if($task->status == "Estimates") selected @endif>Estimates</option>
+											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
 										</select>
 									</div>
 								</div>
@@ -198,6 +200,11 @@
 											<option value="TAX YEAR 2022" @if($task->tax_year == "TAX YEAR 2022") selected @endif>TAX YEAR 2022</option>
 											<option value="TAX YEAR 2023" @if($task->tax_year == "TAX YEAR 2023") selected @endif>TAX YEAR 2023</option>
 											<option value="TAX YEAR 2024" @if($task->tax_year == "TAX YEAR 2024") selected @endif>TAX YEAR 2024</option>
+											<option value="Tax Amendment 2020" @if($task->tax_year == "Tax Amendment 2020") selected @endif>Tax Amendment 2020</option>
+											<option value="Tax Amendment 2021" @if($task->tax_year == "Tax Amendment 2021") selected @endif>Tax Amendment 2021</option>
+											<option value="Tax Amendment 2022" @if($task->tax_year == "Tax Amendment 2022") selected @endif>Tax Amendment 2022</option>
+											<option value="Tax Amendment 2023" @if($task->tax_year == "Tax Amendment 2023") selected @endif>Tax Amendment 2023</option>
+											<option value="Tax Amendment 2024" @if($task->tax_year == "Tax Amendment 2024") selected @endif>Tax Amendment 2024</option>
 										</select>
 									</div>
 								</div>

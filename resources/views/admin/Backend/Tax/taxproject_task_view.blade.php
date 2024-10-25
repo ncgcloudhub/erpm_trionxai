@@ -199,10 +199,15 @@
 								<div class="controls">
 										<select name="status" class="form-control" @readonly(true) >
 											<option value="{{$task->status}}" selected="">{{$task->status}}</option>
-											<option value="Not Started">Not Started</option>
-											<option value="On Progress" >On Progress</option>
-											<option value="Done">Done</option>
+											<option value="Not started">Not started</option>
+											<option value="In Progress" >In Progress</option>
+											<option value="In-Progress - Missing Docs" >In-Progress - Missing Docs</option>
+											<option value="Not-In-Drake">Not-In-Drake</option>
+											<option value="Folder Created Only">Folder Created Only</option>
 											<option value="Data Entry Completed">Data Entry Completed</option>
+											<option value="Get Extension">Get Extension</option>
+											<option value="Estimates">Estimates</option>
+											<option value="Done">Done</option>
 										</select>									
 								</div>
 						</div>
@@ -218,7 +223,12 @@
 									<option value="TAX YEAR 2021">TAX YEAR 2021</option>
 									<option value="TAX YEAR 2022">TAX YEAR 2022</option>
 									<option value="TAX YEAR 2023">TAX YEAR 2023</option>
-									<option value="TAX YEAR 2024">TAX YEAR 2024</option>								
+									<option value="TAX YEAR 2024">TAX YEAR 2024</option>
+									<option value="Tax Amendment 2020">Tax Amendment 2020</option>								
+									<option value="Tax Amendment 2021">Tax Amendment 2021</option>								
+									<option value="Tax Amendment 2022">Tax Amendment 2022</option>								
+									<option value="Tax Amendment 2023">Tax Amendment 2023</option>								
+									<option value="Tax Amendment 2024">Tax Amendment 2024</option>										
 								</select>								
 							 </div>
 						</div>
