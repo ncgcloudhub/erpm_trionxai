@@ -17,6 +17,7 @@
 
 @endphp
 
+
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
 	<div class="container-fluid py-1 px-3">
 	  <nav aria-label="breadcrumb">
@@ -35,9 +36,13 @@
 	  </nav>
 	  <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
 		<div class="ms-md-auto pe-md-3 d-flex align-items-center">
-		  <div class="input-group">
-			
-		  </div>
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+			  <input type="text" class="form-control" id="search-input" placeholder="Type here..." onkeyup="performSearch()">
+            </div>
+          </div>
+		  <div id="search-results" class="search-results-container" style="position: absolute; z-index: 1000; width: 100%; background: white;">
+			<!-- Results will appear here -->
 		</div>
 		<ul class="navbar-nav  justify-content-end">
 		{{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2"))
@@ -95,3 +100,35 @@
 	  </div>
 	</div>
   </nav>
+
+  <script>
+function performSearch() {
+    let query = document.getElementById('search-input').value;
+    if (query.length > 2) {
+        fetch(`/search?query=${query}`)
+            .then(response => response.json())  // Adjust the controller to return JSON
+            .then(data => {
+                let resultsContainer = document.getElementById('search-results');
+                resultsContainer.innerHTML = ''; // Clear previous results
+
+                if (data.results && data.results.length > 0) {
+                    data.results.forEach(result => {
+                        let resultItem = document.createElement('div');
+                        resultItem.classList.add('search-item');
+                        resultItem.innerHTML = `
+                            <a href="${result.url}">${result.title}</a>
+                            <p>${result.excerpt}</p>
+                        `;
+                        resultsContainer.appendChild(resultItem);
+                    });
+                } else {
+                    resultsContainer.innerHTML = '<p>No results found</p>';
+                }
+            });
+    } else {
+        document.getElementById('search-results').innerHTML = '';
+    }
+}
+
+
+  </script>

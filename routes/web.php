@@ -190,6 +190,9 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'), 'veri
     })->name('admin.dashboard');
 });
 
+Route::get('/search', [Admincontroller::class, 'search'])->name('search');
+
+
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
 
 ])->group(function () {

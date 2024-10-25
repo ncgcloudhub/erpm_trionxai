@@ -18,9 +18,52 @@ use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Responses\LoginResponse;
 use App\Models\Brand;
+use App\Models\TaxProject;
+use App\Models\TaxTaskProject;
+use Illuminate\Support\Str;
+
 
 class Admincontroller extends Controller
 {
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        // Search TaxProject model
+        $projects = TaxProject::where('project_name', 'LIKE', "%$query%")
+            ->orWhere('description', 'LIKE', "%$query%")
+            ->get();
+    
+        // Search TaxTaskProject model
+        $tasks = TaxTaskProject::where('description', 'LIKE', "%$query%")->get();
+    
+        // Format results
+        $results = [];
+    
+        foreach ($projects as $project) {
+            $results[] = [
+                'title' => $project->project_name,
+                'url' => route('taxproject.manage.task', $project->id),  // Adjust route name as needed
+                'excerpt' => Str::limit($project->description, 100),
+            ];
+        }
+    
+        foreach ($tasks as $task) {
+            $results[] = [
+                'title' => 'Task',  // Use a default title if tasks don't have a name field
+                'url' => route('taxproject.view.details', $task->id),  // Adjust route name as needed
+                'excerpt' => Str::limit($task->description, 100),
+            ];
+        }
+    
+        return response()->json(['results' => $results]);
+    }
+    
+
+
+
+
     /**
      * The guard implementation.
      *
