@@ -306,6 +306,7 @@
 
 
 
+
 {{-- <div class="text-xs-right"> --}}
 <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Customer">					 
          {{-- </div> --}}
@@ -331,6 +332,8 @@
     $(document).ready(function() {
       $('.select2').select2();
     });
+
   </script>
+
 
 @endsection

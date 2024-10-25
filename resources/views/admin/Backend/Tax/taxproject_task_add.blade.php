@@ -241,6 +241,32 @@
 								</select>								
 							 </div>
 						</div>
+
+
+						 <!-- Total Pay Field -->
+ <div class="form-group">
+	<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay <span class="text-danger">*</span></label>
+	<div class="controls">
+		<input type="number" name="total_pay" id="total-pay" class="form-control" required oninput="calculateDueAmount()">
+	</div>
+  </div>
+  
+  <!-- Paid Amount Field -->
+  <div class="form-group">
+	<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount <span class="text-danger">*</span></label>
+	<div class="controls">
+		<input type="number" name="paid_amount" id="paid-amount" class="form-control" required oninput="calculateDueAmount()">
+	</div>
+  </div>
+  
+  <!-- Due Amount Field (Read-Only) -->
+  <div class="form-group">
+	<label class="text-uppercase text-dark text-xs font-weight-bold">Due Amount</label>
+	<div class="controls">
+		<input type="number" name="due_amount" id="due-amount" class="form-control" readonly>
+	</div>
+  </div>
+  
 						
 
 
@@ -291,9 +317,20 @@
 		});
 		</script>
 
-		<script>
 
-		</script>
+<script>
+	function calculateDueAmount() {
+		// Get Total Pay and Paid Amount values
+		const totalPay = parseFloat(document.getElementById('total-pay').value) || 0;
+		const paidAmount = parseFloat(document.getElementById('paid-amount').value) || 0;
+		
+		// Calculate Due Amount
+		const dueAmount = totalPay - paidAmount;
+		
+		// Set Due Amount in the read-only input field
+		document.getElementById('due-amount').value = dueAmount.toFixed(2);
+	}
+  </script>
 
 
 	  

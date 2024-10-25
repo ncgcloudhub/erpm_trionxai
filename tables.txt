@@ -3,3 +3,12 @@ Category table is project
 Product table is project task
 
 Supplier is vendor
+
+=====================================
+25/10/25
+
+Add In TaxTaskProject table
+
+1 - 'total_pay' float null
+2 - 'paid_amount'
+3 - 'due_amount'
