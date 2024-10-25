@@ -200,6 +200,13 @@
 							</select>
 						</div>
 					</div>
+
+					<div class="form-group">
+						<h6>Subject</h6>
+						<div class="controls">
+							<input type="text" name="subject" class="form-control" >
+						</div>
+					</div>
 				
 
 					<div class="form-group">

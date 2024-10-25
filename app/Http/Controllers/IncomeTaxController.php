@@ -169,6 +169,7 @@ class IncomeTaxController extends Controller
 		'paid_amount' => $request->paid_amount,
 		'due_amount' => $request->due_amount,
 
+      	'subject' => $request->subject,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
 		'status' => $request->status,
