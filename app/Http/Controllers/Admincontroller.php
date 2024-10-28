@@ -32,11 +32,23 @@ class Admincontroller extends Controller
         
         // Search TaxProject model
         $projects = TaxProject::where('project_name', 'LIKE', "%$query%")
-            ->orWhere('description', 'LIKE', "%$query%")
+            ->orWhere('description', 'LIKE', "%$query%")->orWhere('income_project_id', 'LIKE', "%$query%")
             ->get();
     
         // Search TaxTaskProject model
-        $tasks = TaxTaskProject::where('description', 'LIKE', "%$query%")->get();
+        $tasks = TaxTaskProject::where('description', 'LIKE', "%$query%")
+        ->orWhere('task_id', 'LIKE', "%$query%")
+        ->orWhere('status', 'LIKE', "%$query%")
+        ->orWhere('eSignature', 'LIKE', "%$query%")
+        ->orWhere('ef_status', 'LIKE', "%$query%")
+        ->orWhereHas('customer', function($q) use ($query) {
+            $q->where('company_name', 'LIKE', "%$query%")
+              ->orWhere('user_name', 'LIKE', "%$query%")
+              ->orWhere('email', 'LIKE', "%$query%")
+              ->orWhere('ssn', 'LIKE', "%$query%")
+              ->orWhere('personal_phone', 'LIKE', "%$query%");
+        })
+        ->get();
     
         // Format results
         $results = [];
@@ -51,8 +63,8 @@ class Admincontroller extends Controller
     
         foreach ($tasks as $task) {
             $results[] = [
-                'title' => 'Task',  // Use a default title if tasks don't have a name field
-                'url' => route('taxproject.view.details', $task->id),  // Adjust route name as needed
+                'title' => 'Income Tax Task - ' . ($task->customer ? $task->customer->user_name : 'No Customer'),
+                'url' => route('taxproject.task.view', $task->id),  // Adjust route name as needed
                 'excerpt' => Str::limit($task->description, 100),
             ];
         }
