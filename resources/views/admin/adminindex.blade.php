@@ -265,16 +265,14 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Total Balance
+					Income Tax Task (In Progress)
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{ $total_balance - $capital_due->balance}}
-					<span class="text-danger text-sm font-weight-bolder"
-					  >TK</span
-					>
+					{{ $incomeTaxProjectTask_inProgress_count}}
+					
 				  </h5>
 				</div>
 			  </div>
@@ -302,16 +300,14 @@
 					style="font-size: large"
 					class="mb-0 text-capitalize font-weight-bold"
 				  >
-					Service Total
+				  Income Tax Task (Not Started)
 				  </p>
 				  <h5
 					style="font-size: 36px"
 					class="font-weight-bolder mb-0"
 				  >
-					{{ $servicetotal}}
-					<span class="text-danger text-sm font-weight-bolder"
-					  >TK</span
-					>
+					{{ $incomeTaxProjectTask_notStarted_count}}
+					
 				  </h5>
 				</div>
 			  </div>

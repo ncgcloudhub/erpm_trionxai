@@ -184,10 +184,12 @@ Route::middleware([
         
         $incomeTaxProject_count = TaxProject::count();  
         $incomeTaxProjectTask_count = TaxTaskProject::count();  
+        $incomeTaxProjectTask_inProgress_count = TaxTaskProject::where('status','In Progress')->count();  
+        $incomeTaxProjectTask_notStarted_count = TaxTaskProject::where('status','Not started')->count();  
 
 
     
-        return view('admin.adminindex', compact('tsale','todays_production','tcustomer','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal','incomeTaxProject_count','incomeTaxProjectTask_count'));
+        return view('admin.adminindex', compact('tsale','todays_production','tcustomer','inventory','schedules','notices','banks','customerssum','productssum','totalsale','lastSale','last5Sales','capital_due','total_balance','projecttasks','topProducts','topUsers','users', 'servicetotal','incomeTaxProject_count','incomeTaxProjectTask_count','incomeTaxProjectTask_inProgress_count','incomeTaxProjectTask_notStarted_count'));
     })->name('admin.dashboard');
 });
 
