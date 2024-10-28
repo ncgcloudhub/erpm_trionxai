@@ -150,7 +150,7 @@
 					<div class="form-group toggle-category" style="display: none;">
 						<h6>Category <span class="text-danger">*</span></h6>
 						<div class="controls">
-							<select name="category" class="form-control">
+							<select name="category" class="form-control" id="categorySelect" onchange="toggleInputField(this, 'categoryInput')">
 								<option value="" selected disabled>Select a Category</option>
 								
 								<!-- Family-Based Forms -->
@@ -200,7 +200,13 @@
 									<option value="N-600">N-600 / N-600K: Certificate of Citizenship Applications</option>
 									<option value="N-565">N-565: Application for Replacement Naturalization Document</option>
 								</optgroup>
+
+								<optgroup label="Others">
+									<option value="other">Other</option>
+								</optgroup>
 							</select>
+							<input type="text" name="category" class="form-control mt-2" id="categoryInput" placeholder="Enter Category" style="display:none;">
+
 						</div>
 					</div>
 
@@ -221,44 +227,49 @@
 					</div>
 
 
+					<!-- Priority Field -->
 					<div class="form-group">
-						<h6>Priority<span class="text-danger">*</span></h6>
+						<h6>Priority <span class="text-danger">*</span></h6>
 						<div class="controls">
-							<select name="priority" class="form-control" required="" >
-								<option value="" selected="" disabled="">Select an Option</option>
+							<select name="priority" class="form-control" id="prioritySelect" required="" onchange="toggleInputField(this, 'priorityInput')">
+								<option value="" selected disabled>Select an Option</option>
 								<option value="Normal">Normal</option>
-								<option value="Critical" >Critical</option>
+								<option value="Critical">Critical</option>
 								<option value="Major">Major</option>
 								<option value="Minor">Minor</option>
+								<option value="other">Other</option>
 							</select>
-							
-							</div>
+							<input type="text" name="priority" class="form-control mt-2" id="priorityInput" placeholder="Enter Priority" style="display:none;">
+						</div>
 					</div>
 
+					<!-- Status Field -->
 					<div class="form-group">
-						<h6>Status<span class="text-danger">*</span></h6>
+						<h6>Status <span class="text-danger">*</span></h6>
 						<div class="controls">
-							<select name="status" class="form-control" required="" >
-								<option value="" selected="" disabled="">Select an Option</option>
+							<select name="status" class="form-control" id="statusSelect" required="" onchange="toggleInputField(this, 'statusInput')">
+								<option value="" selected disabled>Select an Option</option>
 								<option value="Not started">Not started</option>
-								<option value="In Progress" >In Progress</option>
-								<option value="In-Progress - Missing Docs" >In-Progress - Missing Docs</option>
+								<option value="In Progress">In Progress</option>
+								<option value="In-Progress - Missing Docs">In-Progress - Missing Docs</option>
 								<option value="Not-In-Drake">Not-In-Drake</option>
 								<option value="Folder Created Only">Folder Created Only</option>
 								<option value="Data Entry Completed">Data Entry Completed</option>
 								<option value="Get Extension">Get Extension</option>
 								<option value="Estimates">Estimates</option>
 								<option value="Done">Done</option>
-							</select>								
-							</div>
+								<option value="other">Other</option>
+							</select>
+							<input type="text" name="status" class="form-control mt-2" id="statusInput" placeholder="Enter Status" style="display:none;">
+						</div>
 					</div>
 
 
 					 <!-- Tax Year (To be toggled) -->
-					<div class="form-group toggle-field">
+					 <div class="form-group toggle-field">
 						<h6>Tax Year <span class="text-danger">*</span></h6>
 						<div class="controls">
-							<select name="tax_year" class="form-control">
+							<select name="tax_year" class="form-control" id="taxYearSelect" onchange="toggleInputField(this, 'taxYearInput')">
 								<option value="" selected disabled>Select an Option</option>
 								<option value="TAX YEAR 2019">TAX YEAR 2019</option>
 								<option value="TAX YEAR 2020">TAX YEAR 2020</option>
@@ -271,31 +282,37 @@
 								<option value="Tax Amendment 2022">Tax Amendment 2022</option>
 								<option value="Tax Amendment 2023">Tax Amendment 2023</option>
 								<option value="Tax Amendment 2024">Tax Amendment 2024</option>
+								<option value="other">Other</option>
 							</select>
+					
+							<!-- Hidden input field for manual entry, displayed when 'Other' is selected -->
+							<input type="text" name="tax_year" class="form-control mt-2" id="taxYearInput" placeholder="Enter Tax Year" style="display:none;">
 						</div>
 					</div>
 
-					<!-- eSignature (To be toggled) -->
+					<!-- eSignature Field -->
 					<div class="form-group toggle-field">
 						<h6>eSignature</h6>
 						<div class="controls">
-							<select name="eSignature" class="form-control">
+							<select name="eSignature" class="form-control" id="eSignatureSelect" onchange="toggleInputField(this, 'eSignatureInput')">
 								<option value="" selected disabled>Select an Option</option>
 								<option value="Not Started">Not Started</option>
 								<option value="SENT">SENT</option>
 								<option value="READY FOR eSIG">READY FOR eSIG</option>
 								<option value="SIGNED">SIGNED</option>
 								<option value="PENDING">PENDING</option>
-								<option value="In Person Sign">In Person Sign</option>
+								<option value="In Person Sign">In Person Sign</option>
+								<option value="other">Other</option>
 							</select>
+							<input type="text" name="eSignature" class="form-control mt-2" id="eSignatureInput" placeholder="Enter eSignature" style="display:none;">
 						</div>
 					</div>
 
-					<!-- EF Status (To be toggled) -->
+					<!-- EF Status Field -->
 					<div class="form-group toggle-field">
 						<h6>EF Status</h6>
 						<div class="controls">
-							<select name="ef_status" class="form-control">
+							<select name="ef_status" class="form-control" id="efStatusSelect" onchange="toggleInputField(this, 'efStatusInput')">
 								<option value="" selected disabled>Select an Option</option>
 								<option value="DONE">DONE</option>
 								<option value="READY 2 EFILE">READY 2 EFILE</option>
@@ -304,7 +321,9 @@
 								<option value="ESTIMATES">ESTIMATES</option>
 								<option value="NOT STARTED">NOT STARTED</option>
 								<option value="REJECTED">REJECTED</option>
+								<option value="other">Other</option>
 							</select>
+							<input type="text" name="ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="display:none;">
 						</div>
 					</div>
 
@@ -427,6 +446,22 @@
     }
 </script>
 
+<script>
+	function toggleInputField(select, inputId) {
+		const inputField = document.getElementById(inputId);
+	
+		if (select.value === "other") {
+			inputField.style.display = "block";
+			inputField.required = true;
+			select.name = ""; // Clear the dropdown name to avoid conflicts
+		} else {
+			inputField.style.display = "none";
+			inputField.required = false;
+			inputField.value = ""; // Reset the input field
+			select.name = inputField.name; // Restore dropdown name
+		}
+	}
+</script>
 	  
 
 @endsection
