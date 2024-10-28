@@ -237,7 +237,13 @@ class IncomeTaxController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
+		'category' => $request->category,
 
+		'total_pay' => $request->total_pay,
+		'paid_amount' => $request->paid_amount,
+		'due_amount' => $request->due_amount,
+
+      	'subject' => $request->subject,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $request->priority,
 		'status' => $request->status,

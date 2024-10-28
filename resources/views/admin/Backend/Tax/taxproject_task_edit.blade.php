@@ -136,19 +136,82 @@
 					</div>
 
 
-						<div class="form-group">
-					<h6>Project List<span class="text-danger">*</span></h6>
-					<div class="controls">
-						<select name="project_list" class="js-example-basic-single select2 form-control" required="" >
-							<option value="{{$task->project_list}}" selected="">{{$task->project->project_name}}</option>
-							@foreach($categories as $category)
-				 <option value="{{ $category->id }}">{{ $category->project_name }}</option>	
-							@endforeach
-						</select>
+					<div class="form-group">
+						<h6>Tax Project List <span class="text-danger">*</span></h6>
+						<div class="controls">
+							<select name="project_list" id="project-list" class="js-example-basic-single select2 form-control" required onchange="toggleTaxFields()">
+								<option value="{{$task->project_list}}" selected="">{{$task->project->project_name}}</option>
+								@foreach($categories as $category)
+									<option value="{{ $category->id }}">{{ $category->project_name }}</option>
+								@endforeach
+							</select>
+						</div>
+					</div>
+
+						 <div class="form-group toggle-category">
+							<h6>Category <span class="text-danger">*</span></h6>
+							<div class="controls">
+								<select name="category" class="form-control">
+									<option value="" selected disabled>Select a Category</option>
+									
+									<!-- Family-Based Forms -->
+									<optgroup label="Family-Based Forms">
+										<option value="I-130" @if($task->category == "I-130") selected @endif>I-130: Petition for Alien Relative</option>
+										<option value="I-130A" @if($task->category == "I-130A") selected @endif>I-130A: Supplemental Information for Spouse Beneficiary</option>
+										<option value="I-129F" @if($task->category == "I-129F") selected @endif>I-129F: Petition for Alien Fiancé(e)</option>
+										<option value="I-751" @if($task->category == "I-751") selected @endif>I-751: Petition to Remove Conditions on Residence</option>
+										<option value="I-864" @if($task->category == "I-864") selected @endif>I-864: Affidavit of Support Under Section 213A</option>
+										<option value="I-864A" @if($task->category == "I-864A") selected @endif>I-864A: Contract Between Sponsor and Household Member</option>
+										<option value="I-600" @if($task->category == "I-600") selected @endif>I-600 / I-600A: Petition to Classify Orphan as an Immediate Relative</option>
+									</optgroup>
+
+									<!-- Employment-Based Forms -->
+									<optgroup label="Employment-Based Forms">
+										<option value="I-129" @if($task->category == "I-129") selected @endif>I-129: Petition for a Nonimmigrant Worker</option>
+										<option value="I-140" @if($task->category == "I-140") selected @endif>I-140: Immigrant Petition for Alien Workers</option>
+										<option value="I-526" @if($task->category == "I-526") selected @endif>I-526: Immigrant Petition by Standalone Investor</option>
+										<option value="I-829" @if($task->category == "I-829") selected @endif>I-829: Petition by Entrepreneur to Remove Conditions</option>
+									</optgroup>
+
+									<!-- Humanitarian Forms -->
+									<optgroup label="Humanitarian Forms">
+										<option value="I-589" @if($task->category == "I-589") selected @endif>I-589: Application for Asylum and for Withholding of Removal</option>
+										<option value="I-730" @if($task->category == "I-730") selected @endif>I-730: Refugee/Asylee Relative Petition</option>
+										<option value="I-821" @if($task->category == "I-821") selected @endif>I-821: Application for Temporary Protected Status</option>
+										<option value="I-134A" @if($task->category == "I-134A") selected @endif>I-134A: Declaration of Financial Support</option>
+									</optgroup>
+
+									<!-- Travel and Status Forms -->
+									<optgroup label="Travel and Status Forms">
+										<option value="I-94" @if($task->category == "I-94") selected @endif>I-94: Arrival/Departure Record</option>
+										<option value="I-131" @if($task->category == "I-131") selected @endif>I-131: Application for Travel Document</option>
+										<option value="I-539" @if($task->category == "I-539") selected @endif>I-539: Application to Extend/Change Nonimmigrant Status</option>
+									</optgroup>
+
+									<!-- Adjustment of Status / Green Card Forms -->
+									<optgroup label="Adjustment of Status / Green Card Forms">
+										<option value="I-485" @if($task->category == "I-485") selected @endif>I-485: Application to Register Permanent Residence or Adjust Status</option>
+										<option value="I-90" @if($task->category == "I-90") selected @endif>I-90: Application to Replace Permanent Resident Card</option>
+										<option value="I-485 Supplements" @if($task->category == "I-485 Supplements") selected @endif>I-485 Supplements (A, C, E): Additional eligibility adjustments</option>
+									</optgroup>
+
+									<!-- Citizenship and Naturalization Projects -->
+									<optgroup label="Citizenship and Naturalization Projects">
+										<option value="N-400" @if($task->category == "N-400") selected @endif>N-400: Application for Naturalization</option>
+										<option value="N-600" @if($task->category == "N-600") selected @endif>N-600 / N-600K: Certificate of Citizenship Applications</option>
+										<option value="N-565" @if($task->category == "N-565") selected @endif>N-565: Application for Replacement Naturalization Document</option>
+									</optgroup>
+
+								</select>
+							</div>
+						</div>
 						
-					 </div>
-						 </div>
-						
+						 <div class="form-group">
+							<h6>Subject</h6>
+							<div class="controls">
+								<input type="text" value="{{$task->subject}}" name="subject" class="form-control" >
+							</div>
+						</div>
 
 						<div class="form-group">
 							<h6>Folder Location</h6>
@@ -190,10 +253,11 @@
 								</div>
 								
 
-								<div class="form-group">
+								<div class="form-group toggle-field">
 									<h6>Tax Year<span class="text-danger">*</span></h6>
 									<div class="controls">
-										<select name="tax_year" class="form-control" required="">
+										<select name="tax_year" class="form-control">
+											<option value="" @if($task->tax_year == "") selected @endif>Select an Option</option>
 											<option value="TAX YEAR 2019" @if($task->tax_year == "TAX YEAR 2019") selected @endif>TAX YEAR 2019</option>
 											<option value="TAX YEAR 2020" @if($task->tax_year == "TAX YEAR 2020") selected @endif>TAX YEAR 2020</option>
 											<option value="TAX YEAR 2021" @if($task->tax_year == "TAX YEAR 2021") selected @endif>TAX YEAR 2021</option>
@@ -211,7 +275,7 @@
 								
 
 
-								<div class="form-group">
+								<div class="form-group toggle-field">
 									<h6>eSignature</h6>
 									<div class="controls">
 										<select name="eSignature" class="form-control">
@@ -228,7 +292,7 @@
 								
 
 
-								<div class="form-group">
+								<div class="form-group toggle-field">
 									<h6>EF Status</h6>
 									<div class="controls">
 										<select name="ef_status" class="form-control">
@@ -241,6 +305,30 @@
 											<option value="NOT STARTED" @if($task->ef_status == "NOT STARTED") selected @endif>NOT STARTED</option>
 											<option value="REJECTED" @if($task->ef_status == "REJECTED") selected @endif>REJECTED</option>
 										</select>
+									</div>
+								</div>
+
+								<!-- Total Pay Field -->
+								<div class="form-group">
+									<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay <span class="text-danger">*</span></label>
+									<div class="controls">
+										<input type="number" value="{{$task->total_pay}}" name="total_pay" id="total-pay" class="form-control" required oninput="calculateDueAmount()">
+									</div>
+								</div>
+								
+								<!-- Paid Amount Field -->
+								<div class="form-group">
+									<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount <span class="text-danger">*</span></label>
+									<div class="controls">
+										<input type="number" value="{{$task->paid_amount}}" name="paid_amount" id="paid-amount" class="form-control" required oninput="calculateDueAmount()">
+									</div>
+								</div>
+								
+								<!-- Due Amount Field (Read-Only) -->
+								<div class="form-group">
+									<label class="text-uppercase text-dark text-xs font-weight-bold">Due Amount</label>
+									<div class="controls">
+										<input type="number" value="{{$task->due_amount}}" name="due_amount" id="due-amount" class="form-control" readonly>
 									</div>
 								</div>
 								
@@ -272,22 +360,77 @@
 	  @include('admin.body.footer')
 
 
-	 
-
-
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 		 <script>
 			$(document).ready(function() {
-			$('.select2').select2({
-				placeholder: 'Select an option',
-				allowClear: true
+				$('.select2').select2({
+					placeholder: 'Select an option',
+					allowClear: true
+				});
 			});
-		});
 		</script>
 
 
-	  
+		<script>
+			function calculateDueAmount() {
+				// Get Total Pay and Paid Amount values
+				const totalPay = parseFloat(document.getElementById('total-pay').value) || 0;
+				const paidAmount = parseFloat(document.getElementById('paid-amount').value) || 0;
+				
+				// Calculate Due Amount
+				const dueAmount = totalPay - paidAmount;
+				
+				// Set Due Amount in the read-only input field
+				document.getElementById('due-amount').value = dueAmount.toFixed(2);
+			}
+		</script>
+
+		<!-- JavaScript for toggling fields based on selection -->
+		<script>
+			// Function to toggle visibility of fields based on project selection
+			function toggleTaxFields() {
+				// Get the selected text from the dropdown
+				const selectedText = document.getElementById('project-list').selectedOptions[0]?.text || '';
+				
+				// Determine if the selected project is for "Tax" or "Immigration"
+				const isTaxProject = selectedText.toLowerCase().startsWith('tax');
+				const isImmigrationProject = selectedText.toLowerCase() === 'immigration';
+		
+				// Get the elements to toggle
+				const fieldsToToggle = document.querySelectorAll('.toggle-field'); // Tax-related fields
+				const categoryDropdown = document.querySelector('.toggle-category'); // Immigration category field
+		
+				// Show/hide fields based on selected project
+				fieldsToToggle.forEach(field => {
+					field.style.display = isTaxProject ? 'block' : 'none';
+				});
+				categoryDropdown.style.display = isImmigrationProject ? 'block' : 'none';
+		
+				// Reset fields if not applicable
+				if (!isTaxProject) resetTaxFields();
+				if (!isImmigrationProject) resetCategoryField();
+			}
+		
+			function resetTaxFields() {
+				// Clear Tax-related fields
+				document.querySelector('[name="tax_year"]').value = '';
+				document.querySelector('[name="eSignature"]').value = '';
+				document.querySelector('[name="ef_status"]').value = '';
+			}
+		
+			function resetCategoryField() {
+				// Clear Category field
+				document.querySelector('[name="category"]').value = '';
+			}
+		
+			// Event listener for dropdown change to toggle fields dynamically
+			document.getElementById('project-list').addEventListener('change', toggleTaxFields);
+		
+			// Call toggleTaxFields on page load to set initial visibility
+			document.addEventListener('DOMContentLoaded', toggleTaxFields);
+		</script>
+		
 
 	  {{-- TRIAL END --}}
 @endsection
