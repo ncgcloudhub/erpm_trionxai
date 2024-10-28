@@ -405,7 +405,7 @@
 									@endforeach
 								</select>
 							</th>
-							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Assign To</th>
+							<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="background-color: #f2f2f2;">Assigned To</th>
 						</tr>
 						
 					</thead>
@@ -559,7 +559,7 @@
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sl.</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project Name</th>
 						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
-						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
+						<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assigned To</th>
 					  </tr>
 					</thead>
 					<tbody>

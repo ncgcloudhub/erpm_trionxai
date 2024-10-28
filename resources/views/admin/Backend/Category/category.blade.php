@@ -83,7 +83,7 @@
 		
 		
 					<div class="form-group">
-						<h6>Assign To<span class="text-danger">*</span></h6>
+						<h6>Assigned To<span class="text-danger">*</span></h6>
 						<div class="controls">
 							<select name="assign_to" class="js-example-basic-single select2 form-control" required="" >
 								<option value="" selected="" disabled="">Select Employee</option>

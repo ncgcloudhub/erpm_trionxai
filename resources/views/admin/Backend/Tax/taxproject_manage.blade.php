@@ -22,7 +22,7 @@
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">IncomeTax Project ID</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Project Name</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assigned To
 												<select id="projectNames">
 													<option value="">All Employees</option>
 													@php

@@ -17,7 +17,7 @@
 										<tr class="align-middle text-center">
 											
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Short Description</th>
-											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign To</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assigned To</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 																	 

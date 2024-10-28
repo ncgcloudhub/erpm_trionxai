@@ -37,7 +37,7 @@
 													@endforeach
 												</select>
 											</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assign To
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Assigned To
 												<select id="projectNames">
 													<option value="">All Employees</option>
 													@php
