@@ -4,6 +4,8 @@
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
+		<x-backButton />
+
 		<a href="{{ route('taxproject.manage.task') }}" class="btn bg-gradient-success">Manage Ticket</a>
 	  <div class="row">
 		<div class="col-lg-12 mb-lg-0 mb-4">
