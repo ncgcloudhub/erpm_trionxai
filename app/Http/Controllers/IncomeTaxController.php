@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\CustomerExport;
 use App\Exports\ExportTasksCustomers;
 use App\Imports\TaxCustomersImport;
+use App\MailHelper;
 use App\Models\TaxProject;
 use App\Models\Admin;
 use App\Models\Employee;
@@ -143,6 +144,7 @@ class IncomeTaxController extends Controller
 
     public function StoreProjectTask(Request $request){
 
+		// dd($request);
 		$logged_in_user_id = Auth::guard('admin')->user();
 
 		// Get the current date and time
@@ -182,6 +184,7 @@ class IncomeTaxController extends Controller
 
       ]);
 
+	  MailHelper::sendTaskEmail($request->assing_to, $request->customer_id, $request->description, $request->checkMail);
 
        $notification = array(
 			'message' => 'Project Task Inserted Successfully',

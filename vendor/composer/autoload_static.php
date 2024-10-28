@@ -38,6 +38,7 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         '61ba3e92ef91a7a0f1cc260ebd9290e4' => __DIR__ . '/..' . '/openai-php/client/src/OpenAI.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
+        '279bd20be5de421f6a071a8f2e953758' => __DIR__ . '/../..' . '/app/MailHelper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -692,6 +693,8 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         'App\\Console\\Commands\\UpdateNetPay' => __DIR__ . '/../..' . '/app/Console/Commands/UpdateNetPay.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Exports\\CustomerExport' => __DIR__ . '/../..' . '/app/Exports/CustomerExport.php',
+        'App\\Exports\\ExportTasksCustomers' => __DIR__ . '/../..' . '/app/Exports/ExportTasksCustomers.php',
         'App\\Http\\Controllers\\Admincontroller' => __DIR__ . '/../..' . '/app/Http/Controllers/Admincontroller.php',
         'App\\Http\\Controllers\\Backend\\AdminProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/AdminProfileController.php',
         'App\\Http\\Controllers\\Backend\\AdminUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/AdminUserController.php',
@@ -752,6 +755,8 @@ class ComposerStaticInit4b215e97eac1e612bf5a720d160d98bd
         'App\\Http\\Middleware\\UserRedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/UserRedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Responses\\LoginResponse' => __DIR__ . '/../..' . '/app/Http/Responses/LoginResponse.php',
+        'App\\Imports\\TaxCustomersImport' => __DIR__ . '/../..' . '/app/Imports/TaxCustomersImport.php',
+        'App\\Mail\\ProjectTaskConfirmation' => __DIR__ . '/../..' . '/app/Mail/ProjectTaskConfirmation.php',
         'App\\Models\\AcidProduct' => __DIR__ . '/../..' . '/app/Models/AcidProduct.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Bank' => __DIR__ . '/../..' . '/app/Models/Bank.php',

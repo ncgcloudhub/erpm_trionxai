@@ -129,7 +129,10 @@
 						 </div>
 					</div>
 		
-
+					{{-- <div class="form-check">
+						<input class="form-check-input" type="checkbox" value="1"  checked="" name="checkMail">
+						<label class="custom-control-label">Send Email</label>
+					</div> --}}
 
 					<div class="form-group">
 						<h6>Tax Project List <span class="text-danger">*</span></h6>

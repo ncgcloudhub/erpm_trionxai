@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MailHelper;
 use App\Models\Category;
 use App\Models\Admin;
 use App\Models\Employee;
@@ -158,8 +159,6 @@ class ProjectController extends Controller
 
 	public function StoreProjectTask(Request $request)
 	{
-
-
 		$logged_in_user_id = Auth::guard('admin')->user();
 
 		// Get the current date and time
@@ -189,30 +188,11 @@ class ProjectController extends Controller
 			'priority' => $request->priority,
 			'status' => 'Not Started',
 			'logged_in_user' => $logged_in_user_id->id,
-			// 'product_img' => $save_url,
-
 			'created_at' => Carbon::now(),
 
 		]);
 
-		$user_email = Admin::findOrFail($request->assign_to);
-		$email = $user_email->email;
-
-		//   dd($email);
-
-		// Get details for the confirmation email
-		$taskDetails = [
-			'assign_to_name' => Admin::find($request->assign_to)->name,
-			'task_name' => $request->task_name,
-			'description' => $request->description,
-			// Add more details as needed
-		];
-
-		if ($request->checkMail == 1) {
-			// Send confirmation email
-			Mail::to($email)->send(new ProjectTaskConfirmation($taskDetails));
-		}
-
+		MailHelper::sendTaskEmail($request->assign_to, $request->task_name, $request->description, $request->checkMail);
 
 		$notification = array(
 			'message' => 'Project Task Inserted Successfully',
