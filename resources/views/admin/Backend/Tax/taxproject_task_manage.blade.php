@@ -101,7 +101,12 @@
 								<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->company_name }}</a></td>
 								<td ><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 								<td><h6 class="mb-0 text-sm">{{ $item->customer->ssn }}</h6></td>
-								<td><h6 class="mb-0 text-sm">{{ $item->customer->personal_phone }}</h6></td>
+								<td>
+									<h6 class="mb-0 text-sm">
+										{{ substr($item->customer->personal_phone, 0, 3) . '-' . substr($item->customer->personal_phone, 3, 3) . '-' . substr($item->customer->personal_phone, 6) }}
+									</h6>
+								</td>
+								
 								<!-- Email Column Data -->
 								<td class="text-sm text-truncate">
 									<h6 class="mb-0 text-sm">{{ $item->customer->email }}</h6>
