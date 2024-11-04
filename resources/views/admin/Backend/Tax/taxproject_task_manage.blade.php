@@ -27,7 +27,7 @@
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Ticket ID</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Customer Name</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Company Name</th>
-								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Project Name
+								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white" style="width: 100px; max-width: 100%;">Project Name
 									<select id="projectFilter">
 										<option value="">All Projects</option>
 										@php
@@ -48,7 +48,7 @@
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Phone No.</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">E-Mail</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
-									<select id="statusFilter" style="width: 150px; max-width: 100%;">
+									<select id="statusFilter" style="width: 100px; max-width: 100%;">
 										<option value="">All</option>
 										<option value="Not started">Not started</option>
 										<option value="In Progress" >In Progress</option>
@@ -62,7 +62,7 @@
 									</select>
 								</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">eSignature
-									<select id="eSignatureFilter" style="width: 120px; max-width: 100%;">
+									<select id="eSignatureFilter" style="width: 100px; max-width: 100%;">
 										<option value="">All</option>
 										<option value="Not Started">Not Started</option>
 										<option value="SENT">SENT</option>
@@ -73,7 +73,7 @@
 									</select>
 								</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">EF STATUS
-									<select id="efstatusFilter" style="width: 120px; max-width: 100%;">
+									<select id="efstatusFilter" style="width: 100px; max-width: 100%;">
 										<option value="">All</option>
 										<option value="DONE">DONE</option>
 										<option value="READY 2 EFILE">READY 2 EFILE</option>
