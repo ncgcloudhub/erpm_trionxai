@@ -167,28 +167,34 @@
 
 {{-- TRIAL END --}}
 
-	<script>
-		$(document).ready(function () {
-			var table = $('#example1').DataTable({
-				"lengthMenu": [[50, 100, 500], [50, 100, 500]],
-			});
-	
-			$('#statusFilter').on('change', function () {
-				table.column(5).search($(this).val()).draw();
-			});
-	
-			$('#eSignatureFilter').on('change', function () {
-				table.column(6).search($(this).val()).draw();
-			});
-
-			$('#efstatusFilter').on('change', function () {
-				table.column(7).search($(this).val()).draw();
-			});
-
-			$('#projectNames').on('change', function () {
-				table.column(3).search($(this).val()).draw();
-			});
+<script>
+	$(document).ready(function () {
+		var table = $('#example1').DataTable({
+			"lengthMenu": [[50, 100, 500], [50, 100, 500]],
 		});
-	</script>
+		
+		// Update the index based on your table structure
+		$('#statusFilter').on('change', function () {
+			// Column index for Status is 5 (zero-based)
+			table.column(7).search($(this).val()).draw();
+		});
+		
+		$('#eSignatureFilter').on('change', function () {
+			// Column index for eSignature is 6 (zero-based)
+			table.column(8).search($(this).val()).draw();
+		});
+		
+		$('#efstatusFilter').on('change', function () {
+			// Column index for EF STATUS is 7 (zero-based)
+			table.column(9).search($(this).val()).draw();
+		});
+		
+		$('#projectFilter').on('change', function () {
+			// Column index for Project Name is 3 (zero-based)
+			table.column(3).search($(this).val()).draw();
+		});
+	});
+</script>
+
 
 @endsection
