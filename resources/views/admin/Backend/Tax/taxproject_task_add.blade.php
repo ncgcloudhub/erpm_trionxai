@@ -204,7 +204,7 @@
 								</optgroup>
 
 								<optgroup label="Others">
-									<option value="other">Other</option>
+									<option value="other">Add an Item</option>
 								</optgroup>
 							</select>
 							<input type="text" name="category" class="form-control mt-2" id="categoryInput" placeholder="Enter Category" style="display:none;">
@@ -239,7 +239,7 @@
 								<option value="Critical">Critical</option>
 								<option value="Major">Major</option>
 								<option value="Minor">Minor</option>
-								<option value="other">Other</option>
+								<option value="other">Add an Item</option>
 							</select>
 							<input type="text" name="priority" class="form-control mt-2" id="priorityInput" placeholder="Enter Priority" style="display:none;">
 						</div>
@@ -260,7 +260,7 @@
 								<option value="Get Extension">Get Extension</option>
 								<option value="Estimates">Estimates</option>
 								<option value="Done">Done</option>
-								<option value="other">Other</option>
+								<option value="other">Add an Item</option>
 							</select>
 							<input type="text" name="status" class="form-control mt-2" id="statusInput" placeholder="Enter Status" style="display:none;">
 						</div>
@@ -284,7 +284,7 @@
 								<option value="Tax Amendment 2022">Tax Amendment 2022</option>
 								<option value="Tax Amendment 2023">Tax Amendment 2023</option>
 								<option value="Tax Amendment 2024">Tax Amendment 2024</option>
-								<option value="other">Other</option>
+								<option value="other">Add an Item</option>
 							</select>
 					
 							<!-- Hidden input field for manual entry, displayed when 'Other' is selected -->
@@ -304,7 +304,7 @@
 								<option value="SIGNED">SIGNED</option>
 								<option value="PENDING">PENDING</option>
 								<option value="In Person Sign">In Person Sign</option>
-								<option value="other">Other</option>
+								<option value="other">Add an Item</option>
 							</select>
 							<input type="text" name="eSignature" class="form-control mt-2" id="eSignatureInput" placeholder="Enter eSignature" style="display:none;">
 						</div>
@@ -323,7 +323,7 @@
 								<option value="ESTIMATES">ESTIMATES</option>
 								<option value="NOT STARTED">NOT STARTED</option>
 								<option value="REJECTED">REJECTED</option>
-								<option value="other">Other</option>
+								<option value="other">Add an Item</option>
 							</select>
 							<input type="text" name="ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="display:none;">
 						</div>
