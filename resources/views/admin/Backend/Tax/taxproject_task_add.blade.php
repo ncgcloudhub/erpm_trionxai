@@ -4,7 +4,7 @@
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
-		<x-backButton />
+		
 
 		<a href="{{ route('taxproject.manage.task') }}" class="btn bg-gradient-success">Manage Ticket</a>
 	  <div class="row">
@@ -356,7 +356,10 @@
 
 					<div class="text-xs-right">
 						<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Task">
+
+						<x-backButton />
 					</div>
+					
 
 				</div>
 

@@ -121,6 +121,7 @@
 					
 						<div class="text-xs-right">
 							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Project">
+							<x-backButton />
 					 </div>
 
 
