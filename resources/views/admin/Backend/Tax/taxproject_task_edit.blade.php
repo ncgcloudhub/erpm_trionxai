@@ -225,88 +225,101 @@
 						<div class="form-group">
 							<h6>Priority<span class="text-danger">*</span></h6>
 							<div class="controls">
-								<select name="priority" class="form-control" required="">
+								<select name="priority" class="form-control" required id="prioritySelect" onchange="toggleInputField(this, 'priorityInput')">
+									<option value="" disabled>Select an Option</option>
 									<option value="Normal" @if($task->priority == "Normal") selected @endif>Normal</option>
 									<option value="Critical" @if($task->priority == "Critical") selected @endif>Critical</option>
 									<option value="Major" @if($task->priority == "Major") selected @endif>Major</option>
 									<option value="Minor" @if($task->priority == "Minor") selected @endif>Minor</option>
+									@if(!in_array($task->priority, ['Normal', 'Critical', 'Major', 'Minor'])) 
+										<option value="{{ $task->priority }}" selected>{{ $task->priority }}</option>
+									@endif
+									<option value="other">Add an Item</option>
 								</select>
+								<input type="text" name="custom_priority" class="form-control mt-2" id="priorityInput" placeholder="Enter Priority" style="{{ $task->priority && !in_array($task->priority, ['Normal', 'Critical', 'Major', 'Minor']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->priority, ['Normal', 'Critical', 'Major', 'Minor']) ? $task->priority : '' }}">
 							</div>
 						</div>
 						
 
-								 <div class="form-group">
-									<h6>Status<span class="text-danger">*</span></h6>
-									<div class="controls">
-										<select name="status" class="form-control" required="">
-											<option value="Not Started" @if($task->status == "Not Started") selected @endif>Not Started</option>
-											<option value="In Progress" @if($task->status == "In Progress") selected @endif>In Progress</option>
-											<option value="In-Progress - Missing Docs" @if($task->status == "In-Progress - Missing Docs") selected @endif>In-Progress - Missing Docs</option>
-											<option value="Not-In-Drake" @if($task->status == "Not-In-Drake") selected @endif>Not-In-Drake</option>
-											<option value="Folder Created Only" @if($task->status == "Folder Created Only") selected @endif>Folder Created Only</option>
-											<option value="Data Entry Completed" @if($task->status == "Data Entry Completed") selected @endif>Data Entry Completed</option>
-											<option value="Get Extension" @if($task->status == "Get Extension") selected @endif>Get Extension</option>
-											<option value="Estimates" @if($task->status == "Estimates") selected @endif>Estimates</option>
-											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
-										</select>
-									</div>
-								</div>
-								
+								 <!-- Status Dropdown -->
+<div class="form-group">
+    <h6>Status<span class="text-danger">*</span></h6>
+    <div class="controls">
+        <select name="status" class="form-control" required="" id="statusSelect" onchange="toggleInputField(this, 'statusInput')">
+            <option value="" disabled>Select an Option</option>
+            <option value="Not Started" @if($task->status == "Not Started") selected @endif>Not Started</option>
+            <option value="In Progress" @if($task->status == "In Progress") selected @endif>In Progress</option>
+            <option value="In-Progress - Missing Docs" @if($task->status == "In-Progress - Missing Docs") selected @endif>In-Progress - Missing Docs</option>
+            <option value="Not-In-Drake" @if($task->status == "Not-In-Drake") selected @endif>Not-In-Drake</option>
+            <option value="Folder Created Only" @if($task->status == "Folder Created Only") selected @endif>Folder Created Only</option>
+            <option value="Data Entry Completed" @if($task->status == "Data Entry Completed") selected @endif>Data Entry Completed</option>
+            <option value="Get Extension" @if($task->status == "Get Extension") selected @endif>Get Extension</option>
+            <option value="Estimates" @if($task->status == "Estimates") selected @endif>Estimates</option>
+            <option value="Done" @if($task->status == "Done") selected @endif>Done</option>
+            <option value="other">Add an Item</option>
+        </select>
+        <input type="text" name="custom_status" class="form-control mt-2" id="statusInput" placeholder="Enter Status" style="{{ $task->status && !in_array($task->status, ['Not Started', 'In Progress', 'In-Progress - Missing Docs', 'Not-In-Drake', 'Folder Created Only', 'Data Entry Completed', 'Get Extension', 'Estimates', 'Done']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->status, ['Not Started', 'In Progress', 'In-Progress - Missing Docs', 'Not-In-Drake', 'Folder Created Only', 'Data Entry Completed', 'Get Extension', 'Estimates', 'Done']) ? $task->status : '' }}">
+    </div>
+</div>
 
-								<div class="form-group toggle-field">
-									<h6>Tax Year<span class="text-danger">*</span></h6>
-									<div class="controls">
-										<select name="tax_year" class="form-control">
-											<option value="" @if($task->tax_year == "") selected @endif>Select an Option</option>
-											<option value="TAX YEAR 2019" @if($task->tax_year == "TAX YEAR 2019") selected @endif>TAX YEAR 2019</option>
-											<option value="TAX YEAR 2020" @if($task->tax_year == "TAX YEAR 2020") selected @endif>TAX YEAR 2020</option>
-											<option value="TAX YEAR 2021" @if($task->tax_year == "TAX YEAR 2021") selected @endif>TAX YEAR 2021</option>
-											<option value="TAX YEAR 2022" @if($task->tax_year == "TAX YEAR 2022") selected @endif>TAX YEAR 2022</option>
-											<option value="TAX YEAR 2023" @if($task->tax_year == "TAX YEAR 2023") selected @endif>TAX YEAR 2023</option>
-											<option value="TAX YEAR 2024" @if($task->tax_year == "TAX YEAR 2024") selected @endif>TAX YEAR 2024</option>
-											<option value="Tax Amendment 2020" @if($task->tax_year == "Tax Amendment 2020") selected @endif>Tax Amendment 2020</option>
-											<option value="Tax Amendment 2021" @if($task->tax_year == "Tax Amendment 2021") selected @endif>Tax Amendment 2021</option>
-											<option value="Tax Amendment 2022" @if($task->tax_year == "Tax Amendment 2022") selected @endif>Tax Amendment 2022</option>
-											<option value="Tax Amendment 2023" @if($task->tax_year == "Tax Amendment 2023") selected @endif>Tax Amendment 2023</option>
-											<option value="Tax Amendment 2024" @if($task->tax_year == "Tax Amendment 2024") selected @endif>Tax Amendment 2024</option>
-										</select>
-									</div>
-								</div>
-								
+<!-- Tax Year Dropdown -->
+<div class="form-group toggle-field">
+    <h6>Tax Year<span class="text-danger">*</span></h6>
+    <div class="controls">
+        <select name="tax_year" class="form-control" id="taxYearSelect" onchange="toggleInputField(this, 'taxYearInput')">
+            <option value="" @if($task->tax_year == "") selected @endif>Select an Option</option>
+            <option value="TAX YEAR 2019" @if($task->tax_year == "TAX YEAR 2019") selected @endif>TAX YEAR 2019</option>
+            <option value="TAX YEAR 2020" @if($task->tax_year == "TAX YEAR 2020") selected @endif>TAX YEAR 2020</option>
+            <option value="TAX YEAR 2021" @if($task->tax_year == "TAX YEAR 2021") selected @endif>TAX YEAR 2021</option>
+            <option value="TAX YEAR 2022" @if($task->tax_year == "TAX YEAR 2022") selected @endif>TAX YEAR 2022</option>
+            <option value="TAX YEAR 2023" @if($task->tax_year == "TAX YEAR 2023") selected @endif>TAX YEAR 2023</option>
+            <option value="TAX YEAR 2024" @if($task->tax_year == "TAX YEAR 2024") selected @endif>TAX YEAR 2024</option>
+            <option value="Tax Amendment 2020" @if($task->tax_year == "Tax Amendment 2020") selected @endif>Tax Amendment 2020</option>
+            <option value="Tax Amendment 2021" @if($task->tax_year == "Tax Amendment 2021") selected @endif>Tax Amendment 2021</option>
+            <option value="Tax Amendment 2022" @if($task->tax_year == "Tax Amendment 2022") selected @endif>Tax Amendment 2022</option>
+            <option value="Tax Amendment 2023" @if($task->tax_year == "Tax Amendment 2023") selected @endif>Tax Amendment 2023</option>
+            <option value="Tax Amendment 2024" @if($task->tax_year == "Tax Amendment 2024") selected @endif>Tax Amendment 2024</option>
+            <option value="other">Add an Item</option>
+        </select>
+        <input type="text" name="custom_tax_year" class="form-control mt-2" id="taxYearInput" placeholder="Enter Tax Year" style="{{ $task->tax_year && !in_array($task->tax_year, ['TAX YEAR 2019', 'TAX YEAR 2020', 'TAX YEAR 2021', 'TAX YEAR 2022', 'TAX YEAR 2023', 'TAX YEAR 2024', 'Tax Amendment 2020', 'Tax Amendment 2021', 'Tax Amendment 2022', 'Tax Amendment 2023', 'Tax Amendment 2024']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->tax_year, ['TAX YEAR 2019', 'TAX YEAR 2020', 'TAX YEAR 2021', 'TAX YEAR 2022', 'TAX YEAR 2023', 'TAX YEAR 2024', 'Tax Amendment 2020', 'Tax Amendment 2021', 'Tax Amendment 2022', 'Tax Amendment 2023', 'Tax Amendment 2024']) ? $task->tax_year : '' }}">
+    </div>
+</div>
 
+<!-- eSignature Dropdown -->
+<div class="form-group toggle-field">
+    <h6>eSignature</h6>
+    <div class="controls">
+        <select name="eSignature" class="form-control" id="eSignatureSelect" onchange="toggleInputField(this, 'eSignatureInput')">
+            <option value="" @if($task->eSignature == "") selected @endif>Select an Option</option>
+            <option value="Not Started" @if($task->eSignature == "Not Started") selected @endif>Not Started</option>
+            <option value="SENT" @if($task->eSignature == "SENT") selected @endif>SENT</option>
+            <option value="READY FOR eSIG" @if($task->eSignature == "READY FOR eSIG") selected @endif>READY FOR eSIG</option>
+            <option value="SIGNED" @if($task->eSignature == "SIGNED") selected @endif>SIGNED</option>
+            <option value="PENDING" @if($task->eSignature == "PENDING") selected @endif>PENDING</option>
+            <option value="In Person Sign" @if($task->eSignature == "In Person Sign") selected @endif>In Person Sign</option>
+            <option value="other">Add an Item</option>
+        </select>
+        <input type="text" name="custom_eSignature" class="form-control mt-2" id="eSignatureInput" placeholder="Enter eSignature" style="{{ $task->eSignature && !in_array($task->eSignature, ['Not Started', 'SENT', 'READY FOR eSIG', 'SIGNED', 'PENDING', 'In Person Sign']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->eSignature, ['Not Started', 'SENT', 'READY FOR eSIG', 'SIGNED', 'PENDING', 'In Person Sign']) ? $task->eSignature : '' }}">
+    </div>
+</div>
 
-								<div class="form-group toggle-field">
-									<h6>eSignature</h6>
-									<div class="controls">
-										<select name="eSignature" class="form-control">
-											<option value="" @if($task->eSignature == "") selected @endif>Select an Option</option>
-											<option value="Not Started" @if($task->eSignature == "Not Started") selected @endif>Not Started</option>
-											<option value="SENT" @if($task->eSignature == "SENT") selected @endif>SENT</option>
-											<option value="READY FOR eSIG" @if($task->eSignature == "READY FOR eSIG") selected @endif>READY FOR eSIG</option>
-											<option value="SIGNED" @if($task->eSignature == "SIGNED") selected @endif>SIGNED</option>
-											<option value="PENDING" @if($task->eSignature == "PENDING") selected @endif>PENDING</option>
-											<option value="In Person Sign" @if($task->eSignature == "In Person Sign") selected @endif>In Person Sign</option>
-										</select>
-									</div>
-								</div>
-								
+<!-- EF Status Dropdown -->
+<div class="form-group toggle-field">
+    <h6>EF Status</h6>
+    <div class="controls">
+        <select name="ef_status" class="form-control" id="efStatusSelect" onchange="toggleInputField(this, 'efStatusInput')">
+            <option value="" @if($task->ef_status == "") selected @endif>Select an Option</option>
+            <option value="DONE" @if($task->ef_status == "DONE") selected @endif>DONE</option>
+            <option value="READY 2 EFILE" @if($task->ef_status == "READY 2 EFILE") selected @endif>READY 2 EFILE</option>
+            <option value="IN PROGRESS" @if($task->ef_status == "IN PROGRESS") selected @endif>IN PROGRESS</option>
+            <option value="PENDING CLIENT" @if($task->ef_status == "PENDING CLIENT") selected @endif>PENDING CLIENT</option>
+            <option value="REJECTED" @if($task->ef_status == "REJECTED") selected @endif>REJECTED</option>
+            <option value="other">Add an Item</option>
+        </select>
+        <input type="text" name="custom_ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="{{ $task->ef_status && !in_array($task->ef_status, ['DONE', 'READY 2 EFILE', 'IN PROGRESS', 'PENDING CLIENT', 'REJECTED']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->ef_status, ['DONE', 'READY 2 EFILE', 'IN PROGRESS', 'PENDING CLIENT', 'REJECTED']) ? $task->ef_status : '' }}">
+    </div>
+</div>
 
-
-								<div class="form-group toggle-field">
-									<h6>EF Status</h6>
-									<div class="controls">
-										<select name="ef_status" class="form-control">
-											<option value="" @if($task->ef_status == "") selected @endif>Select an Option</option>
-											<option value="DONE" @if($task->ef_status == "DONE") selected @endif>DONE</option>
-											<option value="READY 2 EFILE" @if($task->ef_status == "READY 2 EFILE") selected @endif>READY 2 EFILE</option>
-											<option value="IN PROGRESS" @if($task->ef_status == "IN PROGRESS") selected @endif>IN PROGRESS</option>
-											<option value="HOLD" @if($task->ef_status == "HOLD") selected @endif>HOLD</option>
-											<option value="ESTIMATES" @if($task->ef_status == "ESTIMATES") selected @endif>ESTIMATES</option>
-											<option value="NOT STARTED" @if($task->ef_status == "NOT STARTED") selected @endif>NOT STARTED</option>
-											<option value="REJECTED" @if($task->ef_status == "REJECTED") selected @endif>REJECTED</option>
-										</select>
-									</div>
-								</div>
 
 								<!-- Total Pay Field -->
 								<div class="form-group">
@@ -430,6 +443,25 @@
 			// Call toggleTaxFields on page load to set initial visibility
 			document.addEventListener('DOMContentLoaded', toggleTaxFields);
 		</script>
+
+<script>
+   function toggleInputField(select, inputId) {
+    const inputField = document.getElementById(inputId);
+
+    if (select.value === "other") {
+        inputField.style.display = "block";
+        inputField.required = true;
+        select.name = ""; // Clear the dropdown name to avoid conflicts
+        inputField.focus(); // Automatically focus the input field when it becomes visible
+    } else {
+        inputField.style.display = "none";
+        inputField.required = false;
+        inputField.value = ""; // Reset the input field
+        select.name = select.dataset.originalName || select.name; // Restore dropdown name
+    }
+}
+
+</script>
 		
 
 	  {{-- TRIAL END --}}

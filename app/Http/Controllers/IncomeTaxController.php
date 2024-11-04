@@ -229,6 +229,13 @@ class IncomeTaxController extends Controller
 
 	public function ProjectUpdateTask(Request $request){
 
+		 // Check if the custom priority field has a value
+		 $priority = $request->custom_priority ?: $request->priority;
+		 $status = $request->custom_status ?: $request->status;
+		 $tax_year = $request->custom_tax_year ?: $request->tax_year;
+		 $eSignature = $request->custom_eSignature ?: $request->eSignature;
+		 $ef_status = $request->custom_ef_status ?: $request->ef_status;
+
 		TaxTaskProject::findOrFail($request->id)->update([
 			
 		'customer_id' => $request->customer_id,
@@ -248,11 +255,11 @@ class IncomeTaxController extends Controller
 
       	'subject' => $request->subject,
       	'hyperlinks' => $request->hyperlinks,
-      	'priority' => $request->priority,
-		'status' => $request->status,
-		'tax_year' => $request->tax_year,
-		'eSignature' => $request->eSignature,
-		'ef_status' => $request->ef_status,
+      	'priority' => $priority,
+		'status' => $status,
+		'tax_year' => $tax_year,
+		'eSignature' => $eSignature,
+		'ef_status' => $ef_status,
 		'updated_at' => Carbon::now(),   
 
 			]);
