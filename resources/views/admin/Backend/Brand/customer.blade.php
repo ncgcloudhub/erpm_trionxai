@@ -51,18 +51,28 @@
 
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Office Phone </label>
-<div class="controls">
-<input type="text"  name="office_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" > 
-</div>
+  <label class="text-uppercase text-dark text-xs font-weight-bold">Office Phone</label>
+  <div class="controls">
+      <input type="tel" name="office_phone" class="form-control" 
+             pattern="^\d{10}$" 
+             title="Please enter exactly 10 numeric digits" 
+             maxlength="10" 
+             required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+  </div>
 </div>
 
 <div class="form-group">
-	<label  class="text-uppercase text-dark text-xs font-weight-bold ">Personal Phone <span class="text-danger">*</span></label>
-<div class="controls">
-<input type="text"  name="personal_phone" class="form-control" pattern="\d*" title="Please enter only numeric values" required> 
+  <label class="text-uppercase text-dark text-xs font-weight-bold">Personal Phone <span class="text-danger">*</span></label>
+  <div class="controls">
+      <input type="tel" name="personal_phone" class="form-control" 
+             pattern="^\d{10}$" 
+             title="Please enter exactly 10 numeric digits" 
+             required maxlength="10" 
+             oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+  </div>
 </div>
-</div>
+
+
 
 <div class="form-group">
 	<label  class="text-uppercase text-dark text-xs font-weight-bold ">EIN </label>
