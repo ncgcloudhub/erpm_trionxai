@@ -329,19 +329,20 @@
 						</div>
 					</div>
 
+					@if(Auth::guard('admin')->user()->type=="1")
 					<!-- Total Pay Field -->
 					<div class="form-group">
-						<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay <span class="text-danger">*</span></label>
+						<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay</label>
 						<div class="controls">
-							<input type="number" name="total_pay" id="total-pay" class="form-control" required oninput="calculateDueAmount()">
+							<input type="number" name="total_pay" id="total-pay" class="form-control" oninput="calculateDueAmount()">
 						</div>
 					</div>
 					
 					<!-- Paid Amount Field -->
 					<div class="form-group">
-						<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount <span class="text-danger">*</span></label>
+						<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount</label>
 						<div class="controls">
-							<input type="number" name="paid_amount" id="paid-amount" class="form-control" required oninput="calculateDueAmount()">
+							<input type="number" name="paid_amount" id="paid-amount" class="form-control" oninput="calculateDueAmount()">
 						</div>
 					</div>
 					
@@ -352,6 +353,7 @@
 							<input type="number" name="due_amount" id="due-amount" class="form-control" readonly>
 						</div>
 					</div>
+					@endif
 
 
 					<div class="text-xs-right">
