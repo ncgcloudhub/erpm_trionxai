@@ -213,6 +213,8 @@ class IncomeTaxController extends Controller
 		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
 		// dd($task->description);
+		 // Ensure category is an array
+		 $task->category = explode(',', $task->category);
 
         return view('admin.Backend.Tax.taxproject_task_edit',compact('categories','customers','assignedby','assignto','task'));
 	}
