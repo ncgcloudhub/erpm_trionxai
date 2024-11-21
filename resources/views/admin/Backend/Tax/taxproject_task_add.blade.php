@@ -1,6 +1,7 @@
 @extends('admin.aDashboard')
 @section('admins')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
@@ -61,6 +62,13 @@
 								<div class="controls">
 									<input type="text" name="ssn" id="ssn" class="form-control" readonly>					
 							   </div>
+							</div>
+
+							<div class="form-group">
+								<h6>Subject</h6>
+								<div class="controls">
+									<input type="text" name="subject" class="form-control" >
+								</div>
 							</div>
 
 																
@@ -152,8 +160,8 @@
 					<div class="form-group toggle-category" style="display: none;">
 						<h6>Category <span class="text-danger">*</span></h6>
 						<div class="controls">
-							<select name="category" class="form-control" id="categorySelect" onchange="toggleInputField(this, 'categoryInput')">
-								<option value="" selected disabled>Select a Category</option>
+							<select name="category[]" class="form-control select2-multi" id="categorySelect" multiple >
+								
 								
 								<!-- Family-Based Forms -->
 								<optgroup label="Family-Based Forms">
@@ -203,21 +211,16 @@
 									<option value="N-565">N-565: Application for Replacement Naturalization Document</option>
 								</optgroup>
 
-								<optgroup label="Others">
+								{{-- <optgroup label="Others">
 									<option value="other">Add an Item</option>
-								</optgroup>
+								</optgroup> --}}
 							</select>
-							<input type="text" name="category" class="form-control mt-2" id="categoryInput" placeholder="Enter Category" style="display:none;">
+							{{-- <input type="text" name="category" class="form-control mt-2" id="categoryInput" placeholder="Enter Category" style="display:none;"> --}}
 
 						</div>
 					</div>
 
-					<div class="form-group">
-						<h6>Subject</h6>
-						<div class="controls">
-							<input type="text" name="subject" class="form-control" >
-						</div>
-					</div>
+					
 				
 
 					<div class="form-group">
@@ -469,6 +472,17 @@
 		}
 	}
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.select2-multi').select2({
+			placeholder: "Select Categories",
+			allowClear: true,
+			width: '100%'  // This ensures full width
+		});
+	});
+	</script>
 	  
 
 @endsection

@@ -1,6 +1,7 @@
 @extends('admin.aDashboard')
 @section('admins')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 	  {{-- TRIAL START --}}
 	  <div class="container-fluid">
@@ -151,7 +152,7 @@
 						 <div class="form-group toggle-category">
 							<h6>Category <span class="text-danger">*</span></h6>
 							<div class="controls">
-								<select name="category" class="form-control">
+								<select name="category[]" class="form-control select2-multi" id="categorySelect" multiple >
 									<option value="" selected disabled>Select a Category</option>
 									
 									<!-- Family-Based Forms -->
@@ -463,6 +464,14 @@
 
 </script>
 		
-
-	  {{-- TRIAL END --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.select2-multi').select2({
+			placeholder: "Select Categories",
+			allowClear: true,
+			width: '100%'  // This ensures full width
+		});
+	});
+	</script>
 @endsection

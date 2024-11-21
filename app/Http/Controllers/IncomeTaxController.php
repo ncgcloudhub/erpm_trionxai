@@ -165,7 +165,7 @@ class IncomeTaxController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
-		'category' => $request->category,
+		'category' => json_encode($request->category),
 
 		'total_pay' => $request->total_pay,
 		'paid_amount' => $request->paid_amount,
@@ -247,7 +247,7 @@ class IncomeTaxController extends Controller
 		'assigned_by' => $request->assigned_by,
 		'assign_to' => $request->assign_to,
 		'project_list' => $request->project_list,
-		'category' => $request->category,
+		'category' => json_encode($request->category),
 
 		'total_pay' => $request->total_pay,
 		'paid_amount' => $request->paid_amount,

@@ -1,7 +1,7 @@
 @extends('admin.aDashboard')
 @section('admins')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
 	  {{-- TRIAL START --}}
@@ -168,64 +168,68 @@
                             </select>
                         </div>
                     </div>
-
+					
+					@php
+						$categories = json_decode($task->category, true); // Decode JSON to an array
+					@endphp
 					<div class="form-group toggle-category">
 						<h6>Category <span class="text-danger">*</span></h6>
 						<div class="controls">
-							<select name="category" class="form-control" @readonly(true)>
-								<option value="" selected disabled>Select a Category</option>
+							<select name="category[]" class="form-control select2-multi" multiple>
+								<option value="" disabled>Select a Category</option>
 								
 								<!-- Family-Based Forms -->
 								<optgroup label="Family-Based Forms">
-									<option value="I-130" @if($task->category == "I-130") selected @endif>I-130: Petition for Alien Relative</option>
-									<option value="I-130A" @if($task->category == "I-130A") selected @endif>I-130A: Supplemental Information for Spouse Beneficiary</option>
-									<option value="I-129F" @if($task->category == "I-129F") selected @endif>I-129F: Petition for Alien Fiancé(e)</option>
-									<option value="I-751" @if($task->category == "I-751") selected @endif>I-751: Petition to Remove Conditions on Residence</option>
-									<option value="I-864" @if($task->category == "I-864") selected @endif>I-864: Affidavit of Support Under Section 213A</option>
-									<option value="I-864A" @if($task->category == "I-864A") selected @endif>I-864A: Contract Between Sponsor and Household Member</option>
-									<option value="I-600" @if($task->category == "I-600") selected @endif>I-600 / I-600A: Petition to Classify Orphan as an Immediate Relative</option>
+									<option value="I-130" @if(in_array("I-130", $categories)) selected @endif>I-130: Petition for Alien Relative</option>
+									<option value="I-130A" @if(in_array("I-130A", $categories)) selected @endif>I-130A: Supplemental Information for Spouse Beneficiary</option>
+									<option value="I-129F" @if(in_array("I-129F", $categories)) selected @endif>I-129F: Petition for Alien Fiancé(e)</option>
+									<option value="I-751" @if(in_array("I-751", $categories)) selected @endif>I-751: Petition to Remove Conditions on Residence</option>
+									<option value="I-864" @if(in_array("I-864", $categories)) selected @endif>I-864: Affidavit of Support Under Section 213A</option>
+									<option value="I-864A" @if(in_array("I-864A", $categories)) selected @endif>I-864A: Contract Between Sponsor and Household Member</option>
+									<option value="I-600" @if(in_array("I-600", $categories)) selected @endif>I-600 / I-600A: Petition to Classify Orphan as an Immediate Relative</option>
 								</optgroup>
-
+					
 								<!-- Employment-Based Forms -->
 								<optgroup label="Employment-Based Forms">
-									<option value="I-129" @if($task->category == "I-129") selected @endif>I-129: Petition for a Nonimmigrant Worker</option>
-									<option value="I-140" @if($task->category == "I-140") selected @endif>I-140: Immigrant Petition for Alien Workers</option>
-									<option value="I-526" @if($task->category == "I-526") selected @endif>I-526: Immigrant Petition by Standalone Investor</option>
-									<option value="I-829" @if($task->category == "I-829") selected @endif>I-829: Petition by Entrepreneur to Remove Conditions</option>
+									<option value="I-129" @if(in_array("I-129", $categories)) selected @endif>I-129: Petition for a Nonimmigrant Worker</option>
+									<option value="I-140" @if(in_array("I-140", $categories)) selected @endif>I-140: Immigrant Petition for Alien Workers</option>
+									<option value="I-526" @if(in_array("I-526", $categories)) selected @endif>I-526: Immigrant Petition by Standalone Investor</option>
+									<option value="I-829" @if(in_array("I-829", $categories)) selected @endif>I-829: Petition by Entrepreneur to Remove Conditions</option>
 								</optgroup>
-
+					
 								<!-- Humanitarian Forms -->
 								<optgroup label="Humanitarian Forms">
-									<option value="I-589" @if($task->category == "I-589") selected @endif>I-589: Application for Asylum and for Withholding of Removal</option>
-									<option value="I-730" @if($task->category == "I-730") selected @endif>I-730: Refugee/Asylee Relative Petition</option>
-									<option value="I-821" @if($task->category == "I-821") selected @endif>I-821: Application for Temporary Protected Status</option>
-									<option value="I-134A" @if($task->category == "I-134A") selected @endif>I-134A: Declaration of Financial Support</option>
+									<option value="I-589" @if(in_array("I-589", $categories)) selected @endif>I-589: Application for Asylum and for Withholding of Removal</option>
+									<option value="I-730" @if(in_array("I-730", $categories)) selected @endif>I-730: Refugee/Asylee Relative Petition</option>
+									<option value="I-821" @if(in_array("I-821", $categories)) selected @endif>I-821: Application for Temporary Protected Status</option>
+									<option value="I-134A" @if(in_array("I-134A", $categories)) selected @endif>I-134A: Declaration of Financial Support</option>
 								</optgroup>
-
+					
 								<!-- Travel and Status Forms -->
 								<optgroup label="Travel and Status Forms">
-									<option value="I-94" @if($task->category == "I-94") selected @endif>I-94: Arrival/Departure Record</option>
-									<option value="I-131" @if($task->category == "I-131") selected @endif>I-131: Application for Travel Document</option>
-									<option value="I-539" @if($task->category == "I-539") selected @endif>I-539: Application to Extend/Change Nonimmigrant Status</option>
+									<option value="I-94" @if(in_array("I-94", $categories)) selected @endif>I-94: Arrival/Departure Record</option>
+									<option value="I-131" @if(in_array("I-131", $categories)) selected @endif>I-131: Application for Travel Document</option>
+									<option value="I-539" @if(in_array("I-539", $categories)) selected @endif>I-539: Application to Extend/Change Nonimmigrant Status</option>
 								</optgroup>
-
+					
 								<!-- Adjustment of Status / Green Card Forms -->
 								<optgroup label="Adjustment of Status / Green Card Forms">
-									<option value="I-485" @if($task->category == "I-485") selected @endif>I-485: Application to Register Permanent Residence or Adjust Status</option>
-									<option value="I-90" @if($task->category == "I-90") selected @endif>I-90: Application to Replace Permanent Resident Card</option>
-									<option value="I-485 Supplements" @if($task->category == "I-485 Supplements") selected @endif>I-485 Supplements (A, C, E): Additional eligibility adjustments</option>
+									<option value="I-485" @if(in_array("I-485", $categories)) selected @endif>I-485: Application to Register Permanent Residence or Adjust Status</option>
+									<option value="I-90" @if(in_array("I-90", $categories)) selected @endif>I-90: Application to Replace Permanent Resident Card</option>
+									<option value="I-485 Supplements" @if(in_array("I-485 Supplements", $categories)) selected @endif>I-485 Supplements (A, C, E): Additional eligibility adjustments</option>
 								</optgroup>
-
+					
 								<!-- Citizenship and Naturalization Projects -->
 								<optgroup label="Citizenship and Naturalization Projects">
-									<option value="N-400" @if($task->category == "N-400") selected @endif>N-400: Application for Naturalization</option>
-									<option value="N-600" @if($task->category == "N-600") selected @endif>N-600 / N-600K: Certificate of Citizenship Applications</option>
-									<option value="N-565" @if($task->category == "N-565") selected @endif>N-565: Application for Replacement Naturalization Document</option>
+									<option value="N-400" @if(in_array("N-400", $categories)) selected @endif>N-400: Application for Naturalization</option>
+									<option value="N-600" @if(in_array("N-600", $categories)) selected @endif>N-600 / N-600K: Certificate of Citizenship Applications</option>
+									<option value="N-565" @if(in_array("N-565", $categories)) selected @endif>N-565: Application for Replacement Naturalization Document</option>
 								</optgroup>
-
 							</select>
 						</div>
 					</div>
+					
+					
 					
 					 <div class="form-group">
 						<h6>Subject</h6>
@@ -445,7 +449,15 @@
     document.getElementById('project-list').addEventListener('change', toggleTaxFields);
     document.addEventListener('DOMContentLoaded', toggleTaxFields);
 </script>
-	  
 
-	  {{-- TRIAL END --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.select2-multi').select2({
+			placeholder: "Select Categories",
+			allowClear: true,
+			width: '100%'  // This ensures full width
+		});
+	});
+	</script>
 @endsection
