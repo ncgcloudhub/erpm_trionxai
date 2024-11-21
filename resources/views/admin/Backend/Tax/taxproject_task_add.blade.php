@@ -71,6 +71,18 @@
 								</div>
 							</div>
 
+							<!-- clientType Field -->
+							<div class="form-group">
+								<h6>Client Type</h6>
+								<div class="controls">
+									<select name="clientType" class="form-control" id="clientType" >
+										<option value="" selected disabled>Select an Option</option>
+										<option value="New Client">New Client</option>
+										<option value="Existing Client">Existing Client</option>
+									</select>
+								</div>
+							</div>
+
 																
 							<div class="form-group">
 								<h6>Description<span class="text-danger">*</span></h6>
@@ -329,6 +341,18 @@
 								<option value="other">Add an Item</option>
 							</select>
 							<input type="text" name="ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="display:none;">
+						</div>
+					</div>
+
+					<!-- paymentStatus Field -->
+					<div class="form-group">
+						<h6>Payment Status</h6>
+						<div class="controls">
+							<select name="paymentStatus" class="form-control" id="paymentStatus" >
+								<option value="" selected disabled>Select an Option</option>
+								<option value="Paid">Paid</option>
+								<option value="Unpaid">Unpaid</option>
+							</select>
 						</div>
 					</div>
 

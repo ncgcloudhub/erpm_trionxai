@@ -77,6 +77,25 @@
 							   </div>
 							</div>
 
+							<div class="form-group">
+								<h6>Subject</h6>
+								<div class="controls">
+									<input type="text" value="{{$task->subject}}" name="subject" class="form-control" readonly>
+								</div>
+							</div>
+
+							<!-- clientType Field -->
+							<div class="form-group">
+								<h6>Client Type</h6>
+								<div class="controls">
+									<select name="clientType" class="form-control" id="clientType" @readonly(true)>
+										<option value="{{$task->clientType}}" selected="" disabled="">{{$task->clientType}}</option>
+										
+										<option value="New Client">New Client</option>
+										<option value="Existing Client">Existing Client</option>
+									</select>
+								</div>
+							</div>
 																
                             <div class="form-group">
                                 <h6>Description<span class="text-danger">*</span></h6>
@@ -231,12 +250,7 @@
 					
 					
 					
-					 <div class="form-group">
-						<h6>Subject</h6>
-						<div class="controls">
-							<input type="text" value="{{$task->subject}}" name="subject" class="form-control" readonly>
-						</div>
-					</div>
+					 
                     
 
 						<div class="form-group">
@@ -334,6 +348,18 @@
 								</select>								
 							 </div>
 						</div>
+
+						<!-- paymentStatus Field -->
+					<div class="form-group">
+						<h6>Payment Status</h6>
+						<div class="controls">
+							<select name="paymentStatus" class="form-control" id="paymentStatus" @readonly(true)>
+								<option value="{{$task->paymentStatus}}" selected="">{{$task->paymentStatus}}</option>
+								<option value="Paid">Paid</option>
+								<option value="Unpaid">Unpaid</option>
+							</select>
+						</div>
+					</div>
 
 						<!-- Total Pay Field -->
 						<div class="form-group">
