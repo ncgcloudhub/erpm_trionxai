@@ -189,7 +189,8 @@
                     </div>
 					
 					@php
-						$categories = json_decode($task->category, true); // Decode JSON to an array
+						// Decode JSON and ensure $categories is always an array
+    					$categories = json_decode($task->category, true) ?? [];
 					@endphp
 					<div class="form-group toggle-category">
 						<h6>Category <span class="text-danger">*</span></h6>
