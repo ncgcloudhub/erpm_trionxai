@@ -63,6 +63,8 @@
 										<option value="Done">Done</option>
 									</select>
 								</th>
+								<th style="width: 50px;" class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Payment Status</th>
+								
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">eSignature
 									<select id="eSignatureFilter" style="width: 100px; max-width: 100%;">
 										<option value="">All</option>
@@ -117,6 +119,7 @@
 									<h6 class="mb-0 text-sm">{{ $item->customer->email }}</h6>
 								</td>
 								
+								
 
 								@php
 									// Determine the badge class based on the status
@@ -137,6 +140,9 @@
 									<span class="badge badge-sm bg-gradient-{{ $statusClass }}">
 										{{ $item->status }}
 									</span>
+								</td>
+								<td class="text-sm text-truncate" style="width: 50px;">
+									<h6 class="mb-0 text-sm">{{ $item->paymentStatus }}</h6>
 								</td>
 
 								<td><h6 class="mb-0 text-sm">{{ $item->eSignature }}</h6></td>
