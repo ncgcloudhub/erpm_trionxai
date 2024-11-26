@@ -29,12 +29,12 @@ class SalesController extends Controller
         // $id = Auth::user()->id;
 		// $adminData = Admin::find($id);
         $banks = Bank::orderBy('bank_name','ASC')->get();
-        $students = Student::orderBy('id','ASC')->get();
+        $customers = Customer::orderBy('id','ASC')->get();
         // $inventory = TodaysProduction::sum('qty');
         $acidProducts = AcidProduct::find(1);
         // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
         $courses = Course::orderBy('id','ASC')->get();
-        return view('admin.Backend.Sales.sales_form', compact('students','banks','acidProducts','courses'));
+        return view('admin.Backend.Sales.sales_form', compact('customers','banks','acidProducts','courses'));
     }
 
     public function SalesStore(Request $request)

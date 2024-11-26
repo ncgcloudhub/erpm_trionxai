@@ -14,12 +14,12 @@
 			<div class="row">
 				<div class="col">
 					<div class="row mb-3">
-						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Student</label></div>
+						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
-							<option value="" selected="" disabled="">Select Student</option>
-							@foreach($students as $student)
-									 <option value="{{ $student->id }}">{{ $student->student_name }}</option>	
+							<option value="" selected="" disabled="">Select Customer</option>
+							@foreach($customers as $customer)
+									 <option value="{{ $customer->id }}">{{ $customer->user_name }}</option>	
 							@endforeach
 							<!-- More options -->
 							</select>
@@ -27,7 +27,7 @@
 						</div>
 	
 						<div class="row mb-3">
-							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Student Id</label></div>
+							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Customer Id</label></div>
 							<div class="col"><input class="form-control " type="text" id="address" name="address">
 						</div>
 							
@@ -268,8 +268,8 @@
       // make an AJAX request to the server
       $.get('/get-data', { option: selectedOption }, function(data) {
         // update the field with the response data
-        $("#address").val(data.student_id);
-		$("#phone").val(data.phone);
+        $("#address").val(data.customer_id);
+		$("#phone").val(data.personal_phone);
 		console.log(data);
 		$('.js-example-basic-single').select2();
 

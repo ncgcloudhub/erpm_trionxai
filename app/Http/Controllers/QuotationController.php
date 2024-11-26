@@ -239,7 +239,7 @@ class QuotationController extends Controller
     public function getData(Request $request){
 
     $selectedOption = $request->input('option');
-    $data = Student::findOrFail($selectedOption);
+    $data = Customer::findOrFail($selectedOption);
 
     return $data;
 
