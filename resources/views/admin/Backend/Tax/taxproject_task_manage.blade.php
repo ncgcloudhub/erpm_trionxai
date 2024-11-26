@@ -26,6 +26,7 @@
 								
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Ticket ID</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Customer Name</th>
+								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Subject</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Company Name</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white" style="width: 100px; max-width: 100%;">Project Name
 									<select id="projectFilter">
@@ -46,7 +47,8 @@
 								
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">SSN</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Phone No.</th>
-								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">E-Mail</th>
+								<th style="width: 50px;" class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">E-Mail</th>
+								
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Status
 									<select id="statusFilter" style="width: 100px; max-width: 100%;">
 										<option value="">All</option>
@@ -98,6 +100,9 @@
 								
 								<td><a style="color: rgb(16, 71, 189)" href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->task_id }}</a></td>
 								<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->user_name }}</a></td>
+								<td class="text-sm text-truncate">
+									<h6 class="mb-0 text-sm">{{ $item->subject }}</h6>
+								</td>
 								<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->company_name }}</a></td>
 								<td ><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 								<td><h6 class="mb-0 text-sm">{{ $item->customer->ssn }}</h6></td>
@@ -108,9 +113,10 @@
 								</td>
 								
 								<!-- Email Column Data -->
-								<td class="text-sm text-truncate">
+								<td class="text-sm text-truncate" style="width: 50px;">
 									<h6 class="mb-0 text-sm">{{ $item->customer->email }}</h6>
 								</td>
+								
 
 								@php
 									// Determine the badge class based on the status
