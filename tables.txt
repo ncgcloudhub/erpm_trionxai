@@ -17,3 +17,10 @@ Add In TaxTaskProject table
 21/11/2024
 'clientType' text
 'paymentStatus' text
+
+=====================================
+26/11/25
+
+Add In TaxTaskProject table
+
+1 - 'tax' float null

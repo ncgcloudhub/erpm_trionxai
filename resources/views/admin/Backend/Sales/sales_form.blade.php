@@ -120,6 +120,7 @@
 							<div class="col"><span><input class="form-control" type="text" name="subtotal" id="subtotal" readonly></span>
 							</div>
 						</div>
+						
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (%)</label></div>
 							<div class="col"><input class="dper form-control" type="number" id="discount-percentage" name="dper">
@@ -133,6 +134,11 @@
 						<div class="row mb-2">
 							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (TK)</label></div>
 							<div class="col"><input class="dflat form-control" name="dflat" type="number" id="discount-flat">
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold">Tax</label></div>
+							<div class="col"><span><input class="form-control" type="text" name="tax" id="tax"></span>
 							</div>
 						</div>
 						<div class="row mb-2">
@@ -309,11 +315,43 @@
 
 	      });
 
-		  function duePrice(){
+function updateGrandTotal() {
+    var subtotal = parseFloat(document.getElementById("subtotal").value) || 0;
+    var discountPercentage = parseFloat(document.getElementById("discount-percentage").value) || 0;
+    var discountFlat = parseFloat(document.getElementById("discount-flat").value) || 0;
+    var taxPercentage = parseFloat(document.getElementById("tax").value) || 0;
 
-			$("#paidamount").val($("#sumPayment").val());
-			$("#dueamount").val(parseFloat($("#grandtotal").val()) - ($("#sumPayment").val()));
-		  }
+    // Step 1: Calculate the discounted total
+    var discount = discountPercentage > 0 ? (discountPercentage / 100) * subtotal : discountFlat;
+    var discountedTotal = subtotal - discount;
+
+    // Step 2: Calculate the tax on the discounted total
+    var taxAmount = (taxPercentage / 100) * discountedTotal;
+
+    // Step 3: Calculate the grand total
+    var grandTotal = discountedTotal + taxAmount;
+
+    // Update the grand total in the field
+    $("#grandtotal").val(grandTotal.toFixed(2));
+
+    // Update due amount
+    duePrice();
+
+}
+
+		  // Event listener for tax percentage
+document.querySelector('#tax').addEventListener('input', function () {
+    updateGrandTotal();
+});
+
+function duePrice() {
+    var paidAmount = parseFloat($("#paidamount").val()) || 0; // Use the updated paid amount
+    var grandTotal = parseFloat($("#grandtotal").val()) || 0;
+    var dueAmount = grandTotal - paidAmount;
+
+    $("#dueamount").val(dueAmount.toFixed(2)); // Update the due amount
+}
+
 
 	function totalPrice(){
 		var sum = 0;
@@ -325,15 +363,19 @@
 		$("#subtotal").val(sum);	
 	}
 
-	function totalPayment(){
-		var sum = 0;
-	
-		$(".pay_amount").each(function(){
-		sum += parseFloat($(this).val());
-		});
+	function totalPayment() {
+    var sum = 0;
 
-		$("#sumPayment").val(sum);
-	}
+    // Sum up all `.pay_amount` values
+    $(".pay_amount").each(function () {
+        var value = parseFloat($(this).val()) || 0; // Default to 0 if empty or invalid
+        sum += value;
+    });
+
+    // Update the #sumPayment field (if used) and #paidamount field
+    $("#sumPayment").val(sum.toFixed(2)); // Keep consistency with decimals
+    $("#paidamount").val(sum.toFixed(2)); // Update the #paidamount field
+}
 	
 	document.querySelector('#discount-percentage').addEventListener('input', function() {
 		$("#discount-flat").val("");
