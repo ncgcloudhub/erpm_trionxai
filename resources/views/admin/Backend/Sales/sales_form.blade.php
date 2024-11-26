@@ -97,9 +97,7 @@
 						<td>
 							<select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" >
 								<option value="" selected="" disabled="">Select Course</option>
-								@foreach($courses as $course)
-									 <option value="{{ $course->id }}">{{ $course->course_name }}({{ $course->code }})</option>	
-								@endforeach
+								@foreach($taxTaskProjects as $task)<option value="{{ $task->id }}">{{ $task->task_id }}({{ $task->customer->user_name }})</option>@endforeach
 							</select>
 						</td>
 						  <td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td>
@@ -235,7 +233,7 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Course</option>@foreach($courses as $course)<option value="{{ $course->id }}">{{ $course->course_name }}({{ $course->code }})</option>@endforeach</select></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Task</option>@foreach($taxTaskProjects as $task)<option value="{{ $task->id }}">{{ $task->task_id }}({{ $task->customer->user_name }})</option>@endforeach</select></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 	
 		// var x =1;
 	  $("#add").click(function(){
@@ -427,7 +425,7 @@
     $("#item").change(function () {
         var selectedOption = $(this).val();
         $.get('/geta-data-product', { option: selectedOption }, function (data) {
-            $("#rate").val(data.fees);
+            $("#rate").val(data.total_pay);
         })
         .fail(function (error) {
             console.error("Error in AJAX request:", error);
@@ -440,7 +438,7 @@
 		$.get('/geta-data-product', { option: product_id }, function(data) {
         // update the field with the response data
 		
-			rate.val(data.fees);
+			rate.val(data.total_pay);
 			
       });
 		// price.val(product_id);

@@ -13,6 +13,7 @@ use App\Models\Quotation;
 use App\Models\QuotationItem;
 use App\Models\QuotationPaymentItem;
 use App\Models\Student;
+use App\Models\TaxTaskProject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -267,9 +268,9 @@ class QuotationController extends Controller
     public function getDatasProduct(Request $request){
 
         $selectedOption = $request->input('option');
-        $data = Course::findOrFail($selectedOption);
+        $data = TaxTaskProject::findOrFail($selectedOption);
         
-        return response()->json(['fees' => $data->fees]);
+        return response()->json(['total_pay' => $data->total_pay]);
     
     }
 

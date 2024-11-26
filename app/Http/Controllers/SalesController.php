@@ -15,6 +15,7 @@ use App\Models\Sales;
 use App\Models\SalesItem;
 use App\Models\SalesPaymentItem;
 use App\Models\Student;
+use App\Models\TaxTaskProject;
 use App\Models\TodaysProduction;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -33,8 +34,8 @@ class SalesController extends Controller
         // $inventory = TodaysProduction::sum('qty');
         $acidProducts = AcidProduct::find(1);
         // $acidProducts = AcidProduct::orderBy('product_name','ASC')->first();
-        $courses = Course::orderBy('id','ASC')->get();
-        return view('admin.Backend.Sales.sales_form', compact('customers','banks','acidProducts','courses'));
+        $taxTaskProjects = TaxTaskProject::orderBy('id','ASC')->get();
+        return view('admin.Backend.Sales.sales_form', compact('customers','banks','acidProducts','taxTaskProjects'));
     }
 
     public function SalesStore(Request $request)
