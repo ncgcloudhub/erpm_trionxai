@@ -54,6 +54,7 @@ class SalesController extends Controller
             'grand_total' => $request->grandtotal,
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
+            'tax' => $request->tax,
             'user_id' => $admin->id,
             'p_paid_amount' => $request->paidamount,
             'due_amount' => $request->dueamount,
@@ -123,7 +124,7 @@ class SalesController extends Controller
 				'tempDir' => public_path(),
 				'chroot' => public_path(),
 		]);
-		return $pdf->stream('Sale.pdf');
+		return $pdf->download('Sale.pdf');
     }
 
     	// Sale Detailed View 
