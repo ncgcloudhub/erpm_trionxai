@@ -21,6 +21,6 @@ Add In TaxTaskProject table
 =====================================
 26/11/25
 
-Add In TaxTaskProject table
+Add In Sale table
 
 1 - 'tax' float null

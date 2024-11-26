@@ -15,6 +15,10 @@ class SalesItem extends Model
     	return $this->belongsTo(Product::class,'product_id','id');
     }
 
+    public function tax_tasks(){
+    	return $this->belongsTo(TaxTaskProject::class,'product_id','id');
+    }
+
     public function course(){
     	return $this->belongsTo(Course::class,'product_id','id');
     }

@@ -12,7 +12,7 @@ class Sales extends Model
     protected $guarded = [];
 
     public function customer(){
-    	return $this->belongsTo(Customer::class,'customer_id','id');
+    	return $this->belongsTo(Customer::class,'student_id','id');
     }
 
     public function student(){

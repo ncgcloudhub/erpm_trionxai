@@ -33,7 +33,7 @@
 	 <tr class="align-middle text-center text-sm">
 		<td width="5%"><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>
-		<td class="text-sm font-weight-bold mb-0"><a style="color: rgb(16, 71, 189)" href="{{ route('sales.details.view', $item->id) }}">{{ $item->student->student_name }}</a></td>
+		<td class="text-sm font-weight-bold mb-0"><a style="color: rgb(16, 71, 189)" href="{{ route('sales.details.view', $item->id) }}">{{ $item->customer->user_name }}</a></td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->invoice }}</td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
 		<td class="text-sm font-weight-bold mb-0">TK {{ $item->p_paid_amount }} </td>
