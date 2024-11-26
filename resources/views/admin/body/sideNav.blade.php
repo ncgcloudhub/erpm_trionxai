@@ -298,6 +298,16 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
   <span class="sidenav-normal">Manage Customer Ticket</span>
   </a>
 
+  <a class="nav-link {{ ($route == 'sales.view')? 'active':'' }}" href="{{ route('sales.view') }}">
+    <span class="sidenav-mini-icon"></span>
+    <span class="sidenav-normal">Add Invoice</span>
+    </a>
+
+    <a class="nav-link {{ ($route == 'sales.manage')? 'active':'' }}" href="{{ route('sales.manage') }}">
+      <span class="sidenav-mini-icon"></span>
+      <span class="sidenav-normal">Manage Invoice</span>
+      </a>
+
 
 
   </li>
@@ -470,7 +480,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
 
 
-      @if($sale  == true)
+      {{-- @if($sale  == true)
 <li class="nav-item">
 <a data-bs-toggle="collapse" href="#sale" class="nav-link  {{ ($prefix == '/sales')?'active':'' }}" aria-controls="ecommerceExamples" role="button">
 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -500,7 +510,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 </div>
 </li>
 @else
-@endif
+@endif --}}
 
 {{-- Quotation --}}
 {{-- @if($sale  == true)
