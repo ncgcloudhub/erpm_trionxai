@@ -213,6 +213,8 @@ class IncomeTaxController extends Controller
 		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
 		// dd($task->description);
+		// Ensure category is an array
+		$task->category = json_decode($task->category, true); // If stored as JSON
 
         return view('admin.Backend.Tax.taxproject_task_edit',compact('categories','customers','assignedby','assignto','task'));
 	}
@@ -256,6 +258,8 @@ class IncomeTaxController extends Controller
 		'due_amount' => $request->due_amount,
 
       	'subject' => $request->subject,
+		'paymentStatus' => $request->paymentStatus,
+      	'clientType' => $request->clientType,
       	'hyperlinks' => $request->hyperlinks,
       	'priority' => $priority,
 		'status' => $status,
