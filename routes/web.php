@@ -1020,6 +1020,8 @@ Route::prefix('sales')->group(function () {
 
     Route::get('/download/{id}', [SalesController::class, 'DownloadSale'])->name('sale.download.view');
 
+    Route::post('/{id}/send-email', [SalesController::class, 'sendEmail'])->name('sales.send.email');
+
     Route::get('/details/{id}', [SalesController::class, 'DetailSale'])->name('sales.details.view');
 
     Route::get('/edit/{id}', [SalesController::class, 'EditSale'])->name('sales.edit.view');

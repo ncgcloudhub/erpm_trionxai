@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SaleEmail;
 use App\Models\AcidProduct;
 use App\Models\Bank;
 use App\Models\Chalan;
@@ -22,6 +23,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PDF;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class SalesController extends Controller
 {
@@ -128,6 +132,50 @@ class SalesController extends Controller
 		]);
 		return $pdf->download('Sale.pdf');
     }
+
+    public function sendEmail($id)
+{
+    // Fetch the sale and associated data
+    $sale = Sales::with('customer', 'user')->where('id', $id)->first();
+    $saleItem = SalesItem::with('product', 'sales')->where('sales_id', $id)->orderBy('id', 'ASC')->get();
+
+    // Generate the PDF
+    $pdf = PDF::loadView('admin.Backend.Sales.view_sales', compact('sale', 'saleItem'))->setPaper('a4')->setOptions([
+        'tempDir' => public_path(),
+        'chroot' => public_path(),
+    ]);
+
+// Define the PDF path (in the 'sales' directory in storage)
+$pdfPath = storage_path('app/sales/Sale-' . $sale->id . '.pdf');
+
+// Ensure the 'sales' directory exists in the storage folder
+$directory = storage_path('app/sales');
+if (!is_dir($directory)) {
+    mkdir($directory, 0775, true);  // Create directory if not exists
+}
+
+// Save the PDF
+$pdf->save($pdfPath);
+
+// Check if the file has been saved successfully
+if (file_exists($pdfPath)) {
+    \Log::info("PDF saved successfully at: " . $pdfPath);
+} else {
+    \Log::error("Failed to save PDF at: " . $pdfPath);
+}
+ 
+
+
+    // Send the email with the PDF attached
+    $userEmail = $sale->customer->email; // Assuming the user is the recipient
+    Mail::to($userEmail)->send(new SaleEmail($pdfPath));
+
+    // Log for debugging
+    Log::info("Email sent to: " . $userEmail);
+
+    return response()->json(['message' => 'Sale email sent successfully.']);
+}
+
 
     	// Sale Detailed View 
 	    public function DetailSale($id){

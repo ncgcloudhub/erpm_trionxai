@@ -43,6 +43,10 @@
 			<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
 		
 			<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download</a>
+
+			<button type="button" class="btn btn-link text-dark px-2 mb-0" onclick="sendEmail({{ $item->id }})">
+                <i class="fa-solid fa-envelope text-dark me-2" aria-hidden="true"></i>Send Email
+            </button>
 			
 				{{-- <a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.chalan.make', $item->id) }}"><i class="fa fa-exchange text-dark me-2" aria-hidden="true"></i>Chalan</a> --}}
 				{{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
@@ -86,6 +90,31 @@
 
 </div>
 
+<script>
+	// Your sendEmail function definition here
+	function sendEmail(saleId) {
+		console.log('sendEmail function triggered with saleId:', saleId);
+		const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+		fetch(`/sales/${saleId}/send-email`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRF-TOKEN': csrfToken
+			},
+			body: JSON.stringify({ sale_id: saleId })
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('success:', saleId);
+			alert(data.message);
+		})
+		.catch(error => {
+			console.error('Error:', error);
+			console.log('Error:', saleId);
+		});
+	}
+  </script>
+  
 @include('admin.body.footer')
 
 {{-- TRIAL END --}}
@@ -107,6 +136,7 @@
             });
         });
     });
+
 </script>
 
 
