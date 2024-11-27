@@ -63,25 +63,19 @@
 </head>
 <body>
 
-  <table width="100%" style="background: #ffffff; padding:0 0px 0 0px;">
+  <table width="100%" style="background: #ffffff; padding: 0; text-align: center;">
     <tr>
-        <td valign="top">
-          <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          {{-- <br><br> --}}
-          <br>
-          <img width="200px" height="72px" src="assets/img/logo_bandg.png" alt="">
-          {{-- <h2 style="color: #ff7c00; font-size: 26px;"><strong>Bengal Automation.</strong></h2> --}}
-        </td>
-        <td align="right">
-          <pre class="font" style="margin: 2px; line-height: 1;">
-           Trionxai
-            Email: info@trionxai.com
-            {{-- <br> --}}
-            Mob: 88 09678200509 
-          </pre>
-        </td>
+      <td valign="top">
+        <img width="100px" height="80px" src="assets/img/sale_invoice.png" alt="">
+        <div style="margin-top: 10px; font-family: Arial, sans-serif; line-height: 1.5; font-size: 14px;">
+          <strong>STRITS TAX |</strong>
+          <strong>Email:</strong> info@trionxai.com |
+          <strong>Phone:</strong> 88 09678200509
+        </div>
+      </td>
     </tr>
   </table>
+  
 
 
   <table width="100%" style="background:white; padding:2px;"></table>
@@ -90,27 +84,42 @@
         <td>
           <p class="font" style="margin-left: 0px;">
             @if($sale->customer)
+            <strong>Company:</strong> {{ $sale->customer->company_name }}<br>
             <strong>Name:</strong> {{ $sale->customer->user_name }}<br>
             <strong>ID:</strong> {{ $sale->customer->customer_id }}<br>
-            <strong>Company:</strong> {{ $sale->customer->company_name }}<br>
-            <strong>Email:</strong> {{ $sale->customer->email }}<br>
-            <strong>Phone:</strong> {{  $sale->customer->phone }}<br>
             <strong>Address:</strong> {{  $sale->customer->address }}<br>
+            <strong>Phone:</strong> {{  $sale->customer->phone }}<br>
+            <strong>Email:</strong> {{ $sale->customer->email }}<br>
+          
          @else
             <p>Customer information is unavailable.</p>
          @endif
          </p>
+
+         <div class="font" style="margin-top: 12px;">
+          <strong><span style="color: #000000; ;">Invoice:</span> #{{ $sale->invoice}}</strong><br>
+          <strong>Sale Date:</strong> {{ $sale->sale_date }} <br>
+          {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
+          <strong>Made By:</strong> {{ $sale->user->name }} 
+          {{-- <br> --}}
+        </div>
         </td>
         <td align="right">
-          <div class="font" style="margin-top: -12px;">
-            <h3><span style="color: #000000; ;">Invoice:</span> #{{ $sale->invoice}}</h3>
-            <strong>Sale Date:</strong> {{ $sale->sale_date }} <br>
-            {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
-            <strong>Made By:</strong> {{ $sale->user->name }} 
-            {{-- <br> --}}
+          <div class="font" style="margin-top: -12px; text-align: right; display: flex; gap: 10px; justify-content: flex-end;">
+            <!-- Image 1 with description -->
+            <div style="text-align: center; display: inline-block;">
+              <img width="100px" height="80px" src="assets/img/qr.png" alt="">
+              <p style="margin: 5px 0 0; font-size: 12px;">Description 1</p>
+            </div>
+            <!-- Image 2 with description -->
+            <div style="text-align: center; display: inline-block;">
+              <img width="100px" height="80px" src="assets/img/qr.png" alt="">
+              <p style="margin: 5px 0 0; font-size: 12px;">Description 2</p>
+            </div>
           </div>
-          
         </td>
+        
+        
     </tr>
   </table>
   <br/>
@@ -140,13 +149,13 @@
         </td>
         <td class="t" align="center">
             {{-- @if ($item->product->discount_price == NULL) --}}
-            $ {{ $item->rate  }}
+            ${{ $item->rate  }}
             {{-- @else
             $ {{ $item->product->discount_price  }}
             @endif --}}
         </td>
 
-        <td class="t" align="center">{{ $item->amount }}</td>
+        <td class="t" align="center">${{ $item->amount }}</td>
        
       </tr>
       @endforeach
@@ -159,15 +168,15 @@
         <td align="right" >
          
           {{-- <hr>   --}}
-          <h3><span style="color: #000000; ;">Sub Total </span><span style="font-size: 12px">${{ $sale->sub_total }}</span></h3>
+          <h3><span style="color: #000000; ;">Sub Total: </span><span style="font-size: 12px">${{ $sale->sub_total }}</span></h3>
             @if ($sale->discount_per == NULL && $sale->discount_flat == NULL)
             @elseif($sale->discount_per == NULL)
-            <h3><span style="color:  #000000; ; font-size: 12px;">Discount </span>$ {{ $sale->discount_flat }}</h3>
+            <h3><span style="color:  #000000; ; font-size: 12px;">Discount: </span>${{ $sale->discount_flat }}</h3>
             @else
-            <h3><span style="color:  #000000; ; font-size: 12px;">Discount </span>{{ $sale->discount_per }}%</h3>
+            <h3><span style="color:  #000000; ; font-size: 12px;">Discount: </span>{{ $sale->discount_per }}%</h3>
             @endif
             <h3><span style="color: #000000; ;">Tax </span><span style="font-size: 12px">{{ $sale->tax }}%</span></h3>
-          <h3><span style="color:  #000000; ; font-size: 12px;">Grand Total </span><span style="font-size: 12px">$ {{ $sale->grand_total }}</span></h3>
+          <h3><span style="color:  #000000; ; font-size: 12px;">Grand Total: </span><span style="font-size: 12px">${{ $sale->grand_total }}</span></h3>
           
           {{-- <h3><span style="color: #26810f;">Total Tax </span> <span style="font-size: 12px"> $ 0.00</span></h3> --}}
 
@@ -175,11 +184,11 @@
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
             {{-- <hr> --}}
             @if ( $sale->p_paid_amount == null)
-              <h3><span style="color:  #000000; ;">Paid Amount</span> <span style="font-size: 12px"> $ 0</span></h3>
-              <h3><span style="color:  #000000; ;">Due Amount</span> <span style="font-size: 15px"> $ {{ $sale->grand_total }}</span></h3>
+              <h3><span style="color:  #000000; ;">Paid Amount:</span> <span style="font-size: 12px"> $0</span></h3>
+              <h3><span style="color:  #000000; ;">Due Amount:</span> <span style="font-size: 15px"> ${{ $sale->grand_total }}</span></h3>
             @else
-              <h3><span style="color:  #000000; ;">Paid Amount</span> <span style="font-size: 12px"> $ {{$sale->p_paid_amount}}</span></h3>
-              <h3><span style="color:  #000000; ;">Due Amount</span> <span style="font-size: 15px"> $ {{ $sale->due_amount }}</span></h3>
+              <h3><span style="color:  #000000; ;">Paid Amount:</span> <span style="font-size: 12px"> ${{$sale->p_paid_amount}}</span></h3>
+              <h3><span style="color:  #000000; ;">Due Amount:</span> <span style="font-size: 15px"> ${{ $sale->due_amount }}</span></h3>
             @endif
           
         </td>
