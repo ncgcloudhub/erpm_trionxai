@@ -17,7 +17,7 @@
 						<div class="col-3"><label  class="text-uppercase text-dark text-xs font-weight-bold" for="mySelect">Customer</label></div>
 						<div class="col">
 							<select id="mySelect" name="customer_id" class="js-example-basic-single select2 form-control" required="">
-							<option value="" selected="" disabled="">{{$sale->student->student_name}}</option>
+							<option value="" selected="" disabled="">{{$sale->customer->user_name}}</option>
 							{{-- @foreach($customers as $customer)
 									 <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>	
 							@endforeach --}}
@@ -28,15 +28,13 @@
 	
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Address</label></div>
-							<div class="col"><input class="form-control" value="{{$sale->student->address
-							}}" type="text" id="address" name="address" required="">
+							<div class="col"><input class="form-control" value="{{$sale->customer->address}}" type="text" id="address" name="address" required="">
 						</div>
 							
 						</div>
 						<div class="row mb-3">
 							<div class="col-3"><label class="text-uppercase text-dark text-xs font-weight-bold">Phone</label></div>
-							<div class="col"><input value="{{$sale->student->phone
-							}}" class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
+							<div class="col"><input value="{{$sale->customer->phone}}" class="form-control mb-3" type="text" id="phone" name="phone" required=""></div>
 							
 						</div>
 	
@@ -70,7 +68,7 @@
 				<table id="table_field" class="table align-items-center mb-0">
 				<thead>
 					  <tr>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Course Information</th>
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ticket ID</th>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
 					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate</th>
@@ -85,7 +83,7 @@
 				<tr>
 					<td>
 						<select id="item" name="item[]" class="form-control" required="" >
-							<option value="{{$item->product_id}}" selected="">{{$item->course->course_name}}</option>
+							<option value="{{$item->product_id}}" selected="">{{$item->tax_tasks->task_id}}</option>
 							{{-- @foreach($products as $product)
 								 <option value="{{ $product->id }}">{{ $product->product_name }}</option>	
 							@endforeach --}}

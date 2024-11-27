@@ -133,7 +133,7 @@ class SalesController extends Controller
             $sale = Sales::findOrFail($id);
             $saleItem = SalesItem::where('sales_id',$id)->get();
             $paysaleItem = SalesPaymentItem::where('sale_id',$id)->get();
-            $customers = Student::orderBy('student_name','ASC')->get();
+            $customers = Customer::orderBy('user_name','ASC')->get();
             $products = Course::orderBy('course_name','ASC')->get();
 
             // dd($paysaleItem);
