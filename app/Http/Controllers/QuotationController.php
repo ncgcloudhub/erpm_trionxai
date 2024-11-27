@@ -270,7 +270,9 @@ class QuotationController extends Controller
         $selectedOption = $request->input('option');
         $data = TaxTaskProject::findOrFail($selectedOption);
         
-        return response()->json(['total_pay' => $data->total_pay]);
+        return response()->json([
+        'total_pay' => $data->total_pay,
+        'subject' => $data->subject]);
     
     }
 

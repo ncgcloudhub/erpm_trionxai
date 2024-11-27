@@ -68,6 +68,7 @@ class SalesController extends Controller
         $qty = $request->input('qnty');
         $rate = $request->input('rate');
         $amount = $request->input('amount');
+        $description = $request->input('descrip');
 
         foreach ($item as $key => $value) {
 
@@ -81,6 +82,7 @@ class SalesController extends Controller
                 'qty' => $qty[$key],
                 'rate' => $rate[$key],
                 'amount' => $amount[$key],
+                'description' => $description[$key],
             ]);
         }
        

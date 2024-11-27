@@ -76,6 +76,7 @@
 				<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Item Information</th>
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Description</th>
 					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
 					
@@ -100,6 +101,7 @@
 								@foreach($taxTaskProjects as $task)<option value="{{ $task->id }}">{{ $task->task_id }}({{ $task->customer->user_name }})</option>@endforeach
 							</select>
 						</td>
+						  <td><input class="form-control descrip" type="text" id="descrip" name="descrip[]" required=""></td>
 						  <td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td>
 						  <td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td>
 						  <td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td>
@@ -239,7 +241,7 @@
   
   <script>
 	$(document).ready(function(){
-		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Task</option>@foreach($taxTaskProjects as $task)<option value="{{ $task->id }}">{{ $task->task_id }}({{ $task->customer->user_name }})</option>@endforeach</select></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
+		var html='<tr><td><select id="item" name="item[]" class="js-example-basic-single select2 form-control" required="" ><option value="" selected="" disabled="">Select Task</option>@foreach($taxTaskProjects as $task)<option value="{{ $task->id }}">{{ $task->task_id }}({{ $task->customer->user_name }})</option>@endforeach</select></td><td><input class="form-control descrip" type="text" id="descrip" name="descrip[]" required=""></td><td><input class="form-control qnty" type="number" id="qnty" name="qnty[]" required=""></td><td><input class="form-control rate" type="number" id="rate" name="rate[]" required=""></td><td><input class="form-control total" type="number" id="amount" name="amount[]" value="0" readonly></td><td><a name="remove" id="remove" class="btn bg-gradient-danger mb-0"><i class="fas fa-minus" aria-hidden="true"></i></a></td></tr>';
 	
 		// var x =1;
 	  $("#add").click(function(){
@@ -468,6 +470,7 @@ function duePrice() {
         var selectedOption = $(this).val();
         $.get('/geta-data-product', { option: selectedOption }, function (data) {
             $("#rate").val(data.total_pay);
+            $("#descrip").val(data.subject);
         })
         .fail(function (error) {
             console.error("Error in AJAX request:", error);
@@ -477,10 +480,12 @@ function duePrice() {
 	$("#table_field tbody").on("change", "select[name='item[]']", function () {
 		var product_id = $(this).val();
 		var rate = $(this).closest("tr").find(".rate");
+		var descrip = $(this).closest("tr").find(".descrip");
 		$.get('/geta-data-product', { option: product_id }, function(data) {
         // update the field with the response data
 		
 			rate.val(data.total_pay);
+			descrip.val(data.subject);
 			
       });
 		// price.val(product_id);

@@ -24,3 +24,10 @@ Add In TaxTaskProject table
 Add In Sale table
 
 1 - 'tax' float null
+
+=====================================
+27/11/25
+
+Add In SaleItems table
+
+1 - 'description' text null

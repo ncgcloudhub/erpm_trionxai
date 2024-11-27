@@ -143,7 +143,7 @@
         <td class="t" align="center">
           {{ $item->tax_tasks->task_id }}
         </td>
-        <td class="t" align="center"> {!! $item->tax_tasks->description !!}</td>
+        <td class="t" align="center"> {!! $item->description !!}</td>
         <td class="t" align="center">
             {{ $item->qty }}
         </td>
