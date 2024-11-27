@@ -3,6 +3,7 @@
 
  {{-- TRIAL START --}}
  <div class="container-fluid">
+	<a href="{{ route('sales.view') }}" class="btn bg-gradient-success">Add Invoice</a>
 	<div class="row mt-4">
 	  <div class="col-lg-12 mb-lg-0 mb-4">
 		<div class="card">

@@ -54,7 +54,7 @@
 						<div class="col"><input class="form-control mb-3" type="text" id="details" name="details"></div>
 					</div> --}}
 					<div class="row mb-3">
-						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold" for="details">Details</label></div>
+						<div class="col-3"> <label class="text-uppercase text-dark text-xs font-weight-bold" for="details">Additional Info</label></div>
 						<div class="col"><textarea class="form-control" name="details" id="details" rows="1"></textarea></div>
 					</div>
 
