@@ -121,60 +121,58 @@ class SalesController extends Controller
 
     }
 
-    public function DownloadSale ($id){
-                    
-        $sale = Sales::with('customer','user')->where('id',$id)->first();
-    	$saleItem = SalesItem::with('product','sales')->where('sales_id',$id)->orderBy('id','ASC')->get();
-
-		$pdf = PDF::loadView('admin.Backend.Sales.view_sales',compact('sale','saleItem'))->setPaper('a4')->setOptions([
-				'tempDir' => public_path(),
-				'chroot' => public_path(),
-		]);
-		return $pdf->download('Sale.pdf');
-    }
-
     public function sendEmail($id)
-{
-    // Fetch the sale and associated data
-    $sale = Sales::with('customer', 'user')->where('id', $id)->first();
-    $saleItem = SalesItem::with('product', 'sales')->where('sales_id', $id)->orderBy('id', 'ASC')->get();
+    {
+        try {
+            // Fetch the sale and associated data
+            $sale = Sales::with('customer', 'user')->findOrFail($id);
+            $saleItem = SalesItem::with('product', 'sales')
+                ->where('sales_id', $id)
+                ->orderBy('id', 'ASC')
+                ->get();
+    
+            // Generate the PDF
+            $pdf = PDF::loadView('admin.Backend.Sales.view_sales', compact('sale', 'saleItem'))
+                ->setPaper('a4')
+                ->setOptions([
+                    'tempDir' => public_path(),
+                    'chroot' => public_path(),
+                ]);
+    
+            $customer_name = $sale->customer->user_name;
+            $file_invoice = $sale->invoice;
+            // Define the PDF path (in the 'sales' directory in storage)
+            $pdfPath = storage_path('app/sales/'.$customer_name .'-'. $file_invoice . '.pdf');
+           
+            $pdfPath = str_replace('\\', '/', $pdfPath);
 
-    // Generate the PDF
-    $pdf = PDF::loadView('admin.Backend.Sales.view_sales', compact('sale', 'saleItem'))->setPaper('a4')->setOptions([
-        'tempDir' => public_path(),
-        'chroot' => public_path(),
-    ]);
+            // Ensure the 'sales' directory exists in the storage folder
+            $directory = dirname($pdfPath);
+            if (!is_dir($directory)) {
+                mkdir($directory, 0775, true); // Create directory if not exists
+            }
+    
+            // Save the PDF
+            $pdf->save($pdfPath);
+    
 
-// Define the PDF path (in the 'sales' directory in storage)
-$pdfPath = storage_path('app/sales/Sale-' . $sale->id . '.pdf');
-
-// Ensure the 'sales' directory exists in the storage folder
-$directory = storage_path('app/sales');
-if (!is_dir($directory)) {
-    mkdir($directory, 0775, true);  // Create directory if not exists
-}
-
-// Save the PDF
-$pdf->save($pdfPath);
-
-// Check if the file has been saved successfully
-if (file_exists($pdfPath)) {
-    \Log::info("PDF saved successfully at: " . $pdfPath);
-} else {
-    \Log::error("Failed to save PDF at: " . $pdfPath);
-}
- 
-
-
-    // Send the email with the PDF attached
-    $userEmail = $sale->customer->email; // Assuming the user is the recipient
-    Mail::to($userEmail)->send(new SaleEmail($pdfPath));
-
-    // Log for debugging
-    Log::info("Email sent to: " . $userEmail);
-
-    return response()->json(['message' => 'Sale email sent successfully.']);
-}
+            // Check if the file exists
+            if (!file_exists($pdfPath)) {
+                Log::error("PDF not found at: " . $pdfPath);
+                return response()->json(['error' => 'PDF not found.'], 500);
+            }
+            // Send the email with the PDF attached
+            $userEmail = $sale->customer->email;
+            Mail::to($userEmail)->send(new SaleEmail($pdfPath));
+    
+            Log::info("Email sent to: " . $userEmail);
+            return response()->json(['message' => 'Sale email sent successfully.']);
+        } catch (\Exception $e) {
+            Log::error("Error sending sale email: " . $e->getMessage());
+            return response()->json(['error' => 'Failed to send email.'], 500);
+        }
+    }
+    
 
 
     	// Sale Detailed View 
