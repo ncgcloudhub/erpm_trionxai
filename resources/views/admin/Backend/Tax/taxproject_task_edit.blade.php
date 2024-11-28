@@ -269,6 +269,9 @@
 											<option value="Get Extension" @if($task->status == "Get Extension") selected @endif>Get Extension</option>
 											<option value="Estimates" @if($task->status == "Estimates") selected @endif>Estimates</option>
 											<option value="Done" @if($task->status == "Done") selected @endif>Done</option>
+											@if(!in_array($task->status, ['Not Started', 'In Progress', 'In-Progress - Missing Docs', 'Not-In-Drake', 'Folder Created Only', 'Data Entry Completed', 'Get Extension', 'Estimates', 'Done'])) 
+												<option value="{{ $task->status }}" selected>{{ $task->status }}</option>
+											@endif
 											<option value="other">Add an Item</option>
 										</select>
 										<input type="text" name="custom_status" class="form-control mt-2" id="statusInput" placeholder="Enter Status" style="{{ $task->status && !in_array($task->status, ['Not Started', 'In Progress', 'In-Progress - Missing Docs', 'Not-In-Drake', 'Folder Created Only', 'Data Entry Completed', 'Get Extension', 'Estimates', 'Done']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->status, ['Not Started', 'In Progress', 'In-Progress - Missing Docs', 'Not-In-Drake', 'Folder Created Only', 'Data Entry Completed', 'Get Extension', 'Estimates', 'Done']) ? $task->status : '' }}">
@@ -280,7 +283,7 @@
 									<h6>Tax Year<span class="text-danger">*</span></h6>
 									<div class="controls">
 										<select name="tax_year" class="form-control" id="taxYearSelect" onchange="toggleInputField(this, 'taxYearInput')">
-											<option value="" @if($task->tax_year == "") selected @endif>Select an Option</option>
+											<option value="" disabled>Select an Option</option>
 											<option value="TAX YEAR 2019" @if($task->tax_year == "TAX YEAR 2019") selected @endif>TAX YEAR 2019</option>
 											<option value="TAX YEAR 2020" @if($task->tax_year == "TAX YEAR 2020") selected @endif>TAX YEAR 2020</option>
 											<option value="TAX YEAR 2021" @if($task->tax_year == "TAX YEAR 2021") selected @endif>TAX YEAR 2021</option>
@@ -292,6 +295,9 @@
 											<option value="Tax Amendment 2022" @if($task->tax_year == "Tax Amendment 2022") selected @endif>Tax Amendment 2022</option>
 											<option value="Tax Amendment 2023" @if($task->tax_year == "Tax Amendment 2023") selected @endif>Tax Amendment 2023</option>
 											<option value="Tax Amendment 2024" @if($task->tax_year == "Tax Amendment 2024") selected @endif>Tax Amendment 2024</option>
+											@if(!in_array($task->tax_year, ['TAX YEAR 2019', 'TAX YEAR 2020', 'TAX YEAR 2021', 'TAX YEAR 2022', 'TAX YEAR 2023', 'TAX YEAR 2024', 'Tax Amendment 2020', 'Tax Amendment 2021', 'Tax Amendment 2022', 'Tax Amendment 2023', 'Tax Amendment 2024']))
+												<option value="{{ $task->tax_year }}" selected>{{ $task->tax_year }}</option>
+											@endif
 											<option value="other">Add an Item</option>
 										</select>
 										<input type="text" name="custom_tax_year" class="form-control mt-2" id="taxYearInput" placeholder="Enter Tax Year" style="{{ $task->tax_year && !in_array($task->tax_year, ['TAX YEAR 2019', 'TAX YEAR 2020', 'TAX YEAR 2021', 'TAX YEAR 2022', 'TAX YEAR 2023', 'TAX YEAR 2024', 'Tax Amendment 2020', 'Tax Amendment 2021', 'Tax Amendment 2022', 'Tax Amendment 2023', 'Tax Amendment 2024']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->tax_year, ['TAX YEAR 2019', 'TAX YEAR 2020', 'TAX YEAR 2021', 'TAX YEAR 2022', 'TAX YEAR 2023', 'TAX YEAR 2024', 'Tax Amendment 2020', 'Tax Amendment 2021', 'Tax Amendment 2022', 'Tax Amendment 2023', 'Tax Amendment 2024']) ? $task->tax_year : '' }}">
@@ -303,13 +309,16 @@
 									<h6>eSignature</h6>
 									<div class="controls">
 										<select name="eSignature" class="form-control" id="eSignatureSelect" onchange="toggleInputField(this, 'eSignatureInput')">
-											<option value="" @if($task->eSignature == "") selected @endif>Select an Option</option>
+											<option value="" disabled>Select an Option</option>
 											<option value="Not Started" @if($task->eSignature == "Not Started") selected @endif>Not Started</option>
 											<option value="SENT" @if($task->eSignature == "SENT") selected @endif>SENT</option>
 											<option value="READY FOR eSIG" @if($task->eSignature == "READY FOR eSIG") selected @endif>READY FOR eSIG</option>
 											<option value="SIGNED" @if($task->eSignature == "SIGNED") selected @endif>SIGNED</option>
 											<option value="PENDING" @if($task->eSignature == "PENDING") selected @endif>PENDING</option>
 											<option value="In Person Sign" @if($task->eSignature == "In Person Sign") selected @endif>In Person Sign</option>
+											@if(!in_array($task->eSignature, ['Not Started', 'SENT', 'READY FOR eSIG', 'SIGNED', 'PENDING', 'In Person Sign']))
+												<option value="{{ $task->eSignature }}" selected>{{ $task->eSignature }}</option>
+											@endif
 											<option value="other">Add an Item</option>
 										</select>
 										<input type="text" name="custom_eSignature" class="form-control mt-2" id="eSignatureInput" placeholder="Enter eSignature" style="{{ $task->eSignature && !in_array($task->eSignature, ['Not Started', 'SENT', 'READY FOR eSIG', 'SIGNED', 'PENDING', 'In Person Sign']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->eSignature, ['Not Started', 'SENT', 'READY FOR eSIG', 'SIGNED', 'PENDING', 'In Person Sign']) ? $task->eSignature : '' }}">
@@ -321,17 +330,23 @@
 									<h6>EF Status</h6>
 									<div class="controls">
 										<select name="ef_status" class="form-control" id="efStatusSelect" onchange="toggleInputField(this, 'efStatusInput')">
-											<option value="" @if($task->ef_status == "") selected @endif>Select an Option</option>
+											<option value="" disabled>Select an Option</option>
 											<option value="DONE" @if($task->ef_status == "DONE") selected @endif>DONE</option>
 											<option value="READY 2 EFILE" @if($task->ef_status == "READY 2 EFILE") selected @endif>READY 2 EFILE</option>
 											<option value="IN PROGRESS" @if($task->ef_status == "IN PROGRESS") selected @endif>IN PROGRESS</option>
 											<option value="PENDING CLIENT" @if($task->ef_status == "PENDING CLIENT") selected @endif>PENDING CLIENT</option>
 											<option value="REJECTED" @if($task->ef_status == "REJECTED") selected @endif>REJECTED</option>
+											@if(!in_array($task->ef_status, ['DONE', 'READY 2 EFILE', 'IN PROGRESS', 'PENDING CLIENT', 'REJECTED']))
+												<option value="{{ $task->ef_status }}" selected>{{ $task->ef_status }}</option>
+											@endif
 											<option value="other">Add an Item</option>
 										</select>
 										<input type="text" name="custom_ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="{{ $task->ef_status && !in_array($task->ef_status, ['DONE', 'READY 2 EFILE', 'IN PROGRESS', 'PENDING CLIENT', 'REJECTED']) ? 'display:block;' : 'display:none;' }}" value="{{ !in_array($task->ef_status, ['DONE', 'READY 2 EFILE', 'IN PROGRESS', 'PENDING CLIENT', 'REJECTED']) ? $task->ef_status : '' }}">
 									</div>
 								</div>
+
+								
+								@if(Auth::guard('admin')->user()->type=="1")
 
 								<!-- paymentStatus Field -->
 								<div class="form-group">
@@ -345,12 +360,11 @@
 									</div>
 								</div>
 
-
 								<!-- Total Pay Field -->
 								<div class="form-group">
 									<label class="text-uppercase text-dark text-xs font-weight-bold">Total Pay <span class="text-danger">*</span></label>
 									<div class="controls">
-										<input type="number" value="{{$task->total_pay}}" name="total_pay" id="total-pay" class="form-control" required oninput="calculateDueAmount()">
+										<input type="number" value="{{$task->total_pay}}" name="total_pay" id="total-pay" class="form-control" oninput="calculateDueAmount()">
 									</div>
 								</div>
 								
@@ -358,7 +372,7 @@
 								<div class="form-group">
 									<label class="text-uppercase text-dark text-xs font-weight-bold">Paid Amount <span class="text-danger">*</span></label>
 									<div class="controls">
-										<input type="number" value="{{$task->paid_amount}}" name="paid_amount" id="paid-amount" class="form-control" required oninput="calculateDueAmount()">
+										<input type="number" value="{{$task->paid_amount}}" name="paid_amount" id="paid-amount" class="form-control" oninput="calculateDueAmount()">
 									</div>
 								</div>
 								
@@ -369,16 +383,8 @@
 										<input type="number" value="{{$task->due_amount}}" name="due_amount" id="due-amount" class="form-control" readonly>
 									</div>
 								</div>
+								@endif
 								
-						
-						{{-- <div class="form-group">
-							<h6>Image<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="file" name="product_img" class="form-control" >
-					
-						   </div>
-						</div> --}}
-						
 						</div>
 			
 			   </div> <!-- end row  -->

@@ -256,7 +256,7 @@
 								<option value="Minor">Minor</option>
 								<option value="other">Add an Item</option>
 							</select>
-							<input type="text" name="priority" class="form-control mt-2" id="priorityInput" placeholder="Enter Priority" style="display:none;">
+							<input type="text" name="custom_priority" class="form-control mt-2" id="priorityInput" placeholder="Enter Priority" style="display:none;">
 						</div>
 					</div>
 
@@ -277,7 +277,7 @@
 								<option value="Done">Done</option>
 								<option value="other">Add an Item</option>
 							</select>
-							<input type="text" name="status" class="form-control mt-2" id="statusInput" placeholder="Enter Status" style="display:none;">
+							<input type="text" name="custom_status" class="form-control mt-2" id="statusInput" placeholder="Enter Status" style="display:none;">
 						</div>
 					</div>
 
@@ -303,7 +303,7 @@
 							</select>
 					
 							<!-- Hidden input field for manual entry, displayed when 'Other' is selected -->
-							<input type="text" name="tax_year" class="form-control mt-2" id="taxYearInput" placeholder="Enter Tax Year" style="display:none;">
+							<input type="text" name="custom_tax_year" class="form-control mt-2" id="taxYearInput" placeholder="Enter Tax Year" style="display:none;">
 						</div>
 					</div>
 
@@ -321,7 +321,7 @@
 								<option value="In Person Sign">In Person Sign</option>
 								<option value="other">Add an Item</option>
 							</select>
-							<input type="text" name="eSignature" class="form-control mt-2" id="eSignatureInput" placeholder="Enter eSignature" style="display:none;">
+							<input type="text" name="custom_eSignature" class="form-control mt-2" id="eSignatureInput" placeholder="Enter eSignature" style="display:none;">
 						</div>
 					</div>
 
@@ -340,7 +340,7 @@
 								<option value="REJECTED">REJECTED</option>
 								<option value="other">Add an Item</option>
 							</select>
-							<input type="text" name="ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="display:none;">
+							<input type="text" name="custom_ef_status" class="form-control mt-2" id="efStatusInput" placeholder="Enter EF Status" style="display:none;">
 						</div>
 					</div>
 
@@ -487,12 +487,12 @@
 		if (select.value === "other") {
 			inputField.style.display = "block";
 			inputField.required = true;
-			select.name = ""; // Clear the dropdown name to avoid conflicts
+			
 		} else {
 			inputField.style.display = "none";
 			inputField.required = false;
 			inputField.value = ""; // Reset the input field
-			select.name = inputField.name; // Restore dropdown name
+			
 		}
 	}
 </script>

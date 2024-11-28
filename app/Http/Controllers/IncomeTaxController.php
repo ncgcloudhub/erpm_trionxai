@@ -146,6 +146,14 @@ class IncomeTaxController extends Controller
 
 		// dd($request);
 		$logged_in_user_id = Auth::guard('admin')->user();
+		
+		// Check if the custom fields have a value, fallback to default fields
+		$priority = $request->custom_priority ?? $request->priority;
+		$status = $request->custom_status ?? $request->status;
+		$tax_year = $request->custom_tax_year ?? $request->tax_year;
+		$eSignature = $request->custom_eSignature ?? $request->eSignature;
+		$ef_status = $request->custom_ef_status ?? $request->ef_status;
+
 
 		// Get the current date and time
 		$currentDateTime = now();
@@ -175,11 +183,11 @@ class IncomeTaxController extends Controller
       	'paymentStatus' => $request->paymentStatus,
       	'clientType' => $request->clientType,
       	'hyperlinks' => $request->hyperlinks,
-      	'priority' => $request->priority,
-		'status' => $request->status,
-		'tax_year' => $request->tax_year,
-		'eSignature' => $request->eSignature,
-		'ef_status' => $request->ef_status,
+      	'priority' => $priority,
+		'status' => $status,
+		'tax_year' => $tax_year,
+		'eSignature' => $eSignature,
+		'ef_status' => $ef_status,
 		'logged_in_user' => $logged_in_user_id->id,
 
       	'created_at' => Carbon::now(),   

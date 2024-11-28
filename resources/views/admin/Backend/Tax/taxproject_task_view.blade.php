@@ -350,17 +350,21 @@
 							 </div>
 						</div>
 
+						
+
+					@if(Auth::guard('admin')->user()->type=="1")
+
 						<!-- paymentStatus Field -->
-					<div class="form-group">
-						<h6>Payment Status</h6>
-						<div class="controls">
-							<select name="paymentStatus" class="form-control" id="paymentStatus" @readonly(true)>
-								<option value="{{$task->paymentStatus}}" selected="">{{$task->paymentStatus}}</option>
-								<option value="Paid">Paid</option>
-								<option value="Unpaid">Unpaid</option>
-							</select>
+						<div class="form-group">
+							<h6>Payment Status</h6>
+							<div class="controls">
+								<select name="paymentStatus" class="form-control" id="paymentStatus" @readonly(true)>
+									<option value="{{$task->paymentStatus}}" selected="">{{$task->paymentStatus}}</option>
+									<option value="Paid">Paid</option>
+									<option value="Unpaid">Unpaid</option>
+								</select>
+							</div>
 						</div>
-					</div>
 
 						<!-- Total Pay Field -->
 						<div class="form-group">
@@ -385,17 +389,8 @@
 								<input type="number" value="{{$task->due_amount}}" name="due_amount" id="due-amount" class="form-control" readonly>
 							</div>
 						</div>
+						@endif
 
-
-						
-						{{-- <div class="form-group">
-							<h6>Image<span class="text-danger">*</span></h6>
-							<div class="controls">
-								<input type="file" name="product_img" class="form-control" >
-					
-						   </div>
-						</div> --}}
-						
 						</div>
 			
 			   </div> <!-- end row  -->
