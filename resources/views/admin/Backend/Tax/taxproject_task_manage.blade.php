@@ -188,22 +188,22 @@
 		// Update the index based on your table structure
 		$('#statusFilter').on('change', function () {
 			// Column index for Status is 5 (zero-based)
-			table.column(7).search($(this).val()).draw();
+			table.column(8).search($(this).val()).draw();
 		});
 		
 		$('#eSignatureFilter').on('change', function () {
 			// Column index for eSignature is 6 (zero-based)
-			table.column(8).search($(this).val()).draw();
+			table.column(10).search($(this).val()).draw();
 		});
 		
 		$('#efstatusFilter').on('change', function () {
 			// Column index for EF STATUS is 7 (zero-based)
-			table.column(9).search($(this).val()).draw();
+			table.column(11).search($(this).val()).draw();
 		});
 		
 		$('#projectFilter').on('change', function () {
 			// Column index for Project Name is 3 (zero-based)
-			table.column(3).search($(this).val()).draw();
+			table.column(4).search($(this).val()).draw();
 		});
 	});
 </script>
