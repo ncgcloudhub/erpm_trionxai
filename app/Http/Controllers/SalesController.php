@@ -121,6 +121,17 @@ class SalesController extends Controller
 
     }
 
+    public function DownloadSale ($id){
+                    
+        $sale = Sales::with('customer','user')->where('id',$id)->first();
+    	$saleItem = SalesItem::with('product','sales')->where('sales_id',$id)->orderBy('id','ASC')->get();
+		$pdf = PDF::loadView('admin.Backend.Sales.view_sales',compact('sale','saleItem'))->setPaper('a4')->setOptions([
+				'tempDir' => public_path(),
+				'chroot' => public_path(),
+		]);
+		return $pdf->download('Sale.pdf');
+    }
+
     public function sendEmail($id)
     {
         try {

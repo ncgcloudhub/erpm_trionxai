@@ -112,13 +112,13 @@
 							</div>
 						</div>
 						<div class="row mb-2">
-							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (%)</label></div>
+							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount(%)</label></div>
 							<div class="col"><input  value="{{$sale->discount_per}}" class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
 					
 						<div class="row mb-2">
-							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (TK)</label></div>
+							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount($)</label></div>
 							<div class="col"><input value="{{$sale->discount_flat}}" class="dflat form-control" name="dflat" type="number" id="discount-flat">
 							</div>
 						</div>

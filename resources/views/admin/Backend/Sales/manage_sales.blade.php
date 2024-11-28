@@ -17,7 +17,7 @@
 										<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Sl.</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Date</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Student</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Customer</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Invoice No.</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Grand Total</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Paid</th>
@@ -36,8 +36,8 @@
         <td><p class="mb-0 text-sm">{{ $item->sale_date }}</p></td>
 		<td class="text-sm font-weight-bold mb-0"><a style="color: rgb(16, 71, 189)" href="{{ route('sales.details.view', $item->id) }}">{{ $item->customer->user_name }}</a></td>
 		<td class="text-sm font-weight-bold mb-0">{{ $item->invoice }}</td>
-		<td class="text-sm font-weight-bold mb-0">TK {{ $item->grand_total }} </td>
-		<td class="text-sm font-weight-bold mb-0">TK {{ $item->p_paid_amount }} </td>
+		<td class="text-sm font-weight-bold mb-0">${{ $item->grand_total }} </td>
+		<td class="text-sm font-weight-bold mb-0">${{ $item->p_paid_amount }} </td>
 		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td>
 		<td width="30%">
 			<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>

@@ -75,7 +75,7 @@
 				<table id="table_field" class="table align-items-center mb-0">
 				<thead>
 					  <tr>
-						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Item Information</th>
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ticket Information</th>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Description</th>
 					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
@@ -124,7 +124,7 @@
 						</div>
 						
 						<div class="row mb-2">
-							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (%)</label></div>
+							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount(%)</label></div>
 							<div class="col"><input class="dper form-control" type="number" id="discount-percentage" name="dper">
 							</div>
 						</div>
@@ -134,7 +134,7 @@
 							</div>
 						</div> --}}
 						<div class="row mb-2">
-							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount (TK)</label></div>
+							<div class="col-4"><label  class="text-uppercase text-dark text-xs font-weight-bold ">Discount($)</label></div>
 							<div class="col"><input class="dflat form-control" name="dflat" type="number" id="discount-flat">
 							</div>
 						</div>
