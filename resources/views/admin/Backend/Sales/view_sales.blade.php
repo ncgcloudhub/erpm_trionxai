@@ -68,9 +68,9 @@
       <td valign="top">
         <img width="100px" height="80px" src="assets/img/sale_invoice.png" alt="">
         <div style="margin-top: 10px; font-family: Arial, sans-serif; line-height: 1.5; font-size: 14px;">
-          <strong>STRITS TAX |</strong>
-          <strong>Email:</strong> info@trionxai.com |
-          <strong>Phone:</strong> 88 09678200509
+          <strong>STRITS TAX LLC |</strong>
+          <strong>Email:</strong> taxhelp@stritstax.com |
+          <strong>Phone:</strong> 929-491-0123 / 862-419-3849
         </div>
       </td>
     </tr>
