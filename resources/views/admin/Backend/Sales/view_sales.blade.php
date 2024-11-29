@@ -127,11 +127,11 @@
   <table class="t" width="100%">
     <thead style="background-color: #000000; color:#FFFFFF;">
       <tr class="font">
-        <th class="t">Ticket.</th>
-        <th class="t">Description</th>
-        <th class="t">Qty</th>
-        <th class="t">Rate</th>
-        <th class="t">Total </th>
+        <th class="t" style="width: 20%">Ticket.</th>
+        <th class="t" style="width: 50%">Description</th>
+        <th class="t" style="width: 10%">Qty</th>
+        <th class="t" style="width: 10%">Rate</th>
+        <th class="t" style="width: 10%">Total </th>
       </tr>
     </thead>
     <tbody>
