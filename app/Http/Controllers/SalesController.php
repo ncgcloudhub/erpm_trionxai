@@ -54,7 +54,7 @@ class SalesController extends Controller
             'sale_date' => $request->saleDate,
             'details' => $request->details,
             'sub_total' => $request->subtotal,
-            'invoice' => 'TXAI'.date('Y').mt_rand(10000, 99999),
+            'invoice' => 'INV'.date('Y').mt_rand(10000, 99999),
             'grand_total' => $request->grandtotal,
             'discount_flat' => $request->dflat,
             'discount_per' => $request->dper,
