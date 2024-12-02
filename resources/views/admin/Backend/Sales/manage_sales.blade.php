@@ -61,11 +61,11 @@
 				</a>
 				@endif --}}
 		
-				@if ($item->active_inactive == 1)
+				{{-- @if ($item->active_inactive == 1)
 					<a class="btn btn-link text-danger text-gradient px-2 mb-0" href="{{ route('sale.inactive',$item->id) }}"><i class="fa fa-thumbs-o-down text-dark me-2"></i>In Active</a>
 				@else
 					<a class="btn btn-link text-info text-gradient px-2 mb-0" href="{{ route('sale.active',$item->id) }}"><i class="fa fa-thumbs-o-up text-dark me-2"></i>Active</a>
-				@endif
+				@endif --}}
 				
 			{{-- @endif --}}
 
