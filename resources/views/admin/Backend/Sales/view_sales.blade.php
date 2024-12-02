@@ -105,16 +105,16 @@
         </div>
         </td>
         <td align="right">
-          <div class="font" style="margin-top: -12px; text-align: right; display: flex; gap: 10px; justify-content: flex-end;">
+          <div class="font" style="margin-top: 40px; text-align: right; display: flex; gap: 10px; justify-content: flex-end;">
             <!-- Image 1 with description -->
             <div style="text-align: center; display: inline-block;">
-              <img width="100px" height="80px" src="assets/img/qr.png" alt="">
-              <p style="margin: 5px 0 0; font-size: 12px;">Description 1</p>
+              <img width="150px" height="150px" src="assets/img/qrzelle.png" alt="">
+            
             </div>
             <!-- Image 2 with description -->
             <div style="text-align: center; display: inline-block;">
-              <img width="100px" height="80px" src="assets/img/qr.png" alt="">
-              <p style="margin: 5px 0 0; font-size: 12px;">Description 2</p>
+              <img width="150px" height="150px" src="assets/img/qrzelle1.png" alt="">
+             
             </div>
           </div>
         </td>
