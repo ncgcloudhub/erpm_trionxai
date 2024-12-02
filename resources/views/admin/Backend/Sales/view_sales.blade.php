@@ -218,8 +218,16 @@
       <p>-----------------------------------</p>
       <h5>Authority Signature:</h5>
       
-   
-    
   </div>
+
+  {{-- <div style="position: fixed; bottom: 0; font-size: 12px; font-family: Verdana, Arial, sans-serif; color: #000000;">
+    <p>Thank you for choosing <strong>STRITS TAX LLC.</strong> We appreciate your business!</p>
+  </div> --}}
+  <div style="position: fixed; bottom: 10px; left: 0; width: 100%; text-align: center; font-size: 12px; font-family: Verdana, Arial, sans-serif; color: #000000;">
+    <strong>STRITS TAX LLC | Thank you for your business!</strong>
+  </div>
+  
+  
+
 </body>
 </html> 
