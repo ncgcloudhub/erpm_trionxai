@@ -54,9 +54,10 @@
     }
 
     .t {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
 
 </style>
 
@@ -75,8 +76,6 @@
       </td>
     </tr>
   </table>
-  
-
 
   <table width="100%" style="background:white; padding:2px;"></table>
   <table width="100%" style="background: #ffffff; padding:0 5px 0 5px;" class="font">
@@ -105,20 +104,12 @@
         </div>
         </td>
         <td align="right">
-          <div class="font" style="margin-top: 40px; text-align: right; display: flex; gap: 10px; justify-content: flex-end;">
-            <!-- Image 1 with description -->
-            <div style="text-align: center; display: inline-block;">
+          <div class="font" style="margin-top: 40px; text-align: right; display: flex; gap: 10px; justify-content: flex-end; align-items: center;">
               <img width="150px" height="150px" src="assets/img/qrzelle.png" alt="">
-            
-            </div>
-            <!-- Image 2 with description -->
-            <div style="text-align: center; display: inline-block;">
               <img width="150px" height="150px" src="assets/img/qrzelle1.png" alt="">
-             
-            </div>
           </div>
-        </td>
-        
+      </td>
+      
         
     </tr>
   </table>
@@ -226,8 +217,6 @@
   <div style="position: fixed; bottom: 10px; left: 0; width: 100%; text-align: center; font-size: 12px; font-family: Verdana, Arial, sans-serif; color: #000000;">
     <strong>STRITS TAX LLC | Thank you for your business!</strong>
   </div>
-  
-  
 
 </body>
 </html> 
