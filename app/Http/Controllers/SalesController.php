@@ -394,35 +394,79 @@ class SalesController extends Controller
             $sale = Sales::findOrFail($id);
             $saleItem = SalesItem::where('sales_id',$id)->get();
             $paysaleItem = SalesPaymentItem::where('sale_id',$id)->get();
-            $customers = Customer::orderBy('customer_name','ASC')->get();
-            $products = Product::orderBy('product_name','ASC')->get();
+            $customers = Customer::orderBy('user_name','ASC')->get();
+            $taxTaskProjects = TaxTaskProject::orderBy('task_id','ASC')->get();
+            $banks = Bank::orderBy('bank_name','ASC')->get();
 
             // dd($paysaleItem);
 
-            return view('admin.Backend.Sales.sale_edit',compact('sale','customers','products','saleItem','paysaleItem'));
+            return view('admin.Backend.Sales.sale_edit',compact('sale','customers','taxTaskProjects','saleItem','paysaleItem', 'banks'));
 
 	} // end method
 
     public function SalesUpdate(Request $request){
 
-		// dd($request);
-        $cid = $request->id;
 
-		   $sale = Sales::find($cid);
+        $qid = $request->id;
 
-           $customer = Customer::findOrFail($sale->customer_id);
-           
-           $initialPaid = $sale->p_paid_amount;
+        if ($request->item == NULL) {
+           return redirect()->back();
+        }else{
+            SalesItem::where('sales_id',$qid)->delete();
 
-           $customer->cusDue-=$initialPaid;
-           $customer->save();
+          $salesitems = Count($request->item); 
 
-		   $sale->update([
-			   'p_paid_amount' => $request->paidamount,
-               'details' => $request->details,
-			   'due_amount' => $request->dueamount,
-			   'updated_at' => Carbon::now(),
+           for ($i=0; $i < $salesitems; $i++) { 
+               $fcount = new SalesItem();
+               $fcount->sales_id = $qid;
+               $fcount->product_id = $request->item[$i];
+               $fcount->qty = $request->qnty[$i];
+               $fcount->rate = $request->rate[$i];
+               $fcount->amount = $request->amount[$i];
+               $fcount->description = $request->descrip[$i];
+               $fcount->updated_at = Carbon::now();
+               $fcount->save();
+           } // end for 
+
+		   $quotation = Sales::find($qid);  // Assuming you have the conveyance ID
+		   $quotation->update([
+            'student_id' => $request->customer_id,
+            'sale_date' => $request->saleDate,
+            'details' => $request->details,
+            'p_paid_amount' => $request->paidamount,
+            'details' => $request->details,
+            'sub_total' => $request->subtotal,
+            'due_amount' => $request->dueamount,
+            'grand_total' => $request->grandtotal,
+            'tax' => $request->tax,
+            'discount_flat' => $request->dflat,
+            'discount_per' => $request->dper,
+            'updated_at' => now(),
 		   ]);
+
+        }
+
+		// dd($request);
+        // $cid = $request->id;
+
+		//    $sale = Sales::find($cid);
+
+        //    $customer = Customer::findOrFail($sale->student_id);
+           
+        //    $initialPaid = $sale->p_paid_amount;
+
+        //    $customer->cusDue-=$initialPaid;
+        //    $customer->save();
+
+		//    $sale->update([
+		// 	   'p_paid_amount' => $request->paidamount,
+        //        'details' => $request->details,
+		// 	   'due_amount' => $request->dueamount,
+		// 	   'tax' => $request->tax,
+		// 	   'discount_flat' => $request->discount_flat,
+		// 	   'discount_per' => $request->discount_per,
+		// 	   'updated_at' => Carbon::now(),
+		//    ]);
 
          $notification = array(
             'message' => 'Sale Updated Successfully',

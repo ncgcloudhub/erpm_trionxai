@@ -51,8 +51,8 @@
             </button>
 			
 				{{-- <a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.chalan.make', $item->id) }}"><i class="fa fa-exchange text-dark me-2" aria-hidden="true"></i>Chalan</a> --}}
-				{{-- @if(Auth::guard('admin')->user()->type=="1" || (Auth::guard('admin')->user()->type=="2") || (Auth::guard('admin')->user()->type=="3"))
-				<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.edit.view', $item->id) }}"><i class="fa fa-pencil text-dark me-2" aria-hidden="true"></i>Edit</a> --}}
+				@if(Auth::guard('admin')->user()->type=="1")
+				<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.edit.view', $item->id) }}"><i class="fa fa-pencil text-dark me-2" aria-hidden="true"></i>Edit</a>
 
 				{{-- <a id="fullPaidLink{{ $item->id }}" class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.full.paid', $item->id) }}" onclick="return confirm('Are you sure you want to full pay for this sale?')">
 					<i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Full Paid
@@ -60,8 +60,8 @@
 				{{-- @if (!($item->grand_total == $item->p_paid_amount))
 				<a id="fullPaidLink{{ $item->id }}" class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.full.paid', $item->id) }}" onclick="return confirm('Are you sure you want to full pay for this sale?')">
 					<i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Full Paid
-				</a>
-				@endif --}}
+				</a> --}}
+				@endif
 		
 				{{-- @if ($item->active_inactive == 1)
 					<a class="btn btn-link text-danger text-gradient px-2 mb-0" href="{{ route('sale.inactive',$item->id) }}"><i class="fa fa-thumbs-o-down text-dark me-2"></i>In Active</a>
