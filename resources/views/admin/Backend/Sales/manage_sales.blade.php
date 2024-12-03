@@ -71,10 +71,9 @@
 				
 			{{-- @endif --}}
 
-			@if ($item->grand_total == $item->p_paid_amount)
+			
 			@if(Auth::guard('admin')->user()->type=="1")
 				<a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('sale.delete',$item->id) }}" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa-solid fa-trash text-dark me-2"></i>Delete</a>
-			@endif
 			@endif
 		</td>
 							 

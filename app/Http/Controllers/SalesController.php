@@ -233,38 +233,38 @@ class SalesController extends Controller
 
     public function SaleDelete($id){
 // CUSTOMER DUE CLEAR
-        $sale = Sales::find($id);
+//         $sale = Sales::find($id);
 
-        $customer = Customer::findOrFail($sale->customer_id);
+//         $customer = Customer::findOrFail($sale->customer_id);
         
-        $saleDue = $sale->sale_due_amount;
+//         $saleDue = $sale->sale_due_amount;
 
-        $customer->cusDue-=$saleDue;
-        $customer->save();
+//         $customer->cusDue-=$saleDue;
+//         $customer->save();
 
-// CAPITAL DEDUCTED CLEAR
-        // $totalPaid = SalesPaymentItem::where('sale_id', $id)
-        // ->groupBy('sale_id') // Group by the sale_id field
-        // ->select(DB::raw('SUM(b_paid_amount) as total_amount')) // Calculate the sum of the amount field
-        // ->first(); // Get the first result
+// // CAPITAL DEDUCTED CLEAR
+//         // $totalPaid = SalesPaymentItem::where('sale_id', $id)
+//         // ->groupBy('sale_id') // Group by the sale_id field
+//         // ->select(DB::raw('SUM(b_paid_amount) as total_amount')) // Calculate the sum of the amount field
+//         // ->first(); // Get the first result
 
-        // $capital_banks = Bank::findOrFail(8);
-        // $capital_banks->balance -= $totalPaid;
-        // $capital_banks->save();
+//         // $capital_banks = Bank::findOrFail(8);
+//         // $capital_banks->balance -= $totalPaid;
+//         // $capital_banks->save();
 
-// COST PRICE
-$totalCostPrice = SalesItem::join('products', 'sales_items.product_id', '=', 'products.id')
-    ->select('sales_items.sales_id', DB::raw('SUM(products.cost_price * sales_items.qty) as total_cost_price'))
-    ->groupBy('sales_items.sales_id')
-    ->get();
+// // COST PRICE
+// $totalCostPrice = SalesItem::join('products', 'sales_items.product_id', '=', 'products.id')
+//     ->select('sales_items.sales_id', DB::raw('SUM(products.cost_price * sales_items.qty) as total_cost_price'))
+//     ->groupBy('sales_items.sales_id')
+//     ->get();
 
-// Find the specific sum for a given sales_id ($id)
-$specificSaleTotal = $totalCostPrice->firstWhere('sales_id', $id);
+// // Find the specific sum for a given sales_id ($id)
+// $specificSaleTotal = $totalCostPrice->firstWhere('sales_id', $id);
 
-        $capital_bank = Bank::findOrFail(5);
-        $totalCost = $specificSaleTotal->total_cost_price;
-        $capital_bank->balance -= $totalCost;
-        $capital_bank->save();
+//         $capital_bank = Bank::findOrFail(5);
+//         $totalCost = $specificSaleTotal->total_cost_price;
+//         $capital_bank->balance -= $totalCost;
+//         $capital_bank->save();
      
 // SALE DELETE
     	Sales::findOrFail($id)->delete();
