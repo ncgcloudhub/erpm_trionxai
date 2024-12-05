@@ -153,7 +153,7 @@
 						  <tr>
 								<td>
 								  <select id="payitem" name="payitem[]" class="form-control" required="" >
-									  <option selected="">{{$pitem->payment->bank_name}}</option>
+									  <option selected="" value="{{$pitem->bank_id}}">{{$pitem->payment->bank_name}}</option>
 									
 								  </select>	  
 							  </td>

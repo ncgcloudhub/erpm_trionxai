@@ -444,6 +444,22 @@ class SalesController extends Controller
             'updated_at' => now(),
 		   ]);
 
+           $payitem = $request->input('payitem');
+           $pay_amount = $request->input('pay_amount');
+           
+           foreach ($payitem as $key => $value) {
+               SalesPaymentItem::updateOrCreate(
+                   [
+                       'bank_id' => $value,
+                       'sale_id' => $qid,
+                   ],
+                   [
+                       'b_paid_amount' => $pay_amount[$key],
+                   ]
+               );
+           }
+           
+
         }
 
 		// dd($request);
