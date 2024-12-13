@@ -24,6 +24,7 @@
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Approved By</th>
+											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expense PDF</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Receipt</th>
 											<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 											 
@@ -55,6 +56,9 @@
 	   <td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->status }}</h6></td>
 	   <td><h6 class="badge badge-sm bg-gradient-primary"> {{ $item->approve->name }}</h6></td>
 	   @endif
+	   <td>
+			<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('expense.download.view',$item->id) }}"><i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Download PDF</a>
+		</td>
 	   <td class="text-sm font-weight-bold mb-0">
 		@if ($item->receipt)
 		<a href="{{ asset($item->receipt) }}" download class="btn btn-link text-dark"><i class="fa fa-download me-2"></i>Download</a>
