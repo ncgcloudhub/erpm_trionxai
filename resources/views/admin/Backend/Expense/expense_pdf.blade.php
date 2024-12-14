@@ -130,7 +130,7 @@
       @if(strtolower(pathinfo($expense->receipt, PATHINFO_EXTENSION)) === 'pdf')
           <a href="{{ asset($expense->receipt) }}" target="_blank" class="btn btn-primary" style="margin-top: 10px;">View PDF</a>
       @else
-          <img src="{{ asset($expense->receipt) }}" width="200px" height="200px" alt="Receipt">
+          <img src="{{ public_path($expense->receipt) }}" width="200px" height="200px" alt="Receipt">
       @endif
   @else
       <p>No Receipt Uploaded</p>
@@ -144,7 +144,7 @@
       @if(strtolower(pathinfo($expense->attachment, PATHINFO_EXTENSION)) === 'pdf')
           <a href="{{ asset($expense->attachment) }}" target="_blank" class="btn btn-primary" style="margin-top: 10px;">View PDF</a>
       @else
-          <img src="{{ asset($expense->attachment) }}" width="200px" height="200px" alt="Attachment">
+          <img src="{{ public_path($expense->attachment) }}" width="200px" height="200px" alt="Attachment">
       @endif
   @else
       <p>No Attachment Uploaded</p>
