@@ -162,6 +162,10 @@
 								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" hidden readonly>
 						  </tr>
 						  @endforeach
+						  <button type="button" id="addpay" class="btn btn-success">
+							<i class="fas fa-plus"></i> Add Payment
+						  </button>
+						  
 					  </table>
 					</div>
 					</div>
