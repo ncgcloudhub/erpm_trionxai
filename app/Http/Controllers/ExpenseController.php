@@ -10,6 +10,7 @@ use App\Models\ExpenseType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class ExpenseController extends Controller
 {
@@ -94,6 +95,19 @@ class ExpenseController extends Controller
 		$banks = Bank::orderBy('bank_name', 'ASC')->get();
 		return view('admin.Backend.Expense.edit_expense', compact('expenseTypes', 'employees', 'expense', 'banks'));
 	}
+
+	public function ExpenseDownload($id){
+                    
+      	$expense = Expense::findOrFail($id);
+		$employees = Employee::orderBy('f_name', 'ASC')->get();
+		$expenseTypes = ExpenseType::latest()->get();
+		$banks = Bank::orderBy('bank_name', 'ASC')->get();
+		$pdf = PDF::loadView('admin.Backend.Expense.expense_pdf',compact('expense','employees', 'expenseTypes', 'banks'))->setPaper('a4')->setOptions([
+				'tempDir' => public_path(),
+				'chroot' => public_path(),
+		]);
+		return $pdf->download('Expense.pdf');
+    }
 
 	public function ExpenseUpdate(Request $request)
 	{

@@ -22,7 +22,7 @@
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Grand Total</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Paid</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Due</th>
-											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Sold By</th>
+											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Payment Status</th>
 											<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Action</th>
 											 
 										</tr>
@@ -40,7 +40,17 @@
 		<td class="text-sm font-weight-bold mb-0">${{ $item->grand_total }} </td>
 		<td class="text-sm font-weight-bold mb-0">${{ $item->p_paid_amount }} </td>
 		<td class="text-sm font-weight-bold mb-0">${{ $item->due_amount }} </td>
-		<td><h6 class="badge badge-sm bg-gradient-success"> {{ $item->user->name }}</h6></td>
+		<td>
+			<h6> 
+				@if ($item->due_amount == 0)
+					<h6 class="badge badge-sm bg-gradient-success">Paid</h6>
+				@elseif ($item->grand_total == $item->due_amount)
+					<h6 class="badge badge-sm bg-gradient-danger">Not Paid</h6>
+				@else
+					<h6 class="badge badge-sm bg-gradient-warning">Partially Paid</h6>
+				@endif
+			</h6>
+		</td>
 		<td width="30%">
 			<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.details.view', $item->id) }}"><i class="fa-solid fa-eye text-dark me-2" aria-hidden="true"></i>View</a>
 		
@@ -51,7 +61,7 @@
             </button>
 			
 				{{-- <a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.chalan.make', $item->id) }}"><i class="fa fa-exchange text-dark me-2" aria-hidden="true"></i>Chalan</a> --}}
-				@if(Auth::guard('admin')->user()->type=="1")
+				
 				<a class="btn btn-link text-dark px-2 mb-0" href="{{ route('sales.edit.view', $item->id) }}"><i class="fa fa-pencil text-dark me-2" aria-hidden="true"></i>Edit</a>
 
 				{{-- <a id="fullPaidLink{{ $item->id }}" class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.full.paid', $item->id) }}" onclick="return confirm('Are you sure you want to full pay for this sale?')">
@@ -61,7 +71,7 @@
 				<a id="fullPaidLink{{ $item->id }}" class="btn btn-link text-dark px-2 mb-0" href="{{ route('sale.full.paid', $item->id) }}" onclick="return confirm('Are you sure you want to full pay for this sale?')">
 					<i class="fa-solid fa-file-arrow-down text-dark me-2"></i>Full Paid
 				</a> --}}
-				@endif
+				
 		
 				{{-- @if ($item->active_inactive == 1)
 					<a class="btn btn-link text-danger text-gradient px-2 mb-0" href="{{ route('sale.inactive',$item->id) }}"><i class="fa fa-thumbs-o-down text-dark me-2"></i>In Active</a>

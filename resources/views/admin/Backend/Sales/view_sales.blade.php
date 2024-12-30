@@ -189,7 +189,7 @@
        <td><b> Sale Details : </b>{{$sale->details}}</td>
    
     </tr>
-    <tr><td><b style="color: red"> Trionxai T&C : </b>Lorem ipsum dolor sit, amet laudantium facere. Voluptas minus doloremque, libero repudiandae itaque in officiis!</td></tr>
+    {{-- <tr><td><b style="color: red"> Trionxai T&C : </b>Lorem ipsum dolor sit, amet laudantium facere. Voluptas minus doloremque, libero repudiandae itaque in officiis!</td></tr> --}}
   </table>
   
   {{-- <div class="thanks mt-3">
@@ -214,9 +214,10 @@
   {{-- <div style="position: fixed; bottom: 0; font-size: 12px; font-family: Verdana, Arial, sans-serif; color: #000000;">
     <p>Thank you for choosing <strong>STRITS TAX LLC.</strong> We appreciate your business!</p>
   </div> --}}
-  <div style="position: fixed; bottom: 10px; left: 0; width: 100%; text-align: center; font-size: 12px; font-family: Verdana, Arial, sans-serif; color: #000000;">
-    <strong>STRITS TAX LLC | Thank you for your business!</strong>
-  </div>
+  <div style="position: fixed; bottom: 10px; left: 0; width: 100%; text-align: center; font-size: 12px; font-family: Verdana, Arial, sans-serif; color: #000000; white-space: nowrap;">
+    <strong>Thank you for choosing <a href="https://stritstax.com/">STRITSTAX.COM</a> for your tax solutions!</strong>
+</div>
+
 
 </body>
 </html> 

@@ -1205,6 +1205,8 @@ Route::prefix('expense')->group(function () {
 
     Route::post('/expense-type/update', [ExpenseController::class, 'ExpenseTypeUpdate'])->name('expenseType.update');
 
+    Route::get('/download/{id}', [ExpenseController::class, 'ExpenseDownload'])->name('expense.download.view');
+
     Route::get('/expense-type/delete/{id}', [ExpenseController::class, 'ExpenseTypeDelete'])->name('expenseType.delete');
 
     Route::get('/expense', [ExpenseController::class, 'ExpenseView'])->name('expense.view');
