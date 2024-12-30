@@ -120,8 +120,8 @@
 					  </a>
 					  </td>
 					  <td class="align-middle text-center">
-						<p class="text-xs font-weight-bold mb-0">{{$task->assign_date}}</p>
-						<p class="text-xs text-secondary mb-0">{{$task->completion_date}}</p>
+						<p class="text-xs font-weight-bold mb-0">{{ date('m/d/Y', strtotime($task->assign_date)) }}</p>
+						<p class="text-xs text-secondary mb-0">{{ date('m/d/Y', strtotime($task->completion_date))}}</p>
 					  </td>
 					  <td class="align-middle text-center text-sm">
 						<span class="badge badge-sm bg-gradient-success">{{$task->admin->name}}</span>
@@ -199,7 +199,7 @@
 			<ul class="list-group">
 			  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
 				<div class="d-flex flex-column">
-				  <h6 class="mb-1 text-dark font-weight-bold text-sm">{{$project->assign_date}}</h6>
+				  <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ date('m/d/Y', strtotime($project->assign_date)) }}</h6>
 				  <span class="text-xs">Assign Date</span>
 				</div>
 				{{-- <div class="d-flex align-items-center text-sm">
@@ -209,7 +209,7 @@
 			  </li>
 			  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
 				<div class="d-flex flex-column">
-				  <h6 class="text-dark mb-1 font-weight-bold text-sm">{{$project->completion_date}}</h6>
+				  <h6 class="text-dark mb-1 font-weight-bold text-sm">{{ date('m/d/Y', strtotime($project->completion_date)) }}</h6>
 				  <span class="text-xs">Completion Date</span>
 				</div>
 

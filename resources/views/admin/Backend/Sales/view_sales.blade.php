@@ -97,9 +97,9 @@
 
          <div class="font" style="margin-top: 12px;">
           <strong><span style="color: #000000; ;">Invoice:</span> #{{ $sale->invoice}}</strong><br>
-          <strong>Sale Date:</strong> {{ $sale->sale_date }} <br>
+          <strong>Sale Date:</strong>{{ date('m/d/Y', strtotime($sale->sale_date)) }}<br>
           {{-- <strong>Expiry Date:</strong> {{ $sale->expire_date }} <br> --}}
-          <strong>Made By:</strong> {{ $sale->user->name }} 
+          <strong>Created By:</strong> {{ $sale->user->name }} 
           {{-- <br> --}}
         </div>
         </td>

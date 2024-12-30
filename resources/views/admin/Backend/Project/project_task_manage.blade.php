@@ -91,7 +91,7 @@
 					<td><h6 class="mb-0 text-sm">{{ $item->project->project_name }}</h6></td>
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
-					<td><h6 class="mb-0 text-sm">{{ $item->completion_date }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ date('m/d/Y', strtotime($item->completion_date)) }}</h6></td>
 					
 					@if ($item->made_by == NULL)
 					<td><h6 class="mb-0 text-sm">--</h6></td>

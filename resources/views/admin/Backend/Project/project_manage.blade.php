@@ -65,7 +65,7 @@
 					
 					<td><h6 class="mb-0 text-sm">{{ $item->admin->name }}</h6></td>
 					
-					<td><h6 class="mb-0 text-sm">{{ $item->assign_date }}</h6></td>
+					<td><h6 class="mb-0 text-sm">{{ date('m/d/Y', strtotime($item->assign_date)) }}</h6></td>
 
 					@if ($item->made_by == NULL)
 					<td><h6 class="mb-0 text-sm">--</h6></td>

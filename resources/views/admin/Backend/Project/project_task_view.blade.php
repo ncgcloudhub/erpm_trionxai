@@ -69,9 +69,9 @@
 
 
 					<div class="form-group">
-						<h6>Assign Date<span class="text-danger">*</span></h6>
+						<h6>Assign Dates<span class="text-danger">*</span></h6>
 						<div class="controls">
-							<input type="date" value="{{$task->assign_date}}" name="assign_date" class="form-control" readonly>
+							<input type="date" value="{{ date('m/d/Y', strtotime($task->assign_date)) }}" name="assign_date" class="form-control" readonly>
 				
 					   </div>
 					</div>
@@ -79,7 +79,7 @@
 					<div class="form-group">
 						<h6>Date to be Completed</h6>
 						<div class="controls">
-							<input type="date" value="{{$task->completion_date}}" name="completion_date" class="form-control" readonly>
+							<input type="date" value="{{ date('m/d/Y', strtotime($task->completion_date)) }}" name="completion_date" class="form-control" readonly>
 			
 					   </div>
 					</div>
