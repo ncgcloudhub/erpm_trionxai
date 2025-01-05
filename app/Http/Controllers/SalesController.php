@@ -444,20 +444,42 @@ class SalesController extends Controller
             'updated_at' => now(),
 		   ]);
 
-           $payitem = $request->input('payitem');
-           $pay_amount = $request->input('pay_amount');
-           
-           foreach ($payitem as $key => $value) {
-               SalesPaymentItem::updateOrCreate(
-                   [
-                       'bank_id' => $value,
+           $payitems = $request->input('payitem');
+           $pay_amounts = $request->input('pay_amount');
+       
+           // Fetch existing payment records for this sale ID
+           $existingPayments = SalesPaymentItem::where('sale_id', $qid)->get();
+           $processedPaymentIds = [];
+       
+           foreach ($payitems as $key => $bank_id) {
+               $b_paid_amount = $pay_amounts[$key];
+       
+               // Check if this exact bank_id and amount combination already exists
+               $payment = $existingPayments->firstWhere([
+                   'bank_id' => $bank_id,
+                   'b_paid_amount' => $b_paid_amount,
+               ]);
+       
+               if ($payment) {
+                   // Update existing record if there are changes
+                   $payment->update(['b_paid_amount' => $b_paid_amount]);
+               } else {
+                   // Add new payment record if it doesn't exist
+                   $payment = SalesPaymentItem::create([
+                       'bank_id' => $bank_id,
                        'sale_id' => $qid,
-                   ],
-                   [
-                       'b_paid_amount' => $pay_amount[$key],
-                   ]
-               );
+                       'b_paid_amount' => $b_paid_amount,
+                   ]);
+               }
+       
+               // Track processed payment record IDs
+               $processedPaymentIds[] = $payment->id;
            }
+       
+           // Remove any payment records not present in the current submission
+           SalesPaymentItem::where('sale_id', $qid)
+               ->whereNotIn('id', $processedPaymentIds)
+               ->delete();
            
 
         }
