@@ -158,6 +158,8 @@
 								  </select>	  
 							  </td>
 								<td><input class="form-control pay_amount" type="number" id="pay_amount" name="pay_amount[]" value="{{$pitem->b_paid_amount}}" required=""></td>
+
+								<td><a name="payremove" id="payremove" class="btn bg-gradient-danger mb-0 payremove"><i class="fas fa-minus" aria-hidden="true"></i></a></td>
 							
 								<input class="form-control sumPayment" type="text" name="sumPayment" id="sumPayment" hidden readonly>
 						  </tr>
@@ -234,11 +236,12 @@
 	$("#addpay").click(function(){
 	  $("#table_fieldpayment").append(htmlpay);
 	});
-	$("#table_fieldpayment").on('click', '#payremove', function () {
+	$("#table_fieldpayment").on('click', '.payremove', function () {
   $(this).closest('tr').remove();
-  totalPayment()
+  totalPayment();
   duePrice();
-  });
+});
+
 
   $("#mySelect").change(function() {
 	// get the selected option value
