@@ -239,6 +239,21 @@ class IncomeTaxController extends Controller
         return view('admin.Backend.Tax.taxproject_task_view',compact('categories','customers','assignedby','assignto','task'));
 	}
 
+	public function CloneTask($id)
+	{
+		$categories = TaxProject::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		$customers = Customer::latest()->get();
+		$task = TaxTaskProject::findOrFail($id);
+		// dd($task->description);
+		// Ensure category is an array
+		$task->category = json_decode($task->category, true); // If stored as JSON
+
+        return view('admin.Backend.Tax.taxproject_task_clone',compact('categories','customers','assignedby','assignto','task'));
+	}
+
+
 	public function ProjectUpdateTask(Request $request){
 
 		 // Check if the custom priority field has a value

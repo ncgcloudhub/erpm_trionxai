@@ -496,6 +496,8 @@ Route::prefix('incometax')->group(function () {
 
     Route::get('/task/view/{id}', [IncomeTaxController::class, 'ViewProjectTask'])->name('taxproject.task.view');
 
+    Route::get('/task/clone/{id}', [IncomeTaxController::class, 'CloneTask'])->name('taxproject.task.clone');
+
     Route::post('/project/update', [IncomeTaxController::class, 'ProjectUpdate'])->name('taxproject.update');
 
     Route::post('/task/update', [IncomeTaxController::class, 'ProjectUpdateTask'])->name('taxproject.update.task');
