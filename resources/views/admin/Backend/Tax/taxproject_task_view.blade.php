@@ -200,13 +200,14 @@
 							<select name="category[]" class="form-control select2-multi" multiple disabled>
 								@foreach($immigrationcategories as $category)
 									<option value="{{ $category->value }}"
-										@if(in_array($category->value, is_array($task->category) ? $task->category : json_decode($task->category, true))) selected @endif>
+										@if(in_array($category->value, is_array($task->category) ? $task->category : (json_decode($task->category, true) ?? []))) selected @endif>
 										{{ $category->category_name }}
 									</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
+					
 					
 
 						<div class="form-group">

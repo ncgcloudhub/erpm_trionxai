@@ -174,7 +174,7 @@
 								<select name="category[]" class="form-control select2-multi" id="categorySelect" multiple>
 									@foreach($immigrationcategories as $category)
 									<option value="{{ $category->value }}" 
-										@if(in_array($category->value, old('category', $task->category))) selected @endif>
+										@if(in_array($category->value, old('category', $task->category ?? []))) selected @endif>
 										{{ $category->category_name }}
 									</option>
 								@endforeach
