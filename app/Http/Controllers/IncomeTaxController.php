@@ -138,8 +138,10 @@ class IncomeTaxController extends Controller
 		$assignedby = Admin::latest()->get();
 		$assignto = Employee::latest()->get();
 		$customers = Customer::latest()->get();
+		$immigrationcategories = ImmigrationCategory::all();
+
 		// $brands = Brand::latest()->get();
-		return view('admin.Backend.Tax.taxproject_task_add', compact('categories','customers','assignedby','assignto'));
+		return view('admin.Backend.Tax.taxproject_task_add', compact('categories','customers','assignedby','assignto', 'immigrationcategories'));
 	}  // end method
 
 

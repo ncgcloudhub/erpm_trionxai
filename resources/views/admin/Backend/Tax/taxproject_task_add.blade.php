@@ -170,70 +170,20 @@
 
 					<!-- Category dropdown for Immigration -->
 					<div class="form-group toggle-category" style="display: none;">
-						<h6>Category <span class="text-danger">*</span></h6>
+						<h6>Category <span class="text-danger">*</span> 
+							<a href="{{ route('incometax.category') }}" title="Add Category" class="text-primary ml-2" style="font-size: 20px;">+</a>
+						</h6>
+						
 						<div class="controls">
 							<select name="category[]" class="form-control select2-multi" id="categorySelect" multiple >
 								
-								
-								<!-- Family-Based Forms -->
-								<optgroup label="Family-Based Forms">
-									<option value="I-130">I-130: Petition for Alien Relative</option>
-									<option value="I-130A">I-130A: Supplemental Information for Spouse Beneficiary</option>
-									<option value="I-129F">I-129F: Petition for Alien Fiancé(e)</option>
-									<option value="I-751">I-751: Petition to Remove Conditions on Residence</option>
-									<option value="I-864">I-864: Affidavit of Support Under Section 213A</option>
-									<option value="I-864A">I-864A: Contract Between Sponsor and Household Member</option>
-									<option value="I-600">I-600 / I-600A: Petition to Classify Orphan as an Immediate Relative</option>
-								</optgroup>
-								
-								<!-- Employment-Based Forms -->
-								<optgroup label="Employment-Based Forms">
-									<option value="I-129">I-129: Petition for a Nonimmigrant Worker</option>
-									<option value="I-140">I-140: Immigrant Petition for Alien Workers</option>
-									<option value="I-526">I-526: Immigrant Petition by Standalone Investor</option>
-									<option value="I-829">I-829: Petition by Entrepreneur to Remove Conditions</option>
-								</optgroup>
-								
-								<!-- Humanitarian Forms -->
-								<optgroup label="Humanitarian Forms">
-									<option value="I-589">I-589: Application for Asylum and for Withholding of Removal</option>
-									<option value="I-730">I-730: Refugee/Asylee Relative Petition</option>
-									<option value="I-821">I-821: Application for Temporary Protected Status</option>
-									<option value="I-134A">I-134A: Declaration of Financial Support</option>
-								</optgroup>
-								
-								<!-- Travel and Status Forms -->
-								<optgroup label="Travel and Status Forms">
-									<option value="I-94">I-94: Arrival/Departure Record</option>
-									<option value="I-131">I-131: Application for Travel Document</option>
-									<option value="I-539">I-539: Application to Extend/Change Nonimmigrant Status</option>
-								</optgroup>
-								
-								<!-- Adjustment of Status / Green Card Forms -->
-								<optgroup label="Adjustment of Status / Green Card Forms">
-									<option value="I-485">I-485: Application to Register Permanent Residence or Adjust Status</option>
-									<option value="I-90">I-90: Application to Replace Permanent Resident Card</option>
-									<option value="I-485 Supplements">I-485 Supplements (A, C, E): Additional eligibility adjustments</option>
-								</optgroup>
-								
-								<!-- Citizenship and Naturalization Projects -->
-								<optgroup label="Citizenship and Naturalization Projects">
-									<option value="N-400">N-400: Application for Naturalization</option>
-									<option value="N-600">N-600 / N-600K: Certificate of Citizenship Applications</option>
-									<option value="N-565">N-565: Application for Replacement Naturalization Document</option>
-								</optgroup>
-
-								{{-- <optgroup label="Others">
-									<option value="other">Add an Item</option>
-								</optgroup> --}}
+								@foreach($immigrationcategories as $category)
+									<option value="{{ $category->value }}">{{ $category->category_name }}</option>
+								@endforeach
 							</select>
-							{{-- <input type="text" name="category" class="form-control mt-2" id="categoryInput" placeholder="Enter Category" style="display:none;"> --}}
 
 						</div>
 					</div>
-
-					
-				
 
 					<div class="form-group">
 						<h6>Folder Location</h6>
