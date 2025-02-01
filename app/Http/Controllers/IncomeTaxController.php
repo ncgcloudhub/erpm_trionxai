@@ -392,5 +392,26 @@ class IncomeTaxController extends Controller
 		return redirect()->route('incometax.category')->with('success', 'Category added successfully.');
 	}
 
+	public function IncometaxCategoryUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'value' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+        ]);
+
+        ImmigrationCategory::findOrFail($id)->update([
+            'value' => $request->value,
+            'category_name' => $request->category,
+        ]);
+
+        return redirect()->route('incometax.category')->with('success', 'Category updated successfully.');
+    }
+
+    public function IncometaxCategoryDelete($id)
+    {
+        ImmigrationCategory::findOrFail($id)->delete();
+        return redirect()->route('incometax.category')->with('success', 'Category deleted successfully.');
+    }
+
 
 }

@@ -531,10 +531,15 @@ Route::prefix('incometax')->group(function () {
 
     Route::post('/import', [IncomeTaxController::class, 'ImportTaxCustomers'])->name('import.customers');
 
-    //Immigration Category
+  // Immigration Category Routes
     Route::get('/category', [IncomeTaxController::class, 'IncometaxCategoryView'])->name('incometax.category');
-    //Immigration Category Add
+    // Add Category
     Route::post('/category/add', [IncomeTaxController::class, 'IncometaxCategoryStore'])->name('incometax.category.add');
+    // Edit Category
+    Route::post('/category/update/{id}', [IncomeTaxController::class, 'IncometaxCategoryUpdate'])->name('incometax.category.update');
+    // Delete Category
+    Route::get('/category/delete/{id}', [IncomeTaxController::class, 'IncometaxCategoryDelete'])->name('incometax.category.delete');
+
 
 });
 

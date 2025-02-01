@@ -18,6 +18,7 @@
                                             <tr>
                                                 <th>Value</th>
                                                 <th>Category Name</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -25,6 +26,10 @@
                                                 <tr>
                                                     <td>{{ $cat->value }}</td>
                                                     <td>{{ $cat->category_name }}</td>
+                                                    <td>
+                                                        <a href="javascript:void(0);" onclick="editCategory({{ $cat->id }}, '{{ $cat->value }}', '{{ $cat->category_name }}')" class="btn btn-info btn-sm">Edit</a>
+                                                        <a href="{{ route('incometax.category.delete', $cat->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -36,32 +41,34 @@
                 </div>
             </div>
 
-            <!-- Add New Category Form -->
+            <!-- Add/Edit Category Form -->
             <div class="col-5">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h6 class="box-title">Add New Category</h6>
+                                <h6 class="box-title">Add / Edit Category</h6>
                             </div>
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <form method="post" action="{{ route('incometax.category.add') }}">
+                                    <form method="post" action="{{ route('incometax.category.add') }}" id="categoryForm">
                                         @csrf
+                                        <input type="hidden" id="categoryId" name="category_id">
+                                        
                                         <div class="form-group">
                                             <h6>Value</h6>
                                             <div class="controls">
-                                                <input type="text" name="value" class="form-control" required>
+                                                <input type="text" id="categoryValue" name="value" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <h6>Category Name</h6>
                                             <div class="controls">
-                                                <input type="text" name="category" class="form-control" required>
+                                                <input type="text" id="categoryName" name="category" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="text-xs-right">
-                                            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Category">
+                                            <input type="submit" id="submitButton" class="btn btn-rounded btn-primary mb-5" value="Add Category">
                                         </div>
                                     </form>
                                 </div>
@@ -74,5 +81,15 @@
         </div> <!-- /.row -->
     </section>
 </div>
+
+<script>
+    function editCategory(id, value, category) {
+        document.getElementById('categoryId').value = id;
+        document.getElementById('categoryValue').value = value;
+        document.getElementById('categoryName').value = category;
+        document.getElementById('categoryForm').action = "/category/update/" + id;
+        document.getElementById('submitButton').value = "Update Category";
+    }
+</script>
 
 @endsection
