@@ -536,7 +536,7 @@ Route::prefix('incometax')->group(function () {
     // Add Category
     Route::post('/category/add', [IncomeTaxController::class, 'IncometaxCategoryStore'])->name('incometax.category.add');
     // Edit Category
-    Route::post('/category/update/{id}', [IncomeTaxController::class, 'IncometaxCategoryUpdate'])->name('incometax.category.update');
+    Route::put('/category/update/{id}', [IncomeTaxController::class, 'IncometaxCategoryUpdate'])->name('incometax.category.update');
     // Delete Category
     Route::get('/category/delete/{id}', [IncomeTaxController::class, 'IncometaxCategoryDelete'])->name('incometax.category.delete');
 

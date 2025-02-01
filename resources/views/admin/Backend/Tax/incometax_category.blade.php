@@ -16,6 +16,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>Sl.</th>
                                                 <th>Value</th>
                                                 <th>Category Name</th>
                                                 <th>Action</th>
@@ -24,6 +25,7 @@
                                         <tbody>
                                             @foreach ($categories as $cat)
                                                 <tr>
+                                                    <td>{{ $loop->iteration }}</td> <!-- Serial Number -->
                                                     <td>{{ $cat->value }}</td>
                                                     <td>{{ $cat->category_name }}</td>
                                                     <td>
@@ -54,7 +56,7 @@
                                     <form method="post" action="{{ route('incometax.category.add') }}" id="categoryForm">
                                         @csrf
                                         <input type="hidden" id="categoryId" name="category_id">
-                                        
+
                                         <div class="form-group">
                                             <h6>Value</h6>
                                             <div class="controls">
@@ -83,13 +85,32 @@
 </div>
 
 <script>
-    function editCategory(id, value, category) {
-        document.getElementById('categoryId').value = id;
-        document.getElementById('categoryValue').value = value;
-        document.getElementById('categoryName').value = category;
-        document.getElementById('categoryForm').action = "/category/update/" + id;
-        document.getElementById('submitButton').value = "Update Category";
-    }
+function editCategory(id, value, category) {
+    document.getElementById('categoryId').value = id;
+    document.getElementById('categoryValue').value = value;
+    document.getElementById('categoryName').value = category;
+    
+    // Ensure the correct route is set
+    let form = document.getElementById('categoryForm');
+    form.action = "/incometax/category/update/" + id;
+    form.method = "POST";  // Keep POST but include _method=PUT
+
+    // Change button text for clarity
+    document.getElementById('submitButton').value = "Update Category";
+
+    // Add hidden input for method spoofing
+    let methodInput = document.createElement("input");
+    methodInput.type = "hidden";
+    methodInput.name = "_method";
+    methodInput.value = "PUT";
+    
+    // Remove existing method input if any
+    let oldMethodInput = document.querySelector("input[name='_method']");
+    if (oldMethodInput) oldMethodInput.remove();
+
+    form.appendChild(methodInput);
+}
+
 </script>
 
 @endsection
