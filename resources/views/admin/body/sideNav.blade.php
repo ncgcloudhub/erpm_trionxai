@@ -310,7 +310,7 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 
       <a class="nav-link {{ ($route == 'incometax.category')? 'active':'' }}" href="{{ route('incometax.category') }}">
         <span class="sidenav-mini-icon"></span>
-        <span class="sidenav-normal">IncomeTax Category</span>
+        <span class="sidenav-normal">Immigration Category</span>
         </a>
 
   </li>
