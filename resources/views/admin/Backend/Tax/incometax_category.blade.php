@@ -30,7 +30,7 @@
                                                     <td>{{ $cat->category_name }}</td>
                                                     <td>
                                                         <a href="javascript:void(0);" onclick="editCategory({{ $cat->id }}, '{{ $cat->value }}', '{{ $cat->category_name }}')" class="btn btn-info btn-sm">Edit</a>
-                                                        <a href="{{ route('incometax.category.delete', $cat->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
+                                                        <a href="{{ route('immigration.category.delete', $cat->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this category?');">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -53,7 +53,7 @@
                             </div>
                             <div class="box-body">
                                 <div class="table-responsive">
-                                    <form method="post" action="{{ route('incometax.category.add') }}" id="categoryForm">
+                                    <form method="post" action="{{ route('immigration.category.add') }}" id="categoryForm">
                                         @csrf
                                         <input type="hidden" id="categoryId" name="category_id">
 
@@ -92,7 +92,7 @@ function editCategory(id, value, category) {
     
     // Ensure the correct route is set
     let form = document.getElementById('categoryForm');
-    form.action = "/incometax/category/update/" + id;
+    form.action = "/incometax/immigration/category/update/" + id;
     form.method = "POST";  // Keep POST but include _method=PUT
 
     // Change button text for clarity

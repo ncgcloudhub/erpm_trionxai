@@ -171,7 +171,7 @@
 					<!-- Category dropdown for Immigration -->
 					<div class="form-group toggle-category" style="display: none;">
 						<h6>Category <span class="text-danger">*</span> 
-							<a href="{{ route('incometax.category') }}" title="Add Category" class="text-primary ml-2" style="font-size: 20px;">+</a>
+							<a href="{{ route('immigration.category') }}" title="Add Category" class="text-primary ml-2" style="font-size: 20px;">+</a>
 						</h6>
 						
 						<div class="controls">

@@ -532,13 +532,13 @@ Route::prefix('incometax')->group(function () {
     Route::post('/import', [IncomeTaxController::class, 'ImportTaxCustomers'])->name('import.customers');
 
   // Immigration Category Routes
-    Route::get('/category', [IncomeTaxController::class, 'IncometaxCategoryView'])->name('incometax.category');
+    Route::get('/immigration/category', [IncomeTaxController::class, 'ImmigrationCategoryView'])->name('immigration.category');
     // Add Category
-    Route::post('/category/add', [IncomeTaxController::class, 'IncometaxCategoryStore'])->name('incometax.category.add');
+    Route::post('/immigration/category/add', [IncomeTaxController::class, 'ImmigrationCategoryStore'])->name('immigration.category.add');
     // Edit Category
-    Route::put('/category/update/{id}', [IncomeTaxController::class, 'IncometaxCategoryUpdate'])->name('incometax.category.update');
+    Route::put('/immigration/category/update/{id}', [IncomeTaxController::class, 'ImmigrationCategoryUpdate'])->name('immigration.category.update');
     // Delete Category
-    Route::get('/category/delete/{id}', [IncomeTaxController::class, 'IncometaxCategoryDelete'])->name('incometax.category.delete');
+    Route::get('/immigration/category/delete/{id}', [IncomeTaxController::class, 'ImmigrationCategoryDelete'])->name('immigration.category.delete');
 
 
 });

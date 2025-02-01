@@ -375,13 +375,13 @@ class IncomeTaxController extends Controller
 
    }// End Method 
 
-   public function IncometaxCategoryView()
+   public function immigrationCategoryView()
    {
 		$categories = ImmigrationCategory::orderBy('id','DESC')->get();
 		return view('admin.Backend.tax.incometax_category',compact('categories'));
 	} // end method 
 
-	public function IncometaxCategoryStore(Request $request)
+	public function immigrationCategoryStore(Request $request)
 	{
 		$request->validate([
 			'value' => 'required|string|max:255',
@@ -393,10 +393,10 @@ class IncomeTaxController extends Controller
 			'category_name' => $request->category,
 		]);
 
-		return redirect()->route('incometax.category')->with('success', 'Category added successfully.');
+		return redirect()->route('immigration.category')->with('success', 'Category added successfully.');
 	}
 
-	public function IncometaxCategoryUpdate(Request $request, $id)
+	public function immigrationCategoryUpdate(Request $request, $id)
     {
         $request->validate([
             'value' => 'required|string|max:255',
@@ -408,13 +408,13 @@ class IncomeTaxController extends Controller
             'category_name' => $request->category,
         ]);
 
-        return redirect()->route('incometax.category')->with('success', 'Category updated successfully.');
+        return redirect()->route('immigration.category')->with('success', 'Category updated successfully.');
     }
 
-    public function IncometaxCategoryDelete($id)
+    public function immigrationCategoryDelete($id)
     {
         ImmigrationCategory::findOrFail($id)->delete();
-        return redirect()->route('incometax.category')->with('success', 'Category deleted successfully.');
+        return redirect()->route('immigration.category')->with('success', 'Category deleted successfully.');
     }
 
 
