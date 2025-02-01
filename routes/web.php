@@ -530,6 +530,12 @@ Route::prefix('incometax')->group(function () {
     Route::get('/import/tasks/customers', [IncomeTaxController::class, 'ImportTaskCustomers'])->name('import.tasks.customers');
 
     Route::post('/import', [IncomeTaxController::class, 'ImportTaxCustomers'])->name('import.customers');
+
+    //Immigration Category
+    Route::get('/category', [IncomeTaxController::class, 'IncometaxCategoryView'])->name('incometax.category');
+    //Immigration Category Add
+    Route::post('/category/add', [IncomeTaxController::class, 'IncometaxCategoryStore'])->name('incometax.category.add');
+
 });
 
 

@@ -11,6 +11,7 @@ use App\Models\Admin;
 use App\Models\Employee;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\ImmigrationCategory;
 use App\Models\TaxTaskProject;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -369,4 +370,27 @@ class IncomeTaxController extends Controller
 	   return redirect()->back()->with($notification);
 
    }// End Method 
+
+   public function IncometaxCategoryView()
+   {
+		$categories = ImmigrationCategory::orderBy('id','DESC')->get();
+		return view('admin.Backend.tax.incometax_category',compact('categories'));
+	} // end method 
+
+	public function IncometaxCategoryStore(Request $request)
+	{
+		$request->validate([
+			'value' => 'required|string|max:255',
+			'category' => 'required|string|max:255',
+		]);
+
+		ImmigrationCategory::create([
+			'value' => $request->value,
+			'category_name' => $request->category,
+		]);
+
+		return redirect()->route('incometax.category')->with('success', 'Category added successfully.');
+	}
+
+
 }

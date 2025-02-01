@@ -308,7 +308,10 @@ $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
       <span class="sidenav-normal">Manage Invoice</span>
       </a>
 
-
+      <a class="nav-link {{ ($route == 'incometax.category')? 'active':'' }}" href="{{ route('incometax.category') }}">
+        <span class="sidenav-mini-icon"></span>
+        <span class="sidenav-normal">IncomeTax Category</span>
+        </a>
 
   </li>
   </ul>
