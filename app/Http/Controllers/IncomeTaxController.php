@@ -238,9 +238,10 @@ class IncomeTaxController extends Controller
 		$assignto = Employee::latest()->get();
 		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
+		$immigrationcategories = ImmigrationCategory::all();
 		// dd($task->description);
 
-        return view('admin.Backend.Tax.taxproject_task_view',compact('categories','customers','assignedby','assignto','task'));
+        return view('admin.Backend.Tax.taxproject_task_view',compact('categories','customers','assignedby','assignto','task', 'immigrationcategories'));
 	}
 
 	public function CloneTask($id)
