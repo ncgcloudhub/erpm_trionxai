@@ -251,11 +251,11 @@ class IncomeTaxController extends Controller
 		$assignto = Employee::latest()->get();
 		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
-		// dd($task->description);
+		$immigrationcategories = ImmigrationCategory::all();
 		// Ensure category is an array
 		$task->category = json_decode($task->category, true); // If stored as JSON
 
-        return view('admin.Backend.Tax.taxproject_task_clone',compact('categories','customers','assignedby','assignto','task'));
+        return view('admin.Backend.Tax.taxproject_task_clone',compact('categories','customers','assignedby','assignto','task', 'immigrationcategories'));
 	}
 
 
