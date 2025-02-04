@@ -169,7 +169,9 @@
 					</div>
 
 						 <div class="form-group toggle-category">
-							<h6>Category <span class="text-danger">*</span></h6>
+							<h6>Category <span class="text-danger">*</span>
+								<a href="{{ route('immigration.category') }}" title="Add Category" class="text-primary ml-2" style="font-size: 20px;">+</a>
+							</h6>
 							<div class="controls">
 								<select name="category[]" class="form-control select2-multi" id="categorySelect" multiple>
 									@foreach($immigrationcategories as $category)

@@ -2,6 +2,8 @@
 
 @section('admins')
 
+<a href="{{ route('immigration.category') }}" title="Add Category" class="btn btn-primary">Add Immigration Category</a>
+
 <div class="container-full">
     <section class="content">
         <div class="row">
