@@ -378,7 +378,7 @@ class IncomeTaxController extends Controller
    public function immigrationCategoryView()
    {
 		$categories = ImmigrationCategory::orderBy('id','DESC')->get();
-		return view('admin.Backend.tax.incometax_category',compact('categories'));
+		return view('admin.Backend.Tax.incometax_category',compact('categories'));
 	} // end method 
 
 	public function immigrationCategoryStore(Request $request)
