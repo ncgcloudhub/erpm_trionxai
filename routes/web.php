@@ -100,7 +100,7 @@ Route::get('/test-api', function () {
     $apiUrl = 'https://dev.clevercreator.ai/api/prompt/manage';
 
     // Get the hex key from .env (or hardcode it for testing)
-    $hexKey = 'fahmidh26';
+    $hexKey = '0a536027cdbf5898';
 
     // Make the request with the custom header
     $response = Http::withHeaders([
