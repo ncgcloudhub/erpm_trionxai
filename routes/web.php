@@ -111,6 +111,22 @@ Route::get('/test-api', function () {
     return $response->json();
 });
 
+Route::get('/education/manage', function () {
+    // Define your external API URL
+    $apiUrl = 'https://dev.clevercreator.ai/api/education/manage/tools';
+
+    // Get the hex key from .env (or hardcode it for testing)
+    $hexKey = '0a536027cdbf5898';
+
+    // Make the request with the custom header
+    $response = Http::withHeaders([
+        'X-Auth-Hex' => $hexKey,
+    ])->get($apiUrl);
+
+    // Return the response
+    return $response->json();
+});
+
 
 Route::get('/a', function () {
     $products = Product::where('status', 1)->inRandomOrder()->get();
