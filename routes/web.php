@@ -67,6 +67,7 @@ use App\Models\Purchase;
 use App\Models\TaxProject;
 use App\Models\TaxTaskProject;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,9 +93,23 @@ Route::get('/write', function () {
     return view('admin.Backend.Site.writer', compact('title', 'content'));
 })->name('openai.view');
 
-
 Route::post('/write/generate', [SiteSettingController::class, 'openaigenerate']);
 
+Route::get('/test-api', function () {
+    // Define your external API URL
+    $apiUrl = 'https://dev.clevercreator.ai/api/prompt/manage';
+
+    // Get the hex key from .env (or hardcode it for testing)
+    $hexKey = 'fahmidh26';
+
+    // Make the request with the custom header
+    $response = Http::withHeaders([
+        'X-Auth-Hex' => $hexKey,
+    ])->get($apiUrl);
+
+    // Return the response
+    return $response->json();
+});
 
 
 Route::get('/a', function () {
