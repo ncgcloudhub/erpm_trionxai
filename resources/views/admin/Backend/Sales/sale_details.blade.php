@@ -69,8 +69,8 @@
 				<thead>
 					  <tr>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Ticket ID</th>
+						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Description</th>
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Qty/Unit</th>
-					
 						<th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Rate</th>
 						{{-- <th>Dis. Value</th>
 						<th>Vat %</th>
@@ -89,6 +89,7 @@
 							@endforeach --}}
 						</select>
 					</td>
+					  <td><input class="form-control descrip" value="{{$item->description}}" type="text" id="descrip" name="descrip[]" required=""></td>
 					  <td><input class="form-control qnty" value="{{$item->qty}}" type="number" id="qnty" name="qnty[]" required=""></td>
 					  <td><input class="form-control rate" value="{{$item->rate}}" type="number" id="rate" name="rate[]" required=""></td>
 					  <td><input class="form-control total" value="{{$item->amount}}" type="number" id="amount" name="amount[]" value="0" readonly></td>

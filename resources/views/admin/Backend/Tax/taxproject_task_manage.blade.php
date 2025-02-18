@@ -23,7 +23,7 @@
 					<table id="example1" class="table table-responsive table-bordered table-striped">
 						<thead>
 							<tr style="background-color: rgba(37, 163, 20, 0.863)" class="align-middle text-center">
-								
+								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Sl.</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Ticket ID</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white text-start">Customer Name</th>
 								<th class="text-uppercase text-secondary text-s font-weight-bolder opacity-7 text-white">Subject</th>
@@ -96,10 +96,12 @@
 						</thead>
 
 						<tbody>
-
+							@php
+							$sl = 1;
+						@endphp
 							@foreach($products as $item)
 							<tr class="align-middle text-center text-sm">
-								
+								<td><h6 class="mb-0 text-sm "> {{ $sl++ }}</h6></td>
 								<td><a style="color: rgb(16, 71, 189)" href="{{ route('taxproject.task.view',$item->id) }}">{{ $item->task_id }}</a></td>
 								<td><a style="color: rgb(16, 71, 189)" href="{{ route('customer.view',$item->customer_id) }}">{{ $item->customer->user_name }}</a></td>
 								<td class="text-sm text-truncate">
@@ -188,22 +190,22 @@
 		// Update the index based on your table structure
 		$('#statusFilter').on('change', function () {
 			// Column index for Status is 5 (zero-based)
-			table.column(8).search($(this).val()).draw();
+			table.column(9).search($(this).val()).draw();
 		});
 		
 		$('#eSignatureFilter').on('change', function () {
 			// Column index for eSignature is 6 (zero-based)
-			table.column(10).search($(this).val()).draw();
+			table.column(11).search($(this).val()).draw();
 		});
 		
 		$('#efstatusFilter').on('change', function () {
 			// Column index for EF STATUS is 7 (zero-based)
-			table.column(11).search($(this).val()).draw();
+			table.column(12).search($(this).val()).draw();
 		});
 		
 		$('#projectFilter').on('change', function () {
 			// Column index for Project Name is 3 (zero-based)
-			table.column(4).search($(this).val()).draw();
+			table.column(5).search($(this).val()).draw();
 		});
 	});
 </script>

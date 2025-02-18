@@ -11,6 +11,7 @@ use App\Models\Admin;
 use App\Models\Employee;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\ImmigrationCategory;
 use App\Models\TaxTaskProject;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -137,8 +138,10 @@ class IncomeTaxController extends Controller
 		$assignedby = Admin::latest()->get();
 		$assignto = Employee::latest()->get();
 		$customers = Customer::latest()->get();
+		$immigrationcategories = ImmigrationCategory::all();
+
 		// $brands = Brand::latest()->get();
-		return view('admin.Backend.Tax.taxproject_task_add', compact('categories','customers','assignedby','assignto'));
+		return view('admin.Backend.Tax.taxproject_task_add', compact('categories','customers','assignedby','assignto', 'immigrationcategories'));
 	}  // end method
 
 
@@ -220,11 +223,12 @@ class IncomeTaxController extends Controller
 		$assignto = Employee::latest()->get();
 		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
+		$immigrationcategories = ImmigrationCategory::all();
 		// dd($task->description);
 		// Ensure category is an array
 		$task->category = json_decode($task->category, true); // If stored as JSON
 
-        return view('admin.Backend.Tax.taxproject_task_edit',compact('categories','customers','assignedby','assignto','task'));
+        return view('admin.Backend.Tax.taxproject_task_edit',compact('categories','customers','assignedby','assignto','task', 'immigrationcategories'));
 	}
 
 	public function ViewProjectTask($id){		   
@@ -234,10 +238,26 @@ class IncomeTaxController extends Controller
 		$assignto = Employee::latest()->get();
 		$customers = Customer::latest()->get();
 		$task = TaxTaskProject::findOrFail($id);
+		$immigrationcategories = ImmigrationCategory::all();
 		// dd($task->description);
 
-        return view('admin.Backend.Tax.taxproject_task_view',compact('categories','customers','assignedby','assignto','task'));
+        return view('admin.Backend.Tax.taxproject_task_view',compact('categories','customers','assignedby','assignto','task', 'immigrationcategories'));
 	}
+
+	public function CloneTask($id)
+	{
+		$categories = TaxProject::latest()->get();
+		$assignedby = Admin::latest()->get();
+		$assignto = Employee::latest()->get();
+		$customers = Customer::latest()->get();
+		$task = TaxTaskProject::findOrFail($id);
+		$immigrationcategories = ImmigrationCategory::all();
+		// Ensure category is an array
+		$task->category = json_decode($task->category, true); // If stored as JSON
+
+        return view('admin.Backend.Tax.taxproject_task_clone',compact('categories','customers','assignedby','assignto','task', 'immigrationcategories'));
+	}
+
 
 	public function ProjectUpdateTask(Request $request){
 
@@ -354,4 +374,48 @@ class IncomeTaxController extends Controller
 	   return redirect()->back()->with($notification);
 
    }// End Method 
+
+   public function immigrationCategoryView()
+   {
+		$categories = ImmigrationCategory::orderBy('id','DESC')->get();
+		return view('admin.Backend.Tax.incometax_category',compact('categories'));
+	} // end method 
+
+	public function immigrationCategoryStore(Request $request)
+	{
+		$request->validate([
+			'value' => 'required|string|max:255',
+			'category' => 'required|string|max:255',
+		]);
+
+		ImmigrationCategory::create([
+			'value' => $request->value,
+			'category_name' => $request->category,
+		]);
+
+		return redirect()->route('immigration.category')->with('success', 'Category added successfully.');
+	}
+
+	public function immigrationCategoryUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'value' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+        ]);
+
+        ImmigrationCategory::findOrFail($id)->update([
+            'value' => $request->value,
+            'category_name' => $request->category,
+        ]);
+
+        return redirect()->route('immigration.category')->with('success', 'Category updated successfully.');
+    }
+
+    public function immigrationCategoryDelete($id)
+    {
+        ImmigrationCategory::findOrFail($id)->delete();
+        return redirect()->route('immigration.category')->with('success', 'Category deleted successfully.');
+    }
+
+
 }

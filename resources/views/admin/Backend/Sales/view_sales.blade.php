@@ -105,8 +105,8 @@
         </td>
         <td align="right">
           <div class="font" style="margin-top: 40px; text-align: right; display: flex; gap: 10px; justify-content: flex-end; align-items: center;">
-              <img width="240px" height="240px" src="assets/img/qrzelle.png" alt="">
-              <img width="240px" height="240px" src="assets/img/qrzelle1.png" alt="">
+              <img width="200px" height="200px" src="assets/img/qrzelle.png" alt="">
+              <img width="200px" height="200px" src="assets/img/qrzelle1.png" alt="">
           </div>
       </td>
       
