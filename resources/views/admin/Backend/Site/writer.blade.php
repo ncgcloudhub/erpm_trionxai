@@ -6,27 +6,6 @@
 
     <title>Writebot - AI Writing Assistant for Bloggers</title>
 
-    <!-- Fonts -->
-    <link
-      href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      body {
-        font-family: "Space Grotesk", sans-serif;
-      }
-      .title:empty:before {
-        content: attr(data-placeholder);
-        color: gray;
-      }
-    </style>
-
-    <script src="https://unpkg.com/marked" defer></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/openai"></script>
   </head>
   <body class="antialiased">
     <div

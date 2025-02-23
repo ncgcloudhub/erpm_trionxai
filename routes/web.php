@@ -67,6 +67,7 @@ use App\Models\Purchase;
 use App\Models\TaxProject;
 use App\Models\TaxTaskProject;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,9 +93,48 @@ Route::get('/write', function () {
     return view('admin.Backend.Site.writer', compact('title', 'content'));
 })->name('openai.view');
 
-
 Route::post('/write/generate', [SiteSettingController::class, 'openaigenerate']);
 
+Route::get('/test-api', function () {
+    // Define your external API URL
+    $apiUrl = 'https://dev.clevercreator.ai/api/prompt/manage';
+
+    // Get the hex key from .env (or hardcode it for testing)
+    $hexKey = '0a536027cdbf5898';
+
+    // Make the request with the custom header
+    $response = Http::withHeaders([
+        'X-Auth-Hex' => $hexKey,
+    ])->get($apiUrl);
+
+    // Return the response
+    return $response->json();
+});
+
+Route::get('/registerr', function () {
+    return view('admin.Backend.Site.register');
+});
+
+Route::post('/api-register', function (Request $request) {
+    try {
+        $response = Http::withHeaders([
+            'X-Auth-Hex' => '0a536027cdbf5898', // Your API key
+        ])->post('https://dev.clevercreator.ai/api/register', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'password_confirmation' => $request->password_confirmation,
+        ]);
+
+        if ($response->successful()) {
+            return redirect()->back()->with('success', 'User registered successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Registration failed. ' . ($response->json()['message'] ?? 'Please try again.'));
+        }
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
+    }
+})->name('api.register.submit');
 
 
 Route::get('/a', function () {
