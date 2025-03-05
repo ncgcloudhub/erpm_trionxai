@@ -137,37 +137,6 @@
 		  </div>
 		</div>
 	  </div>
-	  <!-- <div class="col-xl-3 col-sm-6">
-		<div class="card">
-		  <div class="card-body p-3">
-			<div class="row">
-			  <div class="col-8">
-				<div class="numbers">
-				  <p class="text-sm mb-0 text-capitalize font-weight-bold">
-					Sales
-				  </p>
-				  <h5 class="font-weight-bolder mb-0">
-					$103,430
-					<span class="text-success text-sm font-weight-bolder"
-					  >+5%</span
-					>
-				  </h5>
-				</div>
-			  </div>
-			  <div class="col-4 text-end">
-				<div
-				  class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md"
-				>
-				  <i
-					class="ni ni-cart text-lg opacity-10"
-					aria-hidden="true"
-				  ></i>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div> -->
 	</div>
 
 	<br>
@@ -325,41 +294,87 @@
 		  </div>
 		</div>
 	  </div>
-	  <!-- <div class="col-xl-3 col-sm-6">
-		<div class="card">
-		  <div class="card-body p-3">
-			<div class="row">
-			  <div class="col-8">
-				<div class="numbers">
-				  <p class="text-sm mb-0 text-capitalize font-weight-bold">
-					Sales
-				  </p>
-				  <h5 class="font-weight-bolder mb-0">
-					$103,430
-					<span class="text-success text-sm font-weight-bolder"
-					  >+5%</span
-					>
-				  </h5>
-				</div>
-			  </div>
-			  <div class="col-4 text-end">
-				<div
-				  class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md"
-				>
-				  <i
-					class="ni ni-cart text-lg opacity-10"
-					aria-hidden="true"
-				  ></i>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div> -->
 	</div>
 	<br>
-
 	@endif
+
+	<div class="row">
+		<!-- Card 1: Redirects to taxproject.manage.task -->
+		<div class="col-xl-4 col-sm-3 mb-xl-0 mb-3">
+			<a href="{{ route('taxproject.manage.task') }}" style="text-decoration: none;">
+				<div class="card h-100 shadow-lg border-0">
+					<div class="card-body p-4">
+						<div class="row align-items-center">
+							<div class="col-8">
+								<div class="numbers">
+									<p class="mb-0 text-capitalize font-weight-bold text-dark" style="font-size: 18px;">
+										Manage Customer Ticket
+									</p>
+									<small class="text-muted">View and manage customer tickets</small>
+								</div>
+							</div>
+							<div class="col-4 text-end">
+								<div class="icon icon-shape bg-gradient-primary text-white rounded-circle shadow text-center">
+									<i class="ni ni-single-copy-04 text-lg opacity-10"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	
+		<!-- Card 2: Redirects to customer.manage -->
+		<div class="col-xl-4 col-sm-3 mb-xl-0 mb-3">
+			<a href="{{ route('customer.manage') }}" style="text-decoration: none;">
+				<div class="card h-100 shadow-lg border-0">
+					<div class="card-body p-4">
+						<div class="row align-items-center">
+							<div class="col-8">
+								<div class="numbers">
+									<p class="mb-0 text-capitalize font-weight-bold text-dark" style="font-size: 18px;">
+										Manage Tax Customer
+									</p>
+									<small class="text-muted">Handle tax-related customer data</small>
+								</div>
+							</div>
+							<div class="col-4 text-end">
+								<div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow text-center">
+									<i class="ni ni-badge text-lg opacity-10"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	
+		<!-- Card 3: Redirects to sales.manage -->
+		<div class="col-xl-4 col-sm-3 mb-xl-0 mb-3">
+			<a href="{{ route('sales.manage') }}" style="text-decoration: none;">
+				<div class="card h-100 shadow-lg border-0">
+					<div class="card-body p-4">
+						<div class="row align-items-center">
+							<div class="col-8">
+								<div class="numbers">
+									<p class="mb-0 text-capitalize font-weight-bold text-dark" style="font-size: 18px;">
+										Manage Sales
+									</p>
+									<small class="text-muted">Track and manage sales data</small>
+								</div>
+							</div>
+							<div class="col-4 text-end">
+								<div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow text-center">
+									<i class="ni ni-cart text-lg opacity-10"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	  <br>
 
 		{{-- TEST --}}
 
